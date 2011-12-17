@@ -1,0 +1,18 @@
+class UmlClassInstance
+!!!238338.cpp!!!	init() : void
+  declareFct("ownedMember", "uml:InstanceSpecification", &importIt);
+  declareFct("packagedElement", "uml:InstanceSpecification", &importIt);
+!!!238210.cpp!!!	importIt(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  where = where->container(aWriteVariableValueAction, token, in);
+    
+  if (where != 0) {
+    QCString s = token.valueOf("name");
+    UmlWriteVariableValueAction * a = create(where, s);
+    
+    if (a == 0)
+      in.error("cannot create write variable value action '"
+	       + s + "' in '" + where->name() + "'");
+    
+    a->addItem(token.xmiId(), in);
+    a->import_it(in, token);
+  }

@@ -1,0 +1,6 @@
+class FlowContainer
+!!!199938.cpp!!!	memo_flow(inout flow : UmlFlow) : void
+  _flows.append(flow);
+!!!200066.cpp!!!	write_flows(inout out : FileOut) : void
+  while (! _flows.isEmpty())
+    _flows.take(0)->write_it(out);

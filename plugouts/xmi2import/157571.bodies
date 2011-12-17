@@ -1,0 +1,56 @@
+class UmlReplyAction
+!!!304003.cpp!!!	init() : void
+  declareFct("node", "uml:ReplyAction", &importIt);
+  declareFct("containednode", "uml:ReplyAction", &importIt);
+!!!303875.cpp!!!	importIt(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  where = where->container(aReplyAction, token, in);
+    
+  if (where != 0) {
+    QCString s = token.valueOf("name");
+    UmlReplyAction * a = create(where, s);
+    
+    if (a == 0)
+      in.error("cannot create reply action '"
+	       + s + "' in '" + where->name() + "'");
+    
+    a->addItem(token.xmiId(), in);
+    
+    if (!(s = token.valueOf("trigger")).isEmpty()) {
+      QCString tr = Trigger::get(s);
+      
+      if (!tr.isNull())
+	a->set_ReplyToCall(tr);
+      else
+	Unresolved::addRef(a, s);
+    }
+    
+    if (! token.closed()) {
+      QCString k = token.what();
+      const char * kstr = k;
+      
+      while (in.read(), !token.close(kstr)) {
+	if (token.what() == "trigger") {
+	  QCString tr_name;
+	  QCString tr_ref;
+	  
+	  Trigger::add(in, token, tr_name, tr_ref);
+      
+	  if (!tr_name.isNull())
+	    a->set_ReplyToCall(tr_name);
+	  else
+	    Unresolved::addRef(a, tr_ref);
+	}
+	else
+	  a->import(in, token);
+      }
+    }
+  }
+!!!303747.cpp!!!	solve(in idref : string) : void
+  QCString tr = Trigger::get(idref);
+  
+  if (tr.isNull()) {
+    if (!FileIn::isBypassedId(idref))
+      UmlCom::trace("reply activity action : unknown trigger reference '" + idref + "'<br>");
+  }
+  else
+    set_ReplyToCall(tr);

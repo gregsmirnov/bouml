@@ -1,0 +1,19 @@
+// 'tool' "the executable" "displayed string" {target}+
+tool "html (C++ version)" "ghtml" Class Operation Attribute Generalisation Realize Dependency Association DirectionalAssociation Aggregation AggregationByValue DirectionalAggregation DirectionalAggregationByValue ExtraMember
+tool "html (flat, C++)" "ghtml -flat" Class Operation Attribute Generalisation Realize Dependency Association DirectionalAssociation Aggregation AggregationByValue DirectionalAggregation DirectionalAggregationByValue ExtraMember
+tool "html (svg, C++ version)" "gthml -svg" Class Operation Attribute Generalisation Realize Dependency Association DirectionalAssociation Aggregation AggregationByValue DirectionalAggregation DirectionalAggregationByValue ExtraMember
+tool "html (flat, svg, C++)" "ghtml -flat -svg" Class Operation Attribute Generalisation Realize Dependency Association DirectionalAssociation Aggregation AggregationByValue DirectionalAggregation DirectionalAggregationByValue ExtraMember
+tool "generate xmi" "gxmi" Class
+tool "html (C++ version)" "ghtml" State Region StateAction Initial EntryPoint Final Terminate ExitPoint DeepHistory ShallowHistory Junction Choice Fork Join
+tool "html (flat, C++)" "ghtml -flat" State Region StateAction Initial EntryPoint Final Terminate ExitPoint DeepHistory ShallowHistory Junction Choice Fork Join
+tool "html (svg, C++)" "ghtml -svg" State Region StateAction Initial EntryPoint Final Terminate ExitPoint DeepHistory ShallowHistory Junction Choice Fork Join
+tool "html (flat, svg, C++)" "ghtml -flat -svg" State Region StateAction Initial EntryPoint Final Terminate ExitPoint DeepHistory ShallowHistory Junction Choice Fork Join
+tool "generate .pro" "gpro" Artifact
+tool "html (C++ version)" "ghtml" Project Package UseCaseView ClassView ComponentView DeploymentView UseCaseDiagram SeqDiagram ColDiagram ClassDiagram ObjectDiagram StateDiagram ActivityDiagram ComponentDiagram DeploymentDiagram UseCase Component Node Artifact
+tool "html (flat, C++)" "ghtml -flat" Project Package UseCaseView ClassView ComponentView DeploymentView UseCaseDiagram SeqDiagram ColDiagram ClassDiagram ObjectDiagram StateDiagram ActivityDiagram ComponentDiagram DeploymentDiagram UseCase Component Node Artifact
+tool "html (svg, C++)" "ghtml -svg" Project Package UseCaseView ClassView ComponentView DeploymentView UseCaseDiagram SeqDiagram ColDiagram ClassDiagram ObjectDiagram StateDiagram ActivityDiagram ComponentDiagram DeploymentDiagram UseCase Component Node Artifact
+tool "html (flat, svg, C++)" "ghtml -flat -svg" Project Package UseCaseView ClassView ComponentView DeploymentView UseCaseDiagram SeqDiagram ColDiagram ClassDiagram ObjectDiagram StateDiagram ActivityDiagram ComponentDiagram DeploymentDiagram UseCase Component Node Artifact
+tool "generate xmi" "gxmi" Project
+tool "generate xmi 2.1" "gxmi2" Project
+tool "plug out upgrade" "plug_out_upgrade" Project
+tool "Uml projection" "uml_proj" Project Package ClassView

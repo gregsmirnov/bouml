@@ -1,0 +1,9 @@
+class UmlBaseRaiseExceptionAction
+!!!301312.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlRaiseExceptionAction
+  return (UmlRaiseExceptionAction *) parent->create_(aRaiseExceptionAction, s);
+!!!301312.java!!!	create(inout parent : UmlItem, inout s : str) : UmlRaiseExceptionAction
+  return (UmlRaiseExceptionAction) parent.create_(anItemKind.aRaiseExceptionAction, s);
+!!!301440.cpp!!!	kind() : anItemKind
+  return aRaiseExceptionAction;
+!!!301440.java!!!	kind() : anItemKind
+  return anItemKind.aRaiseExceptionAction;

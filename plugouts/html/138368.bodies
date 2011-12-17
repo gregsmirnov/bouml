@@ -1,0 +1,9 @@
+class UmlBaseClearVariableValueAction
+!!!178560.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlClearVariableValueAction
+  return (UmlClearVariableValueAction *) parent->create_(aClearVariableValueAction, s);
+!!!178560.java!!!	create(inout parent : UmlItem, inout s : str) : UmlClearVariableValueAction
+  return (UmlClearVariableValueAction) parent.create_(anItemKind.aClearVariableValueAction, s);
+!!!178688.cpp!!!	kind() : anItemKind
+  return aClearVariableValueAction;
+!!!178688.java!!!	kind() : anItemKind
+  return anItemKind.aClearVariableValueAction;

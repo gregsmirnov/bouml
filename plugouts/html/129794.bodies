@@ -1,0 +1,107 @@
+class UmlStateAction
+!!!145794.cpp!!!	sKind() : string
+  return "state action";
+!!!145794.java!!!	sKind() : string
+  return "state action";
+!!!145666.cpp!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  UmlCom::message(name());
+
+  QCString s = stereotype();
+  
+  if (s.isEmpty())
+    s = "State action";
+  else
+    s = "State action " + s;
+    
+  UmlItem::html(s, (UmlDiagram *) 0);
+  
+  fw.write("<p>Defined in ");
+  if (parent()->kind() == aRegion)
+    parent()->parent()->write();
+  else
+    parent()->write();
+  fw.write("</p>");
+
+  s = expression();
+  
+  QCString scpp = cppExpression();
+  QCString sjava = javaExpression();
+
+  if ((!s.isEmpty()) || (!scpp.isEmpty()) || (!sjava.isEmpty())) {
+    fw.write("<p>Expression :</p><ul>");
+  
+    if (!s.isEmpty()) {
+      fw.write("<li>OCL : <pre>\n");
+      writeq(s);
+      fw.write("</pre></li>");
+    }
+    
+    if (!scpp.isEmpty()) {
+      fw.write("<li>C++ : <pre>\n");
+      writeq(scpp);
+      fw.write("</pre></li>");
+    }
+    
+    if (!sjava.isEmpty()) {
+      fw.write("<li>Java : <pre>\n");
+      writeq(sjava);
+      fw.write("</pre></li>");
+    }
+    
+    fw.write("</ul>");
+  }
+
+  write_children(pfix, rank, level);
+
+  unload(FALSE, FALSE);
+!!!145666.java!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  UmlCom.message(name());
+
+  String s = stereotype();
+  
+  if (s == null)
+    s = "State action";
+  else
+    s = "State action " + s;
+    
+  html(s, null);
+  
+  fw.write("<p>Defined in ");
+  if (parent().kind() == anItemKind.aRegion)
+    parent().parent().write();
+  else
+    parent().write();
+   fw.write("</p>");
+
+  s = expression();
+  
+  String scpp = cppExpression();
+  String sjava = javaExpression();
+
+  if ((s.length() != 0) || (scpp.length() != 0) || (sjava.length() != 0)) {
+    fw.write("<p>Expression :</p><ul>");
+    
+    if (s.length() != 0) {
+      fw.write("<li>OCL : <pre>\n");
+      writeq(s);
+      fw.write("</pre></li>");
+    }
+    
+    if (scpp.length() != 0) {
+      fw.write("<li>C++ : <pre>\n");
+      writeq(scpp);
+      fw.write("</pre></li>");
+    }
+    
+    if (sjava.length() != 0) {
+      fw.write("<li>Java : <pre>\n");
+      writeq(sjava);
+      fw.write("</pre></li>");
+    }
+    
+    fw.write("</ul>");
+  }
+
+  write_children(pfix, rank, level);
+
+  unload(false, false);

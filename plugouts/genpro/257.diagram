@@ -1,0 +1,123 @@
+format 5
+
+
+classcanvas 139102212 class_ref 4736 // UmlBaseSequenceDiagram
+  draw_all_relations default hide_attributs default hide_operations default show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default
+  color blue
+  xyz 196 285 2000
+classcanvas 139141788 class_ref 6657 // UmlComponentDiagram
+  draw_all_relations default hide_attributs default hide_operations default show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default
+  xyz 574 320 2000
+classcanvas 138788220 class_ref 4096 // UmlBaseItem
+  draw_all_relations default hide_attributs default hide_operations default show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default
+  color blue
+  xyz 319 8 2000
+classcanvas 139107140 class_ref 4992 // UmlBaseUseCaseDiagram
+  draw_all_relations default hide_attributs default hide_operations default show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default
+  color blue
+  xyz 5 262 2000
+classcanvas 139254036 class_ref 7041 // UmlDeploymentDiagram
+  draw_all_relations default hide_attributs default hide_operations default show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default
+  xyz 552 176 2000
+note 138951316 "Do not modify the blue classes"
+  xyzwh 20 15 2000 113 51
+classcanvas 138982596 class_ref 3840 // UmlBaseDiagram
+  draw_all_relations default hide_attributs default hide_operations default show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default
+  color blue
+  xyz 310 138 2000
+classcanvas 139096292 class_ref 2560 // UmlBaseClassDiagram
+  draw_all_relations default hide_attributs default hide_operations default show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default
+  color blue
+  xyz 20 103 2000
+classcanvas 139248900 class_ref 3456 // UmlBaseDeploymentDiagram
+  draw_all_relations default hide_attributs default hide_operations default show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default
+  color blue
+  xyz 540 102 2000
+classcanvas 139044948 class_ref 3072 // UmlBaseCollaborationDiagram
+  draw_all_relations default hide_attributs default hide_operations default show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default
+  color blue
+  xyz 373 287 2000
+classcanvas 139300100 class_ref 6145 // UmlClassDiagram
+  draw_all_relations default hide_attributs default hide_operations default show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default
+  xyz 34 181 2000
+classcanvas 139067996 class_ref 3200 // UmlBaseComponentDiagram
+  draw_all_relations default hide_attributs default hide_operations default show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default
+  color blue
+  xyz 560 249 2000
+classcanvas 139236092 class_ref 7297 // UmlDiagram
+  draw_all_relations default hide_attributs default hide_operations default show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default
+  xyz 324 201 2000
+classcanvas 139157636 class_ref 8193 // UmlSequenceDiagram
+  draw_all_relations default hide_attributs default hide_operations default show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default
+  xyz 210 355 2000
+classcanvas 139303700 class_ref 8449 // UmlUseCaseDiagram
+  draw_all_relations default hide_attributs default hide_operations default show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default
+  xyz 16 338 2000
+classcanvas 139241020 class_ref 7553 // UmlItem
+  draw_all_relations default hide_attributs default hide_operations default show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default
+  xyz 333 73 2000
+classcanvas 139135348 class_ref 6529 // UmlCollaborationDiagram
+  draw_all_relations default hide_attributs default hide_operations default show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default
+  xyz 385 356 2000
+relationcanvas 139289044 relation_ref 14208 // <generalisation>
+  from ref 139107140 z 1000 to ref 139236092
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 139230172 relation_ref 16641 // <generalisation>
+  from ref 139241020 z 1000 to ref 138788220
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 139291100 relation_ref 7552 // <generalisation>
+  from ref 139248900 z 1000 to ref 139236092
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 139300756 relation_ref 15745 // <generalisation>
+  from ref 139141788 z 1000 to ref 139067996
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 139291508 relation_ref 16129 // <generalisation>
+  from ref 139254036 z 1000 to ref 139248900
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 139132388 relation_ref 17281 // <generalisation>
+  from ref 139157636 z 1000 to ref 139102212
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 139200772 relation_ref 16385 // <generalisation>
+  from ref 139236092 z 1000 to ref 138982596
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 139295204 relation_ref 5120 // <generalisation>
+  from ref 139096292 z 1000 to ref 139236092
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 139299556 relation_ref 7296 // <generalisation>
+  from ref 139067996 z 1000 to ref 139236092
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 139290052 relation_ref 7936 // <generalisation>
+  from ref 138982596 z 1000 to ref 139241020
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 139293860 relation_ref 13824 // <generalisation>
+  from ref 139102212 z 1000 to ref 139236092
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 139167924 relation_ref 15233 // <generalisation>
+  from ref 139300100 z 1000 to ref 139096292
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 139287756 relation_ref 17537 // <generalisation>
+  from ref 139303700 z 1000 to ref 139107140
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 139297972 relation_ref 15617 // <generalisation>
+  from ref 139135348 z 1000 to ref 139044948
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 139296780 relation_ref 7168 // <generalisation>
+  from ref 139044948 z 1000 to ref 139236092
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+prefered_whz 762 448 1
+end

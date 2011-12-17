@@ -1,0 +1,43 @@
+class UmlBaseCallOperationAction
+!!!176256.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlCallOperationAction
+  return (UmlCallOperationAction *) parent->create_(aCallOperationAction, s);
+!!!176256.java!!!	create(inout parent : UmlItem, inout s : str) : UmlCallOperationAction
+  return (UmlCallOperationAction) parent.create_(anItemKind.aCallOperationAction, s);
+!!!176384.cpp!!!	kind() : anItemKind
+  return aCallOperationAction;
+!!!176384.java!!!	kind() : anItemKind
+  return anItemKind.aCallOperationAction;
+!!!176768.cpp!!!	isSynchronous() : bool
+  read_if_needed_();
+  return _synchronous;
+!!!176768.java!!!	isSynchronous() : bool
+  read_if_needed_();
+  return _synchronous;
+!!!176896.cpp!!!	set_isSynchronous(in v : bool) : bool
+  return set_it_(_synchronous, v, setFlagCmd);
+!!!176896.java!!!	set_isSynchronous(in v : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setFlagCmd, (v) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _synchronous = v;
+!!!177024.cpp!!!	operation() : UmlOperation
+  read_if_needed_();
+  return _operation;
+!!!177024.java!!!	operation() : UmlOperation
+  read_if_needed_();
+  return _operation;
+!!!177152.cpp!!!	set_Operation(in v : UmlOperation) : bool
+  UmlCom::send_cmd(_identifier, setDefCmd, ((UmlBaseItem *) v)->_identifier);   if (UmlCom::read_bool()) {     _operation = v;     return TRUE;   }   else     return FALSE;
+!!!177152.java!!!	set_Operation(in v : UmlOperation) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setDefCmd, v.identifier_());
+  UmlCom.check();
+
+  _operation = v;
+!!!177280.cpp!!!	read_uml_() : void
+  UmlBaseActivityAction::read_uml_();
+  _synchronous = UmlCom::read_bool();
+  _operation = (UmlOperation *) UmlBaseItem::read_();
+!!!177280.java!!!	read_uml_() : void
+  super.read_uml_();
+  _synchronous = UmlCom.read_bool();
+  _operation = (UmlOperation) UmlBaseItem.read_();

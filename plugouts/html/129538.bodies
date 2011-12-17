@@ -1,0 +1,17 @@
+class UmlRegion
+!!!145538.cpp!!!	sKind() : string
+  return "region";
+!!!145538.java!!!	sKind() : string
+  return "region";
+!!!145410.cpp!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  UmlItem::html(pfix, rank, "State region", level, "stateregion");
+
+  unload(FALSE, FALSE);
+!!!145410.java!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  html(pfix, rank, "State region", level, "stateregion");
+
+  unload(false, false);
+!!!149890.cpp!!!	chapterp() : bool
+  return TRUE;
+!!!149890.java!!!	chapterp() : bool
+  return true;

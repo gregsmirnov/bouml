@@ -1,0 +1,13 @@
+class UmlBaseUseCaseAssociation
+!!!211584.cpp!!!	read_(in useCases : UmlUseCaseReference) : void
+  _use_case = (UmlUseCaseReference *) useCases[(void *) UmlCom::read_unsigned()];
+  _actor = (UmlClass *) UmlBaseItem::read_();
+  _primary = UmlCom::read_bool();
+  _name = UmlCom::read_string();
+  _stereotype = UmlCom::read_string();
+!!!211584.java!!!	read_(in useCases : UmlUseCaseReference) : void
+  _use_case = (UmlUseCaseReference) useCases.get(new Integer(UmlCom.read_unsigned()));
+  _actor = (UmlClass) UmlBaseItem.read_();
+  _primary = UmlCom.read_bool();
+  _name = UmlCom.read_string();
+  _stereotype = UmlCom.read_string();

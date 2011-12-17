@@ -1,0 +1,69 @@
+class UmlArtifact
+!!!128213.cpp!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  UmlCom::message(name());
+
+  UmlItem::html("Artifact", (UmlDiagram *) associatedDiagram());
+  
+  const char * sep = " associated with : ";
+  
+  if (stereotype() == "source") {
+    fw.write("<p>Artifact <i>source</i>");
+    
+    const QVector<UmlClass> l = associatedClasses();
+
+    for (unsigned i = 0; i != l.size(); i += 1) {
+      fw.write(sep);
+      l[i]->write();
+      sep = ", ";
+    }
+  }
+  else {
+    fw.write("<p><i>");
+    writeq(stereotype());
+    fw.write("</i>");
+    
+    const QVector<UmlArtifact> l = associatedArtifacts();
+    
+    for (unsigned i = 0; i != l.size(); i += 1) {
+      fw.write(sep);
+      l[i]->write();
+      sep = ", ";
+    }
+  }
+
+  fw.write("</p>\n");
+
+  unload(FALSE, FALSE);
+!!!128213.java!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  UmlCom.message(name());
+
+  html("Artifact", associatedDiagram());
+  
+  UmlItem[] l;
+  
+  if (stereotype().equals("source")) {
+    fw.write("<p>Artifact <i>source</i>");
+    l = associatedClasses();
+  }
+  else {
+    fw.write("<p><i>");
+    writeq(stereotype());
+    fw.write("</i>");
+    l = associatedArtifacts();
+  }
+
+  String sep = " associated with : ";
+  
+  for (int i = 0; i != l.length; i += 1) {
+    fw.write(sep);
+    l[i].write();
+    sep = ", ";
+  }
+
+  fw.write("</p>\n");
+
+  unload(false, false);
+!!!129248.cpp!!!	sKind() : string
+  return "artifact";
+!!!129248.java!!!	sKind() : string
+  return "artifact";

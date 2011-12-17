@@ -1,0 +1,5 @@
+class UmlDecisionActivityNode
+!!!194946.cpp!!!	sKind() : string
+  return "decision activity node";
+!!!194946.java!!!	sKind() : string
+  return "decision activity node";

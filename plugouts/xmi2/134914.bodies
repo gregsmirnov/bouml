@@ -1,0 +1,8 @@
+class UmlActivityRegion
+!!!200450.cpp!!!	memo_incoming_flow() : void
+  const QVector<UmlItem> ch = children(); 
+  unsigned n = ch.size();
+  unsigned i;
+     
+  for (i = 0; i != n; i += 1)
+    (dynamic_cast<UmlActivityItem *>(ch[i]))->memo_incoming_flow();

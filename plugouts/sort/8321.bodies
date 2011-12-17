@@ -1,0 +1,5 @@
+class UmlDeploymentDiagram
+!!!146690.cpp!!!	orderWeight() : int
+return 6;
+!!!146690.java!!!	orderWeight() : int
+return 6;

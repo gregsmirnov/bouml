@@ -1,0 +1,68 @@
+class UmlCallBehaviorAction
+!!!201858.cpp!!!	init() : void
+  declareFct("node", "uml:CallBehaviorAction", &importIt);
+  declareFct("containednode", "uml:CallBehaviorAction", &importIt);
+!!!205442.cpp!!!	importIt(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  where = where->container(aCallBehaviorAction, token, in);
+    
+  if (where != 0) {
+    QCString s = token.valueOf("name");
+    UmlCallBehaviorAction * a = create(where, s);
+    
+    if (a == 0)
+      in.error("cannot create call behavior action '"
+	       + s + "' in '" + where->name() + "'");
+    
+    a->addItem(token.xmiId(), in);
+    
+    if (!(s=token.valueOf("behavior")).isEmpty())
+      a->setBehavior(s);
+    
+    if (! token.closed()) {
+      QCString k = token.what();
+      const char * kstr = k;
+      
+      while (in.read(), !token.close(kstr)) {
+	s = token.what();
+	
+	if (s == "behavior") {
+	  a->setBehavior(token.xmiIdref());
+	  if (! token.closed())
+	    in.finish("behavior");
+	}
+	else
+	  a->import(in, token);
+      }
+    }
+  }
+!!!205570.cpp!!!	setBehavior(in idref : string) : void
+  QMap<QCString, UmlItem *>::Iterator it = All.find(idref);
+  
+  if (it == All.end())
+    Unresolved::addRef(this, idref);
+  else {
+    switch ((*it)->kind()) {
+    case anActivity:
+    case aState:
+      set_Behavior(*it);
+    default:
+      break;
+    }
+  }
+
+!!!211970.cpp!!!	solve(in idref : string) : void
+  QMap<QCString, UmlItem *>::Iterator it = All.find(idref);
+  
+  if (it == All.end()) {
+    if (!FileIn::isBypassedId(idref))
+      UmlCom::trace("call behavior action : unknown behavior reference '" + idref + "'<br>");
+  }
+  else {
+    switch ((*it)->kind()) {
+    case anActivity:
+    case aState:
+      set_Behavior(*it);
+    default:
+      break;
+    }
+  }

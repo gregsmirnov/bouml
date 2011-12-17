@@ -1,0 +1,9 @@
+class UmlBaseInitialActivityNode
+!!!182144.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlInitialActivityNode
+  return (UmlInitialActivityNode *) parent->create_(anInitialActivityNode, s);
+!!!182144.java!!!	create(inout parent : UmlItem, inout s : str) : UmlInitialActivityNode
+  return (UmlInitialActivityNode) parent.create_(anItemKind.anInitialActivityNode, s);
+!!!182272.cpp!!!	kind() : anItemKind
+  return anInitialActivityNode;
+!!!182272.java!!!	kind() : anItemKind
+  return anItemKind.anInitialActivityNode;

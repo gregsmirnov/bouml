@@ -1,0 +1,28 @@
+class UmlBaseRemoveVariableValueAction
+!!!181632.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlRemoveVariableValueAction
+  return (UmlRemoveVariableValueAction *) parent->create_(aRemoveVariableValueAction, s);
+!!!181632.java!!!	create(inout parent : UmlItem, inout s : str) : UmlRemoveVariableValueAction
+  return (UmlRemoveVariableValueAction) parent.create_(anItemKind.aRemoveVariableValueAction, s);
+!!!181760.cpp!!!	kind() : anItemKind
+  return aRemoveVariableValueAction;
+!!!181760.java!!!	kind() : anItemKind
+  return anItemKind.aRemoveVariableValueAction;
+!!!182144.cpp!!!	isRemoveDuplicates() : bool
+  read_if_needed_();
+  return _remove_duplicates;
+!!!182144.java!!!	isRemoveDuplicates() : bool
+  read_if_needed_();
+  return _remove_duplicates;
+!!!182272.cpp!!!	set_isRemoveDuplicates(in v : bool) : bool
+  return set_it_(_remove_duplicates, v, setFlagCmd);
+!!!182272.java!!!	set_isRemoveDuplicates(in v : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setFlagCmd, (v) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _remove_duplicates = v;
+!!!182400.cpp!!!	read_uml_() : void
+  UmlBaseAccessVariableValueAction::read_uml_();
+  _remove_duplicates = UmlCom::read_bool();
+!!!182400.java!!!	read_uml_() : void
+  super.read_uml_();
+  _remove_duplicates = UmlCom.read_bool();

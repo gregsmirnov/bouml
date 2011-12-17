@@ -1,0 +1,5 @@
+class UmlWriteVariableValueAction
+!!!199298.cpp!!!	sKind() : string
+  return "write variable value activity action";
+!!!199298.java!!!	sKind() : string
+  return "write variable value activity action";

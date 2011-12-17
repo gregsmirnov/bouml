@@ -1,0 +1,13 @@
+class UmlUseCaseDiagram
+!!!132356.cpp!!!	write(inout out : FileOut) : void
+  parent()->memo_ac_uc_assoc(this);
+!!!133892.cpp!!!	write_it(inout out : FileOut) : void
+  const char * k = ((_uml_20) ? "ownedMember" : "packagedElement");
+  UmlUseCaseDiagramDefinition * def = definition();
+  const QVector<UmlUseCaseAssociation> & assocs = def->associations();
+  int n = (int) assocs.size();
+  
+  for (int rank = 0; rank != n; rank += 1)
+    assocs.at(rank)->write(out, this, rank, k);
+ 
+  unload(); 

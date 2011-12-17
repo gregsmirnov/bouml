@@ -1,0 +1,110 @@
+class UmlBaseAcceptEventAction
+!!!173312.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlAcceptEventAction
+  return (UmlAcceptEventAction *) parent->create_(anAcceptEventAction, s);
+!!!173312.java!!!	create(inout parent : UmlItem, inout s : str) : UmlAcceptEventAction
+  return (UmlAcceptEventAction) parent.create_(anItemKind.anAcceptEventAction, s);
+!!!173440.cpp!!!	kind() : anItemKind
+  return anAcceptEventAction;
+!!!173440.java!!!	kind() : anItemKind
+  return anItemKind.anAcceptEventAction;
+!!!173824.cpp!!!	isUnmarshall() : bool
+  read_if_needed_();
+  return _unmarshall;
+!!!173824.java!!!	isUnmarshall() : bool
+  read_if_needed_();
+  return _unmarshall;
+!!!173952.cpp!!!	set_isUnmarshall(in v : bool) : bool
+  return set_it_(_unmarshall, v, setUnmarshallCmd);
+!!!173952.java!!!	set_isUnmarshall(in v : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setUnmarshallCmd, (v) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _unmarshall = v;
+!!!174080.cpp!!!	isTimeEvent() : bool
+  read_if_needed_();
+  return _timeevent;
+!!!174080.java!!!	isTimeEvent() : bool
+  read_if_needed_();
+  return _timeevent;
+!!!174208.cpp!!!	set_isTimeEvent(in v : bool) : bool
+  return set_it_(_timeevent, v, setTimeEventCmd);
+!!!174208.java!!!	set_isTimeEvent(in v : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setTimeEventCmd, (v) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _timeevent = v;
+!!!174336.cpp!!!	trigger() : string
+  read_if_needed_();
+  return _trigger;
+!!!174336.java!!!	trigger() : string
+  read_if_needed_();
+  return _trigger;
+!!!174464.cpp!!!	set_Trigger(in v : str) : bool
+  return set_it_(_trigger, v, setUmlTriggerCmd);
+!!!174464.java!!!	set_Trigger(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setUmlTriggerCmd, v);
+  UmlCom.check();
+
+  _trigger = v;
+!!!174592.cpp!!!	cppTrigger() : string
+  read_if_needed_();
+  return _cpp_trigger;
+!!!174592.java!!!	cppTrigger() : string
+  read_if_needed_();
+  return _cpp_trigger;
+!!!174720.cpp!!!	set_CppTrigger(in v : str) : bool
+  return set_it_(_cpp_trigger, v, setCppTriggerCmd);
+!!!174720.java!!!	set_CppTrigger(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setCppTriggerCmd, v);
+  UmlCom.check();
+
+  _cpp_trigger = v;
+!!!174848.cpp!!!	javaTrigger() : string
+  read_if_needed_();
+  return _java_trigger;
+!!!174848.java!!!	javaTrigger() : string
+  read_if_needed_();
+  return _java_trigger;
+!!!174976.cpp!!!	set_JavaTrigger(in v : str) : bool
+  return set_it_(_java_trigger, v, setJavaTriggerCmd);
+!!!174976.java!!!	set_JavaTrigger(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setJavaTriggerCmd, v);
+  UmlCom.check();
+
+  _java_trigger = v;
+!!!175104.cpp!!!	unload(in rec : bool, in del : bool) : void
+  _trigger = 0;
+#ifdef WITHCPP
+  _cpp_trigger = 0;
+#endif
+#ifdef WITHJAVA
+  _java_trigger = 0;
+#endif
+  UmlBaseActivityAction::unload(rec, del);
+!!!175104.java!!!	unload(in rec : bool, in del : bool) : void
+  _trigger = null;
+  _cpp_trigger = null;
+  _java_trigger = null;
+  super.unload(rec, del);
+!!!175232.cpp!!!	read_uml_() : void
+  UmlBaseActivityAction::read_uml_();
+  _unmarshall = UmlCom::read_bool();
+  _timeevent = UmlCom::read_bool();
+  _trigger = UmlCom::read_string();
+!!!175232.java!!!	read_uml_() : void
+  super.read_uml_();
+  _unmarshall = UmlCom.read_bool();
+  _timeevent = UmlCom.read_bool();
+  _trigger = UmlCom.read_string();
+!!!175360.cpp!!!	read_cpp_() : void
+  UmlBaseActivityAction::read_cpp_();
+  _cpp_trigger = UmlCom::read_string();
+!!!175360.java!!!	read_cpp_() : void
+  super.read_cpp_();
+  _cpp_trigger = UmlCom.read_string();
+!!!175488.cpp!!!	read_java_() : void
+  UmlBaseActivityAction::read_java_();
+  _java_trigger = UmlCom::read_string();
+!!!175488.java!!!	read_java_() : void
+  super.read_java_();
+  _java_trigger = UmlCom.read_string();

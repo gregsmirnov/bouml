@@ -1,0 +1,155 @@
+class UmlBaseClassInstance
+!!!193792.cpp!!!	kind() : anItemKind
+  return aClassInstance;
+!!!193792.java!!!	kind() : anItemKind
+  return anItemKind.aClassInstance;
+!!!193920.cpp!!!	create(inout parent : UmlItem, inout name : str, inout type : UmlClass) : UmlClassInstance
+  UmlCom::send_cmd(parent->_identifier, createCmd, aClassInstance,
+		   type->_identifier);
+  UmlClassInstance * result = (UmlClassInstance *) UmlBaseItem::read_();
+
+  if (result != 0) {
+    parent->reread_children_if_needed_();
+    if (name != 0) result->set_Name(name);
+  }
+  return result;
+!!!193920.java!!!	create(inout parent : UmlItem, inout name : str, inout type : UmlClass) : UmlClassInstance
+  UmlCom.send_cmd(parent.identifier_(), OnInstanceCmd.createCmd, anItemKind.aClassInstance,
+		   type.identifier_());
+  UmlClassInstance result = (UmlClassInstance) UmlBaseItem.read_();
+  
+  if (result != null) {
+    parent.reread_children_if_needed_();
+    if (name != null) result.set_Name(name);
+  }
+  else
+    throw new RuntimeException("Cannot create the class instance");
+  return result;
+!!!194048.cpp!!!	type() : UmlClass
+  read_if_needed_();
+  return _type;
+!!!194048.java!!!	type() : UmlClass
+  read_if_needed_();
+  return _type;
+!!!194176.cpp!!!	set_Type(in v : UmlClass) : bool
+  UmlCom::send_cmd(_identifier, setTypeCmd, ((UmlBaseItem *) v)->_identifier);   if (UmlCom::read_bool()) {     _type = v;     return TRUE;   }   else     return FALSE;
+!!!194176.java!!!	set_Type(in v : UmlClass) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setTypeCmd, v.identifier_());
+  UmlCom.check();
+
+  _type = v;
+!!!194304.cpp!!!	attributesValue(out result : SlotAttribute) : SlotAttribute
+  UmlCom::send_cmd(_identifier, attributesCmd, (char) 0);
+
+  unsigned n = UmlCom::read_unsigned();
+
+  result.clear();
+  while (n--) {
+    UmlAttribute * at = (UmlAttribute *) UmlBaseItem::read_();
+
+    result.append(SlotAttribute(at, UmlCom::read_string()));
+  }
+!!!194304.java!!!	attributesValue(out result : SlotAttribute) : SlotAttribute
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.attributesCmd, (byte) 0);
+
+  int n = UmlCom.read_unsigned();
+  SlotAttribute[] v = new SlotAttribute[n];
+
+  for (int index = 0; index != n; index += 1) {
+    UmlAttribute at = (UmlAttribute) UmlBaseItem.read_();
+
+    v[index] = new SlotAttribute(at, UmlCom.read_string());
+  }
+  return v;
+!!!194432.cpp!!!	relationsValue(out result : SlotRelation) : SlotRelation
+  UmlCom::send_cmd(_identifier, relationsCmd, (void *) 0);
+
+  unsigned n = UmlCom::read_unsigned();
+
+  result.clear();
+  while (n--) {
+    UmlRelation * r = (UmlRelation *) UmlBaseItem::read_();
+
+    result.append(SlotRelation(r, (UmlClassInstance *) UmlBaseItem::read_()));
+  }
+!!!194432.java!!!	relationsValue(out result : SlotRelation) : SlotRelation
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.relationsCmd, (long) 0);
+
+  int n = UmlCom.read_unsigned();
+  SlotRelation[] v = new SlotRelation[n];
+
+  for (int index = 0; index != n; index += 1) {
+    UmlRelation rel = (UmlRelation) UmlBaseItem.read_();
+
+    v[index] = new SlotRelation(rel, (UmlClassInstance) UmlBaseItem.read_());
+  }
+  return v;
+!!!194560.cpp!!!	availableAttributes(out result : UmlAttribute) : UmlAttribute
+  UmlCom::send_cmd(_identifier, attributesCmd, (char) 1);
+  UmlCom::read_item_list((QVector<UmlItem> &) result);
+!!!194560.java!!!	availableAttributes(out result : UmlAttribute) : UmlAttribute
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.attributesCmd, (byte) 1);
+
+  int n = UmlCom.read_unsigned();
+  UmlAttribute[] v = new UmlAttribute[n];
+
+  for (int index = 0; index != n; index += 1)
+    v[index] = (UmlAttribute) UmlBaseItem.read_();
+  return v;
+!!!194688.cpp!!!	availableRelations(out other : UmlClassInstance, out result : UmlRelation) : UmlRelation
+  UmlCom::send_cmd(_identifier, relationsCmd, other->_identifier);
+  UmlCom::read_item_list((QVector<UmlItem> &) result);
+!!!194688.java!!!	availableRelations(out other : UmlClassInstance, out result : UmlRelation) : UmlRelation
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.relationsCmd, other.identifier_());
+
+  int n = UmlCom.read_unsigned();
+  UmlRelation[] v = new UmlRelation[n];
+
+  for (int index = 0; index != n; index += 1)
+    v[index] = (UmlRelation) UmlBaseItem.read_();
+  return v;
+!!!194816.cpp!!!	set_AttributeValue(in attribute : UmlAttribute, in value : str) : bool
+  UmlCom::send_cmd(_identifier, setAttributeCmd, attribute->_identifier, value);
+  return UmlCom::read_bool();
+!!!194944.cpp!!!	add_Relation(in relation : UmlRelation, in other : UmlClassInstance) : bool
+  QVector<UmlItem> v(2);
+
+  v.insert(0, relation);
+  v.insert(1, other);
+  UmlCom::send_cmd(_identifier, addRelationCmd, v);
+  return UmlCom::read_bool();
+!!!195072.cpp!!!	remove_Relation(in relation : UmlRelation, in other : UmlClassInstance) : bool
+  QVector<UmlItem> v(2);
+
+  v.insert(0, relation);
+  v.insert(1, other);
+  UmlCom::send_cmd(_identifier, removeRelationCmd, v);
+  return UmlCom::read_bool();
+!!!195200.cpp!!!	associatedDiagram() : UmlObjectDiagram
+  read_if_needed_();
+
+  return _assoc_diagram;
+!!!195200.java!!!	associatedDiagram() : UmlObjectDiagram
+  read_if_needed_();
+
+  return _assoc_diagram;
+!!!195328.cpp!!!	set_AssociatedDiagram(in d : UmlObjectDiagram) : bool
+  UmlCom::send_cmd(_identifier, setAssocDiagramCmd, (d == 0) ? (void *) 0 : ((UmlBaseItem *) d)->_identifier);
+  if (UmlCom::read_bool()) {
+    _assoc_diagram = d;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!195328.java!!!	set_AssociatedDiagram(in d : UmlObjectDiagram) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setAssocDiagramCmd, (d == null) ? (long) 0 : d.identifier_());
+  UmlCom.check();
+  _assoc_diagram = d;
+!!!195456.cpp!!!	read_uml_() : void
+  _assoc_diagram = (UmlObjectDiagram *) UmlBaseItem::read_();
+  UmlBaseItem::read_uml_();
+  _type = (UmlClass *) UmlBaseItem::read_();
+!!!195456.java!!!	read_uml_() : void
+  _assoc_diagram = (UmlObjectDiagram) UmlBaseItem.read_();
+  super.read_uml_();
+  _type = (UmlClass) UmlBaseItem.read_();

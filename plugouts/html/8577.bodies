@@ -1,0 +1,17 @@
+class UmlUseCaseView
+!!!130528.cpp!!!	sKind() : string
+  return "use case view";
+!!!130528.java!!!	sKind() : string
+  return "use case view";
+!!!129523.cpp!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  UmlItem::html(pfix, rank, "Use Case View", level, "view");
+
+  unload(FALSE, FALSE);
+!!!129523.java!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  html(pfix, rank, "Use Case View", level, "view");
+
+  unload(false, false);
+!!!149634.cpp!!!	chapterp() : bool
+  return TRUE;
+!!!149634.java!!!	chapterp() : bool
+  return true;

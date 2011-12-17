@@ -1,0 +1,905 @@
+class JavaSettings
+!!!62976.cpp!!!	useDefaults() : bool
+  UmlCom::send_cmd(javaSettingsCmd, getJavaUseDefaultsCmd);
+  return UmlCom::read_bool();
+!!!62976.java!!!	useDefaults() : bool
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._getJavaUseDefaultsCmd);
+  return UmlCom.read_bool();
+!!!63104.cpp!!!	set_UseDefaults(in y : bool) : bool
+  UmlCom::send_cmd(javaSettingsCmd, setJavaUseDefaultsCmd, (char) y);
+  return UmlCom::read_bool();
+!!!63104.java!!!	set_UseDefaults(in y : bool) : bool
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaUseDefaultsCmd,
+		  (y) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+!!!63232.cpp!!!	type(in s : string) : string
+  read_if_needed_();
+  
+  UmlBuiltin * b = UmlSettings::_map_builtins.find(s);
+  
+  return (b) ? b->java : s;
+!!!63232.java!!!	type(in s : string) : string
+  read_if_needed_();
+  
+  UmlBuiltin b = (UmlBuiltin) UmlSettings._map_builtins.get(s);
+  
+  return (b != null) ? b.java : s;
+!!!63360.cpp!!!	set_Type(in s : string, in v : string) : bool
+  read_if_needed_();
+  UmlCom::send_cmd(javaSettingsCmd, setJavaTypeCmd, s, v);
+  if (UmlCom::read_bool()) {
+    UmlBuiltin * b = UmlSettings::_map_builtins.find(s);
+
+    if (b == 0)
+      b = UmlSettings::add_type(s);
+    b->java = v;
+    
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!63360.java!!!	set_Type(in s : string, in v : string) : bool
+  read_if_needed_();
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaTypeCmd, s, v);
+  UmlCom.check();
+
+  UmlBuiltin b = (UmlBuiltin) UmlSettings._map_builtins.get(s);
+
+  if (b == null)
+    b = UmlSettings.add_type(s);
+  b.java = v;
+!!!63488.cpp!!!	umlType(in s : string) : string
+  read_if_needed_();
+  
+  return UmlSettings::uml_type(s, &UmlBuiltin::java);
+!!!63488.java!!!	umlType(in s : string) : string
+  read_if_needed_();
+  
+  int index = _builtins.length;
+  
+  while (index-- != 0)
+    if (_builtins[index].java.equals(s))
+      return _builtins[index].uml;
+  
+  return null;
+!!!63616.cpp!!!	relationAttributeStereotype(in s : string) : string
+  read_if_needed_();
+  
+  UmlStereotype * b = UmlSettings::_map_relation_attribute_stereotypes.find(s);
+  
+  return (b) ? b->java : s;
+!!!63616.java!!!	relationAttributeStereotype(in s : string) : string
+  read_if_needed_();
+  
+  UmlStereotype b = (UmlStereotype) UmlSettings._map_relation_attribute_stereotypes.get(s);
+  
+  return (b != null) ? b.java : s;
+!!!63744.cpp!!!	set_RelationAttributeStereotype(in s : string, in v : string) : bool
+  read_if_needed_();
+  UmlCom::send_cmd(javaSettingsCmd, setJavaRelationAttributeStereotypeCmd, s, v);
+  if (UmlCom::read_bool()) {
+    UmlStereotype * st = UmlSettings::_map_relation_attribute_stereotypes.find(s);
+
+    if (st == 0)
+      st = UmlSettings::add_rel_attr_stereotype(s);
+    st->java = v;
+    
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!63744.java!!!	set_RelationAttributeStereotype(in s : string, in v : string) : bool
+  read_if_needed_();
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaRelationAttributeStereotypeCmd, s, v);
+  UmlCom.check();
+
+  UmlStereotype st = (UmlStereotype) UmlSettings._map_relation_attribute_stereotypes.get(s);
+
+  if (st == null)
+    st = UmlSettings.add_rel_attr_stereotype(s);
+  st.java = v;
+!!!63872.cpp!!!	relationAttributeUmlStereotype(in s : string) : string
+  read_if_needed_();
+  
+  return UmlSettings::uml_rel_attr_stereotype(s, &UmlStereotype::java);
+!!!63872.java!!!	relationAttributeUmlStereotype(in s : string) : string
+  read_if_needed_();
+  
+  int index = _relation_attribute_stereotypes.length;
+  
+  while (index-- != 0)
+    if (_relation_attribute_stereotypes[index].java.equals(s))
+      return _relation_attribute_stereotypes[index].uml;
+  
+  return null;
+!!!64000.cpp!!!	classStereotype(in s : string) : string
+  read_if_needed_();
+  
+  UmlStereotype * b = UmlSettings::_map_class_stereotypes.find(s);
+  
+  return (b) ? b->java : s;
+!!!64000.java!!!	classStereotype(in s : string) : string
+  read_if_needed_();
+  
+  UmlStereotype b = (UmlStereotype) UmlSettings._map_class_stereotypes.get(s);
+  
+  return (b != null) ? b.java : s;
+!!!64128.cpp!!!	set_ClassStereotype(in s : string, in v : string) : bool
+  read_if_needed_();
+  UmlCom::send_cmd(javaSettingsCmd, setJavaClassStereotypeCmd, s, v);
+  if (UmlCom::read_bool()) {
+    UmlStereotype * st = UmlSettings::_map_class_stereotypes.find(s);
+
+    if (st == 0)
+      st = UmlSettings::add_class_stereotype(s);
+    st->java = v;
+    
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!64128.java!!!	set_ClassStereotype(in s : string, in v : string) : bool
+  read_if_needed_();
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaClassStereotypeCmd, s, v);
+  UmlCom.check();
+
+  UmlStereotype st = (UmlStereotype) UmlSettings._map_class_stereotypes.get(s);
+
+  if (st == null)
+    st = UmlSettings.add_class_stereotype(s);
+  st.java = v;
+!!!64256.cpp!!!	classUmlStereotype(in s : string) : string
+  read_if_needed_();
+  
+  return UmlSettings::uml_class_stereotype(s, &UmlStereotype::java);
+!!!64256.java!!!	classUmlStereotype(in s : string) : string
+  read_if_needed_();
+  
+  int index = _class_stereotypes.length;
+  
+  while (index-- != 0)
+    if (_class_stereotypes[index].java.equals(s))
+      return _class_stereotypes[index].uml;
+  
+  return null;
+!!!64384.cpp!!!	get_import(in s : string) : string
+  read_if_needed_();
+  
+  QCString * r = _map_imports[s];
+  
+  return (r) ? *r : QCString(0);
+!!!64384.java!!!	get_import(in s : string) : string
+  read_if_needed_();
+  
+  return (String) _map_imports.get(s);
+
+!!!64512.cpp!!!	set_Import(in s : string, in v : string) : bool
+  read_if_needed_();
+  UmlCom::send_cmd(javaSettingsCmd, setJavaImportCmd, s, v);
+  if (UmlCom::read_bool()) {
+    QCString * r = _map_imports.take(s);
+    
+    if (!v.isEmpty())
+      _map_imports.insert(s, new QCString(v));
+    if (r)
+      delete r;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!64512.java!!!	set_Import(in s : string, in v : string) : bool
+  read_if_needed_();
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaImportCmd, s, v);
+  UmlCom.check();
+    
+  if ((v != null) && (v.length() != 0))
+    _map_imports.put(s, v);
+  else
+    _map_imports.remove(s);
+!!!64640.cpp!!!	rootDir() : string
+  read_if_needed_();
+  
+  return _root;
+!!!64640.java!!!	rootDir() : string
+  read_if_needed_();
+  
+  return _root;
+!!!64768.cpp!!!	set_RootDir(in v : string) : bool
+  UmlCom::send_cmd(javaSettingsCmd, setJavaRootdirCmd, v);
+  if (UmlCom::read_bool()) {
+    _root = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!64768.java!!!	set_RootDir(in v : string) : bool
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaRootdirCmd, v);
+  UmlCom.check();
+
+  _root = v;
+!!!64896.cpp!!!	sourceContent() : string
+  read_if_needed_();
+  
+  return _src_content;
+!!!64896.java!!!	sourceContent() : string
+  read_if_needed_();
+  
+  return _src_content;
+!!!65024.cpp!!!	set_SourceContent(in v : string) : bool
+  UmlCom::send_cmd(javaSettingsCmd, setJavaSourceContentCmd, v);
+  if (UmlCom::read_bool()) {
+    _src_content = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!65024.java!!!	set_SourceContent(in v : string) : bool
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaSourceContentCmd, v);
+  UmlCom.check();
+  
+  _src_content = v;
+
+!!!65152.cpp!!!	sourceExtension() : string
+  read_if_needed_();
+  
+  return _ext; 
+!!!65152.java!!!	sourceExtension() : string
+  read_if_needed_();
+  
+  return _ext; 
+!!!65280.cpp!!!	set_SourceExtension(in v : string) : bool
+  UmlCom::send_cmd(javaSettingsCmd, setJavaSourceExtensionCmd, v);
+  if (UmlCom::read_bool()) {
+    _ext = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!65280.java!!!	set_SourceExtension(in v : string) : bool
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaSourceExtensionCmd, v);
+  UmlCom.check();
+  
+  _ext = v;
+
+!!!277760.cpp!!!	reverseRoundtripDirRegExp() : string
+  read_if_needed_();
+
+  return _dir_regexp;
+!!!277760.java!!!	reverseRoundtripDirRegExp() : string
+  read_if_needed_();
+
+  return _dir_regexp;
+!!!277888.cpp!!!	isReverseRoundtripDirRegExpCaseSensitive() : bool
+  read_if_needed_();
+
+  return _dir_regexp_case_sensitive;
+!!!277888.java!!!	isReverseRoundtripDirRegExpCaseSensitive() : bool
+  read_if_needed_();
+
+  return _dir_regexp_case_sensitive;
+!!!278016.cpp!!!	set_ReverseRoundtripDirRegExp(in s : string, in cs : bool) : bool
+  UmlCom::send_cmd(javaSettingsCmd, setJavaDirRevFilterCmd, s, cs);
+  if (UmlCom::read_bool()) {
+    _dir_regexp = s;
+    _dir_regexp_case_sensitive = cs;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!278016.java!!!	set_ReverseRoundtripDirRegExp(in s : string, in cs : bool) : bool
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaDirRevFilterCmd, s, cs);
+  UmlCom.check();
+  _dir_regexp = s;
+  _dir_regexp_case_sensitive = cs;
+!!!278144.cpp!!!	reverseRoundtripFileRegExp() : string
+  read_if_needed_();
+
+  return _file_regexp;
+!!!278144.java!!!	reverseRoundtripFileRegExp() : string
+  read_if_needed_();
+
+  return _file_regexp;
+!!!278272.cpp!!!	isReverseRoundtripFileRegExpCaseSensitive() : bool
+  read_if_needed_();
+
+  return _file_regexp_case_sensitive;
+!!!278272.java!!!	isReverseRoundtripFileRegExpCaseSensitive() : bool
+  read_if_needed_();
+
+  return _file_regexp_case_sensitive;
+!!!278400.cpp!!!	set_ReverseRoundtripFileRegExp(in s : string, in cs : bool) : bool
+  UmlCom::send_cmd(javaSettingsCmd, setJavaFileRevFilterCmd, s, cs);
+  if (UmlCom::read_bool()) {
+    _file_regexp = s;
+    _file_regexp_case_sensitive = cs;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!278400.java!!!	set_ReverseRoundtripFileRegExp(in s : string, in cs : bool) : bool
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaFileRevFilterCmd, s, cs);
+  UmlCom.check();
+  _file_regexp = s;
+  _file_regexp_case_sensitive = cs;
+!!!212864.cpp!!!	isGenerateJavadocStyleComment() : bool
+  read_if_needed_();
+
+  return _is_generate_javadoc_comment;
+!!!212864.java!!!	isGenerateJavadocStyleComment() : bool
+  read_if_needed_();
+
+  return _is_generate_javadoc_comment;
+!!!212992.cpp!!!	set_IsGenerateJavadocStyleComment(in v : bool) : bool
+  UmlCom::send_cmd(javaSettingsCmd, setJavaJavadocStyleCmd, v);
+  if (UmlCom::read_bool()) {
+    _is_generate_javadoc_comment = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!212992.java!!!	set_IsGenerateJavadocStyleComment(in v : bool) : bool
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaJavadocStyleCmd,
+		   (v) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+  _is_generate_javadoc_comment = v;
+!!!247424.cpp!!!	isForcePackagePrefixGeneration() : bool
+  read_if_needed_();
+
+  return _is_force_package_gen;
+!!!247424.java!!!	isForcePackagePrefixGeneration() : bool
+  read_if_needed_();
+
+  return _is_force_package_gen;
+!!!247552.cpp!!!	set_IsForcePackagePrefixGeneration(in v : bool) : bool
+  UmlCom::send_cmd(javaSettingsCmd, setJavaForcePackageGenCmd, v);
+  if (UmlCom::read_bool()) {
+    _is_force_package_gen = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!247552.java!!!	set_IsForcePackagePrefixGeneration(in v : bool) : bool
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaForcePackageGenCmd, (v) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+  _is_force_package_gen = v;
+!!!65408.cpp!!!	classDecl() : string
+  read_if_needed_();
+  
+  return _class_decl;
+!!!65408.java!!!	classDecl() : string
+  read_if_needed_();
+  
+  return _class_decl;
+!!!65536.cpp!!!	set_ClassDecl(in v : string) : bool
+  UmlCom::send_cmd(javaSettingsCmd, setJavaClassDeclCmd, v);
+  if (UmlCom::read_bool()) {
+    _class_decl = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!65536.java!!!	set_ClassDecl(in v : string) : bool
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaClassDeclCmd, v);
+  UmlCom.check();
+  
+  _class_decl = v;
+
+!!!65664.cpp!!!	externalClassDecl() : string
+  read_if_needed_();
+  
+  return _external_class_decl;
+!!!65664.java!!!	externalClassDecl() : string
+  read_if_needed_();
+  
+  return _external_class_decl;
+!!!65792.cpp!!!	set_ExternalClassDecl(in v : string) : bool
+  UmlCom::send_cmd(javaSettingsCmd, setJavaExternalClassDeclCmd, v);
+  if (UmlCom::read_bool()) {
+    _external_class_decl = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!65792.java!!!	set_ExternalClassDecl(in v : string) : bool
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaExternalClassDeclCmd, v);
+  UmlCom.check();
+  
+  _external_class_decl = v;
+
+!!!65920.cpp!!!	enumPatternDecl() : string
+  read_if_needed_();
+  
+  return _enum_pattern_decl;
+!!!65920.java!!!	enumPatternDecl() : string
+  read_if_needed_();
+  
+  return _enum_pattern_decl;
+!!!66048.cpp!!!	set_EnumPatternDecl(in v : string) : bool
+  UmlCom::send_cmd(javaSettingsCmd, setJavaEnumPatternDeclCmd, v);
+  if (UmlCom::read_bool()) {
+    _enum_pattern_decl = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!66048.java!!!	set_EnumPatternDecl(in v : string) : bool
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaEnumPatternDeclCmd, v);
+  UmlCom.check();
+  
+  _enum_pattern_decl = v;
+
+!!!152576.cpp!!!	enumDecl() : string
+  read_if_needed_();
+  
+  return _enum_decl;
+!!!152576.java!!!	enumDecl() : string
+  read_if_needed_();
+  
+  return _enum_decl;
+!!!152704.cpp!!!	set_EnumDecl(in v : string) : bool
+  UmlCom::send_cmd(javaSettingsCmd, setJavaEnumDeclCmd, v);
+  if (UmlCom::read_bool()) {
+    _enum_decl = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!152704.java!!!	set_EnumDecl(in v : string) : bool
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaEnumDeclCmd, v);
+  UmlCom.check();
+  
+  _enum_decl = v;
+!!!66176.cpp!!!	interfaceDecl() : string
+  read_if_needed_();
+  
+  return _interface_decl;
+!!!66176.java!!!	interfaceDecl() : string
+  read_if_needed_();
+  
+  return _interface_decl;
+!!!66304.cpp!!!	set_InterfaceDecl(in v : string) : bool
+  UmlCom::send_cmd(javaSettingsCmd, setJavaInterfaceDeclCmd, v);
+  if (UmlCom::read_bool()) {
+    _interface_decl = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!66304.java!!!	set_InterfaceDecl(in v : string) : bool
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaInterfaceDeclCmd, v);
+  UmlCom.check();
+  
+  _interface_decl = v;
+
+!!!66432.cpp!!!	attributeDecl(in multiplicity : str) : string
+  read_if_needed_();
+
+  return _attr_decl[UmlSettings::multiplicity_column(multiplicity)];
+!!!66432.java!!!	attributeDecl(in multiplicity : str) : string
+  read_if_needed_();
+
+  return _attr_decl[UmlSettings.multiplicity_column(multiplicity)];
+!!!66560.cpp!!!	set_AttributeDecl(in multiplicity : str, in v : string) : bool
+  read_if_needed_();
+  UmlCom::send_cmd(javaSettingsCmd, setJavaAttributeDeclCmd, multiplicity, v);
+  if (UmlCom::read_bool()) {
+    _attr_decl[UmlSettings::multiplicity_column(multiplicity)] = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!66560.java!!!	set_AttributeDecl(in multiplicity : str, in v : string) : bool
+  read_if_needed_();
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaAttributeDeclCmd, multiplicity, v);
+  UmlCom.check();
+
+  _attr_decl[UmlSettings.multiplicity_column(multiplicity)] = v;
+!!!66688.cpp!!!	enumPatternItemDecl() : string
+  read_if_needed_();
+  
+  return _enum_pattern_item_decl;
+!!!66688.java!!!	enumPatternItemDecl() : string
+  read_if_needed_();
+  
+  return _enum_pattern_item_decl;
+!!!66816.cpp!!!	set_EnumPatternItemDecl(in v : string) : bool
+  UmlCom::send_cmd(javaSettingsCmd, setJavaEnumPatternItemDeclCmd, v);
+  if (UmlCom::read_bool()) {
+    _enum_pattern_item_decl = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!66816.java!!!	set_EnumPatternItemDecl(in v : string) : bool
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaEnumPatternItemDeclCmd, v);
+  UmlCom.check();
+    
+  _enum_pattern_item_decl = v;
+
+!!!66944.cpp!!!	enumPatternItemCase() : string
+  read_if_needed_();
+  
+  return _enum_pattern_item_case;
+!!!66944.java!!!	enumPatternItemCase() : string
+  read_if_needed_();
+  
+  return _enum_pattern_item_case;
+!!!67072.cpp!!!	set_EnumPatternItemCase(in v : string) : bool
+  UmlCom::send_cmd(javaSettingsCmd, setJavaEnumPatternItemCaseCmd, v);
+  if (UmlCom::read_bool()) {
+    _enum_pattern_item_case = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!67072.java!!!	set_EnumPatternItemCase(in v : string) : bool
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaEnumPatternItemCaseCmd, v);
+  UmlCom.check();
+  
+  _enum_pattern_item_case = v;
+
+!!!152832.cpp!!!	enumItemDecl() : string
+  read_if_needed_();
+  
+  return _enum_item_decl;
+!!!152832.java!!!	enumItemDecl() : string
+  read_if_needed_();
+  
+  return _enum_item_decl;
+!!!152960.cpp!!!	set_EnumItemDecl(in v : string) : bool
+  UmlCom::send_cmd(javaSettingsCmd, setJavaEnumItemDeclCmd, v);
+  if (UmlCom::read_bool()) {
+    _enum_item_decl = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!152960.java!!!	set_EnumItemDecl(in v : string) : bool
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaEnumItemDeclCmd, v);
+  UmlCom.check();
+    
+  _enum_item_decl = v;
+!!!67200.cpp!!!	relationDecl(in multiplicity : str) : string
+  read_if_needed_();
+  
+  return _rel_decl[UmlSettings::multiplicity_column(multiplicity)];
+!!!67200.java!!!	relationDecl(in multiplicity : str) : string
+  read_if_needed_();
+  
+  return _rel_decl[UmlSettings.multiplicity_column(multiplicity)];
+!!!67328.cpp!!!	set_RelationDecl(in multiplicity : str, in v : string) : bool
+  read_if_needed_();
+  UmlCom::send_cmd(javaSettingsCmd, setJavaRelationDeclCmd, multiplicity, v);
+  if (UmlCom::read_bool()) {
+    _rel_decl[UmlSettings::multiplicity_column(multiplicity)] = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!67328.java!!!	set_RelationDecl(in multiplicity : str, in v : string) : bool
+  read_if_needed_();
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaRelationDeclCmd, multiplicity, v);
+  UmlCom.check();
+  
+  _rel_decl[UmlSettings.multiplicity_column(multiplicity)] = v;
+
+!!!67456.cpp!!!	operationDef() : string
+  read_if_needed_();
+  
+  return _oper_def;
+!!!67456.java!!!	operationDef() : string
+  read_if_needed_();
+  
+  return _oper_def;
+!!!67584.cpp!!!	set_OperationDef(in v : string) : bool
+  UmlCom::send_cmd(javaSettingsCmd, setJavaOperationDefCmd, v);
+  if (UmlCom::read_bool()) {
+    _oper_def = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!67584.java!!!	set_OperationDef(in v : string) : bool
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaOperationDefCmd, v);
+  UmlCom.check();
+  
+  _oper_def = v;
+
+!!!67712.cpp!!!	getVisibility() : aVisibility
+  read_if_needed_();
+  
+  return _get_visibility;
+!!!67712.java!!!	getVisibility() : aVisibility
+  read_if_needed_();
+  
+  return _get_visibility;
+!!!67840.cpp!!!	set_GetVisibility(in v : aVisibility) : bool
+  UmlCom::send_cmd(javaSettingsCmd, setJavaGetvisibilityCmd, v);
+  if (UmlCom::read_bool()) {
+    _get_visibility = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!67840.java!!!	set_GetVisibility(in v : aVisibility) : bool
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaGetvisibilityCmd,
+		  (byte) v.value());
+  UmlCom.check();
+
+  _get_visibility = v;
+
+!!!67968.cpp!!!	getName() : string
+  read_if_needed_();
+  
+  return _get_name;
+!!!67968.java!!!	getName() : string
+  read_if_needed_();
+  
+  return _get_name;
+!!!68096.cpp!!!	set_GetName(in v : string) : bool
+  UmlCom::send_cmd(javaSettingsCmd, setJavaGetNameCmd, v);
+  if (UmlCom::read_bool()) {
+    _get_name = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!68096.java!!!	set_GetName(in v : string) : bool
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaGetNameCmd, v);
+  UmlCom.check();
+  
+  _get_name = v;
+
+!!!68224.cpp!!!	setName() : string
+  read_if_needed_();
+  
+  return _set_name;
+!!!68224.java!!!	setName() : string
+  read_if_needed_();
+  
+  return _set_name;
+!!!68352.cpp!!!	set_SetName(in v : string) : bool
+  UmlCom::send_cmd(javaSettingsCmd, setJavaSetNameCmd, v);
+  if (UmlCom::read_bool()) {
+    _set_name = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!68352.java!!!	set_SetName(in v : string) : bool
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaSetNameCmd, v);
+  UmlCom.check();
+
+  _set_name = v;
+!!!68480.cpp!!!	isGetFinal() : bool
+  read_if_needed_();
+  
+  return _is_get_final;
+!!!68480.java!!!	isGetFinal() : bool
+  read_if_needed_();
+  
+  return _is_get_final;
+!!!68608.cpp!!!	set_IsGetFinal(in v : bool) : bool
+  UmlCom::send_cmd(javaSettingsCmd, setJavaIsGetFinalCmd, v);
+  if (UmlCom::read_bool()) {
+    _is_get_final = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!68608.java!!!	set_IsGetFinal(in v : bool) : bool
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaIsGetFinalCmd,
+		  (v) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _is_get_final = v;
+!!!68736.cpp!!!	isSetFinal() : bool
+  read_if_needed_();
+  
+  return _is_set_final;
+!!!68736.java!!!	isSetFinal() : bool
+  read_if_needed_();
+  
+  return _is_set_final;
+!!!68864.cpp!!!	set_IsSetFinal(in v : bool) : bool
+  UmlCom::send_cmd(javaSettingsCmd, setJavaIsSetFinalCmd, v);
+  if (UmlCom::read_bool()) {
+    _is_set_final = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!68864.java!!!	set_IsSetFinal(in v : bool) : bool
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaIsSetFinalCmd,
+		  (v) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _is_set_final = v;
+!!!68992.cpp!!!	setVisibility() : aVisibility
+  read_if_needed_();
+  
+  return _set_visibility;
+!!!68992.java!!!	setVisibility() : aVisibility
+  read_if_needed_();
+  
+  return _set_visibility;
+!!!69120.cpp!!!	set_SetVisibility(in v : aVisibility) : bool
+  UmlCom::send_cmd(javaSettingsCmd, setJavaSetVisibilityCmd, v);
+  if (UmlCom::read_bool()) {
+    _set_visibility = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!69120.java!!!	set_SetVisibility(in v : aVisibility) : bool
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaSetVisibilityCmd,
+		  (byte) v.value());
+  UmlCom.check();
+
+  _set_visibility = v;
+!!!69248.cpp!!!	isSetParamFinal() : bool
+  read_if_needed_();
+  
+  return _is_set_param_final;
+!!!69248.java!!!	isSetParamFinal() : bool
+  read_if_needed_();
+  
+  return _is_set_param_final;
+!!!69376.cpp!!!	set_IsSetParamFinal(in v : bool) : bool
+  UmlCom::send_cmd(javaSettingsCmd, setJavaIsSetParamFinalCmd, v);
+  if (UmlCom::read_bool()) {
+    _is_set_param_final = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!69376.java!!!	set_IsSetParamFinal(in v : bool) : bool
+  UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._setJavaIsSetParamFinalCmd,
+		  (v) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _is_set_param_final = v;
+!!!69632.cpp!!!	read_() : void
+  _root = UmlCom::read_string();
+  
+  unsigned n;
+  unsigned index;
+  
+  n = UmlCom::read_unsigned();
+  
+  for (index = 0; index != n; index += 1) {
+    UmlSettings::_builtins[index].java = UmlCom::read_string();
+  }
+  
+  n = UmlCom::read_unsigned();
+  
+  for (index = 0; index != n; index += 1)
+    UmlSettings::_relation_attribute_stereotypes[index].java = UmlCom::read_string();
+  
+  n = UmlCom::read_unsigned();
+  
+  for (index = 0; index != n; index += 1)
+    UmlSettings::_class_stereotypes[index].java = UmlCom::read_string();
+  
+  n = UmlCom::read_unsigned();
+  _map_imports.clear();
+  if (n > _map_imports.size())
+    _map_imports.resize(n);
+  
+  for (index = 0; index != n; index += 1) {
+    QCString t = UmlCom::read_string();
+    QCString i = UmlCom::read_string();
+    
+    _map_imports.insert(t, new QCString(i));
+  }
+    
+  _src_content = UmlCom::read_string();
+  _ext = UmlCom::read_string();
+
+  _class_decl = UmlCom::read_string();
+  _external_class_decl = UmlCom::read_string();
+  _enum_decl = UmlCom::read_string();
+  _enum_pattern_decl = UmlCom::read_string();
+  _interface_decl = UmlCom::read_string();
+  for (index = 0; index != 3; index += 1)
+    _attr_decl[index] = UmlCom::read_string();
+  _enum_item_decl = UmlCom::read_string();
+  _enum_pattern_item_decl = UmlCom::read_string();
+  _enum_pattern_item_case = UmlCom::read_string();
+  for (index = 0; index != 3; index += 1)
+    _rel_decl[index] = UmlCom::read_string();
+  _oper_def = UmlCom::read_string();
+  _get_visibility = (aVisibility) UmlCom::read_char();
+  _get_name = UmlCom::read_string();
+  _is_get_final = UmlCom::read_bool();
+  _set_visibility = (aVisibility) UmlCom::read_char();
+  _set_name = UmlCom::read_string();
+  _is_set_final = UmlCom::read_bool();
+  _is_set_param_final = UmlCom::read_bool();
+  _is_generate_javadoc_comment = UmlCom::read_bool();
+  _is_force_package_gen = UmlCom::read_bool();
+
+  _dir_regexp = UmlCom::read_string();
+  _dir_regexp_case_sensitive = UmlCom::read_bool();
+
+  _file_regexp = UmlCom::read_string();
+  _file_regexp_case_sensitive = UmlCom::read_bool();
+!!!69632.java!!!	read_() : void
+  _root = UmlCom.read_string();
+  
+  int n;
+  int index;
+  
+  n = UmlCom.read_unsigned();
+  
+  for (index = 0; index != n; index += 1) {
+    UmlSettings._builtins[index].java = UmlCom.read_string();
+  }
+  
+  n = UmlCom.read_unsigned();
+  
+  for (index = 0; index != n; index += 1)
+    UmlSettings._relation_attribute_stereotypes[index].java = UmlCom.read_string();
+  
+  n = UmlCom.read_unsigned();
+  
+  for (index = 0; index != n; index += 1)
+    UmlSettings._class_stereotypes[index].java = UmlCom.read_string();
+  
+  n = UmlCom.read_unsigned();
+  _map_imports = new Hashtable((n == 0) ? 1 : n);
+  
+  for (index = 0; index != n; index += 1) {
+    String t = UmlCom.read_string();
+    String i = UmlCom.read_string();
+    
+    _map_imports.put(t, i);
+  }
+    
+  _src_content = UmlCom.read_string();
+  _ext = UmlCom.read_string();
+
+  _class_decl = UmlCom.read_string();
+  _external_class_decl = UmlCom.read_string();
+  _enum_decl = UmlCom.read_string();
+  _enum_pattern_decl = UmlCom.read_string();
+  _interface_decl = UmlCom.read_string();
+  _attr_decl = new String[3];
+  for (index = 0; index != 3; index += 1)
+    _attr_decl[index] = UmlCom.read_string();
+  _enum_item_decl = UmlCom.read_string();
+  _enum_pattern_item_decl = UmlCom.read_string();
+  _enum_pattern_item_case = UmlCom.read_string();
+  _rel_decl = new String[3];
+  for (index = 0; index != 3; index += 1)
+    _rel_decl[index] = UmlCom.read_string();
+  _oper_def = UmlCom.read_string();
+  _get_visibility = aVisibility.fromInt(UmlCom.read_char());
+  _get_name = UmlCom.read_string();
+  _is_get_final = UmlCom.read_bool();
+  _set_visibility = aVisibility.fromInt(UmlCom.read_char());
+  _set_name = UmlCom.read_string();
+  _is_set_final = UmlCom.read_bool();
+  _is_set_param_final = UmlCom.read_bool();
+  _is_generate_javadoc_comment = UmlCom.read_bool();
+  _is_force_package_gen = UmlCom.read_bool();
+
+  _dir_regexp = UmlCom.read_string();
+  _dir_regexp_case_sensitive = UmlCom.read_bool();
+
+  _file_regexp = UmlCom.read_string();
+  _file_regexp_case_sensitive = UmlCom.read_bool();
+!!!69760.cpp!!!	read_if_needed_() : void
+  UmlSettings::read_if_needed_();
+  if (!_defined) {
+    UmlCom::send_cmd(javaSettingsCmd, getJavaSettingsCmd);
+    read_();
+    _defined = TRUE;
+  }
+!!!69760.java!!!	read_if_needed_() : void
+  UmlSettings.read_if_needed_();
+  if (!_defined) {
+    UmlCom.send_cmd(CmdFamily.javaSettingsCmd, JavaSettingsCmd._getJavaSettingsCmd);
+    read_();
+    _defined = true;
+  }

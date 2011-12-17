@@ -1,0 +1,91 @@
+class UmlActivityPartition
+!!!248323.cpp!!!	chapterp() : bool
+  return TRUE;
+!!!248323.java!!!	chapterp() : bool
+  return true;
+!!!248195.cpp!!!	sKind() : string
+  return "activity partition";
+!!!248195.java!!!	sKind() : string
+  return "activity partition";
+!!!248451.cpp!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  define();
+  
+  chapter("Activity partition", pfix, rank, "activitypartition", level);
+
+  QCString s = description();
+  
+  if (!s.isEmpty()) {
+    fw.write("<p>");
+    writeq(s);
+    fw.write("<br /></p>");
+  }
+  
+  if (isDimension())
+    fw.write((isExternal())
+	     ? "<p>is dimension, is external</p>\n"
+	     : "<p>is dimension</p>\n");
+  else if (isExternal())
+    fw.write("<p>is external</p>\n");
+    
+  if (represents() != 0) {
+    fw.write("<p>represents ");
+    represents()->write();
+    fw.write("</p>");
+  }
+    
+  write_dependencies();
+    
+  UmlDiagram * d = associatedDiagram();
+  
+  if (d != 0) {
+    fw.write("<p>Diagram : ");
+    d->write();
+    fw.write("</p>\n");
+  }
+
+  write_properties();
+
+  write_children(pfix, rank, level);
+
+  unload(FALSE, FALSE);
+!!!248451.java!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  define();
+  
+  chapter("Activity partition", pfix, rank, "activitypartition", level);
+
+  String s = description();
+  
+  if (s.length() != 0) {
+    fw.write("<p>");
+    writeq(s);
+    fw.write("<br /></p>");
+  }
+  
+  if (isDimension())
+    fw.write((isExternal())
+	     ? "<p>is dimension, is external</p>\n"
+	     : "<p>is dimension</p>\n");
+  else if (isExternal())
+    fw.write("<p>is external</p>\n");
+    
+  if (represents() != null) {
+    fw.write("<p>represents ");
+    represents().write();
+    fw.write("</p>");
+  }
+    
+  write_dependencies();
+  
+  UmlDiagram d = associatedDiagram();
+  
+  if (d != null) {
+    fw.write("<p>Diagram : ");
+    d.write();
+    fw.write("</p>\n");
+  }
+
+  write_properties();
+
+  write_children(pfix, rank, level);
+
+  unload(false, false);

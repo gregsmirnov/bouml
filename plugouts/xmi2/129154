@@ -1,0 +1,1166 @@
+format 75
+"Diagram" // API USER::Diagram
+  revision 65
+  modified_by 2 "bruno"
+  // class settings
+  //class diagram settings
+  draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default show_msg_context default draw_all_relations default shadow default show_stereotype_properties default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+  show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+  show_infonote default drawing_language default show_stereotype_properties default
+  
+  classview 129154 "Diagram Class view"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default show_msg_context default draw_all_relations default shadow default show_stereotype_properties default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default show_stereotype_properties default
+    associated_deployment_view deploymentview_ref 129154 // Diagram Deployment view
+    class 147458 "UmlFragment"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " this class manages fragments, you can modify it"
+      classrelation 160514 // <generalisation>
+	relation 160514 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 160514 // <generalisation>
+	  b parent class_ref 147712 // UmlBaseFragment
+      end
+
+      operation 148612 "write"
+	public explicit_return_type "void"
+	nparams 3
+	  param inout name "out" type class_ref 132738 // FileOut
+	  param in name "diagram" type class_ref 8833 // UmlItem
+	  param inout name "msgs" type class_ref 149250 // UmlSequenceMessage
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} & ${p0}${v0}, ${t1} * ${p1}${v1}, QList<${t2}> & ${p2}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} & ${p0}, ${t1} * ${p1}, QList<${t2}> & ${p2}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment "
+"
+      end
+
+      operation 149764 "cover"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "msg" explicit_type "UmlSequenceMessage"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} * ${p0}${v0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} * ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 231042 "write_ref"
+	private explicit_return_type "void"
+	nparams 3
+	  param inout name "out" type class_ref 132738 // FileOut
+	  param in name "diagram" type class_ref 8833 // UmlItem
+	  param inout name "msgs" type class_ref 149250 // UmlSequenceMessage
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} & ${p0}, ${t1} * ${p1}, QList< ${t2} > & ${p2}${v2}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} & ${p0}, ${t1} * ${p1}, QList< ${t2} > & ${p2}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment "
+"
+      end
+
+      classrelation 130308 // covered (<unidirectional association>)
+	relation 130308 --->
+	  stereotype "list"
+	  a role_name "covered" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${stereotype}<${type}> ${name}${value};
+"
+	    classrelation_ref 130308 // covered (<unidirectional association>)
+	  b parent class_ref 148738 // UmlClassInstanceReference
+      end
+    end
+
+    class 147586 "UmlFragmentCompartment"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " this class manages fragments compartments,
+ a fragment without separator contains one compartment you can modify it"
+      classrelation 160642 // <generalisation>
+	relation 160642 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 160642 // <generalisation>
+	  b parent class_ref 147840 // UmlBaseFragmentCompartment
+      end
+
+      operation 147460 "write"
+	public explicit_return_type "void"
+	nparams 3
+	  param inout name "out" type class_ref 132738 // FileOut
+	  param in name "diagram" type class_ref 8833 // UmlItem
+	  param inout name "msgs" type class_ref 149250 // UmlSequenceMessage
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} & ${p0}${v0}, ${t1} * ${p1}${v1}, QList< ${t2} > & ${p2}${v2}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} & ${p0}, ${t1} * ${p1}, QList< ${t2} > & ${p2}${)}${const}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment " called for the first message of a fragment compartment and its parents recursively
+"
+      end
+
+      operation 150916 "write"
+	public explicit_return_type "void"
+	nparams 4
+	  param inout name "out" type class_ref 132738 // FileOut
+	  param in name "diagram" type class_ref 8833 // UmlItem
+	  param inout name "msgs" type class_ref 149250 // UmlSequenceMessage
+	  param in name "oper" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} & ${p0}${v0}, ${t1} * ${p1}${v1}, QList< ${t2} > & ${p2}${v2}, ${t3} ${p3}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} & ${p0}, ${t1} * ${p1}, QList< ${t2} > & ${p2}, ${t3} ${p3}${)}${const}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment "
+"
+      end
+
+      operation 231170 "bypass"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "msgs" type class_ref 149250 // UmlSequenceMessage
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}QList< ${t0} > & ${p0}${v0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}QList< ${t0} > & ${p0}${)}${const}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment "
+"
+      end
+    end
+
+    class 147970 "UmlSubject"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " this class manages subjects, you can modify it"
+      classrelation 160770 // <generalisation>
+	relation 160770 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 160770 // <generalisation>
+	  b parent class_ref 148096 // UmlBaseSubject
+      end
+    end
+
+    class 148226 "UmlUseCaseReference"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " this class manages use case references, you can modify it"
+      classrelation 161282 // <generalisation>
+	relation 161282 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 161282 // <generalisation>
+	  b parent class_ref 148352 // UmlBaseUseCaseReference
+      end
+    end
+
+    class 148482 "UmlUseCaseAssociation"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " this class manages association between use case and actor,
+ you can modify it"
+      classrelation 161666 // <generalisation>
+	relation 161666 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 161666 // <generalisation>
+	  b parent class_ref 148608 // UmlBaseUseCaseAssociation
+      end
+
+      operation 132484 "write"
+	public explicit_return_type "void"
+	nparams 4
+	  param inout name "out" type class_ref 132738 // FileOut
+	  param in name "d" type class_ref 8833 // UmlItem
+	  param in name "rank" explicit_type "int"
+	  param in name "k" explicit_type "str"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} & ${p0}${v0}, ${t1} * ${p1}${v1}, ${t2} ${p2}${v2}, const ${t3} ${p3}${v3}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} & ${p0}, ${t1} * ${p1}, ${t2} ${p2}, const ${t3} ${p3}${)}${const}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+    end
+
+    class 148738 "UmlClassInstanceReference"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " this class manages class instance reference,
+ you can modify it"
+      classrelation 162050 // <generalisation>
+	relation 162050 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 162050 // <generalisation>
+	  b parent class_ref 148864 // UmlBaseClassInstanceReference
+      end
+
+      operation 136708 "UmlClassInstanceReference"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${name}${(}${)} : rank(++next_rank) {}
+"
+	
+	
+	
+	
+      end
+
+      operation 136580 "connector"
+	public explicit_return_type "str"
+	nparams 1
+	  param in name "other" type class_ref 148738 // UmlClassInstanceReference
+	cpp_decl "    ${comment}${static}${virtual}const ${type} ${name}${(}${t0} * ${p0}${v0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}const ${type} ${class}::${name}${(}${t0} * ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment " return the connector id prefix between the instances
+ warning : a call modify result of a previous one
+"
+      end
+
+      operation 139012 "attribute"
+	public explicit_return_type "str"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}const ${type} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}const ${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment " return the ownedAttribute property id prefix
+ warning : a call modify result of a previous one
+"
+      end
+
+      operation 140548 "lifeline"
+	public explicit_return_type "str"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}const ${type} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}const ${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment " return the lifeline id prefix
+ warning : a call modify result of a previous one
+"
+      end
+
+      operation 140420 "write_lifelines"
+	class_operation public explicit_return_type "void"
+	nparams 3
+	  param inout name "out" type class_ref 132738 // FileOut
+	  param in name "diagram" type class_ref 8833 // UmlItem
+	  param in name "insts" type class_ref 148738 // UmlClassInstanceReference
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} & ${p0}${v0}, ${t1} * ${p1}${v1}, const QVector<${t2}> & ${p2}${v2}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} & ${p0}, ${t1} * ${p1}, const QVector<${t2}> & ${p2}${)}${const}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 138884 "write_attributes"
+	class_operation public explicit_return_type "void"
+	nparams 3
+	  param inout name "out" type class_ref 132738 // FileOut
+	  param in name "diagram" type class_ref 8833 // UmlItem
+	  param in name "insts" type class_ref 148738 // UmlClassInstanceReference
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} & ${p0}${v0}, ${t1} * ${p1}${v1}, const QVector<${t2}> & ${p2}${v2}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} & ${p0}, ${t1} * ${p1}, const QVector<${t2}> & ${p2}${)}${const}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      attribute 131844 "rank"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 131972 "next_rank"
+	class_attribute private explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 148994 "UmlMessage"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " this class manages messages indenpendently of the diagram,
+ you can modify it"
+      classrelation 162562 // <generalisation>
+	relation 162562 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 162562 // <generalisation>
+	  b parent class_ref 149120 // UmlBaseMessage
+      end
+
+      operation 141700 "UmlMessage"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${name}${(}${)} : itsrank(++next_rank) {}
+"
+	
+	
+	
+	
+      end
+
+      operation 139268 "write_connectors"
+	class_operation public explicit_return_type "void"
+	nparams 3
+	  param inout name "out" type class_ref 132738 // FileOut
+	  param in name "diagram" type class_ref 8833 // UmlItem
+	  param in name "msgs" type class_ref 148994 // UmlMessage
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} & ${p0}${v0}, ${t1} * ${p1}${v1}, const QVector<${t2}> & ${p2}${v2}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} & ${p0}, ${t1} * ${p1}, const QVector<${t2}> & ${p2}${)}${const}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      attribute 133252 "itsrank"
+	protected explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 133124 "next_rank"
+	class_attribute protected explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 149250 "UmlSequenceMessage"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " this class manages messages in a sequence diagram,
+ you can modify it"
+      classrelation 162946 // <generalisation>
+	relation 162946 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 162946 // <generalisation>
+	  b parent class_ref 149504 // UmlBaseSequenceMessage
+      end
+
+      operation 145540 "UmlSequenceMessage"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${name}${(}${)}${volatile};
+"
+	cpp_def "${inline}${class}::${name}${(}${)}${volatile} : reverse(0), used(FALSE) {
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 145796 "write"
+	class_operation public explicit_return_type "void"
+	nparams 3
+	  param inout name "out" type class_ref 132738 // FileOut
+	  param in name "diagram" type class_ref 8833 // UmlItem
+	  param in name "msgs" type class_ref 149250 // UmlSequenceMessage
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} & ${p0}${v0}, ${t1} * ${p1}${v1}, const QVector< ${t2} > & ${p2}${v2}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} & ${p0}, ${t1} * ${p1}, const QVector< ${t2} > & ${p2}${)}${const}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 145924 "write_fragment"
+	public explicit_return_type "void"
+	nparams 3
+	  param inout name "out" type class_ref 132738 // FileOut
+	  param in name "diagram" type class_ref 8833 // UmlItem
+	  param inout name "msgs" type class_ref 149250 // UmlSequenceMessage
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} & ${p0}${v0}, ${t1} * ${p1}${v1}, QList< ${t2} > & ${p2}${v2}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} & ${p0}, ${t1} * ${p1}, QList< ${t2} > & ${p2}${)}${const}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 229890 "write_them"
+	class_operation public explicit_return_type "void"
+	nparams 3
+	  param inout name "out" type class_ref 132738 // FileOut
+	  param in name "diagram" type class_ref 8833 // UmlItem
+	  param in name "msgs" type class_ref 149250 // UmlSequenceMessage
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} & ${p0}${v0}, ${t1} * ${p1}${v1}, const QVector< ${t2} > & ${p2}${v2}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} & ${p0}, ${t1} * ${p1}, const QVector< ${t2} > & ${p2}${)}${const}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 145668 "set_reverses"
+	class_operation private explicit_return_type "void"
+	nparams 1
+	  param in name "msgs" type class_ref 149250 // UmlSequenceMessage
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}const QVector<${t0}> & ${p0}${v0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}const QVector<${t0}> & ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      classrelation 128004 // reverse (<unidirectional association>)
+	relation 128004 --->
+	  a role_name "reverse" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 128004 // reverse (<unidirectional association>)
+	  b parent class_ref 149250 // UmlSequenceMessage
+      end
+
+      attribute 142850 "used"
+	private explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 149634 "UmlCollaborationMessage"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " this class manages messages in a collaboration diagram,
+ you can modify it"
+      classrelation 163202 // <generalisation>
+	relation 163202 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 163202 // <generalisation>
+	  b parent class_ref 149760 // UmlBaseCollaborationMessage
+      end
+
+      operation 142980 "write"
+	class_operation public explicit_return_type "void"
+	nparams 4
+	  param inout name "out" type class_ref 132738 // FileOut
+	  param in name "diagram" type class_ref 8833 // UmlItem
+	  param in name "msgs" type class_ref 149634 // UmlCollaborationMessage
+	  param inout name "index" explicit_type "unsigned"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} & ${p0}${v0}, ${t1} * ${p1}${v1}, const QVector< ${t2} > & ${p2}${v2}, ${t3} & ${p3}${v3}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} & ${p0}, ${t1} * ${p1}, const QVector< ${t2} > & ${p2}, ${t3} & ${p3}${)}${const}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+    end
+
+    class 149890 "UmlUseCaseDiagramDefinition"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " this class manages use case diagram definition,
+ you can modify it"
+      classrelation 164226 // <generalisation>
+	relation 164226 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 164226 // <generalisation>
+	  b parent class_ref 150016 // UmlBaseUseCaseDiagramDefinition
+      end
+    end
+
+    class 150146 "UmlSequenceDiagramDefinition"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " this class manages sequence diagram definition,
+ you can modify it"
+      classrelation 164866 // <generalisation>
+	relation 164866 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 164866 // <generalisation>
+	  b parent class_ref 150272 // UmlBaseSequenceDiagramDefinition
+      end
+
+      operation 244226 "~UmlSequenceDiagramDefinition"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${virtual}${name}${(}${)}${volatile};
+"
+	cpp_def "${inline}${class}::${name}${(}${)}${volatile} {
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 138244 "write"
+	cpp_virtual public explicit_return_type "void"
+	nparams 2
+	  param inout name "out" explicit_type "FileOut"
+	  param in name "diag" type class_ref 8833 // UmlItem
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} & ${p0}${v0}, ${t1} * ${p1}${v1}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} & ${p0}, ${t1} * ${p1}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 150402 "UmlCollaborationDiagramDefinition"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " this class manages collaboration diagram definition,
+ you can modify it"
+      classrelation 165378 // <generalisation>
+	relation 165378 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 165378 // <generalisation>
+	  b parent class_ref 150528 // UmlBaseCollaborationDiagramDefinition
+      end
+
+      operation 244482 "~UmlCollaborationDiagramDefinition"
+	cpp_virtual public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${virtual}${name}${(}${)}${volatile};
+"
+	cpp_def "${inline}${class}::${name}${(}${)}${volatile} {
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 139140 "write"
+	cpp_virtual public explicit_return_type "void"
+	nparams 2
+	  param inout name "out" explicit_type "FileOut"
+	  param in name "diag" type class_ref 8833 // UmlItem
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} & ${p0}${v0}, ${t1} * ${p1}${v1}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} & ${p0}, ${t1} * ${p1}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+      end
+    end
+  end
+
+  deploymentview 129154 "Diagram Deployment view"
+    //deployment diagram settings
+    package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+    draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+    artifact 142594 "UmlFragment"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+#include \"UmlFragmentCompartment.h\"
+#include \"UmlDiagram.h\"
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 147458 // UmlFragment
+      end
+    end
+
+    artifact 142722 "UmlFragmentCompartment"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 147586 // UmlFragmentCompartment
+      end
+    end
+
+    artifact 143106 "UmlSubject"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 147970 // UmlSubject
+      end
+    end
+
+    artifact 143362 "UmlUseCaseReference"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 148226 // UmlUseCaseReference
+      end
+    end
+
+    artifact 143618 "UmlUseCaseAssociation"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+#include \"UmlClass.h\"
+#include \"UmlUseCase.h\"
+#include \"UmlUseCaseReference.h\"
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 148482 // UmlUseCaseAssociation
+      end
+    end
+
+    artifact 143874 "UmlClassInstanceReference"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+#include \"UmlClass.h\"
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 148738 // UmlClassInstanceReference
+      end
+    end
+
+    artifact 144130 "UmlMessage"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+#include <qasciidict.h>
+
+#include \"UmlClassInstanceReference.h\"
+
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 148994 // UmlMessage
+      end
+    end
+
+    artifact 144386 "UmlSequenceMessage"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+#include <qptrdict.h>
+#include <qstack.h>
+#include \"UmlPackage.h\"
+#include \"UmlOperation.h\"
+#include \"UmlFragmentCompartment.h\"
+#include \"UmlClassInstanceReference.h\"
+
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 149250 // UmlSequenceMessage
+      end
+    end
+
+    artifact 144770 "UmlCollaborationMessage"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+#include \"UmlPackage.h\"
+#include \"UmlOperation.h\"
+#include \"UmlClassInstanceReference.h\"
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 149634 // UmlCollaborationMessage
+      end
+    end
+
+    artifact 145026 "UmlUseCaseDiagramDefinition"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 149890 // UmlUseCaseDiagramDefinition
+      end
+    end
+
+    artifact 145282 "UmlSequenceDiagramDefinition"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 150146 // UmlSequenceDiagramDefinition
+      end
+    end
+
+    artifact 145538 "UmlCollaborationDiagramDefinition"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 150402 // UmlCollaborationDiagramDefinition
+      end
+    end
+  end
+end

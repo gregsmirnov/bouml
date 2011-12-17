@@ -1,0 +1,21 @@
+class UmlBaseClassInstanceReference
+!!!211712.cpp!!!	type() : UmlClass
+  return (_instance) ? _instance->type() : _class;
+!!!211712.java!!!	type() : UmlClass
+  return (_instance != null) ? _instance.type() : _class;
+!!!211968.cpp!!!	name() : string
+  return (_instance) ? _instance->name() : _name;
+!!!211968.java!!!	name() : string
+  return (_instance != null) ? _instance.name() : _name;
+!!!212096.cpp!!!	read_() : void
+  _instance = (UmlClassInstance *) UmlBaseItem::read_();
+  if (_instance == 0) {
+    _name = UmlCom::read_string();
+    _class = (UmlClass *) UmlBaseItem::read_();
+  }
+!!!212096.java!!!	read_() : void
+  _instance = (UmlClassInstance) UmlBaseItem.read_();
+  if (_instance == null) {
+    _name = UmlCom.read_string();
+    _class = (UmlClass) UmlBaseItem.read_();
+  }

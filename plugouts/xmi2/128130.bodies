@@ -1,0 +1,5 @@
+class UmlStateItem
+!!!195970.cpp!!!	memo_trans(inout tr : UmlTransition) : void
+
+!!!196354.cpp!!!	add_incoming_trans(inout tr : UmlTransition) : void
+

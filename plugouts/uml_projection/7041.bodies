@@ -1,0 +1,74 @@
+class UmlAttribute
+!!!198914.cpp!!!	uml2cpp(in rec : bool) : void
+  QCString st = CppSettings::classStereotype(parent()->stereotype());
+  
+  if ((st == "typedef") || (st == "ignored"))
+    set_CppDecl("");
+  else if (st == "enum")
+    set_CppDecl(CppSettings::enumItemDecl());
+  else if (st == "ignored")
+    set_CppDecl("");
+  else
+    set_CppDecl(CppSettings::attributeDecl(multiplicity()));
+!!!198914.java!!!	uml2cpp(in rec : bool) : void
+  set_JavaDecl((parent().stereotype() == "enum")
+	       ? JavaSettings.enumItemDecl()
+	       : JavaSettings.attributeDecl(multiplicity()));
+!!!197506.cpp!!!	uml2java(in rec : bool) : void
+  QCString st = JavaSettings::classStereotype(parent()->stereotype());
+  
+  if (st == "enum_pattern")
+    set_JavaDecl(JavaSettings::enumPatternItemDecl());
+  else if (st == "enum")
+    set_JavaDecl(JavaSettings::enumItemDecl());
+  else if (st == "ignored")
+    set_JavaDecl("");
+  else
+    set_JavaDecl(JavaSettings::attributeDecl(multiplicity()));
+!!!197506.java!!!	uml2java(in rec : bool) : void
+  set_JavaDecl((parent().stereotype() == "enum")
+	       ? JavaSettings.enumItemDecl()
+	       : JavaSettings.attributeDecl(multiplicity()));
+!!!204162.cpp!!!	uml2idl(in rec : bool) : void
+  QCString st = IdlSettings::classStereotype(parent()->stereotype());
+  
+  if (st == "enum")
+    set_IdlDecl(IdlSettings::enumItemDecl());
+  else if (st == "union")
+    set_IdlDecl(IdlSettings::unionItemDecl(multiplicity()));
+  else if (isReadOnly() && !defaultValue().isEmpty())
+    set_IdlDecl(IdlSettings::constDecl(multiplicity()));
+  else if (st == "ignored")
+    set_IdlDecl("");
+  else
+    set_IdlDecl(IdlSettings::attributeDecl(multiplicity()));
+!!!204162.java!!!	uml2idl(in rec : bool) : void
+  set_JavaDecl((parent().stereotype() == "enum")
+	       ? JavaSettings.enumItemDecl()
+	       : JavaSettings.attributeDecl(multiplicity()));
+!!!206466.cpp!!!	uml2php(in rec : bool) : void
+  QCString st = PhpSettings::classStereotype(parent()->stereotype());
+  
+  if (st == "enum")
+    set_PhpDecl(PhpSettings::enumItemDecl());
+  else if (st == "ignored")
+    set_PhpDecl("");
+  else
+    set_PhpDecl(PhpSettings::attributeDecl());
+!!!206466.java!!!	uml2php(in rec : bool) : void
+  set_JavaDecl((parent().stereotype() == "enum")
+	       ? JavaSettings.enumItemDecl()
+	       : JavaSettings.attributeDecl(multiplicity()));
+!!!129411.cpp!!!	uml2python(in rec : bool) : void
+  QCString st = PythonSettings::classStereotype(parent()->stereotype());
+  
+  if (st == "enum")
+    set_PythonDecl(PythonSettings::enumItemDecl());
+  else if (st == "ignored")
+    set_PythonDecl("");
+  else
+    set_PythonDecl(PythonSettings::attributeDecl(multiplicity()));
+!!!129411.java!!!	uml2python(in rec : bool) : void
+  set_JavaDecl((parent().stereotype() == "enum")
+	       ? JavaSettings.enumItemDecl()
+	       : JavaSettings.attributeDecl(multiplicity()));

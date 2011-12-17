@@ -1,0 +1,9 @@
+class UmlUseCase
+!!!144898.cpp!!!	sort() : void
+sortChildren();
+!!!144898.java!!!	sort() : void
+sortChildren();
+!!!147074.cpp!!!	orderWeight() : int
+return 9;
+!!!147074.java!!!	orderWeight() : int
+return 9;

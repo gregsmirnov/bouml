@@ -1,0 +1,34 @@
+class UmlBaseExitPointPseudoState
+!!!141184.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlExitPointPseudoState
+  return (UmlExitPointPseudoState *) parent->create_(anExitPointPseudoState, s);
+!!!141184.java!!!	create(inout parent : UmlItem, inout s : str) : UmlExitPointPseudoState
+  return (UmlExitPointPseudoState) parent.create_(anItemKind.anExitPointPseudoState, s);
+!!!141312.cpp!!!	kind() : anItemKind
+  return anExitPointPseudoState;
+!!!141312.java!!!	kind() : anItemKind
+  return anItemKind.anExitPointPseudoState;
+!!!268288.cpp!!!	reference() : UmlExitPointPseudoState
+  read_if_needed_();
+  return _reference;
+!!!268288.java!!!	reference() : UmlExitPointPseudoState
+  read_if_needed_();
+  return _reference;
+!!!268416.cpp!!!	set_Reference(in v : UmlExitPointPseudoState) : bool
+  UmlCom::send_cmd(_identifier, setDerivedCmd, (v == 0) ? (void *) v : ((UmlBaseItem *) v)->_identifier);
+  if (UmlCom::read_bool()) {
+    _reference = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!268416.java!!!	set_Reference(in v : UmlExitPointPseudoState) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setDerivedCmd, (v == null) ? (long) 0 : v.identifier_());
+  UmlCom.check();
+
+  _reference = v;
+!!!268544.cpp!!!	read_uml_() : void
+  UmlBaseItem::read_uml_();
+  _reference = (UmlExitPointPseudoState *) UmlBaseItem::read_();
+!!!268544.java!!!	read_uml_() : void
+  super.read_uml_();
+  _reference = (UmlExitPointPseudoState) UmlBaseItem.read_();

@@ -1,0 +1,9 @@
+class UmlBaseStateDiagram
+!!!128640.cpp!!!	create(inout parent : UmlState, inout s : str) : UmlStateDiagram
+  return (UmlStateDiagram *) parent->create_(aStateDiagram, s);
+!!!128640.java!!!	create(inout parent : UmlState, inout s : str) : UmlStateDiagram
+  return (UmlStateDiagram) parent.create_(anItemKind.aStateDiagram, s);
+!!!128768.cpp!!!	kind() : anItemKind
+  return aStateDiagram;
+!!!128768.java!!!	kind() : anItemKind
+  return anItemKind.aStateDiagram;

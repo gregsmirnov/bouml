@@ -1,0 +1,35 @@
+class UmlBaseSubject
+!!!267520.cpp!!!	read_() : void
+  _name = UmlCom::read_string();
+  _x = (int) UmlCom::read_unsigned();
+  _y = (int) UmlCom::read_unsigned();
+  _w = (int) UmlCom::read_unsigned();
+  _h = (int) UmlCom::read_unsigned();
+!!!267520.java!!!	read_() : void
+  _name = UmlCom.read_string();
+  _x = UmlCom.read_unsigned();
+  _y = UmlCom.read_unsigned();
+  _w = UmlCom.read_unsigned();
+  _h = UmlCom.read_unsigned();
+!!!267648.cpp!!!	get_container_(in x : int, in y : int, in w : int, in h : int, in subjects : UmlSubject) : UmlSubject
+  int rank = subjects.count();
+
+  while (rank-- != 0) {
+    UmlBaseSubject * s = subjects[rank];
+
+    if ((x > s->_x) && (y > s->_y) &&
+        ((x + w) < (s->_x + s->_w)) && ((y + h) < (s->_y + s->_h)))
+      return (UmlSubject  *) s;
+  }
+  return 0;
+!!!267648.java!!!	get_container_(in x : int, in y : int, in w : int, in h : int, in subjects : UmlSubject) : UmlSubject
+  int rank = subjects.length;
+
+  while (rank-- != 0) {
+    UmlBaseSubject s = subjects[rank];
+
+    if ((x > s._x) && (y > s._y) &&
+        ((x + w) < (s._x + s._w)) && ((y + h) < (s._y + s._h)))
+      return subjects[rank];
+  }
+  return null;

@@ -1,0 +1,9 @@
+class UmlBaseComponentDiagram
+!!!18048.cpp!!!	create(inout parent : UmlComponentView, in s : str) : UmlComponentDiagram
+  return (UmlComponentDiagram *) parent->create_(aComponentDiagram, s);
+!!!18048.java!!!	create(inout parent : UmlComponentView, in s : str) : UmlComponentDiagram
+  return (UmlComponentDiagram) parent.create_(anItemKind.aComponentDiagram, s);
+!!!18176.cpp!!!	kind() : anItemKind
+  return aComponentDiagram;
+!!!18176.java!!!	kind() : anItemKind
+  return anItemKind.aComponentDiagram;

@@ -1,0 +1,9 @@
+class UmlClassView
+!!!144514.cpp!!!	sort() : void
+sortChildren();
+!!!144514.java!!!	sort() : void
+sortChildren();
+!!!145922.cpp!!!	orderWeight() : int
+return 3;
+!!!145922.java!!!	orderWeight() : int
+return 3;

@@ -1,0 +1,81 @@
+format 29
+
+classcanvas 6016 class_ref 135298 // UmlActivityAction
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 271 9 1994
+iconcanvas 16768 classdiagram_ref 256 // Activity (2)
+  xyz 360 25 2000
+classcanvas 24576 class_ref 137090 // UmlOpaqueAction
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 28 146 2000
+classcanvas 24704 class_ref 137346 // UmlAcceptEventAction
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 179 146 2000
+classcanvas 24832 class_ref 137602 // UmlCallOperationAction
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 358 146 2000
+classcanvas 24960 class_ref 137858 // UmlCallBehaviorAction
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 551 148 2000
+classcanvas 25088 class_ref 136960 // UmlBaseOpaqueAction
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  color blue
+  xyz 13 82 2000
+classcanvas 25344 class_ref 137216 // UmlBaseAcceptEventAction
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  color blue
+  xyz 166 82 2000
+classcanvas 25600 class_ref 137472 // UmlBaseCallOperationAction
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  color blue
+  xyz 343 82 2000
+classcanvas 25856 class_ref 137728 // UmlBaseCallBehaviorAction
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  color blue
+  xyz 535 82 2000
+relationcanvas 25216 relation_ref 144128 // <generalisation>
+  geometry VHV
+  from ref 25088 z 1999 to point 80 62
+  line 27136 z 1999 to point 325 62
+  line 27264 z 1999 to ref 6016
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 25472 relation_ref 144512 // <generalisation>
+  geometry VHV
+  from ref 25344 z 1999 to point 245 62
+  line 27904 z 1999 to point 325 62
+  line 28032 z 1999 to ref 6016
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 25728 relation_ref 144896 // <generalisation>
+  geometry VHV
+  from ref 25600 z 1999 to point 428 62
+  line 28672 z 1999 to point 325 62
+  line 28800 z 1999 to ref 6016
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 25984 relation_ref 145408 // <generalisation>
+  geometry VHV
+  from ref 25856 z 1999 to point 617 62
+  line 29440 z 1999 to point 325 62
+  line 29568 z 1999 to ref 6016
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 26112 relation_ref 144770 // <generalisation>
+  from ref 24704 z 1999 to ref 25344
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 26240 relation_ref 145154 // <generalisation>
+  from ref 24832 z 1999 to ref 25600
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 26368 relation_ref 145666 // <generalisation>
+  from ref 24960 z 1999 to ref 25856
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 26496 relation_ref 144386 // <generalisation>
+  from ref 24576 z 1999 to ref 25088
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+preferred_whz 735 245 1
+end

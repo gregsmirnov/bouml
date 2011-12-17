@@ -1,0 +1,20 @@
+class UmlRelation
+!!!147842.cpp!!!	orderWeight() : int
+switch (relationKind()) {
+case aGeneralisation:
+  return 11;
+case aDependency:
+  return 12;
+default:
+  return 0;
+}
+!!!147842.java!!!	orderWeight() : int
+switch (relationKind().value()) {
+case aRelationKind._aGeneralisation:
+  return 11;
+case aRelationKind._aDependency:
+  return 12;
+default:
+  return 0;
+}
+

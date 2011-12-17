@@ -1,0 +1,56 @@
+format 71
+
+classcanvas 128002 class_ref 143874 // FlowContainer
+  draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+  xyz 83 30 2000
+end
+classcanvas 128130 class_ref 133762 // UmlActivity
+  draw_all_relations default hide_attributes yes hide_operations yes hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+  xyz 23 156 2000
+end
+classcanvas 128386 class_ref 134914 // UmlActivityRegion
+  draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+  hidden_operations
+    operation_ref 163202 // UmlActivityRegion
+  xyz 140 147 2000
+end
+classcanvas 128387 class_ref 160387 // ControlOrData
+  draw_all_relations default hide_attributes no hide_operations yes hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+  xyz 547 20 3005
+end
+classcanvas 128770 class_ref 134530 // UmlFlow
+  draw_all_relations default hide_attributes default hide_operations yes hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+  xyz 370 53 2000
+end
+classcanvas 129026 class_ref 134274 // UmlActivityNode
+  draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+  hidden_operations
+    operation_ref 158466 // UmlActivityNode
+  xyz 332 169 2000
+end
+relationcanvas 128258 relation_ref 154370 // <generalisation>
+  from ref 128130 z 1999 to ref 128002
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 128642 relation_ref 154626 // <generalisation>
+  from ref 128386 z 1999 to ref 128002
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 128643 relation_ref 177667 // <directional composition>
+  from ref 128770 z 2001 to ref 128387
+  role_a_pos 443 51 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 128898 relation_ref 154754 // <directional aggregation>
+  from ref 128002 z 1999 stereotype "<<list>>" xyz 262 71 3000 to ref 128770
+  role_a_pos 323 52 3000 no_role_b
+  multiplicity_a_pos 354 79 3000 no_multiplicity_b
+end
+relationcanvas 129154 relation_ref 154882 // <directional aggregation>
+  from ref 129026 z 1999 stereotype "<<list>>" xyz 376 124 3000 to ref 128770
+  role_a_pos 410 98 3000 no_role_b
+  multiplicity_a_pos 385 98 3000 no_multiplicity_b
+end
+end

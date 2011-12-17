@@ -1,0 +1,5 @@
+class UmlClearVariableValueAction
+!!!199042.cpp!!!	sKind() : string
+  return "clear variable value activity action";
+!!!199042.java!!!	sKind() : string
+  return "clear variable value activity action";

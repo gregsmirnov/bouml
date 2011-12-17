@@ -1,0 +1,80 @@
+class UmlBaseAcceptCallAction
+!!!263040.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlAcceptCallAction
+  return (UmlAcceptCallAction *) parent->create_(anAcceptCallAction, s);
+!!!263040.java!!!	create(inout parent : UmlItem, inout s : str) : UmlAcceptCallAction
+  return (UmlAcceptCallAction) parent.create_(anItemKind.anAcceptCallAction, s);
+!!!263168.cpp!!!	kind() : anItemKind
+  return anAcceptCallAction;
+!!!263168.java!!!	kind() : anItemKind
+  return anItemKind.anAcceptCallAction;
+!!!263552.cpp!!!	trigger() : string
+  read_if_needed_();
+  return _trigger;
+!!!263552.java!!!	trigger() : string
+  read_if_needed_();
+  return _trigger;
+!!!263680.cpp!!!	set_Trigger(in v : str) : bool
+  return set_it_(_trigger, v, setUmlTriggerCmd);
+!!!263680.java!!!	set_Trigger(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setUmlTriggerCmd, v);
+  UmlCom.check();
+
+  _trigger = v;
+!!!263808.cpp!!!	cppTrigger() : string
+  read_if_needed_();
+  return _cpp_trigger;
+!!!263808.java!!!	cppTrigger() : string
+  read_if_needed_();
+  return _cpp_trigger;
+!!!263936.cpp!!!	set_CppTrigger(in v : str) : bool
+  return set_it_(_cpp_trigger, v, setCppTriggerCmd);
+!!!263936.java!!!	set_CppTrigger(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setCppTriggerCmd, v);
+  UmlCom.check();
+
+  _cpp_trigger = v;
+!!!264064.cpp!!!	javaTrigger() : string
+  read_if_needed_();
+  return _java_trigger;
+!!!264064.java!!!	javaTrigger() : string
+  read_if_needed_();
+  return _java_trigger;
+!!!264192.cpp!!!	set_JavaTrigger(in v : str) : bool
+  return set_it_(_java_trigger, v, setJavaTriggerCmd);
+!!!264192.java!!!	set_JavaTrigger(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setJavaTriggerCmd, v);
+  UmlCom.check();
+
+  _java_trigger = v;
+!!!264320.cpp!!!	unload(in rec : bool, in del : bool) : void
+  _trigger = 0;
+#ifdef WITHCPP
+  _cpp_trigger = 0;
+#endif
+#ifdef WITHJAVA
+  _java_trigger = 0;
+#endif
+  UmlBaseActivityAction::unload(rec, del);
+!!!264320.java!!!	unload(in rec : bool, in del : bool) : void
+  _trigger = null;
+  _cpp_trigger = null;
+  _java_trigger = null;
+  super.unload(rec, del);
+!!!264448.cpp!!!	read_uml_() : void
+  UmlBaseActivityAction::read_uml_();
+  _trigger = UmlCom::read_string();
+!!!264448.java!!!	read_uml_() : void
+  super.read_uml_();
+  _trigger = UmlCom.read_string();
+!!!264576.cpp!!!	read_cpp_() : void
+  UmlBaseActivityAction::read_cpp_();
+  _cpp_trigger = UmlCom::read_string();
+!!!264576.java!!!	read_cpp_() : void
+  super.read_cpp_();
+  _cpp_trigger = UmlCom.read_string();
+!!!264704.cpp!!!	read_java_() : void
+  UmlBaseActivityAction::read_java_();
+  _java_trigger = UmlCom::read_string();
+!!!264704.java!!!	read_java_() : void
+  super.read_java_();
+  _java_trigger = UmlCom.read_string();

@@ -1,0 +1,13 @@
+class UmlExpansionRegion
+!!!195842.cpp!!!	sKind() : string
+  return "expansion region";
+!!!195842.java!!!	sKind() : string
+  return "expansion region";
+!!!195714.cpp!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  UmlItem::html(pfix, rank, "Expansion region", level, "expansionregion");
+
+  unload(FALSE, FALSE);
+!!!195714.java!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  html(pfix, rank, "Expansion region", level, "expansionregion");
+
+  unload(false, false);

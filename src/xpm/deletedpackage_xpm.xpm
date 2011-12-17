@@ -1,0 +1,23 @@
+/* XPM */
+static const char*deletedpackage_xpm[]={
+"16 16 4 1",
+"# c #000000",
+"b c #ffffc0",
+"a c #ffffff",
+". c #ff0000",
+"..########aaaa..",
+"#..bbbbbbb#aa..a",
+"#b..bbbbbbb#..#a",
+"#bb..bbbbbb..bb#",
+"#bbb..bbbb..bbb#",
+"#bbbb..bb..bbbb#",
+"#bbbbb....bbbbb#",
+"#bbbbbb..bbbbbb#",
+"#bbbbb....bbbbb#",
+"#bbbb..bb..bbbb#",
+"#bbb..bbbb..bbb#",
+"#bb..bbbbbb..bb#",
+"#b..bbbbbbbb..b#",
+"#..bbbbbbbbbb..#",
+"..bbbbbbbbbbbb..",
+".##############."};

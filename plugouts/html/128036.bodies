@@ -1,0 +1,6 @@
+class Vector
+!!!128036.cpp!!!	addElement(in x : UmlItem) : void
+  if (v.count() == v.size())
+    v.resize(v.size() + 256);
+    
+  v.insert(v.count(), x);

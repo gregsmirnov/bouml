@@ -1,0 +1,61 @@
+class UmlParameterSet
+!!!198402.cpp!!!	sKind() : string
+  return "parameter set";
+!!!198402.java!!!	sKind() : string
+  return "parameter set";
+!!!207746.cpp!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  fw.write("<table><tr><td><div class=\"element\">Parameter set  <b>");
+  writeq(name());
+  fw.write("</b></div></td></tr></table>");
+  
+  QCString s = description();
+
+  if (!s.isEmpty()) {
+    fw.write("<p>");
+    writeq(s);
+    fw.write("<br /></p>");
+  }
+
+  fw.write("<p>Contains :");
+  
+  const QVector<UmlActivityPin> & p = pins();
+  unsigned n = p.size();
+  
+  for (unsigned i = 0; i != n; i += 1) {
+    fw.write(" ");
+    p[i]->write();
+  }
+  
+  fw.write("</p>");
+
+  write_properties();
+
+  unload(FALSE, FALSE);
+
+!!!207746.java!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  fw.write("<table><tr><td><div class=\"element\">Parameter set <b>");
+  writeq(name());
+  fw.write("</b></div></td></tr></table>");
+  
+  String s = description();
+  
+  if (s.length() != 0) {
+    fw.write("<p>");
+    writeq(description());
+    fw.write("<br /></p>");
+  }
+
+  fw.write("<p>Contains :");
+  
+  UmlActivityPin[] p = pins();
+  
+  for (int i = 0; i != p.length; i += 1) {
+    fw.write(" ");
+    p[i].write();
+  }
+
+  fw.write("</p>");
+
+  write_properties();
+
+  unload(false, false);

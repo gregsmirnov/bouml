@@ -1,0 +1,21 @@
+class UmlUseCaseDiagram
+!!!130400.cpp!!!	sKind() : string
+  return "use case diagram";
+!!!130400.java!!!	sKind() : string
+  return "use case diagram";
+!!!128764.cpp!!!	memo_ref() : void
+  diagrams.addElement(this);
+  UmlDiagram::memo_ref();
+!!!128764.java!!!	memo_ref() : void
+  diagrams.addElement(this);
+  super.memo_ref();
+!!!129264.cpp!!!	ref_index() : void
+  if (!diagrams.isEmpty())
+    fw.write("<a href=\"usecasediagrams.html\" target = \"projectFrame\"><b> -Use Case Diagrams- </b></a>");
+!!!129264.java!!!	ref_index() : void
+  if (!diagrams.isEmpty())
+    fw.write("<a href=\"usecasediagrams.html\" target = \"projectFrame\"><b> -Use Case Diagrams- </b></a>");
+!!!129404.cpp!!!	generate_index() : void
+  UmlItem::generate_index(diagrams, "Use Case Diagram", "usecasediagrams");
+!!!129404.java!!!	generate_index() : void
+  generate_index(diagrams, "Use Case Diagram", "usecasediagrams");

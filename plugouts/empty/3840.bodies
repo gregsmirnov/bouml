@@ -1,0 +1,53 @@
+class UmlBaseNcRelation
+!!!41856.cpp!!!	create(in kind : aRelationKind, inout start : UmlItem, inout end : UmlItem) : UmlNcRelation
+  UmlCom::send_cmd(start->_identifier, createCmd, aNcRelation,
+		   kind, end->_identifier);
+  UmlNcRelation * result = (UmlNcRelation *) UmlBaseItem::read_();
+  
+  if (result != 0)
+    start->reread_children_if_needed_();
+  
+  return result;
+!!!41856.java!!!	create(in kind : aRelationKind, inout start : UmlItem, inout end : UmlItem) : UmlNcRelation
+  UmlCom.send_cmd(start.identifier_(), OnInstanceCmd.createCmd, anItemKind.aNcRelation,
+		  kind, end.identifier_());
+  UmlNcRelation result = (UmlNcRelation) UmlBaseItem.read_();
+  
+  if (result != null)
+    start.reread_children_if_needed_();
+  else
+    throw new RuntimeException("can't be created");
+  
+  return result;
+!!!41984.cpp!!!	kind() : anItemKind
+  return aNcRelation;
+!!!41984.java!!!	kind() : anItemKind
+  return anItemKind.aNcRelation;
+!!!42112.cpp!!!	relationKind() : aRelationKind
+  read_if_needed_();
+  
+  return _rel_kind;
+!!!42112.java!!!	relationKind() : aRelationKind
+  read_if_needed_();
+  
+  return _rel_kind;
+!!!42240.cpp!!!	target() : UmlItem
+  read_if_needed_();
+  
+  return _target;
+!!!42240.java!!!	target() : UmlItem
+  read_if_needed_();
+  
+  return _target;
+!!!42368.cpp!!!	read_uml_() : void
+  UmlBaseItem::read_uml_();
+  _rel_kind = (aRelationKind) UmlCom::read_char();
+  _target = UmlBaseItem::read_();
+
+!!!42368.java!!!	read_uml_() : void
+  super.read_uml_();
+  _rel_kind = aRelationKind.fromInt(UmlCom.read_char());
+  _target = UmlBaseItem.read_();
+
+!!!42496.cpp!!!	UmlBaseNcRelation(in id : item_id, in n : string)
+  _target = 0;

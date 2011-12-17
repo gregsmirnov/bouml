@@ -1,0 +1,5 @@
+class UmlItem
+!!!144130.cpp!!!	wizard() : void
+  UmlCom::trace("<font face=helvetica><b>Use case wizard must be applied on a <i>use case</i></b></font><br><hr><br>");
+!!!144130.java!!!	wizard() : void
+UmlCom.trace("must be applied on a use case");

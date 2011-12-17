@@ -1,0 +1,2902 @@
+format 75
+"Diagram" // API BASE::Diagram
+  revision 39
+  modified_by 2 "bruno"
+  // class settings
+  //class diagram settings
+  draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default show_msg_context default draw_all_relations default shadow default show_stereotype_properties default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+  show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+  show_infonote default drawing_language default show_stereotype_properties default
+  
+  classview 128128 "Diagram Class view"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default show_msg_context default draw_all_relations default shadow default show_stereotype_properties default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default show_stereotype_properties default
+    associated_deployment_view deploymentview_ref 128128 // Diagram Deployment view
+    class 147072 "UmlBaseFragment"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " this class manages fragments"
+      operation 206592 "name"
+	const public explicit_return_type "string"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}const ${type} & ${name}${(}${)}${const}${volatile}${abstract} {
+    return _name;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  return _name;
+}
+"
+	
+	
+	
+	comment " return the name"
+      end
+
+      operation 206720 "compartments"
+	const public return_type class_ref 146946 // UmlFragmentCompartment
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}const QVector<${type}> & ${name}${(}${)}${const}${volatile}${abstract} {
+    return _compartments;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type}[] ${name}${(}${)}${throws}${staticnl}{
+  return _compartments;
+}
+"
+	
+	
+	
+	comment " return the compartments, at least one compartment exists"
+      end
+
+      operation 206848 "container"
+	const public return_type class_ref 146946 // UmlFragmentCompartment
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} * ${name}${(}${)}${const}${volatile}${abstract} {
+    return _container;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  return _container;
+}
+"
+	
+	
+	
+	comment " return the fragment compartment containing the fragment,
+ or 0/null"
+      end
+
+      operation 219904 "refer"
+	const public return_type class_ref 8577 // UmlDiagram
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} * ${name}${(}${)}${const}${volatile}${abstract} {
+    return _refer;
+}
+"
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+    return _refer;
+}
+"
+	
+	
+	
+	comment " return the diagram optionally referenced by the fragment,
+ generally associated to an interaction use"
+      end
+
+      operation 220032 "arguments"
+	const public explicit_return_type "string"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract} {
+    return _arguments;
+}
+"
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+    return _arguments;
+}
+"
+	
+	
+	
+	comment " return the form corresponding to the arguments
+ and return value of the interaction use"
+      end
+
+      operation 220160 "covered"
+	const public return_type class_ref 148098 // UmlClassInstanceReference
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}const QVector<${type}> & ${name}${(}${)}${const}${volatile}${abstract} {
+    return _covered;
+}
+"
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type}[] ${name}${(}${)}${throws}${staticnl}{
+    return _covered.clone();
+}
+"
+	
+	
+	
+	comment " return the the list of covered instances (life lines)"
+      end
+
+      classrelation 158976 // _container (<unidirectional association>)
+	relation 158976 --->
+	  a role_name "_container" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    java "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 158976 // _container (<unidirectional association>)
+	  b parent class_ref 146946 // UmlFragmentCompartment
+      end
+
+      classrelation 159104 // _compartments (<directional composition>)
+	relation 159104 *-->
+	  stereotype "vector"
+	  a role_name "_compartments" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}QVector<${type}> ${name}${value};
+"
+	    java "  ${comment}${visibility}${static}${final}${transient}${volatile}${type}[] ${name}${value};
+"
+	    classrelation_ref 159104 // _compartments (<directional composition>)
+	  b parent class_ref 146946 // UmlFragmentCompartment
+      end
+
+      attribute 136960 "_name"
+	private explicit_type "string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 137344 "_x"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 137472 "_y"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 137600 "_w"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 137728 "_h"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 165376 // _refer (<unidirectional association>)
+	relation 165376 --->
+	  a role_name "_refer" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 165376 // _refer (<unidirectional association>)
+	  b parent class_ref 8577 // UmlDiagram
+      end
+
+      attribute 145792 "_arguments"
+	private explicit_type "string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 165504 // _covered (<unidirectional association>)
+	relation 165504 --->
+	  stereotype "vector"
+	  a role_name "_covered" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${stereotype}<${type}> ${name}${value};
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}[] ${name}${value};
+"
+	    classrelation_ref 165504 // _covered (<unidirectional association>)
+	  b parent class_ref 148098 // UmlClassInstanceReference
+      end
+
+      operation 207488 "read_"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_visibility private cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment " internal, don't call it"
+      end
+
+      operation 220288 "vcenter_"
+	const public explicit_return_type "int"
+	nparams 1
+	  param in name "rank" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${staticnl}{
+  ${body}}
+"
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 220416 "read_covered_"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "instances" type class_ref 148098 // UmlClassInstanceReference
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}QPtrDict<${t0}> & ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}QPtrDict<${t0}> & ${p0}${)}${const}${volatile}${staticnl}{
+  ${body}}
+"
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}Hashtable ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 207616 "get_container_"
+	class_operation public return_type class_ref 146946 // UmlFragmentCompartment
+	nparams 5
+	  param in name "x" explicit_type "int"
+	  param in name "y" explicit_type "int"
+	  param in name "w" explicit_type "int"
+	  param in name "h" explicit_type "int"
+	  param in name "fragments" type class_ref 146818 // UmlFragment
+	cpp_decl "    ${comment}${static}${virtual}${type} * ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, const QVector<${t4}> & ${p4}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} * ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, const QVector<${t4}> & ${p4}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4}[] ${p4}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment " internal"
+      end
+
+      operation 207744 "compute_container_"
+	class_operation public explicit_return_type "void"
+	nparams 1
+	  param in name "fragments" type class_ref 146818 // UmlFragment
+	cpp_visibility private cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}QVector<${t0}> & ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}QVector<${t0}> & ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0}[] ${p0}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment " internal"
+      end
+
+      operation 207872 "w"
+	const public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract} {
+    return _w;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  return _w;
+}
+"
+	
+	
+	
+      end
+
+      operation 208000 "h"
+	const public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract} {
+    return _h;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  return _h;
+}
+"
+	
+	
+	
+      end
+
+      operation 208128 "~UmlBaseFragment"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment "  to avoid compiler warning, don't call it"
+      end
+
+      extra_member 2048 "friend"
+	
+	cpp "  friend class UmlBaseUseCaseDiagramDefinition;
+  friend class UmlBaseSequenceDiagramDefinition;
+" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+      end
+    end
+
+    class 147200 "UmlBaseFragmentCompartment"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " this class manages fragments compartments,
+ a fragment without separator contains one compartment"
+      operation 206976 "fragment"
+	const public return_type class_ref 146818 // UmlFragment
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} * ${name}${(}${)}${const}${volatile}${abstract} {
+    return _fragment;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  return _fragment;
+}
+"
+	
+	
+	
+	comment " return the fragment owning the compartment"
+      end
+
+      operation 207104 "rank"
+	const public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract} {
+    return _rank;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  return _rank;
+}
+"
+	
+	
+	
+	comment " the rank of the compartment in the fragment (0..)"
+      end
+
+      operation 207232 "texts"
+	const public explicit_return_type "string"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}const QVector<char> & ${name}${(}${)}${const}${volatile}${abstract} {
+    return _texts;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type}[] ${name}${(}${)}${throws}${staticnl}{
+  return _texts;
+}
+"
+	
+	
+	
+	comment " the texts placed in the compartment"
+      end
+
+      operation 207360 "contained"
+	const public return_type class_ref 146818 // UmlFragment
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}const QVector<${type}> & ${name}${(}${)}${const}${volatile}${abstract} {
+    return _contained;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type}[] ${name}${(}${)}${throws}${staticnl}{
+  return _contained;
+}
+"
+	
+	
+	
+	comment " return the fragments contained in the compartment,
+ may be none"
+      end
+
+      operation 220544 "startContinuation"
+	const public explicit_return_type "string"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract} {
+    return _start_continuation;
+}
+"
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+    return _start_continuation;
+}
+"
+	
+	
+	
+	comment " return the continuation ('label' case), or an empty string/null"
+      end
+
+      operation 220672 "endContinuation"
+	const public explicit_return_type "string"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract} {
+    return _end_continuation;
+}
+"
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+    return _end_continuation;
+}
+"
+	
+	
+	
+	comment " return the continuation ('goto' case), or an empty string/null"
+      end
+
+      classrelation 158720 // _fragment (<unidirectional association>)
+	relation 158720 --->
+	  a role_name "_fragment" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    java "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 158720 // _fragment (<unidirectional association>)
+	  b parent class_ref 146818 // UmlFragment
+      end
+
+      classrelation 158848 // _contained (<directional composition>)
+	relation 158848 *-->
+	  stereotype "vector"
+	  a role_name "_contained" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}QVector<${type}> ${name}${value};
+"
+	    java "  ${comment}${visibility}${static}${final}${transient}${volatile}${type}[] ${name}${value};
+"
+	    classrelation_ref 158848 // _contained (<directional composition>)
+	  b parent class_ref 146818 // UmlFragment
+      end
+
+      attribute 137088 "_rank"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 137216 "_texts"
+	private explicit_type "string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}QVector<char> ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type}[] ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 137856 "_y"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 145920 "_start_continuation"
+	private explicit_type "string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 146048 "_end_continuation"
+	private explicit_type "string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 208256 "add_contained_"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "x" type class_ref 146818 // UmlFragment
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} * ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} * ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+      end
+
+      operation 208384 "add_text_"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "x" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+      end
+
+      operation 220800 "add_cont_"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "s" explicit_type "string"
+	  param in name "cy" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${staticnl}{
+  ${body}}
+"
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 208512 "b"
+	const public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract} {
+    return _y;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  return _y;
+}
+"
+	
+	
+	
+      end
+
+      operation 208640 "smaller"
+	const public explicit_return_type "bool"
+	nparams 1
+	  param in name "x" type class_ref 147200 // UmlBaseFragmentCompartment
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}const ${t0} * ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} * ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+      end
+
+      operation 208768 "read_"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "fragment" type class_ref 147072 // UmlBaseFragment
+	  param in name "rank" explicit_type "int"
+	cpp_visibility private cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} * ${p0}, ${t1} ${p1}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} * ${p0}, ${t1} ${p1}${)}${const}${volatile}${staticnl}{
+  ${body}}
+"
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment " internal, don't call it"
+      end
+
+      operation 208896 "~UmlBaseFragmentCompartment"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment "  to avoid compiler warning, don't call it"
+      end
+
+      extra_member 2176 "friend"
+	
+	cpp "  friend class UmlBaseFragment;
+  friend class UmlBaseUseCaseDiagramDefinition;
+  friend class UmlBaseSequenceDiagramDefinition;
+" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+      end
+    end
+
+    class 147456 "UmlBaseSubject"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " this class manages subjects"
+      operation 209024 "name"
+	const public explicit_return_type "string"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}const ${type} & ${name}${(}${)}${const}${volatile}${abstract} {
+    return _name;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  return _name;
+}
+"
+	
+	
+	
+	comment " return the name"
+      end
+
+      attribute 137984 "_name"
+	private explicit_type "string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 138112 "_x"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 138240 "_y"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 138368 "_w"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 138496 "_h"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 209152 "read_"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_visibility private cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment " internal, don't call it"
+      end
+
+      operation 209280 "get_container_"
+	class_operation public return_type class_ref 147330 // UmlSubject
+	nparams 5
+	  param in name "x" explicit_type "int"
+	  param in name "y" explicit_type "int"
+	  param in name "w" explicit_type "int"
+	  param in name "h" explicit_type "int"
+	  param in name "subjects" type class_ref 147330 // UmlSubject
+	cpp_decl "    ${comment}${static}${virtual}${type} * ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, const QVector<${t4}> & ${p4}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} * ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, const QVector<${t4}> & ${p4}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4}[] ${p4}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment " internal"
+      end
+
+      extra_member 2304 "friend"
+	
+	cpp "  friend class UmlBaseUseCaseDiagramDefinition;
+" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+      end
+    end
+
+    class 147712 "UmlBaseUseCaseReference"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " this class manages use case references"
+      operation 209408 "useCase"
+	const public return_type class_ref 9729 // UmlUseCase
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} * ${name}${(}${)}${const}${volatile}${abstract} {
+    return _use_case;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  return _use_case;
+}
+"
+	
+	
+	
+	comment " return the use case"
+      end
+
+      operation 209536 "fragment"
+	const public return_type class_ref 146946 // UmlFragmentCompartment
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} * ${name}${(}${)}${const}${volatile}${abstract} {
+    return _fragment;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  return _fragment;
+}
+"
+	
+	
+	
+	comment " return the fragment compartment containing the
+ use case, or 0/null"
+      end
+
+      operation 209664 "subject"
+	const public return_type class_ref 147330 // UmlSubject
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} * ${name}${(}${)}${const}${volatile}${abstract} {
+    return _subject;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  return _subject;
+}
+"
+	
+	
+	
+	comment " return the subject containing the use case, or 0/null"
+      end
+
+      classrelation 159616 // _use_case (<unidirectional association>)
+	relation 159616 --->
+	  a role_name "_use_case" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    java "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 159616 // _use_case (<unidirectional association>)
+	  b parent class_ref 9729 // UmlUseCase
+      end
+
+      classrelation 159744 // _fragment (<unidirectional association>)
+	relation 159744 --->
+	  a role_name "_fragment" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    java "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 159744 // _fragment (<unidirectional association>)
+	  b parent class_ref 146946 // UmlFragmentCompartment
+      end
+
+      classrelation 159872 // _subject (<unidirectional association>)
+	relation 159872 --->
+	  a role_name "_subject" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    java "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 159872 // _subject (<unidirectional association>)
+	  b parent class_ref 147330 // UmlSubject
+      end
+
+      attribute 138624 "_x"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 138752 "_y"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 138880 "_w"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 139008 "_h"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 209792 "read_"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "fragments" type class_ref 146818 // UmlFragment
+	  param in name "subjects" type class_ref 147330 // UmlSubject
+	cpp_visibility private cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}const QVector<${t0}> & ${p0}, const QVector<${t1}> & ${p1}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}const QVector<${t0}> & ${p0}, const QVector<${t1}> & ${p1}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0}[] ${p0}, ${t1}[] ${p1}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment " internal, don't call it"
+      end
+
+      extra_member 2432 "friend"
+	
+	cpp "  friend class UmlBaseUseCaseDiagramDefinition;
+" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+      end
+    end
+
+    class 147968 "UmlBaseUseCaseAssociation"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " this class manages association between use case and actor"
+      operation 209920 "name"
+	const public explicit_return_type "string"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}const ${type} & ${name}${(}${)}${const}${volatile}${abstract} {
+    return _name;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  return _name;
+}
+"
+	
+	
+	
+	comment " return the name"
+      end
+
+      operation 210048 "stereotype"
+	const public explicit_return_type "string"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}const ${type} & ${name}${(}${)}${const}${volatile}${abstract} {
+    return _stereotype;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  return _stereotype;
+}
+"
+	
+	
+	
+	comment " return the stereotype"
+      end
+
+      operation 210176 "useCase"
+	const public return_type class_ref 147586 // UmlUseCaseReference
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} * ${name}${(}${)}${const}${volatile}${abstract} {
+    return _use_case;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  return _use_case;
+}
+"
+	
+	
+	
+	comment " return the use case"
+      end
+
+      operation 210304 "actor"
+	const public return_type class_ref 7169 // UmlClass
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} * ${name}${(}${)}${const}${volatile}${abstract} {
+    return _actor;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  return _actor;
+}
+"
+	
+	
+	
+	comment " return the actor"
+      end
+
+      operation 210432 "primary"
+	const public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract} {
+    return _primary;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  return _primary;
+}
+"
+	
+	
+	
+	comment " return true if the actor is a primary actor for the use case "
+      end
+
+      classrelation 160128 // _use_case (<unidirectional association>)
+	relation 160128 --->
+	  a role_name "_use_case" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    java "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 160128 // _use_case (<unidirectional association>)
+	  b parent class_ref 147586 // UmlUseCaseReference
+      end
+
+      classrelation 160256 // _actor (<unidirectional association>)
+	relation 160256 --->
+	  a role_name "_actor" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    java "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 160256 // _actor (<unidirectional association>)
+	  b parent class_ref 7169 // UmlClass
+      end
+
+      attribute 139136 "_name"
+	private explicit_type "string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 139264 "_stereotype"
+	private explicit_type "string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 139392 "_primary"
+	private explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 210560 "read_"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "useCases" type class_ref 147586 // UmlUseCaseReference
+	cpp_visibility private cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}const QPtrDict<${t0}> & ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}const QPtrDict<${t0}> & ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}Hashtable ${p0}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment " internal, don't call it"
+      end
+
+      extra_member 2560 "friend"
+	
+	cpp "  friend class UmlBaseUseCaseDiagramDefinition;
+" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+      end
+    end
+
+    class 148224 "UmlBaseClassInstanceReference"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " this class manages class instance reference"
+      operation 210688 "type"
+	const public return_type class_ref 7169 // UmlClass
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} * ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} * ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment " return the type of the instance"
+      end
+
+      operation 210816 "instance"
+	const public return_type class_ref 143618 // UmlClassInstance
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} * ${name}${(}${)}${const}${volatile}${abstract} {
+    return _instance;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  return _instance;
+}
+"
+	
+	
+	
+	comment " return the corresponding instance in the model, or 0/null"
+      end
+
+      operation 210944 "name"
+	const public explicit_return_type "string"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}const ${type} & ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}const ${type} & ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment " return the name of the instance"
+      end
+
+      classrelation 160512 // _class (<unidirectional association>)
+	relation 160512 --->
+	  a role_name "_class" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    java "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 160512 // _class (<unidirectional association>)
+	  b parent class_ref 7169 // UmlClass
+      end
+
+      classrelation 160640 // _instance (<unidirectional association>)
+	relation 160640 --->
+	  a role_name "_instance" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    java "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 160640 // _instance (<unidirectional association>)
+	  b parent class_ref 143618 // UmlClassInstance
+      end
+
+      attribute 139520 "_name"
+	private explicit_type "string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 211072 "read_"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_visibility private cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment " internal, don't call it"
+      end
+
+      extra_member 2688 "friend"
+	
+	cpp "  friend class UmlBaseSequenceDiagramDefinition;
+  friend class UmlBaseCollaborationDiagramDefinition;
+" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+      end
+    end
+
+    class 148480 "UmlBaseMessage"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " this class manages messages indenpendently of the diagram"
+      operation 211200 "from"
+	const public return_type class_ref 148098 // UmlClassInstanceReference
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} * ${name}${(}${)}${const}${volatile}${abstract} {
+    return _from;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  return _from;
+}
+"
+	
+	
+	
+	comment " return the instance sending the message"
+      end
+
+      operation 211328 "to"
+	const public return_type class_ref 148098 // UmlClassInstanceReference
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} * ${name}${(}${)}${const}${volatile}${abstract} {
+    return _to;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  return _to;
+}
+"
+	
+	
+	
+	comment " return the instance receiving the message"
+      end
+
+      operation 211456 "operation"
+	const public return_type class_ref 9089 // UmlOperation
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} * ${name}${(}${)}${const}${volatile}${abstract} {
+    return _operation;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  return _operation;
+}
+"
+	
+	
+	
+	comment " return the operation or 0/null,
+ exclusive with form()"
+      end
+
+      operation 211584 "form"
+	const public explicit_return_type "string"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}const ${type} & ${name}${(}${)}${const}${volatile}${abstract} {
+    return _form;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  return _form;
+}
+"
+	
+	
+	
+	comment " return message as a string, may be empty/null,
+ exclusive with operation()"
+      end
+
+      classrelation 160896 // _from (<unidirectional association>)
+	relation 160896 --->
+	  a role_name "_from" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    java "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 160896 // _from (<unidirectional association>)
+	  b parent class_ref 148098 // UmlClassInstanceReference
+      end
+
+      classrelation 161024 // _to (<unidirectional association>)
+	relation 161024 --->
+	  a role_name "_to" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    java "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 161024 // _to (<unidirectional association>)
+	  b parent class_ref 148098 // UmlClassInstanceReference
+      end
+
+      classrelation 161152 // _operation (<unidirectional association>)
+	relation 161152 --->
+	  a role_name "_operation" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    java "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 161152 // _operation (<unidirectional association>)
+	  b parent class_ref 9089 // UmlOperation
+      end
+
+      attribute 139648 "_form"
+	private explicit_type "string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 211712 "read_"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "instances" type class_ref 148098 // UmlClassInstanceReference
+	cpp_visibility private cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}const QPtrDict<${t0}> & ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}const QPtrDict<${t0}> & ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}Hashtable ${p0}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment " internal, don't call it"
+      end
+
+      extra_member 2816 "friend"
+	
+	cpp "  friend class UmlBaseSequenceMessage;
+  friend class UmlBaseCollaborationMessage;
+" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+      end
+    end
+
+    class 148736 "aMessageKind"
+      visibility package stereotype "enum_pattern"
+      cpp_decl "${comment}enum ${name} {
+${items}
+};
+"
+      java_decl "${comment}${public}final class ${name} {
+${members}
+  private int value;
+
+  public int value() {
+    return value;
+  }
+
+  public static ${name} fromInt(int value) {
+    switch (value) {
+${cases}    default: throw new Error();
+    }
+  }
+
+  private ${name}(int v) { value = v; }; 
+}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " indicate the kind of a message"
+      attribute 139776 "aSynchronousCall"
+	public type class_ref 148736 // aMessageKind
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 139904 "anAsynchronousCall"
+	public type class_ref 148736 // aMessageKind
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 140032 "anExplicitReturn"
+	public type class_ref 148736 // aMessageKind
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 140160 "anImplicitReturn"
+	public type class_ref 148736 // aMessageKind
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "  message added to indicate the end of a duration bar"
+      end
+
+      attribute 145536 "aDestruction"
+	public type class_ref 148736 // aMessageKind
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}${@}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 145664 "anInteractionUse"
+	public type class_ref 148736 // aMessageKind
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}${@}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 148864 "UmlBaseSequenceMessage"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends} implements java.lang.Comparable {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " this class manages messages in a sequence diagram"
+      operation 211840 "kind"
+	const public return_type class_ref 148736 // aMessageKind
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract} {
+    return _kind;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  return _kind;
+}
+"
+	
+	
+	
+	comment " return kind of the message"
+      end
+
+      operation 243584 "stereotype"
+	const public explicit_return_type "string"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract} {
+    return _stereotype;
+}
+"
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+    return _stereotype;
+}
+"
+	
+	
+	
+	comment " return the stereotype of the message"
+      end
+
+      operation 211968 "fragment"
+	const public return_type class_ref 146946 // UmlFragmentCompartment
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} * ${name}${(}${)}${const}${volatile}${abstract} {
+    return _fragment;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  return _fragment;
+}
+"
+	
+	
+	
+	comment " return the fragment compartment containing the message"
+      end
+
+      operation 212096 "sentAt"
+	const public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract} {
+    return _send_at;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  return _send_at;
+}
+"
+	
+	
+	
+	comment " return when the message is sent (arbitrary unit)"
+      end
+
+      operation 212224 "receivedAt"
+	const public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract} {
+    return _received_at;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  return _received_at;
+}
+"
+	
+	
+	
+	comment " return when the message is received (arbitrary unit)"
+      end
+
+      operation 212352 "arguments"
+	const public explicit_return_type "string"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}const ${type} & ${name}${(}${)}${const}${volatile}${abstract} {
+    return _args;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  return _args;
+}
+"
+	
+	
+	
+	comment " return the arguments of the operation, may be empty"
+      end
+
+      operation 212480 "compareTo"
+	public explicit_return_type "int"
+	nparams 1
+	  param in name "other" explicit_type "Object"
+	
+	final java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  return _send_at - ((UmlBaseSequenceMessage) other)._send_at;
+}
+"
+	
+	
+	
+      end
+
+      classrelation 161408 // _kind (<directional composition>)
+	relation 161408 *-->
+	  a role_name "_kind" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    java "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 161408 // _kind (<directional composition>)
+	  b parent class_ref 148736 // aMessageKind
+      end
+
+      classrelation 161536 // _fragment (<unidirectional association>)
+	relation 161536 --->
+	  a role_name "_fragment" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    java "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 161536 // _fragment (<unidirectional association>)
+	  b parent class_ref 146946 // UmlFragmentCompartment
+      end
+
+      attribute 140288 "_x"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 140416 "_send_at"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 140544 "_received_at"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 140672 "_args"
+	private explicit_type "string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 156544 "_stereotype"
+	private explicit_type "string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 212608 "read_"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "instances" type class_ref 148098 // UmlClassInstanceReference
+	  param in name "fragments" type class_ref 146818 // UmlFragment
+	cpp_visibility private cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}const QPtrDict<${t0}> & ${p0}, const QVector<${t1}> & ${p1}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}const QPtrDict<${t0}> & ${p0}, const QVector<${t1}> & ${p1}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}Hashtable ${p0}, ${t1}[] ${p1}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment " internal, don't call it"
+      end
+
+      extra_member 2944 "friend"
+	
+	cpp "  friend class UmlBaseSequenceDiagramDefinition;
+" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+      end
+
+      classrelation 165120 // <generalisation>
+	relation 165120 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 165120 // <generalisation>
+	  b parent class_ref 148354 // UmlMessage
+      end
+    end
+
+    class 149120 "UmlBaseCollaborationMessage"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " this class manages messages in a collaboration diagram"
+      operation 212736 "rank"
+	const public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract} {
+    return _rank;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  return _rank;
+}
+"
+	
+	
+	
+	comment " return the global rank of the message"
+      end
+
+      operation 212864 "hrank"
+	const public explicit_return_type "string"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}const ${type} & ${name}${(}${)}${const}${volatile}${abstract} {
+    return _hrank;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  return _hrank;
+}
+"
+	
+	
+	
+	comment " return the hierarchical rank of the message"
+      end
+
+      attribute 140800 "_rank"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 140928 "_hrank"
+	private explicit_type "string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 212992 "read_"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "instances" type class_ref 148098 // UmlClassInstanceReference
+	cpp_visibility private cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}const QPtrDict<${t0}> & ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}const QPtrDict<${t0}> & ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}Hashtable ${p0}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment " internal, don't call it"
+      end
+
+      extra_member 3072 "friend"
+	
+	cpp "  friend class UmlBaseCollaborationDiagramDefinition;
+" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+      end
+
+      classrelation 165248 // <generalisation>
+	relation 165248 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 165248 // <generalisation>
+	  b parent class_ref 148354 // UmlMessage
+      end
+    end
+
+    class 149376 "UmlBaseUseCaseDiagramDefinition"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " this class manages use case diagram definition"
+      operation 213120 "useCases"
+	const public return_type class_ref 147586 // UmlUseCaseReference
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}const QVector<${type}> & ${name}${(}${)}${const}${volatile}${abstract} {
+    return _use_cases;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type}[] ${name}${(}${)}${throws}${staticnl}{
+  return _use_cases;
+}
+"
+	
+	
+	
+	comment " return the use cases present in the diagram"
+      end
+
+      operation 213248 "actors"
+	const public return_type class_ref 7169 // UmlClass
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}const QVector<${type}> & ${name}${(}${)}${const}${volatile}${abstract} {
+    return _actors;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type}[] ${name}${(}${)}${throws}${staticnl}{
+  return _actors;
+}
+"
+	
+	
+	
+	comment " return the actors present in the diagram"
+      end
+
+      operation 213376 "associations"
+	const public return_type class_ref 147842 // UmlUseCaseAssociation
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}const QVector<${type}> & ${name}${(}${)}${const}${volatile}${abstract} {
+    return _rels;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type}[] ${name}${(}${)}${throws}${staticnl}{
+  return _rels;
+}
+"
+	
+	
+	
+	comment " return the associations between actor and use case present in the diagram"
+      end
+
+      operation 213504 "fragments"
+	const public return_type class_ref 146818 // UmlFragment
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}const QVector<${type}> & ${name}${(}${)}${const}${volatile}${abstract} {
+    return _fragments;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type}[] ${name}${(}${)}${throws}${staticnl}{
+  return _fragments;
+}
+"
+	
+	
+	
+	comment " return the fragments present in the diagram"
+      end
+
+      operation 213632 "subjects"
+	const public return_type class_ref 147330 // UmlSubject
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}const QVector<${type}> & ${name}${(}${)}${const}${volatile}${abstract} {
+    return _subjects;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type}[] ${name}${(}${)}${throws}${staticnl}{
+  return _subjects;
+}
+"
+	
+	
+	
+	comment " return the subjects present in the diagram"
+      end
+
+      classrelation 162176 // _use_cases (<directional composition>)
+	relation 162176 *-->
+	  stereotype "vector"
+	  a role_name "_use_cases" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}QVector<${type}> ${name}${value};
+"
+	    java "  ${comment}${visibility}${static}${final}${transient}${volatile}${type}[] ${name}${value};
+"
+	    classrelation_ref 162176 // _use_cases (<directional composition>)
+	  b parent class_ref 147586 // UmlUseCaseReference
+      end
+
+      classrelation 162304 // _actors (<directional composition>)
+	relation 162304 *-->
+	  stereotype "vector"
+	  a role_name "_actors" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}QVector<${type}> ${name}${value};
+"
+	    java "  ${comment}${visibility}${static}${final}${transient}${volatile}${type}[] ${name}${value};
+"
+	    classrelation_ref 162304 // _actors (<directional composition>)
+	  b parent class_ref 7169 // UmlClass
+      end
+
+      classrelation 162432 // _rels (<directional composition>)
+	relation 162432 *-->
+	  stereotype "vector"
+	  a role_name "_rels" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}QVector<${type}> ${name}${value};
+"
+	    java "  ${comment}${visibility}${static}${final}${transient}${volatile}${type}[] ${name}${value};
+"
+	    classrelation_ref 162432 // _rels (<directional composition>)
+	  b parent class_ref 147842 // UmlUseCaseAssociation
+      end
+
+      classrelation 162560 // _fragments (<directional composition>)
+	relation 162560 *-->
+	  stereotype "vector"
+	  a role_name "_fragments" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}QVector<${type}> ${name}${value};
+"
+	    java "  ${comment}${visibility}${static}${final}${transient}${volatile}${type}[] ${name}${value};
+"
+	    classrelation_ref 162560 // _fragments (<directional composition>)
+	  b parent class_ref 146818 // UmlFragment
+      end
+
+      classrelation 162688 // _subjects (<directional composition>)
+	relation 162688 *-->
+	  stereotype "vector"
+	  a role_name "_subjects" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}QVector<${type}> ${name}${value};
+"
+	    java "  ${comment}${visibility}${static}${final}${transient}${volatile}${type}[] ${name}${value};
+"
+	    classrelation_ref 162688 // _subjects (<directional composition>)
+	  b parent class_ref 147330 // UmlSubject
+      end
+
+      operation 213760 "read_"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_visibility private cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment " internal, don't call it"
+      end
+
+      operation 214144 "~UmlBaseUseCaseDiagramDefinition"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment "  to avoid compiler warning, don't call it"
+      end
+
+      extra_member 3200 "friend"
+	
+	cpp "  friend class UmlBaseUseCaseDiagram;
+" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+      end
+    end
+
+    class 149632 "UmlBaseSequenceDiagramDefinition"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " this class manages sequence diagram definition"
+      operation 214272 "instances"
+	const public return_type class_ref 148098 // UmlClassInstanceReference
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}const QVector<${type}> & ${name}${(}${)}${const}${volatile}${abstract} {
+    return _instances;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type}[] ${name}${(}${)}${throws}${staticnl}{
+  return _instances;
+}
+"
+	
+	
+	
+	comment " return the instances present in the diagram"
+      end
+
+      operation 214400 "messages"
+	const public return_type class_ref 148610 // UmlSequenceMessage
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}const QVector<${type}> & ${name}${(}${)}${const}${volatile}${abstract} {
+    return _messages;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type}[] ${name}${(}${)}${throws}${staticnl}{
+  return _messages;
+}
+"
+	
+	
+	
+	comment " return the messages present in the diagram,
+ ordonned following the sending time"
+      end
+
+      operation 214528 "fragments"
+	const public return_type class_ref 146818 // UmlFragment
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}const QVector<${type}> & ${name}${(}${)}${const}${volatile}${abstract} {
+    return _fragments;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type}[] ${name}${(}${)}${throws}${staticnl}{
+  return _fragments;
+}
+"
+	
+	
+	
+	comment " return the fragments present in the diagram"
+      end
+
+      classrelation 163072 // _instances (<directional composition>)
+	relation 163072 *-->
+	  stereotype "vector"
+	  a role_name "_instances" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}QVector<${type}> ${name}${value};
+"
+	    java "  ${comment}${visibility}${static}${final}${transient}${volatile}${type}[] ${name}${value};
+"
+	    classrelation_ref 163072 // _instances (<directional composition>)
+	  b parent class_ref 148098 // UmlClassInstanceReference
+      end
+
+      classrelation 163200 // _messages (<directional composition>)
+	relation 163200 *-->
+	  stereotype "vector"
+	  a role_name "_messages" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}QVector<${type}> ${name}${value};
+"
+	    java "  ${comment}${visibility}${static}${final}${transient}${volatile}${type}[] ${name}${value};
+"
+	    classrelation_ref 163200 // _messages (<directional composition>)
+	  b parent class_ref 148610 // UmlSequenceMessage
+      end
+
+      classrelation 163328 // _fragments (<directional composition>)
+	relation 163328 *-->
+	  stereotype "vector"
+	  a role_name "_fragments" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}QVector<${type}> ${name}${value};
+"
+	    java "  ${comment}${visibility}${static}${final}${transient}${volatile}${type}[] ${name}${value};
+"
+	    classrelation_ref 163328 // _fragments (<directional composition>)
+	  b parent class_ref 146818 // UmlFragment
+      end
+
+      extra_member 3328 "qsort"
+	
+	cpp "" "static void qsort(UmlSequenceMessage ** v, int low, int high)
+{
+  if (low < high) {
+    int lo = low;
+    int hi = high + 1;
+    int e = v[low]->sentAt();
+    
+    for (;;) {
+      while ((++lo < hi) && (v[lo]->sentAt() <= e))
+	;
+      while (v[--hi]->sentAt() > e);
+	;
+      
+      if (lo < hi) {
+	UmlSequenceMessage * x = v[lo];
+	
+	v[lo] = v[hi];
+	v[hi] = x;
+      }
+      else
+	break;
+    }
+    
+    UmlSequenceMessage * x = v[low];
+	
+    v[low] = v[hi];
+    v[hi] = x;
+    
+    qsort(v, low, hi - 1);
+    qsort(v, hi + 1, high);
+  }
+}
+"
+	java ""
+	php ""
+	python ""
+	idl ""
+      end
+
+      operation 214656 "read_"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_visibility private cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment " internal, don't call it"
+      end
+
+      operation 215040 "~UmlBaseSequenceDiagramDefinition"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment "  to avoid compiler warning, don't call it"
+      end
+
+      extra_member 3456 "friend"
+	
+	cpp "  friend class UmlBaseSequenceDiagram;
+" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+      end
+    end
+
+    class 149888 "UmlBaseCollaborationDiagramDefinition"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " this class manages collaboration diagram definition"
+      operation 215168 "instances"
+	const public return_type class_ref 148098 // UmlClassInstanceReference
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}const QVector<${type}> & ${name}${(}${)}${const}${volatile}${abstract} {
+    return _instances;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type}[] ${name}${(}${)}${throws}${staticnl}{
+  return _instances;
+}
+"
+	
+	
+	
+	comment " return the instances present in the diagram"
+      end
+
+      operation 215296 "messages"
+	const public return_type class_ref 148994 // UmlCollaborationMessage
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}const QVector<${type}> & ${name}${(}${)}${const}${volatile}${abstract} {
+    return _messages;
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type}[] ${name}${(}${)}${throws}${staticnl}{
+  return _messages;
+}
+"
+	
+	
+	
+	comment " return the messages present in the diagram,
+ ordonned following their rank"
+      end
+
+      classrelation 163712 // _instances (<directional composition>)
+	relation 163712 *-->
+	  stereotype "vector"
+	  a role_name "_instances" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}QVector<${type}> ${name}${value};
+"
+	    java "  ${comment}${visibility}${static}${final}${transient}${volatile}${type}[] ${name}${value};
+"
+	    classrelation_ref 163712 // _instances (<directional composition>)
+	  b parent class_ref 148098 // UmlClassInstanceReference
+      end
+
+      classrelation 163840 // _messages (<directional composition>)
+	relation 163840 *-->
+	  stereotype "vector"
+	  a role_name "_messages" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}QVector<${type}> ${name}${value};
+"
+	    java "  ${comment}${visibility}${static}${final}${transient}${volatile}${type}[] ${name}${value};
+"
+	    classrelation_ref 163840 // _messages (<directional composition>)
+	  b parent class_ref 148994 // UmlCollaborationMessage
+      end
+
+      operation 215424 "read_"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_visibility private cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment " internal, don't call it"
+      end
+
+      operation 215808 "~UmlBaseCollaborationDiagramDefinition"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment "  to avoid compiler warning, don't call it"
+      end
+
+      extra_member 3584 "friend"
+	
+	cpp "  friend class UmlBaseCollaborationDiagram;
+" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+      end
+    end
+  end
+
+  deploymentview 128128 "Diagram Deployment view"
+    //deployment diagram settings
+    package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+    draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+    artifact 142208 "UmlBaseFragment"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+#include \"UmlCom.h\"
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+import java.util.*;
+${definition}"
+      associated_classes
+	class_ref 147072 // UmlBaseFragment
+      end
+    end
+
+    artifact 142336 "UmlBaseFragmentCompartment"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+// to avoid compiler warning
+#include \"UmlFragment.h\"
+
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+#include \"UmlCom.h\"
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 147200 // UmlBaseFragmentCompartment
+      end
+    end
+
+    artifact 142592 "UmlBaseSubject"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+#include \"UmlCom.h\"
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 147456 // UmlBaseSubject
+      end
+    end
+
+    artifact 142848 "UmlBaseUseCaseReference"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+#include \"UmlCom.h\"
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+import java.util.*;
+${definition}"
+      associated_classes
+	class_ref 147712 // UmlBaseUseCaseReference
+      end
+    end
+
+    artifact 143104 "UmlBaseUseCaseAssociation"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+#include \"UmlCom.h\"
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+import java.util.*;
+${definition}"
+      associated_classes
+	class_ref 147968 // UmlBaseUseCaseAssociation
+      end
+    end
+
+    artifact 143360 "UmlBaseClassInstanceReference"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+#include \"UmlCom.h\"
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 148224 // UmlBaseClassInstanceReference
+      end
+    end
+
+    artifact 143616 "UmlBaseMessage"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+#include \"UmlCom.h\"
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+import java.util.*;
+${definition}"
+      associated_classes
+	class_ref 148480 // UmlBaseMessage
+      end
+    end
+
+    artifact 143872 "aMessageKind"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 148736 // aMessageKind
+      end
+    end
+
+    artifact 144000 "UmlBaseSequenceMessage"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+#include \"UmlCom.h\"
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+import java.util.*;
+${definition}"
+      associated_classes
+	class_ref 148864 // UmlBaseSequenceMessage
+      end
+    end
+
+    artifact 144256 "UmlBaseCollaborationMessage"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+#include \"UmlCom.h\"
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+import java.util.*;
+${definition}"
+      associated_classes
+	class_ref 149120 // UmlBaseCollaborationMessage
+      end
+    end
+
+    artifact 144512 "UmlBaseUseCaseDiagramDefinition"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+// to avoid compiler warning
+#include \"UmlClass.h\"
+#include \"UmlSubject.h\"
+#include \"UmlFragment.h\"
+#include \"UmlFragmentCompartment.h\"
+#include \"UmlUseCaseReference.h\"
+#include \"UmlUseCaseAssociation.h\"
+
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+#include \"UmlCom.h\"
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+import java.util.*;
+${definition}"
+      associated_classes
+	class_ref 149376 // UmlBaseUseCaseDiagramDefinition
+      end
+    end
+
+    artifact 144768 "UmlBaseSequenceDiagramDefinition"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+// to avoid compiler warning
+#include \"UmlFragment.h\"
+#include \"UmlFragmentCompartment.h\"
+#include \"UmlClassInstanceReference.h\"
+#include \"UmlSequenceMessage.h\"
+
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+#include \"UmlCom.h\"
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+import java.util.*;
+${definition}"
+      associated_classes
+	class_ref 149632 // UmlBaseSequenceDiagramDefinition
+      end
+    end
+
+    artifact 145024 "UmlBaseCollaborationDiagramDefinition"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+// to avoid compiler warning
+#include \"UmlCollaborationMessage.h\"
+#include \"UmlClassInstanceReference.h\"
+
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+#include \"UmlCom.h\"
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+import java.util.*;
+${definition}"
+      associated_classes
+	class_ref 149888 // UmlBaseCollaborationDiagramDefinition
+      end
+    end
+  end
+end

@@ -1,0 +1,32 @@
+class ConfirmBox
+!!!128514.java!!!	ConfirmBox(inout msg : string)
+  super(new Frame(), "Html generator", true);
+  setLayout(new BorderLayout());
+  add("Center", new Label(msg));
+  
+  Panel p = new Panel();
+  
+  p.setLayout(new FlowLayout());
+  p.add(yes = new Button("Yes"));
+  yes.addActionListener(this); 
+  p.add(no = new Button("No"));
+  no.addActionListener(this); 
+  add("South",p);
+  pack();
+
+  Dimension d = getToolkit().getScreenSize();
+  setLocation(d.width/2,d.height/2);
+  
+  setModal(true);
+  show();
+!!!128386.java!!!	ok() : bool
+  return choice;
+!!!128642.java!!!	actionPerformed(inout ae : ActionEvent) : void
+  if(ae.getSource() == yes) {
+    choice = true;
+    dispose();
+  }
+  else if(ae.getSource() == no) {
+    choice = false;
+    dispose();
+  }

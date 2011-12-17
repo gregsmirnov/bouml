@@ -1,0 +1,8 @@
+class UmlDestroyObjectAction
+!!!271747.cpp!!!	write(inout out : FileOut) : void
+  write_begin(out, "DestroyObjectAction");
+  if (isDestroyLinks())
+    out << " isDestroyLinks=\"true\"";
+  if (isDestroyOwnedObjects())
+    out << " isDestroyOwnedObjects=\"true\"";
+  write_end(out);

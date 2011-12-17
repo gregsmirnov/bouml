@@ -1,0 +1,14 @@
+class UmlAccessVariableValueAction
+!!!206082.cpp!!!	write_var_end(inout out : FileOut, in k : string) : void
+  write_end(out, TRUE);
+  
+  UmlItem * v = variable();
+  
+  if (v != 0) {
+    out.indent();
+    out << "<variable";
+    out.idref(v);
+    out << "/>\n";
+  }
+
+  write_close(out);

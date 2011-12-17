@@ -1,0 +1,3 @@
+class UmlJoinPseudoState
+!!!207874.cpp!!!	sKind() : str
+  return "join";

@@ -1,0 +1,27 @@
+class UmlBaseActivityRegion
+!!!157056.cpp!!!	associatedDiagram() : UmlActivityDiagram
+  read_if_needed_();
+
+  return _assoc_diagram;
+!!!157056.java!!!	associatedDiagram() : UmlActivityDiagram
+  read_if_needed_();
+
+  return _assoc_diagram;
+!!!157184.cpp!!!	set_AssociatedDiagram(in d : UmlActivityDiagram) : bool
+  UmlCom::send_cmd(_identifier, setAssocDiagramCmd, (d == 0) ? (void *) 0 : ((UmlBaseItem *) d)->_identifier);
+  if (UmlCom::read_bool()) {
+    _assoc_diagram = d;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!157184.java!!!	set_AssociatedDiagram(in d : UmlActivityDiagram) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setAssocDiagramCmd, (d == null) ? (long) 0 : d.identifier_());
+  UmlCom.check();
+  _assoc_diagram = d;
+!!!157312.cpp!!!	read_uml_() : void
+  _assoc_diagram = (UmlActivityDiagram *) UmlBaseItem::read_();
+  UmlBaseItem::read_uml_();
+!!!157312.java!!!	read_uml_() : void
+  _assoc_diagram = (UmlActivityDiagram) UmlBaseItem.read_();
+  super.read_uml_();

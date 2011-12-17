@@ -1,0 +1,9 @@
+class UmlBaseExpansionNode
+!!!189696.cpp!!!	create(inout parent : UmlExpansionRegion, inout s : str) : UmlExpansionNode
+  return (UmlExpansionNode *) parent->create_(anExpansionNode, s);
+!!!189696.java!!!	create(inout parent : UmlExpansionRegion, inout s : str) : UmlExpansionNode
+  return (UmlExpansionNode) parent.create_(anItemKind.anExpansionNode, s);
+!!!189824.cpp!!!	kind() : anItemKind
+  return anExpansionNode;
+!!!189824.java!!!	kind() : anItemKind
+  return anItemKind.anExpansionNode;

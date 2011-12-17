@@ -1,0 +1,5 @@
+class UmlUseCaseDiagram
+!!!146306.cpp!!!	orderWeight() : int
+return 6;
+!!!146306.java!!!	orderWeight() : int
+return 6;

@@ -1,0 +1,41 @@
+class UmlPackage
+!!!201090.cpp!!!	uml2cpp(in rec : bool) : void
+  if (rec) {
+    const QVector<UmlItem> ch = children();
+    unsigned n = ch.size();
+    
+    for (unsigned i = 0; i != n; i += 1)
+      ch[i]->uml2cpp(rec);
+  }
+!!!196994.cpp!!!	uml2java(in rec : bool) : void
+  if (rec) {
+    const QVector<UmlItem> ch = children();
+    unsigned n = ch.size();
+    
+    for (unsigned i = 0; i != n; i += 1)
+      ch[i]->uml2java(rec);
+  }
+!!!204802.cpp!!!	uml2idl(in rec : bool) : void
+  if (rec) {
+    const QVector<UmlItem> ch = children();
+    unsigned n = ch.size();
+    
+    for (unsigned i = 0; i != n; i += 1)
+      ch[i]->uml2idl(rec);
+  }
+!!!206978.cpp!!!	uml2php(in rec : bool) : void
+  if (rec) {
+    const QVector<UmlItem> ch = children();
+    unsigned n = ch.size();
+    
+    for (unsigned i = 0; i != n; i += 1)
+      ch[i]->uml2php(rec);
+  }
+!!!130051.cpp!!!	uml2python(in rec : bool) : void
+  if (rec) {
+    const QVector<UmlItem> ch = children();
+    unsigned n = ch.size();
+    
+    for (unsigned i = 0; i != n; i += 1)
+      ch[i]->uml2python(rec);
+  }

@@ -1,0 +1,39 @@
+class UmlBaseParameterSet
+!!!189952.cpp!!!	create(inout parent : UmlActivityAction, inout s : str) : UmlActivityParameter
+  return (UmlActivityParameter *) parent->create_(aParameterSet, s);
+!!!189952.java!!!	create(inout parent : UmlActivityAction, inout s : str) : UmlActivityParameter
+  return (UmlActivityParameter) parent.create_(anItemKind.aParameterSet, s);
+!!!190080.cpp!!!	kind() : anItemKind
+  return aParameterSet;
+!!!190080.java!!!	kind() : anItemKind
+  return anItemKind.aParameterSet;
+!!!190464.cpp!!!	pins() : UmlActivityPin
+  read_if_needed_();
+  return _pins;
+!!!190464.java!!!	pins() : UmlActivityPin
+  read_if_needed_();
+  return (UmlActivityPin[]) _pins.clone();
+!!!190592.cpp!!!	set_Pins(in v : UmlActivityPin) : bool
+  UmlCom::send_cmd(_identifier, replaceParameterCmd, (const QVector<UmlItem> &) v);
+  if (UmlCom::read_bool()) {
+    if (_defined) _pins = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!190592.java!!!	set_Pins(in v : UmlActivityPin) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.replaceParameterCmd, v);
+  UmlCom.check();
+  _pins = (UmlActivityPin[]) v.clone();
+!!!190720.cpp!!!	unload(in rec : bool, in del : bool) : void
+  _pins.resize(0);
+  UmlBaseItem::unload(rec, del);
+!!!190720.java!!!	unload(in rec : bool, in del : bool) : void
+  _pins = null;
+  super.unload(rec, del);
+!!!190848.cpp!!!	read_uml_() : void
+  UmlBaseItem::read_uml_();
+  UmlCom::read_item_list((QVector<UmlItem> &) _pins);
+!!!190848.java!!!	read_uml_() : void
+  super.read_uml_();
+  _pins = (UmlActivityPin[]) UmlCom.read_item_list();

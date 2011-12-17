@@ -1,0 +1,5 @@
+class UmlJoinPseudoState
+!!!147202.cpp!!!	sKind() : string
+  return "join pseudo state";
+!!!147202.java!!!	sKind() : string
+  return "join pseudo state";

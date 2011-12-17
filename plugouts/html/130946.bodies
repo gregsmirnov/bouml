@@ -1,0 +1,5 @@
+class UmlTerminatePseudoState
+!!!146306.cpp!!!	sKind() : string
+  return "terminate pseudo state";
+!!!146306.java!!!	sKind() : string
+  return "terminate pseudo state";

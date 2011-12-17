@@ -1,0 +1,9 @@
+class UmlBaseObjectDiagram
+!!!152832.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlObjectDiagram
+  return (UmlObjectDiagram *) parent->create_(anObjectDiagram, s);
+!!!152832.java!!!	create(inout parent : UmlItem, inout s : str) : UmlObjectDiagram
+  return (UmlObjectDiagram) parent.create_(anItemKind.anObjectDiagram, s);
+!!!152960.cpp!!!	kind() : anItemKind
+  return anObjectDiagram;
+!!!152960.java!!!	kind() : anItemKind
+  return anItemKind.anObjectDiagram;

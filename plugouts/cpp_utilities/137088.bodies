@@ -1,0 +1,72 @@
+class UmlBaseOnSignalAction
+!!!164736.cpp!!!	signal() : string
+  read_if_needed_();
+  return _signal;
+!!!164736.java!!!	signal() : string
+  read_if_needed_();
+  return _signal;
+!!!164864.cpp!!!	set_Signal(in v : str) : bool
+  return set_it_(_signal, v, setUmlActivityCmd);
+!!!164864.java!!!	set_Signal(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setUmlActivityCmd, v);
+  UmlCom.check();
+
+  _signal = v;
+!!!164992.cpp!!!	cppSignal() : string
+  read_if_needed_();
+  return _cpp_signal;
+!!!164992.java!!!	cppSignal() : string
+  read_if_needed_();
+  return _cpp_signal;
+!!!165120.cpp!!!	set_CppSignal(in v : str) : bool
+  return set_it_(_cpp_signal, v, setCppActivityCmd);
+!!!165120.java!!!	set_CppSignal(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setCppActivityCmd, v);
+  UmlCom.check();
+
+  _cpp_signal = v;
+!!!165248.cpp!!!	javaSignal() : string
+  read_if_needed_();
+  return _java_signal;
+!!!165248.java!!!	javaSignal() : string
+  read_if_needed_();
+  return _java_signal;
+!!!165376.cpp!!!	set_JavaSignal(in v : str) : bool
+  return set_it_(_java_signal, v, setJavaActivityCmd);
+!!!165376.java!!!	set_JavaSignal(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setJavaActivityCmd, v);
+  UmlCom.check();
+
+  _java_signal = v;
+!!!165504.cpp!!!	unload(in rec : bool, in del : bool) : void
+  _signal = 0;
+#ifdef WITHCPP
+  _cpp_signal = 0;
+#endif
+#ifdef WITHJAVA
+  _java_signal = 0;
+#endif
+  UmlBaseActivityAction::unload(rec, del);
+!!!165504.java!!!	unload(in rec : bool, in del : bool) : void
+  _signal = null;
+  _cpp_signal = null;
+  _java_signal = null;
+  super.unload(rec, del);
+!!!165632.cpp!!!	read_uml_() : void
+  UmlBaseActivityAction::read_uml_();
+  _signal = UmlCom::read_string();
+!!!165632.java!!!	read_uml_() : void
+  super.read_uml_();
+  _signal = UmlCom.read_string();
+!!!165760.cpp!!!	read_cpp_() : void
+  UmlBaseActivityAction::read_cpp_();
+  _cpp_signal = UmlCom::read_string();
+!!!165760.java!!!	read_cpp_() : void
+  super.read_cpp_();
+  _cpp_signal = UmlCom.read_string();
+!!!165888.cpp!!!	read_java_() : void
+  UmlBaseActivityAction::read_java_();
+  _java_signal = UmlCom::read_string();
+!!!165888.java!!!	read_java_() : void
+  super.read_java_();
+  _java_signal = UmlCom.read_string();

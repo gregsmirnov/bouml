@@ -1,0 +1,1271 @@
+format 75
+"Aux" // Aux
+  revision 8
+  modified_by 2 "pages4"
+  // class settings
+  //class diagram settings
+  draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default show_msg_context default draw_all_relations default shadow default show_stereotype_properties default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+  show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+  show_infonote default drawing_language default show_stereotype_properties default
+  
+  classview 128002 "Aux"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default show_msg_context default draw_all_relations default shadow default show_stereotype_properties default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default show_stereotype_properties default
+    associated_deployment_view deploymentview_ref 128002 // Aux
+    class 143362 "Dialog"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name} : public QDialog {
+${members}};
+
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      extra_member 128130 "Q_OBJECT"
+	
+	cpp "Q_OBJECT" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+      end
+
+      operation 188546 "Dialog"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${name}${(}${)}${volatile};
+"
+	cpp_def "${inline}${class}::${name}${(}${)}${volatile} : QDialog(0, 0, TRUE) {
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      attribute 128130 "filter1_le"
+	protected explicit_type "QLineEdit"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 128258 "filter2_le"
+	protected explicit_type "QLineEdit"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 130306 "filter3_le"
+	protected explicit_type "QLineEdit"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 128386 "with1_rb"
+	protected explicit_type "QRadioButton"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 128514 "with2_rb"
+	protected explicit_type "QRadioButton"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 130050 "with3_rb"
+	protected explicit_type "QRadioButton"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 128642 "and12_rb"
+	protected explicit_type "QRadioButton"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 130178 "and23_rb"
+	protected explicit_type "QRadioButton"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 130434 "stereotype_le"
+	protected explicit_type "QLineEdit"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 130562 "any_rb"
+	protected explicit_type "QRadioButton"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 130690 "is_rb"
+	protected explicit_type "QRadioButton"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 130818 "isnot_rb"
+	protected explicit_type "QRadioButton"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 128770 "artifact_cb"
+	protected explicit_type "QCheckBox"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 128898 "class_cb"
+	protected explicit_type "QCheckBox"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 129026 "operation_cb"
+	protected explicit_type "QCheckBox"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 129154 "attribute_cb"
+	protected explicit_type "QCheckBox"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 129282 "relation_cb"
+	protected explicit_type "QCheckBox"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 129410 "cpp_cb"
+	protected explicit_type "QCheckBox"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 129538 "java_cb"
+	protected explicit_type "QCheckBox"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 143618 "php_cb"
+	protected explicit_type "QCheckBox"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 129155 "python_cb"
+	protected explicit_type "QCheckBox"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 129666 "idl_cb"
+	protected explicit_type "QCheckBox"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 129794 "current_le"
+	protected explicit_type "QLineEdit"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 129922 "new_le"
+	protected explicit_type "QLineEdit"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      extra_member 128258 "slots"
+	
+	cpp "  protected slots:
+" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+      end
+
+      operation 188802 "do_replace"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 189186 "digest"
+	protected explicit_return_type "QCString"
+	nparams 1
+	  param in name "s" explicit_type "QString"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}const ${t0} ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} ${p0}${)}${const}${volatile}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 193410 "polish"
+	cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+    end
+
+    class 143490 "Context"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 191362 "Context"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "o" explicit_type "QCString"
+	  param in name "f" explicit_type "QCString"
+	cpp_decl "    ${comment}${name}${(}const ${t0} & ${p0}, const ${t1} & ${p1}${)}${volatile};
+"
+	cpp_def "${inline}${class}::${name}${(}const ${t0} & ${p0}, const ${t1} & ${p1}${)}${volatile}
+  : _old(o), _future(f), _n_match(0), _n_err(0) {
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 191490 "set_filters"
+	public explicit_return_type "const char *"
+	nparams 8
+	  param in name "f1" explicit_type "QCString"
+	  param in name "f2" explicit_type "QCString"
+	  param in name "f3" explicit_type "QCString"
+	  param in name "w1" explicit_type "bool"
+	  param in name "w2" explicit_type "bool"
+	  param in name "w3" explicit_type "bool"
+	  param in name "and12" explicit_type "bool"
+	  param in name "and23" explicit_type "bool"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}const ${t0} & ${p0}, const ${t1} & ${p1}, const ${t2} & ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}, ${t6} ${p6}, ${t7} ${p7}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} & ${p0}, const ${t1} & ${p1}, const ${t2} & ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}, ${t6} ${p6}, ${t7} ${p7}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 191618 "set_stereotype"
+	cpp_inline public explicit_return_type "void"
+	nparams 3
+	  param in name "s" explicit_type "QCString"
+	  param in name "eq" explicit_type "bool"
+	  param in name "neq" explicit_type "bool"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}const ${t0} & ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} & ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${const}${volatile}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 191746 "set_targets"
+	cpp_inline public explicit_return_type "void"
+	nparams 5
+	  param in name "art" explicit_type "bool"
+	  param in name "cl" explicit_type "bool"
+	  param in name "op" explicit_type "bool"
+	  param in name "att" explicit_type "bool"
+	  param in name "rel" explicit_type "bool"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 191874 "set_language"
+	cpp_inline public explicit_return_type "void"
+	nparams 5
+	  param in name "c" explicit_type "bool"
+	  param in name "j" explicit_type "bool"
+	  param in name "p" explicit_type "bool"
+	  param in name "y" explicit_type "bool"
+	  param in name "i" explicit_type "bool"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 191234 "match_stereotype"
+	public explicit_return_type "bool"
+	nparams 1
+	  param in name "s" explicit_type "QCString"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}const ${t0} & ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} & ${p0}${)}${const}${volatile}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 189314 "match"
+	public explicit_return_type "bool"
+	nparams 1
+	  param in name "s" explicit_type "QCString"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 190978 "err"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+  _n_err += 1;
+}
+"
+	
+	
+	
+	
+      end
+
+      operation 191106 "replace"
+	public explicit_return_type "QCString"
+	nparams 1
+	  param in name "s" explicit_type "QCString"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 192002 "get_onArtifact"
+	const cpp_inline public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+  return _onArtifact;
+}
+"
+	cpp_name_spec "${name}"
+	final 
+	java_name_spec "get_${name}"
+	
+	
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 135682 // onArtifact
+      end
+
+      operation 192130 "get_onClass"
+	const cpp_inline public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+  return _onClass;
+}
+"
+	cpp_name_spec "${name}"
+	final 
+	java_name_spec "get_${name}"
+	
+	
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 135554 // onClass
+      end
+
+      operation 192258 "get_onOperation"
+	const cpp_inline public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+  return _onOperation;
+}
+"
+	cpp_name_spec "${name}"
+	final 
+	java_name_spec "get_${name}"
+	
+	
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 135426 // onOperation
+      end
+
+      operation 192386 "get_onAttribute"
+	const cpp_inline public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+  return _onAttribute;
+}
+"
+	cpp_name_spec "${name}"
+	final 
+	java_name_spec "get_${name}"
+	
+	
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 135298 // onAttribute
+      end
+
+      operation 192514 "get_onRelation"
+	const cpp_inline public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+  return _onRelation;
+}
+"
+	cpp_name_spec "${name}"
+	final 
+	java_name_spec "get_${name}"
+	
+	
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 135170 // onRelation
+      end
+
+      operation 192642 "get_cpp"
+	const cpp_inline public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+  return _cpp;
+}
+"
+	cpp_name_spec "${name}"
+	final 
+	java_name_spec "get_${name}"
+	
+	
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 133122 // cpp
+      end
+
+      operation 192770 "get_java"
+	const cpp_inline public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+  return _java;
+}
+"
+	cpp_name_spec "${name}"
+	final 
+	java_name_spec "get_${name}"
+	
+	
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 133250 // java
+      end
+
+      operation 202498 "get_php"
+	const cpp_inline public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+  return _php;
+}
+"
+	cpp_name_spec "${name}"
+	final 
+	java_name_spec "get_${name}"
+	php_final 
+	php_name_spec "get${Name}"
+	
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 143490 // php
+      end
+
+      operation 129283 "get_python"
+	force_body_gen const cpp_inline public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+  return _python;
+}
+"
+	cpp_name_spec "${name}"
+	final 
+	java_name_spec "get_${name}"
+	php_final 
+	php_name_spec "get${Name}"
+	
+	python_name_spec "get${Name}"
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 129283 // python
+      end
+
+      operation 192898 "get_idl"
+	const cpp_inline public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+  return _idl;
+}
+"
+	cpp_name_spec "${name}"
+	final 
+	java_name_spec "get_${name}"
+	
+	
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 133378 // idl
+      end
+
+      operation 193026 "get_n_match"
+	const cpp_inline public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+  return _n_match;
+}
+"
+	cpp_name_spec "${name}"
+	final 
+	java_name_spec "get_${name}"
+	
+	
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 142210 // n_match
+      end
+
+      operation 193282 "get_n_err"
+	const cpp_inline public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+  return _n_err;
+}
+"
+	cpp_name_spec "${name}"
+	final 
+	java_name_spec "get_${name}"
+	
+	
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 142338 // n_err
+      end
+
+      attribute 130946 "filter1"
+	protected explicit_type "QCString"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} _${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 131074 "filter2"
+	protected explicit_type "QCString"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} _${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 131202 "filter3"
+	protected explicit_type "QCString"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} _${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 131330 "with1"
+	protected explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} _${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 133762 "with2"
+	protected explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} _${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 133890 "with3"
+	protected explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} _${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 131970 "stereotype"
+	protected explicit_type "QCString"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} _${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 132226 "is"
+	protected explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} _${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 132354 "isnot"
+	protected explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} _${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 135682 "onArtifact"
+	protected explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} _${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	get_oper operation_ref 192002 // get_onArtifact
+      end
+
+      attribute 135554 "onClass"
+	protected explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} _${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	get_oper operation_ref 192130 // get_onClass
+      end
+
+      attribute 135426 "onOperation"
+	protected explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} _${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	get_oper operation_ref 192258 // get_onOperation
+      end
+
+      attribute 135298 "onAttribute"
+	protected explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} _${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	get_oper operation_ref 192386 // get_onAttribute
+      end
+
+      attribute 135170 "onRelation"
+	protected explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} _${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	get_oper operation_ref 192514 // get_onRelation
+      end
+
+      attribute 133122 "cpp"
+	protected explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} _${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	get_oper operation_ref 192642 // get_cpp
+      end
+
+      attribute 133250 "java"
+	protected explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} _${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	get_oper operation_ref 192770 // get_java
+      end
+
+      attribute 143490 "php"
+	protected explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} _${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	get_oper operation_ref 202498 // get_php
+      end
+
+      attribute 129283 "python"
+	protected explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} _${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	get_oper operation_ref 129283 // get_python
+      end
+
+      attribute 133378 "idl"
+	protected explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} _${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	get_oper operation_ref 192898 // get_idl
+      end
+
+      attribute 133506 "old"
+	protected explicit_type "QCString"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} _${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 133634 "future"
+	protected explicit_type "QCString"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} _${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 134018 "equation"
+	protected type class_ref 143618 // Equation
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} _${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 142210 "n_match"
+	protected explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} _${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	get_oper operation_ref 193026 // get_n_match
+      end
+
+      attribute 142338 "n_err"
+	protected explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} _${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	get_oper operation_ref 193282 // get_n_err
+      end
+
+      operation 189442 "match"
+	protected explicit_return_type "bool"
+	nparams 3
+	  param in name "s" explicit_type "QCString"
+	  param in name "filter" explicit_type "QCString"
+	  param in name "with" explicit_type "bool"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}, ${t2} ${p2}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} ${p0}, const ${t1} & ${p1}, ${t2} ${p2}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+    end
+
+    class 143618 "Equation"
+      visibility package stereotype "enum"
+      cpp_decl "${comment}enum ${name} {
+${items}
+};
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 134146 "NoFilter"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 134274 "Filter1"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 134530 "And12"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 134658 "Or12"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 134402 "And12_And23"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 134786 "And12_Or23"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 134914 "Or12_And23"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 135042 "Or12_Or23"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 147202 "LineEdit"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name} : public QLineEdit {
+${members}};
+
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 203906 "LineEdit"
+	public explicit_return_type ""
+	nparams 1
+	  param inout name "parent" explicit_type "QWidget"
+	cpp_decl "    ${comment}${name}${(}${t0} * ${p0}${v0}${)}${volatile};
+"
+	cpp_def "${inline}${class}::${name}${(}${t0} * ${p0}${)} : QLineEdit(${p0}) {
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 203650 "focusNextPrevChild"
+	protected explicit_return_type "bool"
+	nparams 1
+	  param in name "next" explicit_type "bool"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 203778 "keyPressEvent"
+	protected explicit_return_type "void"
+	nparams 1
+	  param inout name "e" explicit_type "QKeyEvent"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} * ${p0}${v0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} * ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+    end
+  end
+
+  deploymentview 128002 "Aux"
+    //deployment diagram settings
+    package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+    draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+    artifact 138498 "Dialog"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+#include <qdialog.h>
+#include <qlineedit.h>
+
+class QLineEdit;
+class QRadioButton;
+class QCheckBox;
+
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+#ifdef WIN32
+#include <stdlib.h>
+#endif
+
+#include <qdir.h>
+#include <qpushbutton.h>
+#include <qlayout.h>
+#include <qlabel.h>
+#include <qhbox.h>
+#include <qvbox.h>
+#include <qcheckbox.h>
+#include <qradiobutton.h>
+#include <qhbuttongroup.h>
+#include <qvgroupbox.h> 
+#include <qgrid.h>
+#include <qmessagebox.h>
+
+#include \"UmlCom.h\"
+#include \"Context.h\"
+#include \"UmlItem.h\"
+
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 147202 // LineEdit
+	class_ref 143362 // Dialog
+      end
+    end
+
+    artifact 138626 "Context"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+#include <qcstring.h>
+
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 143618 // Equation
+	class_ref 143490 // Context
+      end
+    end
+  end
+end

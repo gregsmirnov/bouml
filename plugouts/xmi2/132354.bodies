@@ -1,0 +1,3 @@
+class UmlForkPseudoState
+!!!207746.cpp!!!	sKind() : str
+  return "fork";

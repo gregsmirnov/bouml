@@ -1,0 +1,10 @@
+class UnresolvedWithContext
+!!!216834.cpp!!!	add(inout e : UmlItem, in id : string, in c : int) : void
+  All.append(UnresolvedWithContext(e, id, c));
+!!!216962.cpp!!!	solveThem() : void
+  QValueList<UnresolvedWithContext>::Iterator it;
+      
+  for (it = All.begin(); it != All.end(); ++it)
+    (*it).element->solve((*it).context, (*it).idref);
+    
+  All.clear();

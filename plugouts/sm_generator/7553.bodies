@@ -1,0 +1,5 @@
+class UmlClassMember
+!!!149890.cpp!!!	setComment(in s : string) : void
+  set_Description(((cppDecl().find("${description}") != -1) ? "// " : " ")
+		  + s);
+

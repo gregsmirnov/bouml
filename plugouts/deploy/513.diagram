@@ -1,0 +1,85 @@
+format 24
+
+classinstance 128 class_ref 6529 // bouml
+  name "" xyz 2 4 2000 life_line_z 2000
+classinstance 256 class_ref 6657 // plug_out
+  name "" mortal xyz 162 22 2000 life_line_z 2000
+classinstance 768 class_ref 5248 // UmlCom
+  name "" mortal xyz 331 43 2000 life_line_z 2000
+classinstance 1408 class_ref 8833 // UmlItem
+  name "" mortal xyz 428 114 2000 life_line_z 2000
+note 2816 "to get the item on which the plug-out is applied, you may also get the market items"
+  xyzwh 507 25 2000 146 111
+note 3712 "interactions with BOUML to get items definitions and execute commands are not shown"
+  xyzwh 41 176 2000 112 154
+note 4096 "Applicative part of the plug-out"
+  xyzwh 471 237 2000 110 75
+durationcanvas 384 classinstance_ref 128 // :bouml
+  xyzwh 19 84 2010 11 76
+durationcanvas 512 classinstance_ref 256 // :plug_out
+  xyzwh 188 84 2010 9 308
+durationcanvas 896 classinstance_ref 768 // :UmlCom
+  xyzwh 359 96 2015 11 42
+durationcanvas 1152 classinstance_ref 768 // :UmlCom
+  xyzwh 359 141 2020 11 70
+durationcanvas 1536 classinstance_ref 1408 // :UmlItem
+  xyzwh 455 208 2015 11 180
+durationcanvas 1920 classinstance_ref 768 // :UmlCom
+  xyzwh 359 280 2015 11 39
+durationcanvas 2176 classinstance_ref 768 // :UmlCom
+  xyzwh 359 325 2010 11 66
+durationcanvas 3456 classinstance_ref 1408 // :UmlItem
+  xyzwh 455 164 2020 11 40
+msg 640 asynchronous
+  from durationcanvas_ref 384 // 128
+  to durationcanvas_ref 512 // 256
+  yz 84 2000 explicitmsg "main(2, port_number)"
+  show_full_operations_definition default drawing_language default
+  label_xy 40 67
+msg 1024 synchronous
+  from durationcanvas_ref 512 // 256
+  to durationcanvas_ref 896 // 768
+  yz 96 2000 explicitmsg "connect()"
+  show_full_operations_definition default drawing_language default
+  args "port_number"
+  label_xy 208 79
+msg 1280 synchronous
+  from durationcanvas_ref 512 // 256
+  to durationcanvas_ref 1152 // 768
+  yz 141 2000 msg operation_ref 71296 // "targetItem() : UmlItem"
+  show_full_operations_definition default drawing_language default
+  label_xy 242 124
+msg 1664 synchronous
+  from durationcanvas_ref 512 // 256
+  to durationcanvas_ref 1536 // 1408
+  yz 208 2000 explicitmsg "'do it'"
+  show_full_operations_definition default drawing_language default
+  label_xy 312 191
+msg 1792 return
+  from durationcanvas_ref 1536 // 1408
+  to durationcanvas_ref 512 // 256
+  yz 242 2000 unspecifiedmsg
+  show_full_operations_definition default drawing_language default
+msg 2048 synchronous
+  from durationcanvas_ref 512 // 256
+  to durationcanvas_ref 1920 // 768
+  yz 280 2000 msg operation_ref 71680 // "bye() : void"
+  show_full_operations_definition default drawing_language default
+  label_xy 263 263
+msg 2304 synchronous
+  from durationcanvas_ref 512 // 256
+  to durationcanvas_ref 2176 // 768
+  yz 325 2000 msg operation_ref 71808 // "close() : void"
+  show_full_operations_definition default drawing_language default
+  label_xy 257 308
+msg 3968 synchronous
+  from durationcanvas_ref 1152 // 768
+  to durationcanvas_ref 3456 // 1408
+  yz 164 2000 explicitmsg "read"
+  show_full_operations_definition default drawing_language default
+  label_xy 399 147
+line 2944 -_-_
+  from ref 2816 z 1000 to point 436 87
+  line 3840 z 1000 to ref 1280
+preferred_whz 684 458 1
+end

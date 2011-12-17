@@ -1,0 +1,15 @@
+class UmlAttribute
+!!!128336.cpp!!!	check() : bool
+  if (name() == "the") {
+    UmlCom::trace("<font face=helvetica><b>already have attribute <i>the</i>, remove it</b></font><br><hr><br>");
+    return FALSE;
+  }
+  else
+    return TRUE;
+!!!128336.java!!!	check() : bool
+  if (name() == "the") {
+    UmlCom.trace("<font face=helvetica><b>already have attribute <i>the</i>, remove it</b></font><br><hr><br>");
+    return false;
+  }
+  else
+    return true;

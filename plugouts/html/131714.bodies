@@ -1,0 +1,5 @@
+class UmlShallowHistoryPseudoState
+!!!146690.cpp!!!	sKind() : string
+  return "shallow history pseudo state";
+!!!146690.java!!!	sKind() : string
+  return "shallow history pseudo state";

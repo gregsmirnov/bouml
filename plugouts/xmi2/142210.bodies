@@ -1,0 +1,112 @@
+class UmlActivityObject
+!!!209026.cpp!!!	write(inout out : FileOut) : void
+  const char * k = (parent()->kind() == anActivity)
+    ? "node" : "containedNode";
+    
+  out.indent();
+  out << '<' << k << " xmi:type=\"uml:";
+  
+  QCString st = stereotype();
+  
+  if (st == "datastore")
+    out << "DataStoreNode";
+  else if (st == "centralBuffer")
+    out << "CentralBufferNode";
+  else
+    out << "ObjectNode";
+  
+  out << "\" name=\"";
+  out.quote(name());
+  out << '"';
+  out.id(this);
+  if (isControlType())
+    out << " isControlType=\"true\"";
+  write_ordering(out);
+  write_selection(out);
+  write_in_state(out);
+  out << ">\n";
+  
+  out.indent(+1);
+  
+  write_description_properties(out);
+  write_multiplicity(out, multiplicity(), this);
+  UmlItem::write_type(out, type());
+
+  const QVector<UmlItem> ch = children();
+  unsigned n = ch.size();
+  
+  for (unsigned i = 0; i != n; i += 1)
+    ch[i]->write(out);
+  
+  write_incoming_flows(out);
+  
+  out.indent(-1);
+
+  out.indent();
+  out << "</" << k << ">\n";
+
+  unload();
+!!!128136.cpp!!!	solve_output_flows() : void
+  ControlOrData v = (isControlType()) ? IsControl : IsData;
+  const QVector<UmlItem> ch = children();
+  unsigned n = ch.size();
+  
+  for (unsigned i = 0; i != n; i += 1) {
+    UmlFlow * f = dynamic_cast<UmlFlow *>(ch[i]);
+
+    if ((f != 0) && (f->control_or_data() == Unset))
+      f->set_control_or_data(v);
+  }
+
+  QListIterator<UmlFlow> it(_incoming_flows);
+  
+  while (it.current() != 0) {
+    if (it.current()->control_or_data() == Unset)
+      it.current()->set_control_or_data(v);
+
+    ++it;
+  }
+!!!201986.cpp!!!	write_ordering(inout out : FileOut) : void
+  out << " ordering=\"";
+  switch (ordering()) {
+  case unordered:
+    out << "unordered";
+    break;
+  case ordered:
+    out << "ordered";
+    break;
+  case lifo:
+    out << "LIFO";
+    break;
+  default:
+    // fifo
+    out << "FIFO";
+    break;
+  }
+  out << '"';
+!!!202370.cpp!!!	write_in_state(inout out : FileOut) : void
+  QCString s = inState();
+  
+  if (!s.isEmpty()) {
+    UmlState * st = UmlState::find(s);
+
+    if (st != 0)
+      out.ref(st, "inState");
+    else {
+      // not legal but ...
+      out << " inState=\"";
+      out.quote(s);
+      out << '"';
+    }
+  }
+!!!202498.cpp!!!	write_selection(inout out : FileOut) : void
+  switch (_lang) {
+  case Uml:
+    UmlActivityItem::write_selection(out, selection());
+    break;
+  case Cpp:
+    UmlActivityItem::write_selection(out, cppSelection());
+  default:
+    // java
+    UmlActivityItem::write_selection(out, javaSelection());
+  }

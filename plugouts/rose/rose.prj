@@ -1,0 +1,38 @@
+format 22
+"rose"
+  cpp_root_dir "/tmp/import_rose/"
+
+
+  
+  // class settings
+  default_attribute_visibility protected default_relation_visibility protected default_operation_visibility public
+  //class diagram settings
+  draw_all_relations yes hide_attributes no hide_operations no show_full_members_definition no package_name_in_tab no class_drawing_mode natural drawing_language uml show_context_mode no auto_label_position yes
+  //use case diagram settings
+  package_name_in_tab no show_context no auto_label_position yes
+  //sequence diagram settings
+  show_full_operations_definition no write_horizontally no drawing_language uml
+  //collaboration diagram settings
+  show_full_operations_definition no show_hierarchical_rank no write_horizontally no drawing_language uml
+  //component diagram settings
+  package_name_in_tab no show_context no auto_label_position yes
+  draw_component_as_icon no show_component_req_prov no show_component_rea no
+  //deployment diagram settings
+  package_name_in_tab no show_context no write_horizontally yes auto_label_position yes
+  draw_component_as_icon no show_component_req_prov no show_component_rea no
+  //state diagram settings
+  package_name_in_tab no show_context no auto_label_position yes write_trans_label_horizontally yes
+  show_activities yes region_horizontally yes drawing_language uml
+  
+  class_color yellow duration_color white continuation_color gray note_color blue fragment_color white usecase_color yellow package_color white component_color green artifact_color green deploymentnode_color gray state_color yellow stateaction_color white 
+  font_size 10
+  diagram_format A4
+
+  mark_for_import
+  
+  package_ref 256 // API BASE
+
+  package_ref 385 // API USER
+
+  package_ref 128067 // Aux
+end

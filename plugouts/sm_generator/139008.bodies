@@ -1,0 +1,28 @@
+class UmlBaseAddVariableValueAction
+!!!180736.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlAddVariableValueAction
+  return (UmlAddVariableValueAction *) parent->create_(anAddVariableValueAction, s);
+!!!180736.java!!!	create(inout parent : UmlItem, inout s : str) : UmlAddVariableValueAction
+  return (UmlAddVariableValueAction) parent.create_(anItemKind.anAddVariableValueAction, s);
+!!!180864.cpp!!!	kind() : anItemKind
+  return anAddVariableValueAction;
+!!!180864.java!!!	kind() : anItemKind
+  return anItemKind.anAddVariableValueAction;
+!!!181248.cpp!!!	isReplaceAll() : bool
+  read_if_needed_();
+  return _replace_all;
+!!!181248.java!!!	isReplaceAll() : bool
+  read_if_needed_();
+  return _replace_all;
+!!!181376.cpp!!!	set_isReplaceAll(in v : bool) : bool
+  return set_it_(_replace_all, v, setFlagCmd);
+!!!181376.java!!!	set_isReplaceAll(in v : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setFlagCmd, (v) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _replace_all = v;
+!!!181504.cpp!!!	read_uml_() : void
+  UmlBaseAccessVariableValueAction::read_uml_();
+  _replace_all = UmlCom::read_bool();
+!!!181504.java!!!	read_uml_() : void
+  super.read_uml_();
+  _replace_all = UmlCom.read_bool();

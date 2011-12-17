@@ -1,0 +1,99 @@
+class Context
+!!!191490.cpp!!!	set_filters(in f1 : QCString, in f2 : QCString, in f3 : QCString, in w1 : bool, in w2 : bool, in w3 : bool, in and12 : bool, in and23 : bool) : const char *
+_filter1 = f1;
+_filter2 = f2;
+_filter3 = f3;
+_with1 = w1;
+_with2 = w2;
+_with3 = w3;
+
+if (! _filter1.isEmpty()) {
+  if (! _filter2.isEmpty()) {
+    if (! _filter3.isEmpty()) {
+      if (and12)
+	_equation = (and23) ? And12_And23 : And12_Or23;
+      else 
+	_equation = (and23) ? Or12_And23 : Or12_Or23;
+    }
+    else
+      _equation = (and12) ? And12 : Or12;
+  }
+  else if (! _filter3.isEmpty())
+    return "filter2 is empty but not filter3";
+  else
+    _equation = Filter1;
+}
+else if (! _filter2.isEmpty())
+  return "filter1 is empty but not filter2";
+else if (! _filter3.isEmpty())
+  return "filter1 is empty but not filter3";
+else 
+  _equation = NoFilter;
+
+return 0;
+!!!191618.cpp!!!	set_stereotype(in s : QCString, in eq : bool, in neq : bool) : void
+_stereotype = s;
+_is = eq;
+_isnot = neq;
+!!!191746.cpp!!!	set_targets(in art : bool, in cl : bool, in op : bool, in att : bool, in rel : bool) : void
+_onArtifact = art;
+_onClass = cl;
+_onOperation = op;
+_onAttribute = att;
+_onRelation = rel;
+!!!191874.cpp!!!	set_language(in c : bool, in j : bool, in p : bool, in y : bool, in i : bool) : void
+_cpp = c;
+_java = j;
+_php = p;
+_python = y;
+_idl = i;
+!!!191234.cpp!!!	match_stereotype(in s : QCString) : bool
+if (_is)
+  return (s == _stereotype);
+else if (_isnot)
+  return (s != _stereotype);
+else
+  return TRUE;
+!!!189314.cpp!!!	match(in s : QCString) : bool
+int index = 0;
+
+while ((index = s.find("\r", index)) != -1)
+  s.remove(index, 1);
+
+if (s.find(_old) == -1)
+  return FALSE;
+
+switch (_equation) {
+case NoFilter:
+  _n_match += 1;
+  return TRUE;
+case Filter1:
+  return match(s, _filter1, _with1);
+case And12:
+  return match(s, _filter1, _with1) && match(s, _filter2, _with2);
+case Or12:
+  return match(s, _filter1, _with1) || match(s, _filter2, _with2);
+case And12_And23:
+  return match(s, _filter1, _with1) && match(s, _filter2, _with2) && match(s, _filter3, _with3);
+case And12_Or23:
+  return match(s, _filter1, _with1) && match(s, _filter2, _with2) || match(s, _filter3, _with3);
+case Or12_And23:
+  return match(s, _filter1, _with1) || match(s, _filter2, _with2) && match(s, _filter3, _with3);
+default:
+  //Or12_Or23:
+  return match(s, _filter1, _with1) || match(s, _filter2, _with2) || match(s, _filter3, _with3);
+}
+!!!191106.cpp!!!	replace(in s : QCString) : QCString
+int index = 0;
+
+while ((index = s.find("\r", index)) != -1)
+  s.remove(index, 1);
+
+return s.replace(s.find(_old), _old.length(), _future);
+!!!189442.cpp!!!	match(in s : QCString, in filter : QCString, in with : bool) : bool
+if ((with) ? (s.find(filter) != -1) : (s.find(filter) == -1)) {
+  _n_match += 1;
+  return TRUE;
+}
+
+return FALSE;

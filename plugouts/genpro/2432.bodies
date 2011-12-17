@@ -1,0 +1,74 @@
+class UmlBaseClassItem
+!!!35456.cpp!!!	cppDecl() : string
+  read_if_needed_();
+  
+  return _cpp_decl;
+!!!35456.java!!!	cppDecl() : string
+  read_if_needed_();
+  
+  return _cpp_decl;
+!!!35584.cpp!!!	set_CppDecl(in s : str) : bool
+  return set_it_(_cpp_decl, s, setCppDeclCmd);
+!!!35584.java!!!	set_CppDecl(in s : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setCppDeclCmd, s);
+  UmlCom.check();
+
+  _cpp_decl = s;
+!!!35712.cpp!!!	javaDecl() : string
+  read_if_needed_();
+  
+  return _java_decl;
+!!!35712.java!!!	javaDecl() : string
+  read_if_needed_();
+  
+  return _java_decl;
+!!!35840.cpp!!!	set_JavaDecl(in s : str) : bool
+  return set_it_(_java_decl, s, setJavaDeclCmd);
+!!!35840.java!!!	set_JavaDecl(in s : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setJavaDeclCmd, s);
+  UmlCom.check();
+
+  _java_decl = s;
+!!!35968.cpp!!!	idlDecl() : string
+  read_if_needed_();
+  
+  return _idl_decl;
+!!!35968.java!!!	idlDecl() : string
+  read_if_needed_();
+  
+  return _idl_decl;
+!!!36096.cpp!!!	set_IdlDecl(in s : str) : bool
+  return set_it_(_idl_decl, s, setIdlDeclCmd);
+!!!36096.java!!!	set_IdlDecl(in s : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setIdlDeclCmd, s);
+  UmlCom.check();
+
+  _idl_decl = s;
+!!!36224.cpp!!!	unload(in rec : bool, in del : bool) : void
+#ifdef WITHCPP
+  _cpp_decl = 0;
+#endif
+#ifdef WITHJAVA
+  _java_decl = 0;
+#endif
+#ifdef WITHIDL
+  _idl_decl = 0;
+#endif
+  UmlBaseItem::unload(rec, del);
+!!!36224.java!!!	unload(in rec : bool, in del : bool) : void
+  _cpp_decl = null;
+  _java_decl = null;
+  _idl_decl = null;
+  super.unload(rec, del);
+!!!36352.cpp!!!	read_cpp_() : void
+  _cpp_decl = UmlCom::read_string();
+!!!36352.java!!!	read_cpp_() : void
+  _cpp_decl = UmlCom.read_string();
+!!!36480.cpp!!!	read_java_() : void
+  _java_decl = UmlCom::read_string();
+!!!36480.java!!!	read_java_() : void
+  _java_decl = UmlCom.read_string();
+!!!36608.cpp!!!	read_idl_() : void
+  _idl_decl = UmlCom::read_string();
+!!!36608.java!!!	read_idl_() : void
+  _idl_decl = UmlCom.read_string();

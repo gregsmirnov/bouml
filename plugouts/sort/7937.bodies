@@ -1,0 +1,5 @@
+class UmlComponentDiagram
+!!!146562.cpp!!!	orderWeight() : int
+return 6;
+!!!146562.java!!!	orderWeight() : int
+return 6;

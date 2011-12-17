@@ -1,0 +1,5 @@
+class UmlWriteVariableValueAction
+!!!205186.cpp!!!	write(inout out : FileOut) : void
+  write_begin(out, "WriteVariableAction");
+  write_var_end(out);
+

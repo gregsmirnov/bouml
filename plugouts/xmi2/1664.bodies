@@ -1,0 +1,9 @@
+class UmlBaseClassDiagram
+!!!11776.cpp!!!	create(inout parent : UmlClassView, in s : str) : UmlClassDiagram
+  return (UmlClassDiagram *) parent->create_(aClassDiagram, s);
+!!!11776.java!!!	create(inout parent : UmlClassView, in s : str) : UmlClassDiagram
+  return (UmlClassDiagram) parent.create_(anItemKind.aClassDiagram, s);
+!!!11904.cpp!!!	kind() : anItemKind
+  return aClassDiagram;
+!!!11904.java!!!	kind() : anItemKind
+  return anItemKind.aClassDiagram;

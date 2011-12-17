@@ -1,0 +1,34 @@
+class UmlActivityControlNode
+!!!195458.cpp!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  define();
+
+  UmlCom::message(name());
+
+  QCString s = sKind();
+  
+  s.replace(0, 1, s.left(1).upper());
+  UmlItem::html(s, (UmlDiagram *) 0);
+  
+  fw.write("<p>Defined in ");
+  parent()->write();
+  fw.write("</p>");
+  
+  write_children(pfix, rank, level);
+
+  unload(FALSE, FALSE);
+!!!195458.java!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  define();
+  
+  UmlCom.message(name());
+  
+  String s = sKind();
+    
+  html(s.substring(0, 1).toUpperCase().concat(s.substring(1)), null);
+  
+  fw.write("<p>Defined in ");
+  parent().write();
+  fw.write("</p>");
+  
+  write_children(pfix, rank, level);
+  
+  unload(false, false);

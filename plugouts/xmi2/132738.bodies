@@ -1,0 +1,137 @@
+class FileOut
+!!!145794.cpp!!!	FileOut(inout fp : QFile, in lf : bool, in utf8 : bool)
+  if (utf8)
+    setEncoding(QTextStream::UnicodeUTF8);
+!!!144642.cpp!!!	indent() : void
+  QTextStream & ts = *this;
+  
+  for (int n = _indent; n > 0; n -= 1)
+    ts << '\t';
+!!!145410.cpp!!!	id(in x : UmlItem) : void
+  ((QTextStream &) *this) << " xmi:id=\"BOUML_" << ((void *) x->getIdentifier()) << "_" << x->kind() << '"';
+
+!!!129667.cpp!!!	id_prefix(in x : UmlItem, in pfix : str) : void
+  ((QTextStream &) *this) << " xmi:id=\"BOUML_" << pfix << ((void *) x->getIdentifier()) << "_" << x->kind() << '"';
+!!!143108.cpp!!!	id_prefix(in x : UmlItem, in pfix : str, in n : int) : void
+  ((QTextStream &) *this) << " xmi:id=\"BOUML_" << pfix << n << "_" << ((void *) x->getIdentifier()) << "_" << x->kind() << '"';
+!!!144514.cpp!!!	idref(in x : UmlItem) : void
+  ((QTextStream &) *this) << " xmi:idref=\"BOUML_" << ((void *) x->getIdentifier()) << "_" << x->kind() << '"';
+
+!!!149250.cpp!!!	idref(in s : string, in x : UmlItem) : void
+  QString keys;
+  {
+    QTextStream keyst(&keys, IO_WriteOnly);
+    
+    keyst << ((void *) x) << "_" << s;
+  }
+
+  QMap<QCString, int>::ConstIterator it =
+    _modifiedtypes.find((const char *) keys);
+  
+  if (it == _modifiedtypes.end())
+    it = _modifiedtypes.insert((const char *) keys, _modifiedtypes.count());
+    
+  ((QTextStream &) *this) << " xmi:idref=\"BOUML_basedontype_"
+    << it.data() << '"';
+
+!!!132099.cpp!!!	idref_prefix(in x : UmlItem, in pfix : str) : void
+  ((QTextStream &) *this) << " xmi:idref=\"BOUML_"
+	  << pfix << ((void *) x->getIdentifier()) << "_" << x->kind() << '"';
+
+!!!144388.cpp!!!	idref_prefix(in x : UmlItem, in pfix : str, in n : int) : void
+  ((QTextStream &) *this) << " xmi:idref=\"BOUML_"
+	  << pfix << n << "_" << ((void *) x->getIdentifier()) << "_" << x->kind() << '"';
+
+!!!146434.cpp!!!	idref_datatype(in t : string) : void
+  if (t.isEmpty())
+    return;
+    
+  QMap<QCString, int>::ConstIterator it = _datatypes.find(t);
+  
+  if (it == _datatypes.end())
+    it = _datatypes.insert(t, _datatypes.count());
+    
+  ((QTextStream &) *this) << " xmi:idref=\"BOUML_datatype_"
+    << it.data() << '"';
+
+!!!129795.cpp!!!	ref(in x : UmlItem, in pfix1 : str, in pfix2 : str = "") : void
+  ((QTextStream &) *this) << ' ' << pfix1 << "=\"BOUML_" 
+	  << pfix2 << ((void *) x->getIdentifier()) << "_" << x->kind() << '"';
+!!!143236.cpp!!!	ref(in x : UmlItem, in pfix1 : str, in pfix2 : str, in n : int) : void
+  ((QTextStream &) *this) << ' ' << pfix1 << "=\"BOUML_" 
+	  << pfix2 << n << "_" << ((void *) x->getIdentifier()) << "_" << x->kind() << '"';
+!!!228738.cpp!!!	ref_only(in x : UmlItem, in pfix : str) : void
+  ((QTextStream &) *this) << "BOUML_" << pfix << ((void *) x->getIdentifier())
+    << "_" << x->kind();
+!!!146946.cpp!!!	define_datatypes(in uml_20 : bool, in primitive_type : bool, in gen_extension : bool) : void
+  const char * pfix = (primitive_type) 
+	? ((uml_20) ? "<ownedMember xmi:type=\"uml:PrimitiveType\""
+		    : "<packagedElement xmi:type=\"uml:PrimitiveType\"")
+	: ((uml_20) ? "<ownedMember xmi:type=\"uml:DataType\""
+		    : "<packagedElement xmi:type=\"uml:DataType\"");
+
+  QMap<QCString, int>::ConstIterator it;
+  
+  for (it = _datatypes.begin();
+       it != _datatypes.end();
+       ++it) {
+    indent();
+    (*this) << pfix << " xmi:id=\"BOUML_datatype_"
+      << it.data() << "\" name=\"";
+    quote(it.key());
+    (*this) << "\"/>\n";
+  }
+  
+  const char * postfix = 
+    (uml_20) ? "</ownedMember>\n" : "</packagedElement>\n";
+
+  for (it = _modifiedtypes.begin();
+       it != _modifiedtypes.end();
+       ++it) {
+    QCString k = it.key();
+    int index = k.find('_');
+    
+    indent();
+    (*this) << pfix << " xmi:id=\"BOUML_basedontype_"
+      << it.data() << "\" name = \"";
+    quote(k.mid(index + 1));
+    (*this) << '"';
+
+    if (gen_extension) {
+      (*this) << ">\n";
+      indent();
+      (*this) << "\t<xmi:Extension extender=\"Bouml\">\n";
+      indent();
+      (*this) << "\t\t<basedOn \"BOUML_" << k.left(index) << "\"/>\n";
+      indent();
+      (*this) << "\t</xmi:Extension>\n";
+      indent();
+      (*this) << postfix;
+    }
+    else
+      (*this) << "/>\n";
+  }
+!!!147970.cpp!!!	quote(in s : str) : void
+ for (;;) {
+   switch (*s) {
+   case 0: return;
+   case '<': (*this) << "&lt;"; break;
+   case '>': (*this) << "&gt;"; break;
+   case '"': (*this) << "&quot;"; break;
+   case '&': (*this) << "&amp;"; break;
+   case '\n': if (_lf) (*this) << *s; else (*this) << "&#10;"; break;
+   case '\r': if (_lf) (*this) << *s; else (*this) << "&#13;"; break;
+   default: (*this) << *s; break;
+   }
+   s += 1;
+ }
+!!!226306.cpp!!!	quote(in c : char) : void
+ switch (c) {
+ case '<': (*this) << "&lt;"; break;
+ case '>': (*this) << "&gt;"; break;
+ case '"': (*this) << "&quot;"; break;
+ case '&': (*this) << "&amp;"; break;
+ case '\n': if (_lf) (*this) << c; else (*this) << "&#10;"; break;
+ case '\r': if (_lf) (*this) << c; else (*this) << "&#13;"; break;
+ default: (*this) << c; break;
+ }

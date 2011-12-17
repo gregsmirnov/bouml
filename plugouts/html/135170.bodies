@@ -1,0 +1,13 @@
+class UmlInterruptibleActivityRegion
+!!!196098.cpp!!!	sKind() : string
+  return "interruptible activity region";
+!!!196098.java!!!	sKind() : string
+  return "interruptible activity region";
+!!!195970.cpp!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  UmlItem::html(pfix, rank, "Interruptible activity region", level, "interruptibleactivityregion");
+
+  unload(FALSE, FALSE);
+!!!195970.java!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  html(pfix, rank, "Interruptible activity region", level, "interruptibleactivityregion");
+
+  unload(false, false);

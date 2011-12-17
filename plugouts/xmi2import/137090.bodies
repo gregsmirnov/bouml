@@ -1,0 +1,32 @@
+class UmlOpaqueAction
+!!!201090.cpp!!!	init() : void
+  declareFct("node", "uml:OpaqueAction", &importIt);
+  declareFct("containednode", "uml:OpaqueAction", &importIt);
+  
+  declareFct("node", "uml:Action", &importIt);
+  declareFct("containednode", "uml:Action", &importIt);
+!!!200962.cpp!!!	importIt(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  where = where->container(anOpaqueAction, token, in);
+    
+  if (where != 0) {
+    QCString s = token.valueOf("name");
+    UmlOpaqueAction * a = create(where, s);
+    
+    if (a == 0)
+      in.error("cannot create opaque action '"
+	       + s + "' in '" + where->name() + "'");
+    
+    a->addItem(token.xmiId(), in);
+    
+    if (! token.closed()) {
+      QCString k = token.what();
+      const char * kstr = k;
+      
+      while (in.read(), !token.close(kstr)) {
+	if (token.what() == "body")
+	  a->set_Behavior(in.body("body"));
+	else
+	  a->import(in, token);
+      }
+    }
+  }

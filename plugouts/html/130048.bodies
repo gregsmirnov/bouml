@@ -1,0 +1,9 @@
+class UmlBaseInitialPseudoState
+!!!139136.cpp!!!	create(inout parent : UmlItem) : UmlInitialPseudoState
+  return (UmlInitialPseudoState *) parent->create_(anInitialPseudoState, "");
+!!!139136.java!!!	create(inout parent : UmlItem) : UmlInitialPseudoState
+  return (UmlInitialPseudoState) parent.create_(anItemKind.anInitialPseudoState, "");
+!!!139264.cpp!!!	kind() : anItemKind
+  return anInitialPseudoState;
+!!!139264.java!!!	kind() : anItemKind
+  return anItemKind.anInitialPseudoState;

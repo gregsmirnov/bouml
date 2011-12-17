@@ -1,0 +1,78 @@
+class UmlArtifact
+!!!245762.cpp!!!	solveManifestation(in s : string, in idref : string) : void
+  QMap<QCString, UmlItem *>::Iterator it = All.find(idref);
+  
+  if (it == All.end()) {
+    if (!FileIn::isBypassedId(idref))
+      UmlCom::trace("manifestation : unknown utilized element reference '" + idref + "'<br>");
+    return;
+  }
+    
+  UmlItem * target = *it;
+    
+  if (!FromBouml || (s != "dependency")) {    
+    switch (target->kind()) {
+    case aClass:
+      if (s != "source")
+	break;
+      else if (stereotype().isEmpty())
+	set_Stereotype("source");
+      else if (stereotype() != "source")
+	break;
+      addAssociatedClass((UmlClass *) target);
+      return;
+    case anArtifact:
+      if (!FromBouml)
+	break;
+      addAssociatedArtifact((UmlArtifact *) target);
+      return;
+    default:
+      break;
+    }
+  }
+
+  UmlNcRelation * rel = UmlNcRelation::create(aDependency, this, target);
+    
+  if (rel == 0)
+    UmlCom::trace("cannot create manifestation from '" + name() +
+		  "' to '" + target->name() + "'");
+  else
+    rel->set_Stereotype("manifest");
+!!!192514.cpp!!!	init() : void
+  declareFct("ownedmember", "uml:Artifact", &importIt);
+  declareFct("packagedelement", "uml:Artifact", &importIt);
+!!!196482.cpp!!!	importIt(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  where = where->container(anArtifact, token, in);
+  
+  if (where == 0)
+    return;
+    
+  QCString s = token.valueOf("name");
+  
+  if (s.isEmpty()) {
+    static unsigned n = 0;
+    
+    s.sprintf("anonymous_artifact_%u", ++n);
+  }
+    
+  UmlArtifact * artifact = create((UmlDeploymentView *) where, s);
+  
+  if (artifact == 0)
+    in.error("cannot create artifact '" + s +
+	     "' in '" + where->name() + "'");
+  
+  artifact->addItem(token.xmiId(), in);
+
+  if (! token.closed()) {
+    QCString k = token.what();
+    const char * kstr = k;
+    
+    while (in.read(), !token.close(kstr)) {
+      if (token.what() == "manifestation")
+	Manifestation::import(in, token, artifact);
+      else
+	artifact->UmlItem::import(in, token);
+    }
+  }
+
+  artifact->unload(TRUE, FALSE);

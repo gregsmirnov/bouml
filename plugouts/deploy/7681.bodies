@@ -1,0 +1,73 @@
+class UmlClassView
+!!!144258.cpp!!!	deploy() : void
+// deployment needed ?
+
+const QVector<UmlItem> ch = children();
+unsigned i;
+bool need = FALSE;
+  
+for (i = 0; i != ch.size(); i += 1) {
+  if (ch[i]->deployable() != 0){
+    need = TRUE;
+    break;
+  }
+}
+
+if (! need)
+  return;
+
+UmlDeploymentView * depl = associatedDeploymentView();
+
+if (depl == 0) {
+  // create the associated deployment view
+  UmlCom::trace("Create <i>deployment view</i> " + name());
+  
+  if ((depl = UmlDeploymentView::create((UmlPackage*) parent(), name())) == 0) {
+    UmlCom::trace("cannot create <i>deployment view</i> named " + name());
+    return;
+  }
+  else
+    set_AssociatedDeploymentView(depl);
+}
+
+// look at non deployed classes
+
+for (i = 0; i != ch.size(); i += 1)
+  ch[i]->deploy(depl);
+
+!!!144258.java!!!	deploy() : void
+UmlItem[] ch = children();
+int i;
+boolean need = false;
+  
+for (i = 0; i != ch.length; i += 1) {
+  if (ch[i].deployable() != 0){
+    need = true;
+    break;
+  }
+}
+
+if (! need)
+  return;
+  
+UmlDeploymentView depl = associatedDeploymentView();
+
+if (depl == null) {
+  // create the associated deployment view
+  UmlCom.trace("Create <i>deployment view</i> " + name());
+  
+  try {
+    depl = UmlDeploymentView.create((UmlPackage) parent(), name());
+  }
+  catch (Exception e) {
+    UmlCom.trace("cannot create <i>deployment view</i> named " + name());
+    return;
+  }
+  
+  set_AssociatedDeploymentView(depl);
+}
+
+// look at non deployed classes
+
+for (i = 0; i != ch.length; i += 1)
+  ch[i].deploy(depl);

@@ -1,0 +1,23 @@
+class UmlOperation
+!!!128592.cpp!!!	check() : bool
+  if (name() == parent()->name()) {
+    UmlCom::trace("<font face=helvetica><b>already have <i>constructor</i>, remove it</b></font><br><hr><br>");
+    return FALSE;
+  }
+  else if (name() == "instance") {
+    UmlCom::trace("<font face=helvetica><b>already have operation <i>instance</i>, remove it</b></font><br><hr><br>");
+    return FALSE;
+  }
+  else
+    return TRUE;
+!!!128592.java!!!	check() : bool
+  if (name() == parent().name()) {
+    UmlCom.trace("<font face=helvetica><b>already have <i>constructor</i>, remove it</b></font><br><hr><br>");
+    return false;
+  }
+  else if (name() == "instance") {
+    UmlCom.trace("<font face=helvetica><b>already have operation <i>instance</i>, remove it</b></font><br><hr><br>");
+    return false;
+  }
+  else
+    return true;

@@ -1,0 +1,21 @@
+// "a type" "needed cpp_includes"
+"QVector" "#include <qvector.h>"
+
+"QList" "#include <qlist.h>"
+
+"QValueList" "#include <qvaluelist.h>"
+
+"QDict" "#include <qdict.h>"
+
+"QString" "#include <qstring.h>"
+
+"QCString" "#include <qcstring.h>"
+
+"QPtrDict" "#include <qptrdict.h>"
+
+"QSocketDevice" "#include <qsocketdevice.h>"
+
+"QFile" "#include <qfile.h>"
+
+"QAsciiDict" "#include <qasciidict.h>"
+

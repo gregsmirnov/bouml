@@ -1,0 +1,18 @@
+class UmlRemoveVariableValueAction
+!!!203138.cpp!!!	init() : void
+  declareFct("node", "uml:RemoveVariableValueAction", &importIt);
+  declareFct("containednode", "uml:RemoveVariableValueAction", &importIt);
+!!!203010.cpp!!!	importIt(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  where = where->container(aRemoveVariableValueAction, token, in);
+    
+  if (where != 0) {
+    QCString s = token.valueOf("name");
+    UmlRemoveVariableValueAction * a = create(where, s);
+    
+    if (a == 0)
+      in.error("cannot create remove variable action '"
+	       + s + "' in '" + where->name() + "'");
+    
+    a->addItem(token.xmiId(), in);
+    a->import_it(in, token);
+  }

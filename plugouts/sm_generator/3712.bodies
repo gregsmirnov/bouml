@@ -1,0 +1,440 @@
+class UmlBaseRelation
+!!!37504.cpp!!!	create(in kind : aRelationKind, inout start : UmlClass, inout end : UmlClass) : UmlRelation
+  UmlCom::send_cmd(start->_identifier, createCmd, aRelation,
+		   kind, end->_identifier);
+  UmlRelation * result = (UmlRelation *) UmlBaseItem::read_();
+  
+  if (result != 0) {
+    start->reread_children_if_needed_();
+    
+    switch (kind) {
+    case anAssociation:
+    case anAggregation:
+    case anAggregationByValue:
+      // bi-directional
+      end->reread_children_if_needed_();
+      break;
+    case aGeneralisation:
+    case aRealization:
+      if (!end->formals().isEmpty())
+	// to update actuals & base_type
+	start->reread_if_needed_();
+    default:
+      break;
+    }
+  }
+  
+  return result;
+!!!37504.java!!!	create(in kind : aRelationKind, inout start : UmlClass, inout end : UmlClass) : UmlRelation
+  UmlCom.send_cmd(start.identifier_(), OnInstanceCmd.createCmd, anItemKind.aRelation,
+		  kind, end.identifier_());
+  UmlRelation result = (UmlRelation) UmlBaseItem.read_();
+  
+  if (result != null) {
+    start.reread_children_if_needed_();
+    
+    switch (kind.value()) {
+    case aRelationKind._anAssociation:
+    case aRelationKind._anAggregation:
+    case aRelationKind._anAggregationByValue:
+      // bi-directional
+      end.reread_children_if_needed_();
+      break;
+    case aRelationKind._aGeneralisation:
+    case aRelationKind._aRealization:
+      if (end.formals().length != 0)
+	// to update actuals & base_type
+	start.reread_if_needed_();
+    default:
+      break;
+    }
+  }
+  else
+    throw new RuntimeException("can't be created");
+  
+  return result;
+!!!37632.cpp!!!	kind() : anItemKind
+  return aRelation;
+!!!37632.java!!!	kind() : anItemKind
+  return anItemKind.aRelation;
+!!!37760.cpp!!!	relationKind() : aRelationKind
+  read_if_needed_();
+  
+  return _rel_kind;
+!!!37760.java!!!	relationKind() : aRelationKind
+  read_if_needed_();
+  
+  return _rel_kind;
+!!!152704.cpp!!!	side(in first : bool) : UmlRelation
+  UmlCom::send_cmd(_identifier, sideCmd, (char) first);
+  
+  return (UmlRelation *) UmlBaseItem::read_();
+!!!152704.java!!!	side(in first : bool) : UmlRelation
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.sideCmd, 
+		  (first) ? (byte) 1 : (byte) 0);
+  
+  return (UmlRelation) UmlBaseItem.read_();
+!!!37888.cpp!!!	isReadOnly() : bool
+  read_if_needed_();
+  
+  return _read_only;
+!!!37888.java!!!	isReadOnly() : bool
+  read_if_needed_();
+  
+  return _read_only;
+!!!38016.cpp!!!	set_isReadOnly(in y : bool) : bool
+  return set_it_(_read_only, y, setIsReadOnlyCmd);
+!!!38016.java!!!	set_isReadOnly(in y : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setIsReadOnlyCmd, (y) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _read_only = y;
+!!!38144.cpp!!!	defaultValue() : string
+  read_if_needed_();
+  
+  return _default_value;
+!!!38144.java!!!	defaultValue() : string
+  read_if_needed_();
+  
+  return _default_value;
+!!!38272.cpp!!!	set_DefaultValue(in s : str) : bool
+  return set_it_(_default_value, s, setDefaultValueCmd);
+!!!38272.java!!!	set_DefaultValue(in s : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setDefaultValueCmd, s);
+  UmlCom.check();
+
+  _default_value = s;
+!!!38400.cpp!!!	set_Stereotype(in s : string) : bool
+  if (UmlBaseItem::set_Stereotype(s)) {
+    UmlBaseRelation * other = (UmlBaseRelation *) UmlBaseItem::read_();
+    
+    if (other != 0)
+      other->_stereotype = s;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!38400.java!!!	set_Stereotype(in s : string) : bool
+  super.set_Stereotype(s);
+  
+  UmlBaseRelation other = (UmlBaseRelation) UmlBaseItem.read_();
+  
+  if (other != null)
+    other._stereotype = s;
+
+!!!38528.cpp!!!	roleType() : UmlClass
+  read_if_needed_();
+  
+  return _role_type;
+!!!38528.java!!!	roleType() : UmlClass
+  read_if_needed_();
+  
+  return _role_type;
+!!!152448.cpp!!!	association() : UmlTypeSpec
+  read_if_needed_();
+  
+  return _association;
+!!!152448.java!!!	association() : UmlTypeSpec
+  read_if_needed_();
+  
+  return _association;
+!!!152576.cpp!!!	set_Association(in t : UmlTypeSpec) : bool
+  if (set_it_(_association, t, setRelationAssocClassCmd)) {
+    UmlBaseRelation * other = (UmlBaseRelation *) UmlBaseItem::read_();
+    
+    if (other != 0)
+      other->_association = t;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!152576.java!!!	set_Association(in t : UmlTypeSpec) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setRelationAssocClassCmd, t);
+  UmlCom.check();
+  
+  _association = t;
+  UmlBaseRelation other = (UmlBaseRelation) UmlBaseItem.read_();
+  
+  if (other != null)
+    other._association = t;
+!!!38656.cpp!!!	roleName() : string
+  read_if_needed_();
+  
+  return _role_name;
+!!!38656.java!!!	roleName() : string
+  read_if_needed_();
+  
+  return _role_name;
+!!!38784.cpp!!!	set_RoleName(in s : str) : bool
+  return set_it_(_role_name, s, setRoleNameCmd);
+!!!38784.java!!!	set_RoleName(in s : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setRoleNameCmd, s);
+  UmlCom.check();
+
+  _role_name = s;
+!!!38912.cpp!!!	multiplicity() : string
+  read_if_needed_();
+  
+  return _multiplicity;
+!!!38912.java!!!	multiplicity() : string
+  read_if_needed_();
+  
+  return _multiplicity;
+!!!39040.cpp!!!	set_Multiplicity(in s : str) : bool
+  return set_it_(_multiplicity, s, setMultiplicityCmd);
+!!!39040.java!!!	set_Multiplicity(in s : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setMultiplicityCmd, s);
+  UmlCom.check();
+
+  _multiplicity = s;
+!!!39168.cpp!!!	getOperation() : UmlOperation
+  read_if_needed_();
+  
+  return _get_oper;
+!!!39168.java!!!	getOperation() : UmlOperation
+  read_if_needed_();
+  
+  return _get_oper;
+!!!39296.cpp!!!	addGetOperation() : bool
+  UmlCom::send_cmd(_identifier, addGetOperCmd);
+  if (UmlCom::read_bool()) {
+    reread_children_if_needed_();
+    return TRUE;
+  }
+ else
+   return FALSE;
+!!!39296.java!!!	addGetOperation() : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.addGetOperCmd);
+  UmlCom.check();
+  
+  reread_children_if_needed_();
+
+!!!39424.cpp!!!	setOperation() : UmlOperation
+  read_if_needed_();
+  
+  return _set_oper;
+!!!39424.java!!!	setOperation() : UmlOperation
+  read_if_needed_();
+  
+  return _set_oper;
+!!!39552.cpp!!!	addSetOperation() : bool
+  UmlCom::send_cmd(_identifier, addSetOperCmd);
+  if (UmlCom::read_bool()) {
+    reread_children_if_needed_();
+    return TRUE;
+  }
+ else
+   return FALSE;
+!!!39552.java!!!	addSetOperation() : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.addSetOperCmd);
+  UmlCom.check();
+  
+  reread_children_if_needed_();
+
+!!!39680.cpp!!!	cppVirtualInheritance() : bool
+  read_if_needed_();
+  
+  return _cpp_virtual_inheritance;
+!!!39680.java!!!	cppVirtualInheritance() : bool
+  read_if_needed_();
+  
+  return _cpp_virtual_inheritance;
+!!!39808.cpp!!!	set_CppVirtualInheritance(in y : bool) : bool
+  bool b;
+  
+  if (set_it_(b, y, setCppVirtualInheritanceCmd)) {
+    _cpp_virtual_inheritance = y;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!39808.java!!!	set_CppVirtualInheritance(in y : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setCppVirtualInheritanceCmd, (y) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _cpp_virtual_inheritance =  y;
+!!!39936.cpp!!!	isCppMutable() : bool
+  read_if_needed_();
+  
+  return _cpp_mutable;
+!!!39936.java!!!	isCppMutable() : bool
+  read_if_needed_();
+  
+  return _cpp_mutable;
+!!!40064.cpp!!!	set_isCppMutable(in y : bool) : bool
+  bool b;
+  
+  if (set_it_(b, y, setIsCppMutableCmd)) {
+    _cpp_mutable = y;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!40064.java!!!	set_isCppMutable(in y : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setIsCppMutableCmd, (y) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _cpp_mutable = y;
+!!!40192.cpp!!!	isJavaTransient() : bool
+  read_if_needed_();
+  
+  return _java_transient;
+!!!40192.java!!!	isJavaTransient() : bool
+  read_if_needed_();
+  
+  return _java_transient;
+!!!40320.cpp!!!	set_isJavaTransient(in y : bool) : bool
+  bool b;
+  
+  if (set_it_(b, y, setIsJavaTransientCmd)) {
+    _java_transient = y;
+    return TRUE;
+  }
+  else
+    return FALSE;
+
+!!!40320.java!!!	set_isJavaTransient(in y : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setIsJavaTransientCmd, (y) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _java_transient = y;
+!!!40448.cpp!!!	isIdlTruncatableInheritance() : bool
+  read_if_needed_();
+  
+  return _idl_truncatable;
+!!!40448.java!!!	isIdlTruncatableInheritance() : bool
+  read_if_needed_();
+  
+  return _idl_truncatable;
+!!!40576.cpp!!!	set_isIdlTruncatableInheritance(in y : bool) : bool
+  bool b;
+  
+  if (set_it_(b, y, setIsIdlTruncatableCmd)) {
+    _idl_truncatable = y;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!40576.java!!!	set_isIdlTruncatableInheritance(in y : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setIsIdlTruncatableCmd, (y) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _idl_truncatable = y;
+!!!40704.cpp!!!	idlCase() : string
+  read_if_needed_();
+  
+  return (_idl_case != 0) ? _idl_case->name() : _idl_explicit_case;
+!!!40704.java!!!	idlCase() : string
+  read_if_needed_();
+  
+  return (_idl_case != null) ? _idl_case.name() : _idl_explicit_case;
+!!!40832.cpp!!!	set_IdlCase(inout a : UmlAttribute) : bool
+  UmlCom::send_cmd(_identifier, setIdlCaseCmd, a->_identifier, "");
+  if (UmlCom::read_bool()) {
+    _idl_case = a;
+    _idl_explicit_case = 0;
+    return TRUE;
+  }
+ else
+   return FALSE;
+!!!40832.java!!!	set_IdlCase(inout a : UmlAttribute) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setIdlCaseCmd, a.identifier_(), "");
+  UmlCom.check();
+  
+  _idl_case = a;
+  _idl_explicit_case = null;
+
+!!!40960.cpp!!!	set_IdlCase(in s : str) : bool
+  UmlCom::send_cmd(_identifier, setIdlCaseCmd, (void *) 0, s);
+  if (UmlCom::read_bool()) {
+    _idl_case = 0;
+    _idl_explicit_case = s;
+    return TRUE;
+  }
+ else
+   return FALSE;
+!!!40960.java!!!	set_IdlCase(in s : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setIdlCaseCmd, (long) 0, s);
+  UmlCom.check();
+  
+  _idl_case = null;
+  _idl_explicit_case = s;
+
+!!!41088.cpp!!!	unload(in rec : bool, in del : bool) : void
+  _role_name = 0;
+  _multiplicity = 0;
+  _default_value = 0;
+#ifdef WITHIDL
+  _idl_explicit_case = 0;
+#endif
+  UmlBaseClassMember::unload(rec, del);
+!!!41088.java!!!	unload(in rec : bool, in del : bool) : void
+  _role_name = null;
+  _multiplicity = null;
+  _default_value = null;
+  _idl_explicit_case = null;
+  super.unload(rec, del);
+!!!41216.cpp!!!	read_uml_() : void
+  UmlBaseClassMember::read_uml_();
+  _rel_kind = (aRelationKind) UmlCom::read_char();
+  _role_type = (UmlClass *) UmlBaseItem::read_();
+  _association.type = (UmlClass *) UmlBaseItem::read_();
+  if (_association.type == 0)
+    _association.explicit_type = UmlCom::read_string();
+  _role_name = UmlCom::read_string();
+  _multiplicity = UmlCom::read_string();
+  _default_value = UmlCom::read_string();
+  _read_only = UmlCom::read_bool();
+  _get_oper = (UmlOperation *) UmlBaseItem::read_();
+  _set_oper = (UmlOperation *) UmlBaseItem::read_();
+!!!41216.java!!!	read_uml_() : void
+  super.read_uml_();
+  _rel_kind = aRelationKind.fromInt(UmlCom.read_char());
+  _role_type = (UmlClass) UmlBaseItem.read_();
+  _association = new UmlTypeSpec();
+  _association.type = (UmlClass) UmlBaseItem.read_();
+  if (_association.type == null)
+    _association.explicit_type = UmlCom.read_string();
+  _role_name = UmlCom.read_string();
+  _multiplicity = UmlCom.read_string();
+  _default_value = UmlCom.read_string();
+  _read_only = UmlCom.read_bool();
+  _get_oper = (UmlOperation) UmlBaseItem.read_();
+  _set_oper = (UmlOperation) UmlBaseItem.read_();
+!!!41344.cpp!!!	read_cpp_() : void
+  UmlBaseClassMember::read_cpp_();
+  _cpp_mutable = UmlCom::read_bool();
+  _cpp_virtual_inheritance = UmlCom::read_bool();
+!!!41344.java!!!	read_cpp_() : void
+  super.read_cpp_();
+  _cpp_mutable = UmlCom.read_bool();
+  _cpp_virtual_inheritance = UmlCom.read_bool();
+!!!41472.cpp!!!	read_java_() : void
+  UmlBaseClassMember::read_java_();
+  _java_transient = UmlCom::read_bool();
+!!!41472.java!!!	read_java_() : void
+  super.read_java_();
+  _java_transient = UmlCom.read_bool();
+!!!212992.cpp!!!	read_php_() : void
+  UmlBaseClassMember::read_php_();
+!!!212992.java!!!	read_php_() : void
+  super.read_php_();
+!!!41600.cpp!!!	read_idl_() : void
+  UmlBaseClassItem::read_idl_();
+  _idl_truncatable = UmlCom::read_bool();
+  _idl_case = (UmlAttribute *) UmlBaseItem::read_();
+  if (_idl_case == 0)
+    _idl_explicit_case = UmlCom::read_string();
+!!!41600.java!!!	read_idl_() : void
+  super.read_idl_();
+  _idl_truncatable = UmlCom.read_bool();
+  _idl_case = (UmlAttribute) UmlBaseItem.read_();
+  if (_idl_case == null)
+    _idl_explicit_case = UmlCom.read_string();
+!!!41728.cpp!!!	UmlBaseRelation(in id : item_id, in n : string)
+  _role_type = 0;
+  _get_oper = 0;
+  _set_oper = 0;
+#ifdef WITHIDL
+  _idl_case = 0;
+#endif

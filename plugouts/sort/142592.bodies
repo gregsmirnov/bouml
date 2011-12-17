@@ -1,0 +1,81 @@
+class UmlBasePinParameter
+!!!187264.cpp!!!	isUnique() : bool
+  read_if_needed_();
+  return _unique;
+!!!187264.java!!!	isUnique() : bool
+  read_if_needed_();
+  return _unique;
+!!!187392.cpp!!!	set_IsUnique(in v : bool) : bool
+  bool vv;
+
+  if (set_it_(vv, v, setUniqueCmd)) {
+    _unique = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!187392.java!!!	set_IsUnique(in v : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setUniqueCmd, (v) ? 1 : 0);
+  UmlCom.check();
+
+  _unique = v;
+!!!187520.cpp!!!	isException() : bool
+  read_if_needed_();
+  return _exception;
+!!!187520.java!!!	isException() : bool
+  read_if_needed_();
+  return _exception;
+!!!187648.cpp!!!	set_IsException(in v : bool) : bool
+  bool vv;
+
+  if (set_it_(vv, v, replaceExceptionCmd)) {
+    _exception = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!187648.java!!!	set_IsException(in v : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.replaceExceptionCmd, (v) ? 1 : 0);
+  UmlCom.check();
+
+  _exception = v;
+!!!187776.cpp!!!	direction() : aDirection
+  read_if_needed_();
+  return _dir;
+!!!187776.java!!!	direction() : aDirection
+  read_if_needed_();
+  return _dir;
+!!!187904.cpp!!!	set_Direction(in v : aDirection) : bool
+  UmlCom::send_cmd(_identifier, setIdlDirCmd, (char) v);   if (UmlCom::read_bool()) {     _dir = v;     return TRUE;   }   else     return FALSE;
+!!!187904.java!!!	set_Direction(in v : aDirection) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setIdlDirCmd, (byte) v.value());
+  UmlCom.check();
+
+  _dir = v;
+!!!188032.cpp!!!	effect() : aParameterEffectKind
+  read_if_needed_();
+  return _effect;
+!!!188032.java!!!	effect() : aParameterEffectKind
+  read_if_needed_();
+  return _effect;
+!!!188160.cpp!!!	set_Effect(in v : aParameterEffectKind) : bool
+  UmlCom::send_cmd(_identifier, replaceParameterCmd, (char) v);   if (UmlCom::read_bool()) {     _effect = v;     return TRUE;   }   else     return FALSE;
+!!!188160.java!!!	set_Effect(in v : aParameterEffectKind) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.replaceParameterCmd, (byte) v.value());
+  UmlCom.check();
+
+  _effect = v;
+!!!188288.cpp!!!	read_uml_() : void
+  UmlBaseActivityObject::read_uml_();
+  _unique = UmlCom::read_bool();
+  _exception = UmlCom::read_bool();
+  _stream = UmlCom::read_bool();
+  _dir = (aDirection) UmlCom::read_char();
+  _effect = (aParameterEffectKind) UmlCom::read_char();
+!!!188288.java!!!	read_uml_() : void
+  super.read_uml_();
+  _unique = UmlCom.read_bool();
+  _exception = UmlCom.read_bool();
+  _stream = UmlCom.read_bool();
+  _dir = aDirection.fromInt(UmlCom.read_char());
+  _effect = aParameterEffectKind.fromInt(UmlCom.read_char());

@@ -1,0 +1,85 @@
+class UmlExtraClassMember
+!!!130656.cpp!!!	sKind() : string
+  return "extra class member";
+!!!130656.java!!!	sKind() : string
+  return "extra class member";
+!!!129779.cpp!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  define();
+
+  fw.write("<table><tr><td><div class=\"element\">Extra Class Member <b>");
+  writeq(name());
+  fw.write("</b></div></td></tr></table>");
+
+  QCString s;
+  
+  if (! cppDecl().isEmpty() || !javaDecl().isEmpty()) {
+    fw.write("<p>Definition :</p><ul>");
+  
+    s = cppDecl();
+    
+    if (!s.isEmpty()) {
+      fw.write("<li>C++ : <pre>\n");
+      writeq(s);
+      fw.write("</pre></li>");
+    }
+    
+    s = javaDecl();
+    
+    if (!s.isEmpty()) {
+      fw.write("<li>Java : <pre>\n");
+      writeq(s);
+      fw.write("</pre></li>");
+    }
+    
+    fw.write("</ul>");
+  }
+ 
+  s = description();
+  
+   if (!s.isEmpty()) {
+     fw.write("<p>");
+     writeq(description());
+     fw.write("<br /></p>");
+   }
+
+  unload(FALSE, FALSE);
+!!!129779.java!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  define();
+
+  fw.write("<table><tr><td><div class=\"element\">Extra Class Member <b>");
+  writeq(name());
+  fw.write("</b></div></td></tr></table>");
+
+  String s;
+
+  if ((cppDecl().length() != 0) || (javaDecl().length() != 0)) {
+    fw.write("<p>Definition :</p><ul>");
+    
+    s = cppDecl();
+    
+    if (s.length() != 0) {
+      fw.write("<li>C++ : <pre>\n");
+      writeq(s);
+      fw.write("</pre></li>");
+    }
+    
+    s = javaDecl();
+    
+    if (s.length() != 0) {
+      fw.write("<li>Java : <pre>\n");
+      writeq(s);
+      fw.write("</pre></li>");
+    }
+
+    fw.write("</ul>");
+  }
+ 
+  s = description();
+  
+  if (s.length() != 0) {
+    fw.write("<p>");
+    writeq(description());
+    fw.write("<br /></p>");
+  }
+
+  unload(false, false);

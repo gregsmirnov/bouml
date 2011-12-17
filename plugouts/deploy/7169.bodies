@@ -1,0 +1,139 @@
+class UmlClass
+!!!144642.cpp!!!	deploy(inout view : UmlDeploymentView) : void
+int flags = deployable();
+
+if (flags == 0)
+  return;
+    
+UmlArtifact * a = associatedArtifact();
+
+if (a == 0) {
+  UmlCom::trace("Create <i>artifact</i> " + name());
+  
+  a = UmlArtifact::create(view, name());
+    
+  if (a == 0) {
+    UmlCom::trace("cannot create <i>artifact</i> named " + name());
+    throw 0;
+  }
+
+  a->set_Stereotype("source");
+  a->addAssociatedClass(this);
+  a->set_CppHeader("");
+  a->set_CppSource("");
+  a->set_JavaSource("");
+  a->set_IdlSource("");
+  a->set_PhpSource("");
+  a->set_PythonSource("");
+}
+
+if ((flags & (1 << cppLanguage)) != 0) {
+  a->set_CppHeader(CppSettings::headerContent());
+  a->set_CppSource(CppSettings::sourceContent());
+}
+
+if ((flags & (1 << javaLanguage)) != 0)
+  a->set_JavaSource(JavaSettings::sourceContent());
+
+if ((flags & (1 << idlLanguage)) != 0)
+  a->set_IdlSource(IdlSettings::sourceContent());
+
+if ((flags & (1 << phpLanguage)) != 0)
+  a->set_PhpSource(PhpSettings::sourceContent());
+
+if ((flags & (1 << pythonLanguage)) != 0)
+  a->set_PythonSource(PythonSettings::sourceContent());
+!!!144642.java!!!	deploy(inout view : UmlDeploymentView) : void
+int flags = deployable();
+
+if (flags == 0)
+  return;
+    
+UmlArtifact a = associatedArtifact();
+
+if (a == null) {
+  UmlCom.trace("Create <i>artifact</i> " + name());
+  
+  try {
+    a = UmlArtifact.create(view, name());
+  }
+  catch (RuntimeException e) {
+    UmlCom.trace("cannot create <i>artifact</i> named " + name());
+    throw e;
+  }
+    
+  a.set_Stereotype("source");
+  a.addAssociatedClass(this);
+  a.set_CppHeader("");
+  a.set_CppSource("");
+  a.set_JavaSource("");
+  a.set_IdlSource("");
+  a.set_PhpSource("");
+  a.set_PythonSource("");
+}
+
+if ((flags & (1 << aLanguage.cppLanguage.value())) != 0) {
+  a.set_CppHeader(CppSettings.headerContent());
+  a.set_CppSource(CppSettings.sourceContent());
+}
+
+if ((flags & (1 << aLanguage.javaLanguage.value())) != 0)
+  a.set_JavaSource(JavaSettings.sourceContent());
+
+if ((flags & (1 << aLanguage.idlLanguage.value())) != 0)
+  a.set_IdlSource(IdlSettings.sourceContent());
+
+if ((flags & (1 << aLanguage.phpLanguage.value())) != 0)
+  a.set_PhpSource(PhpSettings.sourceContent());
+
+if ((flags & (1 << aLanguage.pythonLanguage.value())) != 0)
+  a.set_PythonSource(PythonSettings.sourceContent());
+!!!128131.cpp!!!	deployable() : int
+QCString st = stereotype();
+
+if ((st == "metaclass") || (st == "stereotype"))
+  return 0;
+
+int r = 0;
+
+if (!isCppExternal() && !cppDecl().isEmpty())
+  r += (1 << cppLanguage);
+
+if (!isJavaExternal() && !javaDecl().isEmpty())
+  r += (1 << javaLanguage);
+
+if (!isIdlExternal() && !idlDecl().isEmpty())
+  r += (1 << idlLanguage);
+
+if (!isPhpExternal() && !phpDecl().isEmpty())
+  r += (1 << phpLanguage);
+
+if (!isPythonExternal() && !pythonDecl().isEmpty())
+  r += (1 << pythonLanguage);
+
+return r;
+!!!128131.java!!!	deployable() : int
+String st = stereotype();
+
+if ((st == "metaclass") || (st == "stereotype"))
+  return 0;
+
+int r = 0;
+
+if (!isCppExternal() && (cppDecl() != ""))
+  r += (1 << aLanguage.cppLanguage.value());
+
+if (!isJavaExternal() && (javaDecl() != ""))
+  r += (1 << aLanguage.javaLanguage.value());
+
+if (!isIdlExternal() && (idlDecl() != ""))
+  r += (1 << aLanguage.idlLanguage.value());
+
+if (!isPhpExternal() && (phpDecl() != ""))
+  r += (1 << aLanguage.phpLanguage.value());
+
+if (!isPythonExternal() && (pythonDecl() != ""))
+  r += (1 << aLanguage.pythonLanguage.value());
+
+return r;
+

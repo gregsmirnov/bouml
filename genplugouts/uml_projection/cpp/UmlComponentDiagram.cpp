@@ -1,0 +1,3 @@
+
+#include "UmlComponentDiagram.h"
+

@@ -1,0 +1,3026 @@
+<h3>4.22.2</h3>July 14th 2010<br /><br />
+    <ul>
+	<li> When IDL was the alone selected language in the global menu <i>languages</i>
+		and you added parameter(s) through the UML tab when editing an operation,
+		random characters was inserted in the IDL declaration of the operation,
+		fixed.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;atid=1022383&amp;aid=3025947&amp;group_id=212600" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> In the previous releases the default definition of a class in Php wrongly contained the
+		keywords <i>${visibility}</i> producing an invalid form in case
+		the visibility is not <i>package</i>. This keywords
+		isn't any more present when you create a new project, nor managed by code
+		generator and reverse.
+		(<a href="https://sourceforge.net/tracker/index.php?func=detail&amp;aid=3025458&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> In the previous releases when you edited a relation the definition for the target languages
+		was implicitly reinitialized to the default definition specified through the generation
+		settings only when you changed the kind of the relation. Now this is the case each time
+		the default definition associated to the new couple kind/multiplicity is not
+		the same as the previous couple.
+		(<a href="https://sourceforge.net/tracker/?func=detail&amp;aid=3026862&amp;group_id=212600&amp;atid=1022386" target="_blank">cf.</a>)
+		<br />
+		In the previous releases when you edited an attribute the definition for the target languages
+		was never implicitly reinitialized. Now this is the case each time
+		the default definition associated to the new multiplicity is not the same as the previous.
+		<br /><br /></li>
+
+	<li> It is now possible to move a state machine into an other state machine or
+		a sub state of an other state machine. If the moved state machine is stereotyped
+		<i>machine</i> the stereotype becomes <i>submachine</i>.
+		(<a href="https://sourceforge.net/tracker/?func=detail&amp;atid=1022386&amp;aid=3028800&amp;group_id=212600" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> <b>Php Generator 1.10.1</b><br />
+		The generalizations / realizations and dependencies 
+		wasn't taken into account to compute the needed <i>required_once</i> list,
+		this is the case now (when they have a non empty definition in Php).
+		(<a href="https://sourceforge.net/tracker/index.php?func=detail&amp;aid=3025651&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		<br />
+		Remove management of <i>${visibility}</i> at class level.
+		(<a href="https://sourceforge.net/tracker/index.php?func=detail&amp;aid=3025458&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> <b>Php Reverse 1.8.1</b><br />
+		Remove management of <i>${visibility}</i> at class level.
+		(<a href="https://sourceforge.net/tracker/index.php?func=detail&amp;aid=3025458&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> <b>XMI2 Generator 1.14.1</b><br />
+		In the previous releases the BOUML project-package produced both a XMI model and a package,
+		now an option allows you to not generate the model level.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=3025535&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		</li>
+    </ul>
+<br /><br />
+
+
+
+<h3>4.22.1</h3>June 23th 2010<br /><br />
+    <ul>
+	<li> In release 4.22 the state activities wasn't written in the state diagrams,
+		fixed.
+		(<a href="https://sourceforge.net/tracker/index.php?func=detail&amp;aid=3020421&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		</li>
+
+    </ul>
+<br /><br />
+
+<h3>4.22</h3>June 22th 2010<br /><br />
+    <ul>
+	<li> <font color="red">It was not possible to reload a project where
+		the associated diagram of a component is a deployment diagram</font>,
+		fixed.
+		<br /><br /></li>
+
+	<li> Each time you edited a dependency between a class and a package,
+		<i>import</i> was again added in the proposed list of
+		stereotypes, fixed.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=3006228&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> Add Php 5.3 namespace management.
+		(<a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=2859822&amp;group_id=212600&amp;atid=1022386" target="_blank">cf.</a>)
+		<br />
+		Like for the other language the namespace is specified at package level.<br />
+		The generation of the namespace declaration in Php is done 
+		by an artifact containing <i>${namespace}</i> in its Php definition, looking
+		at the namespace may be specified in the package containing the deployment
+		view containing the artifact (this is the case for the new projects,
+		you have to add <i>${namespace}</i> by yourself if you want this feature
+		in your existing projects).<br />
+		By default the Php code generator try to not generate namespace prefixes,
+		if you want to always generate them set the generation setting option
+		<i>force namespace prefix generation</i>.
+		<br /><br /></li>
+
+	<li> Add <i>submachine state reference</i> management.</br>
+		Only states without child except transitions and entry or exit pseudo
+		states can be transformed into state reference
+		or allow to change the referenced state by an other one.
+		The referenced state is	set/changed/removed by editing the (future)
+		submachine state reference.<br />
+		To add a <i>connection point reference</i> to a
+		<i>submachine state reference</i> add an entry or exit
+		point then edit it to specify the reference.
+		<br /><br /></li>
+
+	<li> Enter and Exit points can now be placed on the border of their state.
+		<br /><br /></li>
+
+	<li> The profiles of the operations proposed in a list now contain the container
+		classes of the referenced nested classes. Previously it was not possible
+		to differentiate for instance the operations
+		<i>void C1::f(C2::C)</i> and <i>void C1::f(C3::C)</i>
+		because they was both written <i>void C1::f(C)</i>.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=3003940&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> The shortcuts associated to the commands <i>Edit</i> and <i>Menu</i>
+		are now active in diagrams. By default the shortcut to show the menu
+		is the key <i>return/enter</i>, so if you select one element in a diagram
+		and hit <i>return/enter</i> the menu associated to this element is shown,
+		and if you select several elements in a diagram and hit <i>return/enter</i>
+		the multiple selection menu is shown.<br />
+		Add the shortcut command <i>Diagram menu</i> to ask for the menu
+		of a diagram inside a diagram, this command do the same as if you
+		unselect all elements in the diagram by doing a left mouse click
+		out of any element then doing a right mouse click out of any element.<br />
+		This changes are mainly dedicated to persons working with
+		<a href="http://www.metrovision.fr/index.html" target="_blank">visioboard</a> and
+		having difficuties to do a double mouse click and to use the mouse right
+		click (left click directly usable).
+		<br /><br /></li>
+
+	<li> It was not allowed to have several <i>activity actions</i> or <i>activity nodes</i>
+		or <i>activity objects</i> or <i>activity partitions</i> or <i>class instances</i>
+		or <i>expansion nodes</i> or <i>expansion regions</i> or <i>flows</i> or
+		<i>interruptible activity regions</i> or <i>parameter sets</i> or <i>pins</i>
+		or <i>pseudo states</i> or <i>state actions</i> or <i>state regions</i> or
+		<i>transitions</i> having the same non empty name in the same
+		container, this limitation is removed.
+		(<a href="http://sourceforge.net/projects/bouml/forums/forum/764769/topic/3708095" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> In the previous releases in C++ the visibility specifiers was
+		indented with two spaces. Now you are able to set the expected
+		indent through the generation settings.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2914713&amp;group_id=212600&amp;atid=1022384" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> You can now save the content of the trace window in a HTML file.
+		<br /><br /></li>
+
+	<li> Through the global menu <i>miscellaneous</i> you can now specify a root directory
+		for the icons associated to the stereotypes or directly put in diagram.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=3017067&amp;group_id=212600&amp;atid=1022386" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> Previously the icon associated to the stereotypes was specified through
+		an absolute path or had to be find through the current directory whose
+		depend on the way Bouml is started.<br />
+		Now you are able to specify a path relative to the root directory
+		for the icons or relative to the project directory. In case the path of an icon
+		is not absolute, the icon are searched first using the root directory
+		for the icons, then for compatibility reason using the current directory,
+		then using the project directory.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=3017067&amp;group_id=212600&amp;atid=1022386" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> You can now put icons in diagram independently of the use of stereotypes.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=3017068&amp;group_id=212600&amp;atid=1022386" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> <b>Php Generator 1.10</b><br />
+		To manage <i>namespace</i>.
+		<br /><br /></li>
+
+	<li> <b>Php Reverse 1.8</b><br />
+		Previous releases didn't expect to read Php block(s)
+		before the block containing classes, fixed.<br />
+		To manage <i>namespace</i>, warning when a file define classes
+			in several namespaces only the classes of the first
+			namespace are reversed.
+		<br /><br /></li>
+
+	<li> <b>C++ Generator 2.18</b><br />
+		To produce the expected indent for the visibility specifiers.
+		Follow the new API.
+		<br /><br /></li>
+
+	<li> <b>C++ Reverse 2.15</b><br />
+		<b>C++ Roundtrip 1.3</b><br />
+		The comments placed before the definition
+		of an attribute in a class was lost, fixed.
+		Follow the new API.
+		<br /><br /></li>
+
+	<li> <b>XMI2 Generator 1.14</b><br />
+		Some activity flows was wrongly generated as object flow
+		rather than control flow, fixed.
+		(<a href="https://sourceforge.net/projects/bouml/forums/forum/764769/topic/3744891" target="_blank">cf.</a>)
+		<br />
+		To manage the <i>submachine state reference</i>
+		<br /><br /></li>
+
+	<li> <b>XMI2 Import 1.9</b><br />
+		To manage the <i>submachine state reference</i>
+		To manage virtual desktop (multiple screens configuration).
+		<br /><br /></li>
+	
+	<li> <b>Java Generator 2.22</b><br />
+		<b>Java Reverse 2.18</b><br />
+ 	     	<b>Java Roundtrip 1.5</b><br />
+		<b>Idl Generator 2.15</b><br />
+		<b>Python Generator 1.5</b><br />
+	     	<b>Roundtrip body 1.13</b><br />
+		Follow the new API.
+		<br /><br /></li>
+	
+	<li> <b>Java Catalog 2.17</b><br />
+		To manage virtual desktop (multiple screens configuration).
+		Follow the new API.
+		<br /><br /></li>
+	
+	<li> <b>Project control 1.2.5</b><br />
+		<b>Project synchro 1.2.4</b><br />
+		<b>Uml projection 1.1.3</b><br />
+		<b>.pro Generator 2.1.6</b><br />
+		<b>C++ utilities 1.1.2</b><br />
+		<b>Use case wizard 1.1.2 (C++ version)</b><br />
+		<b>File Control 1.0.6</b><br />
+		<b>Global change 1.2.1</b><br />
+		To manage virtual desktop (multiple screens configuration).
+		<br /><br /></li>
+
+	<li> <b>Html documentation Generator 2.20</b><br />
+		To produce a valid XHTML.
+		(<a href="https://sourceforge.net/tracker/index.php?func=detail&amp;aid=3018189&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>
+		and <a href="http://sourceforge.net/tracker/?func=detail&amp;aid=3018497&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		<br />
+		To manage <i>submachine state reference</i>.
+		<br /><br /></li>
+
+	<li> <b>Plug-out upgrade 1.18</b><br />
+		Add operations <i>phpNamespace, set_PhpNamespace</i>
+		and <i>findPhpNamespace</i> on class <i>UmlBasePackage</i>.<br />
+		Add operations <i>isForceNamespacePrefixGeneration</i>
+		and <i>set_IsForceNamespacePrefixGeneration</i> on class
+		<i>PhpSettings</i>.<br />
+		Add operations <i>visibilityIndent</i> and
+		<i>set_VisibilityIndent</i> on class <i>CppSettings</i>.<br />
+		Add operations <i>reference</i> and
+		<i>set_Reference</i> on classes <i>UmlBaseState, UmlBaseEntryPointPseudoState</i>,
+		and <i>UmlBaseExitPointPseudoState</i>.
+		<br /><br /></li>
+
+	<li> <i>Plug-out</i> <b>empty</b><br />
+		Upgraded by <i>plug-out upgrade</i>.
+		<br /><br /></li>
+
+	<li> <i>fr.lang</i> updated.
+		<br /><br /></li>
+
+	<li> The previous releases of BOUML cannot read a project
+	     saved with this version. Obviously this release is
+	     able to read the projects made by previous releases of BOUML.
+		</li>
+
+    </ul>
+<br /><br />
+
+
+<h3>Php Generator 1.9 patch (Windows)</h3>June 10th 2010<br /><br />
+    <ul>
+	<li> Under Windows the Php generator terminated its execution when
+		managing <i>${require_once}</i> because of a missing
+		compilation option.<br />
+		The Php generator compiled with the right options is available
+		<a href="https://sourceforge.net/projects/bouml/files/bouml/patch_4.21/" target="_blank">here</a>
+		(<a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=3013706&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		</li>
+    </ul>
+<br /><br />
+
+
+<h3>4.21</h3>May 12th 2010<br /><br />
+    <ul>
+	<li> In the previous releases only the operations whose name started
+		by <i>operator</i> could contain non alphanumeric characters,
+		this restriction is removed.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2996568&amp;group_id=212600&amp;atid=1022386" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> <i>require_once</i> forms are now auto generated in Php when
+		the Php definition of an artifact contains <i>${require_once}</i>
+		(this is the case for the new projects, you have to add it
+		by yourself if you want this feature in your existing projects).<br />
+		The definition of an external class for Php is extended,
+		if a second line is present this one is considered to contain
+		the expected <i>require_once</i> form to produce.<br />
+		New generation settings to choose how the path of the
+		required files are generated : without path, with absolute paths,
+		with relative paths, with path relative to the root directory.
+		<br /><br /></li>
+
+	<li> Add <i>Reverse/roundtrip settings</i> with a dedicated edition dialog
+		to specify through a regular expression the files and/or directories
+		whose must not be taken into account during a reverse and roundtrip,
+		allowing for instance to not reverse test programs.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2997710&amp;group_id=212600&amp;atid=1022386" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> When you edit an attribute or an operation of a parametrized class
+		or nested in parametrized class(es) the name of the formal parameters
+		are now inserted in the list of proposed types.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2990817&amp;group_id=212600&amp;atid=1022386" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> When several elements of the same type are selected in a diagram
+		the multiple selection menu allows you to use the drawing settings
+		of the first selected element for the other selected elements.
+		Have associated shortcut command <i>Same drawing settings</i>.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2990818&amp;group_id=212600&amp;atid=1022386" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> Extension of the drawing setting <i>show context</i>
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2991321&amp;group_id=212600&amp;atid=1022386" target="_blank">cf.</a>)
+		:
+	     <ul>
+
+		<li> In diagrams the context of nested classes now contains the
+			the container class when you ask for to indicate the namespace
+			or java package or python package or module through
+			the drawing setting <i>show context</i> or equivalent.
+			<font color="#C05800">Warning, this affects existing
+			class diagrams</font>
+			<br /><br /></li>
+
+		<li> New drawing setting <i>show context in members definition</i>
+			for classes in class diagrams. Only active when you also ask
+			for to show the full members definition. To indicate or not
+			the context of class(es) referenced in the declaration of an
+			attribute or an operation like the context is indicated for
+			the classes depending on <i>show context</i> or
+			<i>show classes and packages context</i>.
+			<br /><br /></li>
+
+		<li> In sequence diagrams add new drawing settings <i>show classes context</i>
+			for class instances, and <i>show context in messages</i> for messages
+			(only active when you also ask for to show the full operations definition).
+			<br /><br /></li>
+
+		<li> In communication diagrams the drawing settings
+			<i>show packages context</i>
+			is renamed <i>show classes and packages context</i>
+			and now also apply on class instances.
+			<font color="blue">To not change the already existing diagrams, 
+			when you open an old diagram this setting is set to <i>no</i>
+			on the class intances.</font><br />
+			New drawing settings <i>show context in messages</i> for messages
+			(only active when you also ask for to show the full operations definition).
+			<br /><br /></li>
+
+		<li> In object diagram the drawing settings <i>show packages context</i>
+			is renamed <i>show classes and packages context</i>
+			and now also apply on class instances.
+			<font color="blue">To not change the already existing diagrams, 
+			when you open an old diagram this setting is set to <i>no</i>
+			on the class intances.</font>
+			<br /><br /></li>
+	     </ul></li>
+		
+
+	<li> Add a button <i>Apply</i> in the drawing settings dialog
+		to apply the new settings without exiting the dialog.
+		Warning, the already applyied settings are not canceled through
+		the button <i>cancel</i>.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2990819&amp;group_id=212600&amp;atid=1022386" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> The list of opened non modal dialogs is now given by the dynamic
+		menu <i>Windows</i> after the list of opened diagrams. This
+		allow you to raise one of them, or to close all of them with
+		the diagrams through the menu entry <i>close all</i>.
+		<br /><br /></li>
+
+	<li> <b>Php Generator 1.9</b><br />
+		To automatically generate the <i>require_once</i> forms when
+		the Php definition of an artifact contains <i>${require_once}</i>.
+		<br /><br /></li>
+
+	<li> <b>C++ Reverse 2.14</b><br />
+		<b>C++ Roundtrip 1.2</b><br />
+		<b>Java Catalog 2.16</b><br />
+		<b>Java Reverse 2.17</b><br />
+ 	     	<b>Java Roundtrip 1.4</b><br />
+		<b>Php Reverse 1.7</b><br />
+		To not reverse/roundtrip unexpected directories and/or files
+		specified through regular expressions.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2997710&amp;group_id=212600&amp;atid=1022386" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> <b>C++ Generator 2.17</b><br />
+		<b>Java Generator 2.21</b><br />
+		<b>Idl Generator 2.14</b><br />
+	     	<b>Roundtrip body 1.12</b><br />
+		Follow the new API.
+		<br /><br /></li>		
+
+	<li> <b>Plug-out upgrade 1.17</b><br />
+		Add operations <i>requireOnceWithPath, set_RequireOnceWithPath,
+		isRelativePath, set_IsRelativePath, isRootRelativePath</i>
+		and <i>set_IsRootRelativePath</i> on class <i>PhpSettings</i> to acces to the new generation
+		settings relative to the generation of the <i>require_once</i> in Php.<br />
+		Add operations <i>reverseRoundtripDirRegExp, isReverseRoundtripDirRegExpCaseSensitive,
+		set_ReverseRoundtripDirRegExp, reverseRoundtripFileRegExp, 
+		isReverseRoundtripFileRegExpCaseSensitive</i> and <i>set_ReverseRoundtripFileRegExp</i>
+		on classes <i>CppSettings, JavaSettings</i> and <i>PhpSettings</i>.
+		<br /><br /></li>
+
+	<li> <i>Plug-out</i> <b>empty</b><br />
+		Upgraded by <i>plug-out upgrade</i>.
+		<br /><br /></li>
+
+	<li> <i>fr.lang</i> updated.
+		<br /><br /></li>
+
+	<li> The previous releases of BOUML cannot read a project
+	     saved with this version. Obviously this release is
+	     able to read the projects made by previous releases of BOUML.
+		</li>
+    </ul>
+<br /><br />
+
+
+<h3>4.20</h3>April 18th 2010<br /><br />
+    <ul>
+	<li> Remark : under Windows the png/svg exports of the diagrams
+		don't work when they are done by a <i>plug-out</i>
+		launched by <i>-execnogui</i> (they work with <i>-exec</i>)
+		<br /><br /></li>
+
+	<li> Add constraint on activity and activity action.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2986509&amp;group_id=212600&amp;atid=1022386" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> <b>Java Generator 2.20.1</b><br />
+		<b>Python Generator 1.4.1</b><br />
+	 	when a nested class reference was produced the container
+		class(es) name was missing and only the nested class's
+		name was generated, fixed.
+		<br /><br /></li>
+
+	<li> <b>State machine generator 1.4.2</b><br />
+		Add the operation <i>doActivity()</i> on the class representing
+		the state machine, when you apply this operation the
+		<i>do activity</i> of the current state is executed
+		if it is not empty.
+		<br /><br /></li>
+
+	<li> <b>Html documentation Generator 2.19</b><br />
+		<b>XMI2 Generator 1.13</b><br />
+		<b>XMI2 Import 1.8</b><br />
+		To manage constraint on activities and activity actions.
+		<br /><br /></li>
+
+	<li> <b>Plug-out upgrade 1.16.1</b><br />
+		Previous release missed to change the call of <i>UmlCom::bye</i>
+		in internal operation <i>UmlBaseItem::read_()</i>, fixed.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2982500&amp;group_id=212600&amp;atid=1022386" target="_blank">cf.</a>)
+		<br />
+		To manage constraint on activities and activity actions.
+		<br /><br /></li>
+
+	<li> <i>Plug-out</i> <b>empty</b><br />
+		Upgraded by <i>plug-out upgrade</i>.
+		<br /><br /></li>
+
+	<li> The previous releases of BOUML cannot read a project
+	     saved with this version. Obviously this release is
+	     able to read the projects made by previous releases of BOUML.
+		</li>
+    </ul>
+<br /><br />
+
+
+<h3>4.19.3</h3>April 11th 2010<br /><br />
+    <ul>
+	<li> Add the new keyword <i>${inverse_name}</i> producing the name of the inverse
+		role of a bi directional relation between classes.
+		<br /><br /></li>
+
+	<li> When you apply a <i>plug-out</i> when Bouml is started with the option
+		<i>-exit</i>, the return value of Bouml	is the argument of the
+		operation <i>UmlCom::bye()</i>. This value is 0 when you apply an old
+		<i>plug-out</i> where <i>bye</i> doesn't have a parameter.<br />
+		The return value is -1 if the <i>plug-out</i> execution can't be done
+		or if the <i>plug-out</i> doesn't connect to the modeler in less than 30
+		seconds.
+		<br /><br /></li>
+
+	<li> New option <i>-execnogui</i>, use it in place of <i>-exec</i>
+		when you don't want to see the GUI when you apply a <i>plug-out</i>
+		when Bouml is started.<br />
+		In this case the messages normally written in
+		the trace window are produced on <i>stdout</i>.<br />
+		You have to kill the process Bouml by yourself if you use
+		<i>-execnogui</i> without <i>-exit</i>.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2982500&amp;group_id=212600&amp;atid=1022386" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> <b>Python Generator 1.4</b><br />
+		Extends the auto generated <i>import</i> to the classes referenced
+		by the attributes, associations and operations. Previously only
+		the inherited classes and dependencies stereotyped <i>import</i> or
+		<i>from</i> was taken into account.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2981317&amp;group_id=212600&amp;atid=1022386" target="_blank">cf.</a>)
+		<br />
+		Returns the number of errors through <i>UmlCom::bye()</i>.
+		<br /><br /></li>
+
+	<li> <b>C++ Generator 2.16</b><br />
+		<b>C++ Reverse 2.13</b><br />
+		<b>C++ Roundtrip 1.1</b><br />
+		<b>Java Generator 2.20</b><br />
+		<b>Java Catalog 2.15</b><br />
+		<b>Java Reverse 2.16</b><br />
+ 	     	<b>Java Roundtrip 1.3</b><br />
+		<b>Idl Generator 2.13</b><br />
+		<b>Php Generator 1.8</b><br />
+		<b>Php Reverse 1.6</b><br />
+	     	<b>Roundtrip body 1.11</b><br />
+		Returns the number of errors through <i>UmlCom::bye()</i>
+		<br /><br /></li>
+
+	<li> <b>Plug-out upgrade 1.16</b><br />
+		To add a parameter of type <i>int</i> to <i>UmlCom::bye</i>,
+		it will be managed as the return value of the <i>plug-out</i>,
+		0 means no error.<br />
+		<font color="#C05800">You have to add by yourself an argument to the calls of
+		<i>UmlCom::bye</i></font>
+		<br /><br /></li>
+
+	<li> <i>Plug-out</i> <b>empty</b><br />
+		Upgraded by <i>plug-out upgrade</i>.
+		</li>
+    </ul>
+<br /><br />
+
+
+<h3>4.19.2 patch 1 (Windows)</h3>March 29th 2010<br /><br />
+    <ul>
+	<li> This release only exists for Windows.
+		<br /><br /></li>
+
+	<li> <font color="red">Since release 4.19 a crash could occurred
+		because of Microsoft Visual C++ compiler bug
+		when a nested relation was drawn in a class diagram and
+		changes was made concerning the drawn elements or the
+		diagram itself (including the case where a new nested relation
+		has to be drawn) </font>,
+		fixed.
+		</li>
+    </ul>
+<br /><br />
+
+
+<h3>4.19.2</h3>March 28th 2010<br /><br />
+    <ul>
+	<li> <font color="red">A crash could occurred when you opened a component
+		diagram referencing through a required or provided relation
+		a class deleted in a previous session</font>,
+		fixed.
+		<br /><br /></li>
+
+	<li> When you closed Bouml though a shortcut (<i>control-w</i> by default)
+		while an additional window like an artifact source windows was
+		still open, Bouml crashed (without true consequence because if needed
+		the previously load project was already saved),
+		fixed.
+		<br /><br /></li>
+		
+
+	<li> <i>fr.lang de.lang es.lang</i> updated.
+		</li>
+    </ul>
+<br /><br />
+
+
+<h3>4.19.1</h3>March 14th 2010<br /><br />
+    <ul>
+	<li> <font color="red">Since release 4.17.1 a crash could occurred when you did
+		some changes on a state present in an opened diagram but never visible
+		because of the diagram dimensions and the position of the scrollbars</font>,
+		fixed.
+		<br /><br /></li>
+
+	<li><b>C++ Roundtrip 1.0.4</b><br />
+ 	    <b>Java Roundtrip 1.2.3</b><br />
+		To not empty the stereotypes when this is possible.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2964232&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li><b>Java Generator 2.19.2</b><br />
+		To not duplicate imports both defined in artifact definition and through
+		dependencies.
+		</li>
+
+    </ul>
+<br /><br />
+
+
+<h3>4.19</h3>February 27th 2010<br /><br />
+    <ul>
+	<li> The message written to signal a message can't be added in a sequence diagram
+		contained wrong characters, fixed.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2954397&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> Add lost/found messages in sequence diagram.
+		<br /><br /></li>
+
+	<li> Add interface icon using a simple circle, extends <i>drawing mode</i>
+		with it for classes in a class diagram, instances in a sequence
+		diagram and actors in a use case diagram.<br />
+		<font color="blue">To not change the already existing diagrams, 
+		when you open an old diagram showing classes stereotyped interface
+		or instances of classes stereotyped interface, their drawing mode
+		is forced to <i>class</i> when it values <i>natural</i> (even
+		indirectly).</font>
+		<br /><br /></li>
+
+	<li> In a sequence diagram, when an instance doesn't send nor receive message
+		the menu of the instance proposes to hide/show the life line. To allow
+		to draw a multiple instance with only one visible life line.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2957895&amp;group_id=212600&amp;atid=1022386" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> <b>XMI2 Generator 1.12.3</b><br />
+		To manage lost/found messages.
+		<br /><br /></li>
+	
+	<li> <b>Plug-out API</b><br />
+		The operation <i>from()</i> returns null for a <i>UmlBaseMessage</i>
+		corresponding to a found message.<br />
+		The operation <i>to()</i> returns null for a <i>UmlBaseMessage</i>
+		corresponding to a lost message.
+		<br /><br /></li>
+
+	<li> <i>fr.lang</i> updated.
+		<br /><br /></li>
+
+	<li> The previous releases of BOUML cannot read a project
+	     saved with this version. Obviously this release is
+	     able to read the projects made by previous releases of BOUML.
+		</li>
+    </ul>
+<br /><br />
+
+<h3>4.18.2</h3>February 13th 2010<br /><br />
+    <ul>
+	<li> The class instances wasn't colored when you asked to
+		not draw the shadow in a sequence or communication diagrams, fixed.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2948518&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> <b>C++ Reverse 2.12.4</b><br />
+		To set the C++ source and header directory for the additional packages
+		created during the reverse because all classes defined in a given directory
+		are not defined in the same namespace or some are defined in a namespace and some
+		others are defined out of a namespace, try to use path relative to root directory if
+		it is defined in the generation settings.
+		<br /><br /></li>
+
+	<li> <b>C++ Roundtrip 1.0.3</b><br />
+		The roundtrip was perturbed by the use of namespaces and produced a wrong
+		and inconsistent result, fixed.<br />
+		In the previous releases of C++ reverse/roundtrip the C++ directory of source
+		and header files wasn't set for additional packages created to manage several
+		namespaces (see remark concerning the reverse above),
+		because of that the roundtrip may propose to delete classes defined under
+		these packages. <font color="#C05800">If you used previous
+		releases of C++ reverse/roundtrip to reverse source codes using namespaces
+		you need to check the packages having empty C++ source and header directory
+		specifications to set them if needed.</font><br />
+		To discard \r when comparing two strings to update or not an element.
+		<br /><br /></li>
+
+	<li> <b>Java Roundtrip 1.2.2</b><br />
+		To discard \r when comparing two strings to update or not an element.
+		<br /><br /></li>
+
+	<li> <b>Uml projection 1.1.2</b><br />
+		Projection to C++ missed to set C++ header definition
+		on already existing artifacts, fixed.
+		</li>
+    </ul>
+<br /><br />
+
+
+
+<h3>4.18.1</h3>February 6th 2010<br /><br />
+    <ul>
+	<li> <font color="red">A crash could occurred when you did some changes on relations
+		used by 'modeled' class instances (non pure graphical class instances)
+		or reload a project defining 'modeled' class instances</font>, fixed.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2946401&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> In a class diagram when the drawing setting <i>draw all relations</i> was false
+		the only way to show not yet drawn nesting relations was to set <i>draw all relations</i>
+		to true, then to remove undesired shown relations. Now the menu of a nested
+		class proposes to show the nesting relation when it is not yet drawn and the container
+		class is present.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2944635&amp;group_id=212600&amp;atid=1022386" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> <b>XMI2 Import 1.7.2</b><br />
+		To replace newline by space in relations's name.
+		<br /><br /></li>
+
+	<li> <b>C++ Reverse 2.12.3</b><br />
+	     <b>C++ Roundtrip 1.0.2</b><br />
+		The name of the parameters of the operations must be the name specified
+			in the definition when it is not empty, rather than the name
+			given in the declaration (regression introduced when I added roundtrip).<br />
+		The instantiation of a template class inside the declaration or
+			the definition of its operations was reversed
+			as the class itself (without actuals), fixed.
+		<br /><br /></li>
+
+	<li> <i>fr.lang</i> updated.
+		</li>
+    </ul>
+<br /><br />
+
+
+<h3>4.18</h3>January 24th 2010<br /><br />
+    <ul>
+	<li> <font color="red">In the previous release changes done in an activity
+		diagram may crashed the memory under Windows because of a bug in
+		Microsoft Visual C++ compiler, this problem potentially also
+		existed in other cases</font>, bypassed.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2938413&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> I was forbidden to add a flow from an action to an object whose
+		<i>is control</i> was false, fixed.
+		<br /><br /></li>
+
+	<li> When you added a shortcut the indications control/shift/alt was removed when
+		you specified the key in case the current line was the last (generally the case),
+		fixed.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2931302&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> Add the new shortcut commands <i>Open project, Print</i> and
+		<i>Save as</i>, default shortcuts are <i>control o</i>,
+		<i>control p</i> and <i>control shift s</i>.<br />
+		Also add default shortcut <i>control p</i> printing the active shown diagram.<br />
+		<font color="#C05800">Warning, the default shortcut to generate Php source is
+		now <i>control h</i> rather than <i>control p</i></font>.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2931306&amp;group_id=212600&amp;atid=1022386" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> <b>XMI2 Generator 1.12.2</b><br />
+		Improvement to know if a flow is a control or an object flow.
+		<br /><br /></li>
+
+	<li> <b>C++ Generator 2.15.2</b><br />
+	     <b>C++ Reverse 2.12.2</b><br />
+	     <b>C++ Roundtrip 1.0.1</b><br />
+	     <b>Java Generator 2.19.1</b><br />
+	     <b>Idl Generator 2.12.1</b><br />
+	     <b>Python Generator 1.3.1</b><br />
+	     <b>Project control 1.2.4</b><br />
+	     <b>Project synchro 1.2.3</b><br />
+	     <b>XMI2 Import 1.7.1</b><br />
+	     <b>File Control 1.0.5</b><br />
+	     <b>Uml projection 1.1.1</b><br />
+		Modified to not be potentially affected by Microsoft Visual C++ compiler bug.
+		<br /><br /></li>
+
+	<li> <i>fr.lang, de.lang</i> and <i>es.lang</i> updated.
+		<br /><br /></li>
+
+	<li> The previous releases of BOUML cannot read a project
+	     saved with this version. Obviously this release is
+	     able to read the projects made by previous releases of BOUML.
+		</li>
+    </ul>
+<br /><br />
+
+
+<h3>4.17.1</h3>January 9th 2010<br /><br />
+    <ul>	
+	<li> <font color="red">A crash may occurred when drawing a class instances
+		non transparent and without drawing the shadows</font>, fixed.
+		<br /><br /></li>
+
+	<li> Under Windows the default language was wrongly set to Spanish in case you previously used a
+		release older than the 1.15.1 and the environment variables LANG and LCID don't specify
+		English or French, fixed.
+		<br /><br /></li>
+
+	<li> <i>Add related elements</i> did nothing in a use case or deployment
+		diagram, fixed.
+		<br /><br /></li>
+
+	<li> When you manually resized an element in a diagram its self relations may be hidden
+		depending on the position of the self relation and the used corner, fixed.
+		<br /><br /></li>
+
+	<li> In a state diagram, when you added an element and it was automatically moved to be placed
+		in its container, its self relations didn't follow it and their cut points was poorly
+		placed,	fixed.
+		<br /><br /></li>
+
+	<li> When you add a container in a state or activity diagram and its possible container wasn't
+		drawn but its sub elements was drawn, now the added container is automatically resized
+		to contain its sub elements. To try to not poorly move already placed elements to force
+		them to be inside the added container.
+		</li>
+    </ul>
+<br /><br />
+
+
+<h3>es.lang</h3>January 3th 2010<br /><br />
+    <ul>
+	<li> Complete version of <a href="http://downloads.sourceforge.net/bouml/es.lang">es.lang</a> to use Bouml in Spanish,
+		this version is newer than Bouml 4.17 and can be used with any releases since 4.15.1 (useless before).
+		Download <a href="http://downloads.sourceforge.net/bouml/es.lang">es.lang</a>
+		and indicate where you place it through the "Miscellaneous / Edit environment" dialog.
+		Many Thanks to Paulo Cesar Coronado.
+		</li>
+    </ul>
+<br /><br />
+
+
+<h3>4.17</h3>January 1th 2010<br /><br />
+    <ul>
+	<li> A crash occurred when you load an inconsistent model where two
+		operations share the same internal identifier, fixed.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2919212&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> The optional parameters wasn't given to the init/check plug-outs
+		associated to the stereotypes part of profiles, fixed.
+		<br /><br /></li>
+	
+	<li> The boxes representing the class instances was not produced in SVG
+		when you didn't ask for to draw the shadows and they aren't
+		transparent, fixed.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2911980&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		<br /><br /></li>
+	
+	<li> Add the new shortcut commands <i>Optimal scale, Optimal window size,
+		Zoom +, Zoom -</i> and <i>Zoom 100%</i> for diagrams.<br />
+		Also add <i>control mouse wheel up/down</i> management to
+		increase / decrease the zoom.
+		<br /><br /></li>
+
+	<li> In a diagram to move the mouse with the mid click pressed
+		moves the viewport accordingly.
+		<br /><br /></li>
+
+	<li> In a diagram add <i>shift mouse wheel up/down</i> management to
+		scroll left/right (<i>mouse wheel up/down</i> already did scroll up/down).
+		<br /><br /></li>
+	
+	<li> Add the new shortcut commands <i>Close</i> and <i>Quit</i> to close
+		the project or quit, default shortcuts are <i>control w</i> and <i>control q</i>.
+		<br /><br /></li>
+
+	<li> When several resizable elements are selected in a diagram
+		the multiple selection menu allows you to resize them
+		to have the same width and/or height of the first selected element.
+		Have associated shortcut commands (<i>Same width</i>, <i>Same height</i>
+		and <i>Same size</i>)
+		<br /><br /></li>
+
+	<li> It is now possible to have a class diagram under a use case or a use case view,
+		this allows to define Iconix <i>robustness diagram</i> throw class diagram.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2917698&amp;group_id=212600&amp;atid=1022386" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> <b>XMI2 Generator 1.12.1</b><br />
+		The post condition of an activity actions was not
+		exported, and the pre conditions wasn't exported
+		when the post condition was empty, fixed.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2909605&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> <b>C++ Roundtrip 1.0</b><br />
+		New <i>plug-out</i>, please refer to the
+			<a href="doc/index_cpproundtrip.html">documentation</a>.
+		<br /><br /></li>
+
+	<li> <b>C++ Reverse 2.12.1</b><br />
+		For compatibility with the roundtrip now the <i>#file</i> property
+		is get from the project package rather than in the package where you start
+		a reverse.<br />
+		To set the C++ source and header directory for the packages
+		created during the reverse, try to use path relative to root directory if
+		it is defined in the generation settings.
+		<br /><br /></li>
+
+	<li> <b>Java Roundtrip 1.2.1</b><br />
+		Fixe bugs.<br />
+		To set the Java directory for the packages created during the
+		reverse even without associated Java package,
+		try to use path relative to root directory if it is defined.
+		<br /><br /></li>
+
+	<li> <b>Java Reverse 2.15.1</b><br />
+		<b>Java Catalog 2.14.1</b><br />
+		To set the Java directory for the packages created during the
+		reverse even without associated Java package,
+		try to use path relative to root directory if it is defined.
+		<br /><br /></li>
+	
+	<li> <b>Plug-out upgrade 1.15.2</b><br />
+		To allow to create a class diagram under a use case or use case view
+		<br /><br /></li>
+
+	<li> <i>Plug-out</i> <b>empty</b><br />
+		Upgraded by <i>plug-out upgrade</i>.
+		<br /><br /></li>
+
+	<li> <i>es.lang</i> added allowing to use the modeler in Spain,
+		this work is in progress and some translations are still missing
+		(in this case the English is used).
+		<font color="blue">Many thanks to Paulo Cesar Coronado for the translation</font>.
+		So you can currently choose between English, French German and Spain.
+		<br /><br /></li>
+
+	<li> <font color="blue">Recall : if you are volunteer to add the
+		translation for a new language contract me. The work consists
+		to translate more than 2000 short sentences with a tool
+		I developped for that (of course you don't have to change
+		the sources of Bouml).</font>
+		<br /><br /></li>
+
+	<li> The previous releases of BOUML cannot read a project
+	     saved with this version. Obviously this release is
+	     able to read the projects made by previous releases of BOUML.
+		</li>
+    </ul>
+<br /><br />
+
+
+<h3>4.16.4</h3>November 25th 2009<br /><br />
+    <ul>
+	<li> Facilitates the adding in a diagram of a incoming/outgoing
+		line (transition, flow ...) to/from a small item already
+		having lines.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2902077&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> When you moved a decentered line having a geometry (
+		<img src="doc/figs/linegeo1.png" alt="" border="0" />,
+		<img src="doc/figs/linegeo2.png" alt="" border="0" />,
+		<img src="doc/figs/linegeo3.png" alt="" border="0" /> or
+		<img src="doc/figs/linegeo4.png" alt="" border="0" />),
+		the attached labels (name, stereotype ...) could be moved
+		more than expected, fixed.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2902076&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		</li>
+    </ul>
+<br /><br />
+
+
+<h3>4.16.3</h3>November 18th 2009<br /><br />
+    <ul>
+	<li> Facilitates the selection in diagrams of small items having
+		incoming and/or outgoing lines.
+		<br /><br /></li>
+
+	<li> When you add an element in a state diagram and its state container
+		is already drawn, force the added element to be inside its
+		state container or region. When you add a state the already
+		draw sub elements are moved to be inside the added state, but
+		because the added state is small this poorly place them.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2897603&amp;group_id=212600&amp;atid=1022386" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> You can now decenter lines (relations, transition ...)
+		having a geometry (
+		<img src="doc/figs/linegeo1.png" alt="" border="0" />,
+		<img src="doc/figs/linegeo2.png" alt="" border="0" />,
+		<img src="doc/figs/linegeo3.png" alt="" border="0" /> or
+		<img src="doc/figs/linegeo4.png" alt="" border="0" />),
+		when you change the geometry the line is first recentered
+		on both	extremities.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2897603&amp;group_id=212600&amp;atid=1022386" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> <b>C++ Generator 2.15.1</b><br />
+		A space was missing between the two last &gt; in an inheritance
+		of a template class when the last actual is also a template class,
+		fixed.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2899194&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		</li>
+    </ul>
+<br /><br />
+
+
+<h3>4.16.2</h3>November 8th 2009<br /><br />
+    <ul>
+	<li> Except few exceptions when you resized element like classes
+		the edge didn't follow the cursor, fixed.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2889624&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		<br /><br /></li>
+	
+	<li> It was difficult to select a line drawn between an element
+		to an other element placed inside the first one 
+		(for instance between a state machine and a sub state drawn
+		inside its state machine), fixed.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2893254&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		<br /><br /></li>
+	
+	<li> In activity diagrams the stereotype of an action is now written,
+		except for <i>opaque actions</i> when you ask for to show
+		their definition through the drawing settings.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2887336&amp;group_id=212600&amp;atid=1022386" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> You can now change the parent of a state, pseudo state and region
+		through drag&amp;drop in the browser while you stay inside the
+		container state	machine.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2893747&amp;group_id=212600&amp;atid=1022386" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> <i>de.lang</i> added allowing to use the modeler in German,
+		this work is in progress and some translations are still missing
+		(in this case the English is used).
+		<font color="blue">Many thanks to Oliver Rudolph for the translation</font>.
+		So you can currently choose between English, French and German.
+		<br /><br /></li>
+
+	<li> <font color="blue">Recall : if you are volunteer to add the
+		translation for a new language contact me. The work consists
+		to translate more than 2000 short sentences with a tool
+		I developped for that (of course you don't have to change
+		the sources of Bouml).</font></li>
+    </ul>
+<br /><br />
+
+
+<h3>4.16.1</h3>October 26th 2009<br /><br />
+    <ul>
+	<li> <font color="red">In all the previous releases an <i>import project</i> or
+		<i>import as library</i> or <i>import tools</i>
+		crashed the memory under Windows because of a bug in Microsoft Visual
+		C++ compiler</font>, bypassed.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2885920&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> The tools dialog had wrong/random wording due to illegal memory
+		accesses and some translation cases was missing, fixed.
+		<br /><br /></li>
+
+	<li> <i>fr.lang</i> updated
+		</li>
+    </ul>
+<br /><br />
+
+
+<h3>4.16</h3>October 25th 2009<br /><br />
+    <ul>
+	<li> The buttons <i>show/edit body</i> of the operation dialog had
+		a wrong/random wording due to illegal memory
+		accesses and some translation cases was missing,
+		fixed.
+		<br /><br /></li>
+
+	<li> In the previous release in	a use case diagram a class was represented
+		as an actor even its stereotype was part of a profile and has
+		an associated icon. Now like for in a class diagram the icon
+		associated to the stereotype is used when the drawing setting
+		values <i>natural</i>.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2876643&amp;group_id=212600&amp;atid=1022386" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> It is now possible to show/hide the visibility of the relations between
+		classes depending on the value of the drawing settings
+		<i>show relation visibility</i>. By default the visibility
+		of the relations of not shown.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2881733&amp;group_id=212600&amp;atid=1022386" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> Messages in a sequence diagram can now be stereotyped (by textual
+		stereotype out of profile). Default message stereotypes can
+		be set through the default stereotype dialog.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2875724&amp;group_id=212600&amp;atid=1022386" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> It is now possible to ask for to draw a <i>decomposition indicator icon</i>
+		in a state in a state diagram. By default the icon is not shown. The fact
+		the icon is drawn or not is under your responsability, Bouml doesn't check
+		if this is consistent or not.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2877040&amp;group_id=212600&amp;atid=1022386" target="_blank">cf.</a>)
+		<br /><br /></li>
+	
+	<li> <b>Plug-out upgrade 1.15.1</b><br />
+		To manage stereotype on messages in a sequence diagram.
+		<br /><br /></li>
+
+	<li> <b>XMI2 Generator 1.12</b><br />
+		To export stereotype of messages through an extension.
+		<br /><br /></li>
+
+	<li> <i>Plug-out</i> <b>empty</b><br />
+		Upgraded by <i>plug-out upgrade</i>.
+		<br /><br /></li>
+
+	<li> <i>fr.lang</i> updated
+		<br /><br /></li>
+
+	<li> The previous releases of BOUML cannot read a project
+	     saved with this version. Obviously this release is
+	     able to read the projects made by previous releases of BOUML.
+		</li>
+    </ul>
+<br /><br />
+
+
+<h3>4.15.1</h3>October 21th 2009<br /><br />
+    <ul>
+	<li> Internationalization of the modeler's menus and dialogs using a
+		translation files specified through the environment dialog.
+		If you don't specify a translation file the English is used.
+		Note : when you change the language some global menus are unchanged
+		and description of buttons of already opened diagram too, to follow
+		the new language for all exist then restart the modeler.
+		Currently only the translation file <i>fr.lang</i> is available
+		to use French because I only speak French and English<br /><br />
+		<font color="blue">If you are volunteer to add a
+		new translation contact me and I will send you the small tool I made
+		for that and how to do. I do not deny that it is quite laborious to translate
+		more that 2000 sentences, be sure you will have the courage to do that
+		before contacting me ;-)</font>
+		</li>
+    </ul>
+<br /><br />
+
+
+<h3>4.15</h3>September 26th 2009<br /><br />
+    <ul>
+	<li> Allows to import a project as a library. A project imported as
+		a library can't be modified in the importing project,
+		but it can be updated to follow changes done in the imported
+		project.<br />
+		In case the project imported as library contains others projects
+		imported as library this ones are not considered like that,
+		this means you can't update these sub projects separately but
+		you have to ask for to update the container project you
+		directly imported.<br />
+		To simplify management you can't update a project imported
+		as library while the project is modified, this means you have
+		to save first your project or to reload it to forget changes
+		you don't want, and at the end of the update the project is saved, so you can't
+		undo an update.<br />
+		This feature is dedicated to use projects defining
+		librairies, <u>not</u> to work at several on the same project,
+		for that see <a href="doc/index_projectcontrol.html" target="_blank">Project control</a>
+		and <a href="doc/index_projectsynchro.html" target="_blank">Project synchro</a>
+		<br /><br /></li>
+
+	<li> <b>Project control 1.2.3</b><br />
+		To manage case of projects imported as library
+		<br /><br /></li>
+
+	<li> The previous releases of BOUML cannot read a project
+	     saved with this version. Obviously this release is
+	     able to read the projects made by previous releases of BOUML.
+		</li>
+    </ul>
+<br /><br />
+
+
+<h3>4.14</h3>September 12th 2009<br /><br />
+    <ul>
+	<li> When you deleted a package through a <i>plug-out</i> the container
+		package was not marked modified and was not saved without an
+		other reason marking it modified, and an error occurred when you
+		reload the project, fixed.
+		<br /><br /></li>
+
+	<li> Under Windows, after exiting from Bouml using the [X]
+		button in the title bar (rather than through the menu),
+		the main window is closed but it is possible to have
+		the <i>bouml.exe</i> process still alive and looping
+		indefinitely (problem not reproducted signaled by only one user), bypassed.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2832101&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		<br /><br /></li>
+		
+	<li> In a class diagram it is now possible to resize the classes
+		drawn with the standard representation (not using an icon)
+		<br /><br /></li>
+
+	<li> New drawing setting <i>hide get/set operations</i> applying
+		on 'official' get and set operations in class diagrams.
+		By default get and set operations are shown.
+		<br /><br /></li>
+
+	<li> New C++ generation setting <i>inline force include in header</i>,
+		when it is set the types referenced in the profile of the <i>inline</i>
+		operations produce includes in the header like this was
+		obligatory the case with the previous releases, else the code generator
+		doesn't take care if there are inline operations to compute
+		dependencies. This setting values <i>true</i> by default
+		for the already existing projects to not perturbate them,
+		but <i>false</i> by default when you create a new project.
+		<br /><br /></li>
+
+	<li> <b>C++ Generator 2.15</b><br />
+		a space was missing between the two last &gt; in the 
+		definition of a	template class whose last formal has 
+		a default value being a template form (i.e. finishing by a &gt;)
+		and also in the instantiation of a template class where
+		the last actual is a template form but doesn't correspond
+		to the last formal (next formals having default value)
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2819673&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		<br />
+		To manage new generation setting <i>inline force include in header</i><br />
+		To avoid a crash on exit when bouml exits before.<br />
+		Follow the new API.
+		<br /><br /></li>
+
+	<li> <b>C++ Reverse 2.12</b><br />
+		<b>Java Generator 2.19</b><br />
+		<b>Java Reverse 2.15</b><br />
+		<b>Java Roundtrip 1.2</b><br />
+		<b>Java Catalog 2.14</b><br />
+		<b>Php Generator 1.7</b><br />
+		<b>Php Reverse 1.5</b><br />
+		<b>Python Generator 1.3</b><br />
+		<b>Idl Generator 2.12</b><br />
+		<b>Roundtrip body 1.10</b><br />
+		To avoid a crash on exit when bouml exits before, mainly for
+		<i>java catalog</i> because other plug-outs finish automatically.<br />
+		Follow the new API.
+		<br /><br /></li>
+
+	
+	<li> <b>Plug-out upgrade 1.15</b><br />
+		To manage new generation setting <i>inline force include in header</i><br />
+		To avoid a crash on exit when bouml exits before.<br />
+		Follow the new API.
+		<br /><br /></li>
+
+	<li> <b>XMI2 Generator 1.11.1</b><br />
+		To export transition's description and <i>tagged values</i>.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2839028&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> <i>Plug-out</i> <b>empty</b><br />
+		Upgraded by <i>plug-out upgrade</i>.
+		<br /><br /></li>
+
+	<li> The previous releases of BOUML cannot read a project
+	     saved with this version. Obviously this release is
+	     able to read the projects made by previous releases of BOUML.
+		</li>
+    </ul>
+<br /><br />
+
+
+
+<h3>4.13.1</h3>July 8th 2009<br /><br />
+    <ul>
+	<li> Improvement to diminuish the needed time to load a project,
+		mainly in case of projects containing Php definition 
+		obtained by a reverse producing artifacts having a long
+		Php definition
+		<br /><br /></li>
+
+	<li> <b>C++ Reverse 2.11.1</b><br />
+		<b>Java Reverse 2.14.1</b><br />
+		<b>Java Roundtrip 1.1.1</b><br />
+		<b>Java Catalog 2.13.1</b><br />
+		<b>Php Reverse 1.4.1</b><br />
+		speed improvement
+		</li>
+    </ul>
+<br /><br />
+
+
+
+<h3>4.13</h3>July 3th 2009<br /><br />
+    <ul>
+	<li> Add <i>active</i> on activity, class and state
+		<br /><br /></li>
+
+
+	<li> Add type specification of function's parameters and return values
+		(<a href="http://www.python.org/dev/peps/pep-3107/" target="_blank">pep-3107</a>).<br />
+		When a return type is specified (it is not empty) the keyword <i>${type}</i>
+		produces the return type prefixed by '&nbsp;-&gt;&nbsp;'<br />
+		When the type of a parameter is specified (it is not empty) the corresponding
+		<i>${&lt;n&gt;}</i> produces the type prefixed by ':&nbsp;' if the keyword is
+		part of the parameter list definition (between <i>${(}</i> and <i>${)}</i>)<br />
+		The code generator doesn't place the types between two string delimiters
+		by itself, to produce a string with delimiters you have to enter these
+		delimiters in the type definition at UML level.	<br />
+		By default when you add a parameter the keyword <i>${&lt;n&gt;}</i>
+		is absent, it is added only if you set the new generation setting
+		<i>operation of Python 3 (pep-3107)</i> (generation settings dialog <i>Python[2]</i>),
+		and you have to change by yourself the default operation definition in the
+		generation settings to add <i>${type}</i> between <i>${)}</i> and ':'
+		<br /><br /></li>
+
+
+	<li> <b>Plug-out upgrade 1.14</b><br />
+		Add operations <i>isActive</i> and <i>set_isActive</i> on
+		<i>UmlBaseActivity, UmlBaseClass</i> and <i>UmlBaseState</i>.<br />
+		Add operations <i>isPython_3_operation</i> and <i>set_IsPython_3_operation</i>
+		on <i>PythonSettings</i>
+		<br /><br /></li>
+
+
+	<li> <b>Python Generator 1.2</b><br />
+		To manage type specification of function's parameters and return values
+		<br /><br /></li>
+		
+
+	<li> <b>C++ Generator 2.14</b><br />
+		<b>C++ Reverse 2.11</b><br />
+		<b>Java Generator 2.18</b><br />
+		<b>Java Reverse 2.14</b><br />
+		<b>Java Roundtrip 1.1</b><br />
+		<b>Java Catalog 2.13</b><br />
+		<b>Idl Generator 2.11</b><br />
+		<b>Php Generator 1.6</b><br />
+		<b>Php Reverse 1.4</b><br />
+		<b>Roundtrip body 1.9</b><br />
+		Follow the new API.
+		<br /><br /></li>
+
+	<li> <b>Html documentation Generator 2.18</b><br />
+		To import/export <i>isActive</i>.<br />
+		To manage type specification of function's parameters and return values
+		Fixe the generation of the description of the elements defined in Java and/or
+		Php and/or Python
+		<br /><br /></li>
+
+	<li> <b>XMI2 Generator 1.11</b><br />
+	     <b>XMI2 Import 1.7</b><br />
+		To import/export <i>isActive</i>.
+		<br /><br /></li>
+
+	<li> <i>Plug-out</i> <b>empty</b><br />
+		Upgraded by <i>plug-out upgrade</i>.
+		<br /><br /></li>
+
+	<li> The previous releases of BOUML cannot read a project
+	     saved with this version. Obviously this release is
+	     able to read the projects made by previous releases of BOUML.
+		</li>
+    </ul>
+<br /><br />
+
+
+
+<h3>4.12.4</h3>June 11th 2009<br /><br />
+    <ul>
+	<li> <i>Browser search</i> allows now to search for elements depending
+		on their stereotype.
+		<br /><br /></li>
+
+	<li> The menu <i>miscellaneous</i> has the new toggle
+		<i>completion in dialog</i>, it is set by default to be
+		compatible to the behavior of the previous releases. When it is set
+		and you enter a string in a list of choices (<i>combo box</i>) in a
+		dialog, an auto completion/search is done, note this one is non
+		case sensitive (Qt limitation). If you don't like this
+		auto completion/search, unset the toggle.
+		<br /><br /></li>
+
+	<li> Internal extension of the <i>Plug-out</i> API for Java Roundtrip.
+		<br /><br /></li>
+
+	<li> <b>C++ Generator 2.13</b><br />
+		A dependency stereotyped <i>friend</i> produced a wrong code
+		in case the target class was a template, fixed.<br />
+		Follow the new API.
+		<br /><br /></li>
+
+
+	<li> <b>Plug-out upgrade 1.13</b><br />
+		A crash occurred when you upgraded an old <i>plug-out</i>
+			without	Python management, fixed.
+			(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2794522&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)<br />			
+		Follow the new API.
+		<br /><br /></li>
+
+	<li> <b>Java Roundtrip 1.0</b><br />
+		New <i>plug-out</i>, please refer to the
+			<a href="doc/index_javaroundtrip.html">documentation</a>.
+		<br /><br /></li>
+		
+
+	<li> <b>C++ Reverse 2.10</b><br />
+		<b>Java Generator 2.17</b><br />
+		<b>Java Reverse 2.13</b><br />
+		<b>Java Catalog 2.12</b><br />
+		<b>Idl Generator 2.10</b><br />
+		<b>Php Generator 1.5</b><br />
+		<b>Php Reverse 1.3</b><br />
+		<b>Python Generator 1.1</b><br />
+		<b>Roundtrip body 1.8</b><br />
+		Follow the new API.
+		<br /><br /></li>
+
+	<li> <b>XMI Generator 1.4.6</b><br />
+		When a parameter of an operation doesn't have type
+		the token <i>UML:Parameter</i> wasn't closed, fixed.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2799940&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> <b>XMI2 Generator 1.10.2</b><br />
+		The <i>base type</i> of a class stereotyped <i>typedef</i>
+		is now produced in an extension form supposing you ask for them
+		</li>
+    </ul>
+<br /><br />
+
+
+
+<h3>Import Interface</h3>May 5th 2009<br /><br />
+New user contribution, please refer to <a href="contrib.html">contributions</a>
+<br /><br />
+
+
+<h3>4.12.3</h3>April 29th 2009<br /><br />
+    <ul>
+	<li> Since 4.12 because of change concerning the z-dimension of lines
+		in diagrams it was difficult to select small elements connected
+		to a line in diagram and to connect required '(' and provided 'O'
+		representations in a component diagram, fixed.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2783447&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> You can now close all the opened diagrams through the entry
+		<i>Close all</i> added in the global menu <i>Windows</i>
+		</li>
+    </ul>
+<br /><br />
+
+
+
+<h3>4.12.2</h3>April 18th 2009<br /><br />
+    <ul>
+	<li> <font color="red">When you duplicated a state Bouml
+		could crash</font>, fixed.
+		(<a href="http://sourceforge.net/tracker/?func=detail&amp;aid=2727112&amp;group_id=212600&amp;atid=1022383" target="_blank">cf.</a>)
+		<br /><br /></li>
+
+	<li> When you deleted attribute or operation of a class through a plug-out
+		the drawing of the class wasn't updated in already opened diagrams,
+		(the deleted members was still visible), fixed.
+		<br /><br /></li>
+
+	<li> <b>Python Generator 1.0.9</b><br />
+		In the previous releases the first line of a <i>docstring</i> was indented,
+		then the next lines was produced without adding the current indentation.
+		Now all the lines of a <i>docstring</i> are indented to follow <i>pep-0257</i>.
+		<br /><br /></li>
+
+	<li> <b>Plug-out upgrade 1.12.11</b><br />
+		Add the operation <i>importProject</i> on <i>UmlBasePackage</i>,
+		returns the <i>UmlPackage</i> corresponding to the imported
+		project	or 0/null in case of an error.
+		<br /><br /></li>
+
+	<li> <i>Plug-out</i> <b>empty</b><br />
+		Upgraded by <i>plug-out upgrade</i>.
+		</li>
+    </ul>
+<br /><br />
+
+
+
+<h3>4.12.1</h3>March 28th 2009<br /><br />
+    <ul>
+	<li> When a class is associated to a relation (for instance in case of a class relation)
+		and you deleted the class, the <i>plug-out</i> API operation
+		<i>UmlRelation::association()</i> wrongly returned the deleted class, fixed.
+		<br /><br /></li>
+
+	<li> In a diagram when two elements was link by a line (whatever it represented)
+		and one the element contained the other one, the line was not drawn. This
+		was mainly a problem in case of <i>high-level transition</i> from a <i>composite
+		state</i> with a target inside the <i>composite state</i>. Fixed.
+		<br /><br /></li>
+
+	<li> An auto scroll is now made if necessary when you move in a diagram the mouse
+		with the center or right click down.
+		<br /><br /></li>
+
+	<li> <b>Python Generator 1.0.8</b><br />
+		When a class referenced an other one placed in the same python package, the
+		python code generator wrongly produced <i>&lt;artifact name&gt;.&lt;class name&gt;</i>
+		rather than <i>&lt;package name&gt;.&lt;artifact name&gt;.&lt;class name&gt;</i>,
+		fixed.<br />
+		In the special case of the <i>artifact</i> is named <i>__init__</i> this one is now
+		not generated, this means <i>&lt;package name&gt;.&lt;class name&gt;</i> is produced
+		<br /><br /></li>
+
+	<li> <b>XMI2 Generator 1.10.1</b><br />
+		When you defined an association between a class and an actor an unexpected and
+		inconsistent attribute was generated, fixed.
+		</li>
+    </ul>
+<br /><br />
+
+
+
+<h3>4.12</h3>March 15th 2009<br /><br />
+    <ul>
+	<li> <font color="red">In a communication diagram, when you used the menu to
+		change the geometry of a junction between two instances without
+		supporting yet a message, Bouml crashed</font>, fixed.
+		<br /><br /></li>
+
+	<li> <font color="red">When you duplicate an activity Bouml
+		may crash</font>, fixed.
+		<br /><br /></li>
+
+	<li> <font color="red">In an activity diagram, when an activity partition
+		was in horizontal display mode, and you assigned any colour to it,
+		then close the diagram and re-open it, you got an error message
+		and a part of the diagram was lost</font>, fixed.
+		<br /><br /></li>
+
+	<li> In a state diagram it was possible to resize <i>choices</i> by selecting
+		them with other elements and doing a rezise, same thing for
+		<i>decision</i> and <i>merge</i> in an activity diagram, fixed.
+		<br /><br /></li>
+
+	<li> The <i>virtual desktop</i> set through the environment dialog
+		was not taken into account when you started Bouml, fixed.
+		<br /><br /></li>
+		
+	<li> Add new US diagram formats : <i>Letter, Legal, Tabloid,
+		Letter landscape, Legal landscape</i> and <i>Ledger</i>.
+		<br /><br /></li>
+
+	<li> <i>Search</i> and <i>referenced by</i> dialogs are now not modal,
+		also add buttons to mark/unmark found elements.
+		<br /><br /></li>
+
+	<li> It is now possible to add marked elements in class, use case,
+		component and deployment diagrams
+		though the diagram menu entry <i>add marked elements</i>.
+		<br /><br /></li>
+
+	<li> It is now possible to ask for to add related elements in 
+		diagram for a class, use case, package, component, artifact
+		and deployment node.
+		A related element is an element having a relation with
+		the current element whose can be shown in the current diagram
+		and part of the browser.
+		<br /><br /></li>
+
+	<li> The previous releases of BOUML cannot read a project
+	     saved with this version. Obviously this release is
+	     able to read the projects made by previous releases of BOUML.
+		</li>
+
+    </ul>
+<br /><br />
+
+
+
+<h3>4.11</h3>February, 15th 2009<br /><br />
+    <ul>
+	<li> Add <i>specification</i> on activity and state, used
+		to indicate an implemented operation. Add entries in
+		menu of operation to create an implementing activity
+		or state, or to access to them.
+		<br /><br /></li>
+
+	<li> <b>XMI2 Import 1.6</b><br />
+		Import <i>specification</i> on activity and state.<br />
+		The previous releases force the roles of the relation,
+		regions and entry/exit pseudo states to not be anonymous,
+		not done anymore.
+		<br /><br /></li>
+
+	<li> <b>XMI2 Generator 1.10</b><br />
+	     <b>Html documentation Generator 2.17</b><br />
+		Export <i>specification</i> on activity and state.
+		<br /><br /></li>
+
+	<li> <b>Plug-out upgrade 1.12.10</b><br />
+		Add the operations <i>specification</i> and
+		<i>set_Specification</i> on <i>UmlBaseActivity</i> and
+		<i>UmlBaseState</i>. Add the operation <i>methods</i> on
+		<i>UmlBaseOperation</i>.
+		<br /><br /></li>
+
+	<li> <i>Plug-out</i> <b>empty</b><br />
+		Upgraded by <i>plug-out upgrade</i>.
+		<br /><br /></li>
+
+	<li> The previous releases of BOUML cannot read a project
+	     saved with this version. Obviously this release is
+	     able to read the projects made by previous releases of BOUML.
+		</li>
+    </ul>
+<br /><br />
+
+
+
+<h3>4.10</h3>February, 7th 2009<br /><br />
+    <ul>
+	<li> Add <i>accept call, reply, create object, destroy object,
+		test identify, raise exception</i> and <i>reduce</i>
+		activity actions.
+		<br /><br /></li>
+
+	<li> For Python a default definition of <i>__init__</i> is now
+		specified through the generation settings, this one
+		is used when a class inherits other class(es), the
+		definition asks for mother class(es) initialization
+		through the form <tt>super(<i>classname</i>, self).__init__()</tt>
+		<br /><br /></li>
+
+	<li> In diagrams, now when you move a fragment the textes
+		in collision follow it.
+		<br /><br /></li>
+
+	<li> <b>Python Generator 1.0.7</b><br />
+		when a class inherits other class(es) without defining <i>__init__</i>
+		its auto generated definition now contains
+		<tt>super(<i>classname</i>, self).__init__()</tt>
+		<br /><br /></li>
+
+	<li> <b>Plug-out upgrade 1.12.9</b><br />
+		Bypass a bug on QVector assignment in Qt 2.3 (release used for Windows)
+			by modifying <i>UmlBaseComponent::set_AssociatedClasses(), 
+			UmlBaseArtifact::set_AssociatedClasses()</i> and
+			<i>UmlBaseParameterSet::set_Pins()</i><br />
+		Add <i>accept call, reply, create object, destroy object,
+			test identify, raise exception</i> and <i>reduce</i>
+			activity actions management.<br />
+		To access/modify the new Python generation settings giving
+			the default <i>__init__</i> definition.
+		<br /><br /></li>
+
+	<li> <b>XMI2 Import 1.5</b><br />
+	     <b>XMI2 Generator 1.9</b><br />
+		Forms produced / expected for provided and required interface
+		and for	realizing classes was not the right ones, fixed.
+		<font color="#C05800">Warning, the import of the forms 
+		produced by the previous releases is not managed.</font><br />
+		Import / export of added activity actions.
+		<br /><br /></li>
+
+	<li> <b>Html documentation Generator 2.16</b><br />
+		Generate added activity actions<br/>
+		Produce the initialization of the attributes, relations and
+			operation's parameters at UML level.
+		<br /><br /></li>
+
+	<li> <i>Plug-out</i> <b>empty</b><br />
+		Upgraded by <i>plug-out upgrade</i>.
+		<br /><br /></li>
+
+	<li> The previous releases of BOUML cannot read a project
+	     saved with this version. Obviously this release is
+	     able to read the projects made by previous releases of BOUML.
+		</li>
+    </ul>
+<br /><br />
+
+
+
+<h3>4.9.3</h3>January, 25th 2009<br /><br />
+    <ul>
+	<li> To confirm the edition of a relation whose target was a read-only class
+		and without properties on the first role produced an error message,
+		the only solution was to cancel the edition, fixed.
+		<br /><br /></li>
+
+	<li> Extends the <i>referenced by</i> command searching for elements
+		in diagrams. To be find in a diagram an element must be directly
+		represented, this means for instance an operation nor an
+		attribute can't be find	in a class diagram.
+		<br /><br /></li>
+
+	<li> Add management of <i>${type}</i> for Php in operation,
+		attribute and relation dialogs, a priori used in
+		comment for instance php-comment forms. Note
+		<i>${t&lt;n&gt;}</i> was already managed.<br />
+		To establish through the generation settings
+		a default description for the class,
+		operation, attribute and relation using 
+		<i>@return, @var</i> and <i>@access</i> forms
+		helps you to generate php-comments. Of course it is
+		also possible to write a <i>plug-out</i> modifying
+		the description to use these forms including
+		<i>@param</i> depending on the element definition.
+		<br /><br /></li>
+
+	<li> <b>Php Generator 1.4.6</b><br />
+		Add management of <i>${type}</i> in operation
+		generation (other cases already managed),
+		a priori used in comment for instance php-comment forms.
+		<br /><br /></li>
+	
+	<li> <b>Php Reverse 1.2.2</b><br />
+		Parse comments to search for <i>@param,
+		@return, @var</i> and <i>@access</i> forms.
+		<br /><br /></li>
+
+	<li> <b>Java Generator 2.16.6</b><br />
+		In the previous releases, for an operation declared abstract
+		of defined in an interface, when the '{' corresponding to the
+		start of the body was reached a ';' was	produced and the generation
+		of the operation was done.<br />
+		Now a ';' is produced and the generation continues after the
+		first '}' placed after <i>${body}</i>.
+		<br /><br /></li>
+
+	<li> <b>Html documentation Generator 2.15.1</b><br />
+		The description of an operations or a class stopped when a '{'
+		was reached, and the description of an attribute or a relations
+		stopped when a ';' was reached, fixed.
+		</li>
+    </ul>
+<br /><br />
+
+
+<h3>4.9.2</h3>January, 11th 2009<br /><br />
+    <ul>
+	<li> <font color="red">A crash may occurred when you changed the
+		drawing setting depending on the changes made before</font>, fixed.
+		<br /><br /></li>
+
+	<li> The <i>Plug-out</i> operation <i>UmlBaseClass::isPythonExternal()</i>
+		returned if the class was external for Php rather then for
+		Python, fixed.
+		<br /><br /></li>
+
+	<li> Add management of <i>${association}</i> in Python for relations
+		and getters/setters associated to a relation.
+		<br /><br /></li>
+
+	<li> Fill in white the part containing the name/type of a combined fragment 
+		when its color is transparent and its name/type	is not empty.
+		<br /><br /></li>
+
+	<li> <b>Python Generator 1.0.6</b><br />
+		To manage <i>${association}</i>.
+		</li>
+    </ul>
+<br /><br />	
+
+
+<h3>4.9.1</h3>January, 5th 2009<br /><br />
+    <ul>
+	<li> <font color="red">In an activity, when you created an
+		element through an activity diagram placing the element directly on
+		a partition, this element was wrongly nested in the partition in
+		the browser, and it was impossible to reload the project.</font>,
+		fixed.<br />
+		<font color="blue">When you load a project the elements wrongly
+		nested in a partition are automatically extracted to come back
+		to a consistent project.</font>
+		<br /><br /></li>
+
+	<li> <b>Java Reverse 2.12.5</b><br />
+	     <b>Java Catalog 2.11.5</b><br />
+		The last character of a comment may not be placed
+			in the description, fixed.
+		<br /><br /></li>
+
+	<li> <b>XMI2 Generator 1.8.1</b><br />
+		To export <i>state</i> entry, do behavior and exit.
+		<br /><br /></li>
+
+	<li> <b>XMI2 Import 1.4.1</b><br />
+		To import <i>state</i> entry, do behavior and exit.<br />
+		Some changes to import file produced by AndroMDA
+		<br /><br /></li>
+
+	<li> <b>State machine generator 1.4.1</b><br />
+		A C++ virtual destructor with an empty body
+		is now defined on each class created by the generator.
+		</li>
+    </ul>
+<br /><br />	
+
+
+
+<h3>4.9</h3>December, 23th 2008<br /><br />
+    <ul>
+	<li> <font color="red">The modeler entered in an infinite loop
+		when you tried to change the geometry of an extension (uni 
+		directional association from a stereotype-class to a
+		<i>meta class</i>)</font>, fixed.
+		<br /><br /></li>
+
+	<li> <font color="red">When a class was present in at least two
+		of the provided required and realizing lists of a component
+		and you	deleted the class, saved the model then reload it,
+		the model was inconsistent and a crash can occurred</font>, fixed.
+		<br /><br /></li>
+
+	<li> Operation's parameters using accentued characters in their
+		name or type was wrong written in diagrams and some
+		dialogs and menus, fixed.
+		<br /><br /></li>
+
+	<li> Add <i>activity partitions</i> (<i>swimlanes</i>), please refer
+		to the <a href="doc/index_activitypartition.html">documentation</a>.
+		<br /><br /></li>
+
+	<li> In state and activity diagrams it is now possible to
+		resize <i>forks</i> and <i>joins</i>.
+		<br /><br /></li>
+
+	<li> Check a property (<i>tagged value</i>) is present
+		only one time when you valid the edition of an
+		element.
+		<br /><br /></li>
+
+	<li> Now <i>Add inhnerited operations</i> doesn't propose
+		<i>getter</i> and <i>setter</i> operations of mother
+		classes.<br />
+		When you move an attribut or relation by <i>drag&amp;drop</i>
+		the associated <i>getter</i> and <i>setter</i> operations
+		are now deleted (the marks allow to move an attribut or relation
+		and its associated <i>getter</i> and <i>setter</i>
+		operations).
+		<br /><br /></li>
+
+	<li> <b>Java Generator 2.16.5</b><br />
+		In the previous releases a dependency stereotyped
+		<i>import</i> to a nested class produced an import
+		form concerning the top container class. Now the
+		import form concerns the nested class.
+		<br /><br /></li>
+
+	<li> <b>Java Reverse 2.12.4</b><br />
+	     <b>Java Catalog 2.11.4</b><br />
+		When the default definition of an element doesn't use
+		<i>${description}</i>, remove the first/last line in
+		the comment when it is empty or only contains spaces
+		or tabs<br />
+		The comments placed before the first <i>package</i> or <i>import</i>
+		form in a reversed file are associated to the corresponding
+		<i>artifact</i>.
+		<br /><br /></li>
+
+	<li> <b>Plug-out upgrade 1.12.8</b><br />
+		To fixe definition of operations <i>set_AssociatedDiagram</i>
+			to take into account the case where you unassign
+			the association (diagram is null)<br />
+		To add <i>activity partitions</i>
+		<br /><br /></li>
+
+	<li> <b>Html documentation Generator 2.15</b><br />
+	     <b>XMI2 Generator 1.8</b><br />
+	     <b>XMI2 Import 1.4</b><br />
+		To manage <i>activity partitions</i>.
+		<br /><br /></li>
+
+	<li> <i>Plug-out</i> <b>empty</b><br />
+		Upgraded by <i>plug-out upgrade</i>.
+		<br /><br /></li>
+
+	<li> The previous releases of BOUML cannot read a project
+	     saved with this version. Obviously this release is
+	     able to read the projects made by previous releases of BOUML.
+		<br /><br /></li>
+
+	<li> Note : Reference manual up to date
+		</li>
+    </ul>
+<br /><br />	
+
+
+<h3>4.8.4</h3>December, 7th 2008<br /><br />
+    <ul>
+	<li> <font color="red">To validate the edition of a
+		relation whose first role is read only and without
+		property (<i>tagged value</i>) produced a crash</font>, fixed.
+		<br /><br /></li>
+
+	<li> It is now possible to associate an icon to the
+		stereotypes defined in a profile by specifying
+		a picture file.<br />
+		In a diagram the image is used without modification
+		when the scale is 100%, else it is resized.
+		This image is used in the diagrams for
+		classes when the <i>drawing mode</i>
+		is <i>natural</i>, components when you ask
+		for to use an icon, packages (context not written),
+		state actions (behavior not written), 
+		activity object nodes, deployment nodes and artifacts.
+		In this case the name of the element is written under
+		the icon. <font color="#C05800">These icons are not
+		exported in SVG</font>.<br />
+		The picture is also used in the browser when the
+		element is not deleted, the image is resized
+		to have its width and weight less or equal to 16.<br />
+		For a <i>plug-out</i> the picture path is attached
+		to the property (<i>tagged value</i>) 
+		<i>stereotypeIconPath</i> of the class-stereotype.
+		<br /><br /></li>
+
+	<li> It is possible to define a shortcut to do a <i>browser search</i>.
+		<br /><br /></li>
+
+	<li> <b>C++ Generator 2.12.9</b><br />
+	     <b>Java Generator 2.16.4</b><br />
+	     <b>Idl Generator 2.9.5</b><br />
+	     <b>Php Generator 1.4.5</b><br />
+		Change in the generated indents to take into
+		account a class definition whose definition
+		is indented (definition starts by spaces or tabs).
+		<br /><br /></li>
+
+	<li> <b>C++ Reverse 2.9.3</b><br />
+		To not produce a syntax error on a forward declaration
+		of a struct, union or enum inside the definition
+		of a class, struct or union. Like it was already	
+		made for a class, these forward declarations produce
+		an <i>extra member</i> in the model.
+		<br /><br /></li>
+
+
+	<li> <b>XMI2 Generator 1.7.2</b><br />
+	     <b>XMI2 Import 1.3.2</b><br />
+		To manage stereotype icons.
+		<br /><br /></li>
+
+	<li> <b>Roundtrip body 1.7.2</b><br />
+		Indicate the line number where an invalid
+			preserved block starts.
+		<br /><br /></li>
+
+	<li> <b>Rose project import 2.1.2</b><br />
+		Fixe a possible crash.
+		</li>
+    </ul>
+<br /><br />	
+
+
+<h3>4.8.3</h3>November, 16th 2008<br /><br />
+    <ul>
+	<li> Fixe problems concerning the duplication of <i>getters</i>
+		and <i>setters</i>
+		<br /><br /></li>
+
+	<li> <b>C++ Generator 2.12.8</b><br />
+	     <b>Java Generator 2.16.3</b><br />
+	     <b>Idl Generator 2.9.4</b><br />
+	     <b>Php Generator 1.4.4</b><br />
+		Bypass a bug in the <i>Qt</i> operation <i>QCString::remove</i>
+		whose can indirectly produces a crash
+		<br /><br /></li>
+
+	<li> <b>Global change 1.2</b><br />
+		To manage Python
+		<br /><br /></li>
+
+	<li> Note : Reference manual up to date
+		</li>
+    </ul>
+<br /><br />	
+
+
+<h3>4.8.2</h3>November, 11th 2008<br /><br />
+    <ul>
+	<li> <b>Html documentation Generator 2.14.2</b><br />
+		To also produce Python definitions.<br />
+		Under Windows, for the C++ version, an extra dot may be added
+			at the end of the selected directory's name 
+			returned by <i>QFileDialog::getExistingDirector()</i>
+			(problem detected by a user when the directory path
+			starts by //), add a hack to manage that.
+		<br /><br /></li>
+
+	<li> <b>.pro Generator 2.1.5</b><br />
+		Add the hask concerning the extra dot like for the Html generator.		
+		<br /><br /></li>
+
+	<li> <b>Deploy 1.1</b><br />
+		Add Python management.<br />
+		A class is deployed for a given language only when it is
+			non external and has a non empty definition.<br />
+		Classes stereotyped <i>stereotype</i> or <i>metaclass</i>
+			are not deployed.<br />
+		An associated artifact is created for a class only when it is
+			deployed for at least one language.
+		<br /><br /></li>
+
+	<li> <b>Uml projection 1.1</b><br />
+		To manage Python
+		<br /><br /></li>
+
+	<li> <b>Plug-out upgrade 1.12.7</b><br />
+		To add operations to access / modify Python definitions.<br />
+		Note : you must define the C++ preprocessor variable
+		<i>WITHPYTHON</i> when your <i>plug-out</i> is implemented in C++ and you
+		defined <i>WITHCPP WITHJAVA WITHPHP</i> and <i>WITHIDL</i>.
+		<br /><br /></li>
+
+	<li> <i>Plug-out</i> <b>empty</b><br />
+		Upgraded by <i>plug-out upgrade</i>.
+		</li>
+    </ul>
+<br /><br />	
+
+
+<h3>4.8.1</h3>November, 3th 2008<br /><br />
+    <ul>
+	<li> <font color="red">To modify through a <i>plug-out</i> some
+		generation settings can produce a crash</font>, fixed.
+		You also have to fixe your <i>plug-outs</i> with <i>plug-out upgrade</i>.
+		<br /><br /></li>
+
+	<li> Add <i>meta classes</i> management. A <i>meta class</i> is a class stereotyped
+		<i>metaclass</i>.<br />
+		The path of a <i>meta class</i> (by default
+		<i>http://schema.omg.org/spec/UML/2.0/uml.xml</i> or
+		<i>http://schema.omg.org/spec/UML/2.1/uml.xml</i>
+		depending on the XMI generation) is memorized
+		through the property (tagged value) <i>metaclassPath</i>.
+		<br /><br /></li>
+
+	<li> Modify the way a <i>stereotype</i> extends a <i>meta classe</i>.<br />
+		In the previous	releases you used the stereotype tab of the
+		class editor, and the extending classes was memorized in
+		the property (tagged value) <i>stereotypeExtension</i>.<br />
+		Now an extension is suported by an uni directional
+		association from the stereotype (class stereotyped
+		<i>stereotype</i>) to a <i>meta class</i> (class stereotyped
+		<i>metaclass</i>). The explicit multiplicity <i>1</i> 
+		indicates the extension is required.<br />
+		<font color="blue">When you load a project the properties
+		<i>stereotypeExtension</i> of the <i>stereotype</i> are converted
+		to extensions, the needed <i>meta classes</i> are created</font>.<br />
+		<font color="#C05800">You have to modify your <i>plug-outs</i>
+		to use the <i>meta classes</i> and <i>extensions</i> rather than
+		the properties <i>stereotypeExtension</i> on the
+		<i>stereotypes</i></font>.
+		<br /><br /></li>
+
+	<li> <b>Plug-out upgrade 1.12.6</b><br />
+		To fixe some setter operations on <i>UmlSettings, CppSettings,
+			JavaSettings, IdlSettings</i> and <i>PhpSettings</i>.
+		<br /><br /></li>
+
+	<li> <b>XMI2 Generator 1.7.1</b><br />
+	     <b>XMI2 Import 1.3.1</b><br />
+	     <b>Html documentation Generator 2.14.1</b><br />
+		To manage <i>meta classes</i> and <i>extension</i>.
+		<br /><br /></li>
+
+	<li> <b>Deploy 1.0.1</b><br />
+		To not deploy classes stereotyped <i>stereotype</i> nor
+		<i>metaclass</i>. Of course to apply it on a <i>class view</i>
+		part of a <i>profile</i> seems strange.
+		<br /><br /></li>
+
+	<li> <b>Uml projection 1.0.2</b><br />
+		To not project classes stereotyped <i>stereotype</i> nor
+		<i>metaclass</i> nor placed under a package stereotyped 
+		<i>profile</i>.
+		<br /><br /></li>
+
+	<li> <i>Plug-out</i> <b>empty</b><br />
+		Upgraded by <i>plug-out upgrade</i>.
+		</li>
+    </ul>
+<br /><br />	
+
+
+<h3>4.8 patch 1</h3>October, 26th 2008<br /><br />
+    <ul>
+	<li> <font color="red">Since the release 4.6 a crash occurred when
+		only one language is selected and you modified the parameters
+		list of an operation defined for an actor placed in a
+		use case or a use case view</font>, fixed.
+		<br /><br /></li>
+
+	<li> To manage the special form used to initialize an enum item
+		in Java (value given in parameter rather than throw
+		an assignment).
+		<br /><br /></li>
+
+	<li> On attribute and relation add the property modifiers
+		<i>derived, union</i> (only active when <i>derived</i>
+		is set), <i>ordered</i> and <i>unique</i>.
+		<br /><br /></li>
+
+	<li> New drawing settings <i>show attribute modifiers</i>
+		and  <i>show relation modifiers</i>
+		to how / hide property modifiers in class diagrams.
+		By default property modifiers are not shown.
+		<br /><br /></li>
+
+	<li> <b>Java Generator 2.16.2 patch 1</b><br />
+		To manage the special form used to initialize an enum item
+		(already managed by <i>Java Reverse</i> and <i>Java Catalog</i>).
+		<br /><br /></li>
+
+	<li> <b>Python Generator 1.0.5</b><br />
+		In the previous release the code generation
+		was done for Python 2.2 (explicit <i>object</i>
+		inheritance) depending on the <i>2.2</i> flag at
+		the generation setting level rather than at the
+		classes level, fixed.<br />
+		In an operation definition <i>${class}</i> produces
+		the name of the class containing the operation.
+		<br /><br /></li>
+
+	<li> <b>Plug-out upgrade 1.12.5</b><br />
+		To add the operations <i>isDerived(), isDerivedUnion(), isOrdered(), isUnique()
+		set_isDerived()</i> (set both if the property is derived and if yes
+		if it is derived union), <i>set_isOrdered()</i> and <i>set_isUnique</i>.
+		on <i>UmlBaseAttribute</i> and <i>UmlBaseRelation</i>
+		<br /><br /></li>
+
+	<li> <b>Html documentation Generator 2.14</b><br />
+		Export new property modifiers.<br />
+		Upgraded by <i>plug-out upgrade</i>.
+		<br /><br /></li>
+
+	<li> <b>XMI2 Generator 1.7</b><br />
+	     <b>XMI2 Import 1.3</b><br />
+		To manage new property modifiers.<br />
+		To manage stereotypes extending several meta
+			classes.<br />
+		Upgraded by <i>plug-out upgrade</i>.
+		<br /><br /></li>
+
+	<li> <i>Plug-out</i> <b>empty</b><br />
+		Upgraded by <i>plug-out upgrade</i>.
+		<br /><br /></li>
+
+	<li> The previous releases of BOUML cannot read a project
+	     saved with this version. Obviously this release is
+	     able to read the projects made by previous releases of BOUML.</li>
+    </ul>
+<br /><br />	
+
+
+<h3>4.7</h3>October, 10th 2008<br /><br />
+    <ul>
+	<li> The default screen set through the environment dialog is not
+		taken account account when it is invalid (for instance 
+		when the left coordinate is greater than the right
+		coordinate). Bouml now warns you in this case, and
+		the environment dialog now doesn't allow wrong values.
+		<br /><br /></li>
+
+	<li> A state region can now contain states (including initial
+		and final), pseudo states and state actions.
+		<br /><br /></li>
+
+	<li> Import generation settings now also import C++ include,
+		Java import, Python import and Idl include definitions
+		<br /><br /></li>
+
+	<li> <b>Plug-out upgrade 1.12.4</b><br />
+		Modify the type of the first parameter of the operation
+			<i>UmlBaseStateAction::create()</i> to <i>UmlItem</i>.
+		<br /><br /></li>
+
+	<li> <i>Plug-out</i> <b>empty</b><br />
+		Upgraded by <i>plug-out upgrade</i>.
+		<br /><br /></li>
+
+	<li> The previous releases of BOUML cannot read a project
+	     saved with this version. Obviously this release is
+	     able to read the projects made by previous releases of BOUML.</li>
+    </ul>
+<br /><br />	
+
+
+<h3>4.6.1</h3>September, 24th 2008<br /><br />
+    <ul>
+	<li> Fixe a bug in the API with <i>plug-outs</i> occuring
+		when you ask for a sequence diagram definition
+		where an <i>interaction use</i> cover several
+		life lines.<br />
+	     Because of this bug the XMI2 generator can crash in
+		when used with the previous release of the modeler.
+		</li>
+    </ul>
+<br /><br />	
+
+
+<h3>4.6</h3>September, 22th 2008<br /><br />
+    <ul>
+	<li> Under Windows, when the user configuration is wrong and
+		designates a non writable <i>home directory</i> contrarilly
+		to the directory given the environment variable
+		<i>USERPROFILE</i>, the environment dialog is show each
+		time you start the modeler, fixed.
+		<br /><br /></li>
+
+	<li> When <u>only one</u> target language is selected and you edit
+		an operation, a modification of a parameter impacting the default
+		definition of the operation was only done when you finish the
+		cell edition by clicking in an other cell of the parameters table.
+		Now this is also done when you go in an other tab or validate the
+		operation edition (to click on an other cell isn't necessary).
+		<br /><br /></li>
+
+	<li> A fragment can now reference a diagram, mainly to define
+		<i>interaction use</i> in sequence diagram. Arguments and
+		return value can also be specified through a string
+		(you have to give the full form containing parenthesis
+		and ':' if expected).
+		<br /><br /></li>
+
+	<li> <b>XMI2 Generator 1.6</b><br />
+		Export <i>interaction uses</i>, instance
+			destructions, and continuations.<br />
+		Upgraded by <i>plug-out upgrade</i>.
+		<br /><br /></li>
+
+	<li> <b>.pro Generator 2.1.4</b><br />
+		Add <i>WITHPHP</i> and <i>WITHPYTHON</i> if at least two <i>WITH*</i>
+		are defined. Note : compatible with old
+		<i>plug-outs</i> without Php nor Python.		
+		<br /><br /></li>
+
+
+	<li> <b>Plug-out upgrade 1.12.3</b><br />
+		On <i>JavaSettings</i> add operations
+			<i>isForcePackagePrefixGeneration</i> and
+			<i>set_IsForcePackagePrefixGeneration</i>.<br />
+		On <i>CppSetting</i> add operations <i>builtinIn, builtinOut,
+			builtinInOut</i> and <i>builtinReturn</i> taking
+			a string in argument, if the argument is a type
+			defined in the first tab of the 'generation setting'
+			dialog the returned value is the parameter definition
+			depending on the direction, else a empty string/null.
+			Also add setter operations <i>set_BuiltinIn, set_BuiltinOut,
+			set_BuiltinInOut</i> and <i>set_BuiltinReturn</i>
+			taken in argument the type and the new parameter
+			definition, add the type if it is not yet defined through
+			the first tab of the 'generation setting' dialog.
+		On <i>UmlBaseFragment</i> add operations <i>refer</i>
+			returning the diagram referenced by the fragment or null,
+			<i>arguments</i>, <i>covered</i> returning
+			the list of covered instances (life lines).<br />
+		On <i>UmlBaseFragmentCompartment</i> add operations
+			<i>startContinuation</i> and <i>endContinuation</i>.<br />
+		Add two pseudo message kinds in <i>aMessageKind</i> :
+			<i>aDestruction</i> and <i>anInteractionUse</i>.
+			The pseudo message corresponding to an interaction use
+			is produced in the corresponding fragment and for only one
+			of the covered instances. In these two new cases the
+			operation <i>to()</i> returns as <i>from()</i><br />
+		Note : even the python management is not done in <i>plug-outs</i>,
+			you must define <i>WITHPYTHON</i> when
+			your <i>plug-out</i> is implemented in C++ and you
+			defined <i>WITHCPP WITHJAVA WITHPHP</i> and <i>WITHIDL</i>.
+		<br /><br /></li>
+
+	<li> <i>Plug-out</i> <b>empty</b><br />
+		Upgraded by <i>plug-out upgrade</i>.
+		<br /><br /></li>
+
+	<li> The previous releases of BOUML cannot read a project
+	     saved with this version. Obviously this release is
+	     able to read the projects made by previous releases of BOUML.</li>
+
+    </ul>
+<br /><br />	
+
+
+<h3>4.5.1</h3>September, 8th 2008<br /><br />
+    <ul>
+	<li> Some files like <i>.boumlrc</i> are created into your
+		<i>home directory</i>, unfortunatelly under Windows some
+		users have a wrong configuration (for instance the value of the
+		environment variable <i>HOMEPATH</i> is empty) and the
+		<i>home directory</i> is not writable. In this case
+		the value of the environment variable <i>USERPROFILE</i>
+		is used to specify the <i>home directory</i>.
+		<br /><br /></li>
+		
+	<li> In the previous releases, to hide <u>all</u> the attributs/operations
+		of a class in a class diagram through <i>individual attribute/operation
+		visibility</i> and setting <i>specify visible member rather than hidden
+		ones</i> didn't have effect, fixed.			
+		<br /><br /></li>
+		
+	<li> Fixing in the operation dialog similar to the one made in
+		the Java generator, see below			
+		<br /><br /></li>
+
+	<li> When <u>only one</u> target language is selected, when you modify
+		the operation parameters through the associated dialog, the definition
+		for the target language is now also updated (in the previous versions
+		you had to add/remove/modify parameters by hand in the tab associated
+		to the target language). However I encourage you to continue to
+		check the definition for the target language after modifying the
+		parameters (mainly for C++ where modifiers are produced depending on
+		the parameter types and directions).<br />
+		If you don't like this feature, just set another language through
+		the menu <i>Languages</i>.
+		<br /><br /></li>
+		
+
+	<li> <b>Java Generator 2.16.1</b><br />
+		In the previous releases, when the description or the
+			definition of an operation defined in an interface
+			or an @interface contains a '{', this character
+			was replaced by a ';' and the code generation
+			of the operation was stopped even when this '{'
+			didn't correspond to the beginning of the body.
+			Now this management is done only for the first '{'
+			placed after <i>${)}</i>.			
+		<br /><br /></li>
+
+	<li> <b>XMI2 Generator 1.5.9</b><br />
+		Fixings concerning sequence and communication
+			diagram export
+		<br /><br /></li>
+
+	<li> <b>Global change 1.1.1</b><br />
+		A <i>tab</i> can be specified (out of stereotype) through
+		\t like a return is specified through a \n.
+		<br /><br /></li>
+
+	<li> <b>Project synchro 1.2.2</b><br />
+	     <b>Project control 1.2.2</b><br />
+	     <b>Java Reverse 2.12.3</b><br />
+	     <b>Java Catalog 2.11.3</b><br />
+		To use <i>USERPROFILE</i> when the user configuration
+		specify an invalid <i>home directory</i> under Windows.
+		</li>
+    </ul>
+<br /><br />	
+
+
+<h3>4.5</h3>August, 26th 2008<br /><br />
+    <ul>
+	<li> <font color="red">Previous releases may crashs when
+		you load a project containing a modeled class instance
+		(part of the browser) having a relation valuing a
+		deleted modeled class instance (deletion was made in
+		a previous session)
+		</font>, fixed.
+		<br /><br /></li>
+
+	<li> Add Java generation setting <i>force package prefix generation</i>.
+		This setting is set by default for compatibility with previous releases.
+		<br /><br /></li>
+
+	<li> <b>Java Generator 2.16</b><br />
+		In the previous releases the name of a referenced class
+		was prefixed by its package when it is not part of the current
+		package even if you asked for <i>import</i> generation
+		through <i>dependencies</i> stereotyped <i>import</i>.<br />
+		Now a referenced class is not prefixed by its package when the class
+		or its package is imported and <i>force package prefix generation</i>
+		is not set.
+		<br /><br /></li>
+
+	<li> The previous releases of BOUML cannot read a project
+	     saved with this version. Obviously this release is
+	     able to read the projects made by previous releases of BOUML.</li>
+
+    </ul>
+<br /><br />	
+
+
+<h3>4.4.3</h3>August, 16th 2008<br /><br />
+    <ul>
+	<li> <font color="red">Previous releases may crashs when
+		you load a project containing modeled class instances
+		(part of the browser) specifying value for relation(s)
+		</font>, fixed.
+		<br /><br /></li>
+
+	<li> Add keywords <i>${v&lt;n&gt;}</i> to generate operation
+		parameter default value in Python like for C++ and Php.
+		<br /><br /></li>
+
+	<li> Modify management of asynchronous call in sequence diagrams
+		using overlapping <i>activity bars</i> : an <i>activity bars</i>
+		is now created on the receiver side like for synchronous calls.
+		<br /><br /></li>
+
+	<li> Sometimes the width of some duration bars in sequence
+		diagrams became too fine, fixed.
+		<br /><br /></li>
+
+	<li> <b>Python Generator 1.0.4</b><br />
+		To manage keywords <i>${v&lt;n&gt;}</i>
+		<br /><br /></li>
+
+	<li> <b>XMI2 Generator 1.5.8</b><br />
+		To generate communication diagrams
+			(not managed by XMI import).<br />
+		To generate  sequence diagrams (not managed by XMI import).
+			The result is unspecified in case of
+			non consistent diagrams or diagrams not using
+			overlapping <i>activity bars</i> or when an
+			asynchronous call doesn't create a new overlapping
+			<i>activity bars</i> on the receiver side.<br />
+		Bug fixed by Plug-out upgrade.
+		<br /><br /></li>
+
+	<li> <b>Html documentation Generator 2.13.5</b><br />
+		Spelling (<i>attribut<b>e</b></i>)
+		<br /><br /></li>
+
+	<li> <b>Plug-out upgrade 1.12.2</b><br />
+		In C++ the operation <i>UmlBaseFragment::container()</i>
+			of the <i>plug-outs</i> may return a non
+			initialized value, fixe this problem.
+		<br /><br /></li>
+
+	<li> <i>Plug-out</i> <b>empty</b><br />
+		Bug fixed by <i>plug-out upgrade</i>.
+		</li>
+    </ul>
+<br /><br />	
+
+
+<h3>4.4.2</h3>July, 14th 2008<br /><br />
+    <ul>
+	<li> Improve performances of the modeler to diminuish
+		execution time of deletions.
+		<br /><br /></li>
+
+	<li> <b>XMI2 Generator 1.5.7</b><br />
+		To generate import and extend forms rather than dependencies
+			between use cases if needed (already managed
+			by XMI import).<br />
+		To generate extension points.<br />
+		To generate associations between use cases and actors
+			extracted from use case diagrams (not managed
+			by XMI import).
+		<br /><br /></li>
+
+	<li> <b>XMI2 Import 1.2.11</b><br />
+		To import extension points.
+		</li>
+    </ul>
+<br /><br />	
+
+
+<h3>4.4.1</h3>June, 29th 2008<br /><br />
+    <ul>
+	<li> Add keywords <i>${v&lt;n&gt;}</i> to generate operation
+		parameter default value in C++ and Php.
+		<br /><br /></li>
+
+	<li> Improve performances of the modeler to diminuish
+		execution time of some operations.
+		<br /><br /></li>
+
+	<li> <b>C++ Generator 2.12.7</b><br />
+	     <b>C++ Reverse 2.9.2</b><br />
+	     <b>Php Generator 1.4.3</b><br />
+	     <b>Php Reverse 1.2.1</b><br />
+	     <b>Uml projection 1.0.1</b><br />
+	     <b>Html documentation Generator 2.13.4</b><br />
+		To manage keywords <i>${v&lt;n&gt;}</i>
+		<br /><br /></li>
+
+	<li> <b>Use case wizard 1.1.1 (C++ version)</b><br />
+		Get character set from file <i>.boumlrc</i>
+		rather than from environment variable <i>BOUML_CHARSET</i>.
+		</li>
+    </ul>
+<br /><br />	
+
+
+<h3>4.4</h3>June, 10th 2008<br /><br />
+    <ul>
+	<li> To manage case of users strangly killing Bouml execution
+		the first time it asks for environment definition.
+		Yes, some users did that ... sigh.
+		<br /><br /></li>
+
+	<li> New <i>drawing setting</i> named <i>Show stereotype properties</i>
+		allowing to show or not the <i>tagged values</i> associated to
+		a stereotype. By default they are not shown.<br />
+		The values are shown in a note attached to the stereotyped element,
+		except for the attributes and operations of classes in a class diagram
+		whose are shown inside the class itself.
+		<br /><br /></li>
+
+	<li> new macro <i>${nAME}</i> producing <i>artifact</i>'s name
+		converted to lower case.
+		<br /><br /></li>
+
+	<li> <b>Php Generator 1.4.2</b><br />
+	     <b>Python Generator 1.0.3</b><br />
+	     <b>Idl Generator 2.9.3</b><br />
+		To manage <i>${nAME}</i>
+		<br /><br /></li>
+
+	<li> <b>Java Generator 2.15.2</b><br />
+		To manage <i>${nAME}</i>.<br />
+		Now the dependencies stereotyped <i>import</i> also
+		apply on the classes declared <i>external</i>.
+		<br /><br /></li>
+
+	<li> <b>C++ Generator 2.12.6</b><br />
+	     	To manage <i>${nAME}</i>.<br />
+		To not generate extra ',' when actual(s) are missing
+		for parameterized class binding (formal(s) have default value)
+		<br /><br /></li>
+
+	<li> <b>Java Reverse 2.12.2</b><br />
+	     <b>Java Catalog 2.11.2</b><br />
+	     	In the previous releases a form <i>T&lt;...X...&gt;</i>
+		produces a relation to the generic <i>T</i> when it is
+		part of the reverse classes or known through a
+		catalog. Now the form produces a relation to <i>X</i>
+		if <i>X</i> is a known class and <i>T</i> is defined through
+		the <i>generation setting</i> as the translation in Java
+		of a relation/attribute stereotype (this is the case
+		by default for <i>List</i> for instance)
+		<br /><br /></li>
+
+	<li> <b>Roundtrip body 1.7.1</b><br />
+		Explain why the body of an operation can't be updated.
+		<br /><br /></li>
+
+	<li> The previous releases of BOUML cannot read a project
+	     saved with this version. Obviously this release is
+	     able to read the projects made by previous releases of BOUML.</li>
+    </ul>
+<br /><br />	
+
+
+<h3>4.3.5</h3>May, 26th 2008<br /><br />
+    <ul>
+	<li> The class diagram menu entry <i>Add classes of the selected class view</i>
+		now also add the nested classes.
+		<br /><br /></li>
+
+	<li> Unselect elements in diagram before a copy
+		into the clipboard.
+		<br /><br /></li>
+
+	<li> <b>C++ Generator 2.12.5</b><br />
+		fixe bug concerning classes declared external.
+		</li>
+    </ul>
+<br /><br />
+
+
+<h3>4.3.4</h3>May, 18th 2008<br /><br />
+    <ul>
+	<li> Bugs fixing concerning the attribute in class-stereotype.
+		<br /><br /></li>
+
+	<li> The files <i>.bouml .boumlrc</i> and <i>.bouml_shortcut</i>
+		can't be read when the pathname of your <i>homedir</i> contains
+		non latin1 characters, for instance under Linux
+		when your login name use Cyrillic characters. Fixed.
+		<br /><br /></li>
+
+	<li> When a class instance is drawn in a diagram, <i>:</i>
+		is now written even if the instance is anonymous.<br />
+		In an object diagram the instance name and class are now
+		underlined.
+		<br /><br /></li>
+		
+	<li> <b>Java Reverse 2.12.1</b><br />
+	     <b>Java Catalog 2.11.1</b><br />
+	     <b>Project synchro 1.2.1</b><br />
+	     <b>Project control 1.2.1</b><br />
+		To manage <i>homedir</i> containing
+		non latin1 characters.
+		</li>
+    </ul>
+<br /><br />
+
+<h3>4.3.3</h3>May, 9th 2008<br /><br />
+    <ul>
+	<li> To set the default screen through the environment dialog 
+		in case of a multiple screens usage wasn't effect, fixed
+		<br /><br /></li>
+
+	<li> Fixe problem in the help dialog.
+		<br /><br /></li>
+
+	<li> When a class stereotyped <i>typedef</i> is read-only
+		and you edit it, the base type is empty in the
+		tab UML and the	code preview in C++ tab
+		doesn't show the base type too. Fixed
+		<br /><br /></li>
+
+	<li> The forms <i>@{...}</i> are now substituted in the
+		code generated for the <i>generalizations/realizations</i>.
+		<br /><br /></li>
+
+	<li> <b>Python Generator 1.0.2</b><br />
+		Fixe a bug in the computation of the dependencies to
+			generate the <i>import</i> forms.<br />
+		To substitute forms <i>@{...}</i> in the code generated
+			for the <i>generalizations/realizations</i>.
+		<br /><br /></li>
+
+	<li> <b>C++ Generator 2.12.4</b><br />
+		<b>Java Generator 2.15.1</b><br />
+		<b>Php Generator 1.4.1</b><br />
+		<b>Idl Generator 2.9.2</b><br />
+		To substitute forms <i>@{...}</i> in the code generated
+			for the <i>generalizations/realizations</i>.
+		</li>
+
+    </ul>
+<br /><br />
+
+<h3>4.3.2</h3>May, 5th 2008<br /><br />
+    <ul>
+	<li> Modify the attribution of the socket port number used 
+		to exchange data between the modeler and the <i>plug-outs</i>.
+		The goal is to solve problems with firewall sometimes blocking
+		the <i>plug-outs</i>.
+		<br /><br /></li>
+
+	<li> In the previous releases some information was get from environment
+		variables, for instance <i>BOUML_ID</i>. Now these informations
+		are memorized in the file <i>.boumlrc</i> placed into the home 
+		directory, and set through a dedicated dialog called through the
+		entry <i>Set environment</i> in the menu <i>Miscellaneous</i>.<br />
+		This dialog is automatically called in case <i>.boumlrc</i> doesn't
+		exist, and of course the values set through the defined environment
+		variables are proposed.<br />
+		The shortcuts are now saved in the file <i>.bouml_shortcuts</i>
+		<br /><br /></li>
+
+	<li> The chapter of the reference manual corresponding to the type of the
+		element	selected in the <i>browser</i> is now shown by using the
+		<i>F1</i> key or the help menu (<i>About</i> dialog is now
+		associated to the <i>F2</i> key).<br />
+		The chapter <i>starting</i> is used if no project is load,
+		if nothing is selected in the <i>browser</i> the chapter
+		<i>browser items</i> is used.<br />
+		The directory where the documentation is placed can be specified
+		by setting the environment (see above), you can also indicate which
+		navigator will be used to show the HTML pages.<br />
+		Two <i>setups</i> are now distributed for Windows, one of 
+		them install the documentation.
+		<br /><br /></li>
+
+	<li> When you add an inherited operation the new operation is set not abtract.
+		If it is not empty the Php definition is now forced to contain
+		<i>${body}</i>, to help in case the inherited operation is abstract.
+		<br /><br /></li>
+
+	<li> In the diagrams add <i>go up/down</i> to change a little the level of
+		an element contrarilly to <i>upper</i> and <i>lower</i>.<br />
+		Of course you can define shortcuts to these new commands.
+		<br /><br /></li>
+
+	<li> <b>XMI2 Import 1.2.10</b><br />
+		Little improvements.
+		<br /><br /></li>
+
+	<li> <b>Project synchro 1.2</b><br />
+	     <b>Project control 1.2</b><br />
+		To not use environment variables. You must use the new release of
+		the modeler to create the file <i>.boumlrc</i> before using these
+		tools.
+		</li>
+    </ul>
+<br /><br />
+
+<h3>4.3.1</h3>April, 27th 2008<br /><br />
+    <ul>
+	<li> When a <i>plug-out</i> is launch from an other one the trace is
+		not cleared. It is also not cleared before the executions
+		of the <i>check/init plug-out</i> associated to the stereotype.
+		<br /><br /></li>
+
+	<li> When an element stop to be stereotyped by a stereotype
+		part of a profile, the properties associated to the stereotype
+		are now removed.
+		<br /><br /></li>
+
+	<li> <b>XMI2 Generator 1.5.6</b><br />
+		To generate profile imports associated to dependencies
+		stereotyped <i>import</i> between profiles.<br />
+		Upgraded by Plug-out upgrade.
+		<br /><br /></li>
+
+	<li> <b>XMI2 Import 1.2.9</b><br />
+		To manage import of profiles defined in another XMI file.<br />
+		Other little improvements.<br />
+		Upgraded by Plug-out upgrade.
+		<br /><br /></li>
+
+	<li> <b>C++ Generator 2.12.3</b><br />
+		Except if you explicitly ask for, the code generator tries to produce
+		declarations in the header files and includes in the source files.
+		Unfortunatelly this was also true for the template classes, fixed.
+		<br /><br /></li>
+
+	<li> <b>Plug-out upgrade 1.12.1</b><br />
+		Fixe operation <i>isToolRunning</i> defined on <i>UmlBaseItem</i>.
+		<br /><br /></li>
+
+	<li> <i>Plug-out</i> <b>empty</b><br />
+		Upgraded by <i>plug-out upgrade</i>.
+		</li>
+    </ul>
+<br /><br />
+
+<h3>4.3</h3>April, 20th 2008<br /><br />
+    <ul>
+	<li> When a diagram is read-only it is now possible to do
+		some operations like to save it in a picture.
+		<br /><br /></li>
+
+	<li> In the previous releases the header file of a C++
+		class declared external in C++ was always included in the header
+		file of the other classes whatever it is used (by reference	
+		or pointer, or by value).
+		Now it is included in the source file if you explicitly ask for
+		through a dependency, whatever it is used.
+		Note this is the reverse for the classes non declared external.<br />
+		To not modify the behavior of the already existing
+		dependencies to classes	declared external, their definition
+		is forced to <i>#include in header</i>.
+		<br /><br /></li>
+
+	<li> <b>XMI2 Generator 1.5.5</b><br />
+		To produce <i>constraints</i>
+		<br /><br /></li>
+
+	<li> <b>XMI2 Import 1.2.8</b><br />
+		To import <i>constraints</i>
+		<br /><br /></li>
+
+	<li> <b>C++ Generator 2.12.2</b><br />
+		To manage new behavior of dependencies to classes
+		declared external.
+		<br /><br /></li>
+
+	<li> <b>Plug-out upgrade 1.12</b><br />
+		In the class <i>UmlBasePackage</i>
+		the operation <i>findNamespace</i> is renamed <i>findCppNamespace</i>,
+		the operation <i>findPackage</i> is renamed <i>findJavaPackage</i> and
+		the operation <i>findModule</i> is renamed <i>findIdlModule</i>,
+		<font color="#C05800">
+		If you call these operations you have to modify
+		your code to use the new names</font>.<br />
+
+		In the class <i>UmlBaseOperation</i> add the operations
+		<i>cppContextualBodyIndent, set_CppContextualBodyIndent,
+		javaContextualBodyIndent, set_JavaContextualBodyIndent,
+		phpContextualBodyIndent</i> and
+		<i>set_PhpContextualBodyIndent</i>.<br />
+
+		In the class <i>PhpSettings</i> add the static operations
+		<i>isGenerateJavadocStyleComment</i> and
+		<i>set_IsGenerateJavadocStyleComment</i>.<br />
+
+		In the class <i>UmlBaseClass</i> add the static operation
+		<i>findStereotype</i>.<br />
+
+		In the class <i>UmlBasePackage</i> add the static operation
+		<i>updateProfiles</i>.<br />
+
+		In the class <i>UmlBaseItem</i> add the operation
+		<i>applyStereotype</i>.<br />
+
+		In the class <i>UmlBaseFragmentCompartment</i> modify the C++ definition
+			<i>texts()</i> to bypass Microsoft Visual C++ limitation.
+		<br /><br /></li>
+
+	<li> <i>Plug-out</i> <b>empty</b><br />
+		Upgraded by <i>plug-out upgrade</i>.
+		<br /><br /></li>
+
+	<li> The previous releases of BOUML cannot read a project
+	     saved with this version. Obviously this release is
+	     able to read the projects made by previous releases of BOUML.</li>
+    </ul>
+<br /><br />
+
+<h3>4.2.1</h3>April, 5th 2008<br /><br />
+    <ul>
+	<li> In the previous release the python body of an operation
+		was set when a <i>plug-out</i> asked for to set the Php
+		body. Of course this was also the case for <i>php reverse</i>
+		and <i>roundtrip body</i>. Fixed.
+		<br /><br /></li>
+
+	<li> In all the previous releases, when Bouml was compiled with a Qt3,
+		when you opened a dialog from an other one, the first dialog was
+		lowered, bypassed.
+		<br /><br /></li>
+		
+	<li> Add <i>profile</i> management, refer to the
+		<a href="doc/index_profile.html">documentation</a>.<br />
+		The profile imports from an other one are not yet managed.<br />
+		<font color="#C05800">Warning : only the properties associated
+		to the profile can have a name containing two ':', the others
+		will be removed</font>.
+		<br /><br /></li>
+
+	<li> When you import a project into an other one, the <i>plug-outs</i>,
+		attribute and relation stereotype correspondences and the class
+		stereotype correspondences between the languages are now also
+		added when they don't yet exist.
+		<br /><br /></li>
+
+	<li> In the shortcut definition the key <i>Suppr</i> is renamed
+		<i>Delete</i>. In the previous releases some shortcut
+		definitions may be lost when you reload a project, fixed.		
+		<br /><br /></li>
+
+	<li> Modify the header added (then remove) when you set <i>add operation
+		profile on body edition</i> through the menu languages to
+		help external editor (BOUML_EDITOR) to compute the indent.		
+		<br /><br /></li>
+
+	<li> <b>Idl Generator 2.9.1</b><br />
+		To prefix the class names by their module if necessary.<br />
+		To not produce the ',' after the name of the last enumeration item
+		<br /><br /></li>
+
+	<li> <b>Python Generator 1.0.1</b><br />
+		Artifact's name was missing in some cases in the code
+			generated to reference classes, fixed.<br />
+		Auto generation of import forms based on generalization, this
+			means a generalization is also implicitly a dependency
+			stereotyped <i>import</i>.
+		<br /><br /></li>
+
+	<li> <b>XMI2 Import 1.2.7</b><br />
+		In the previous releases nested components was imported out of the container
+		component, fixed.<br />
+		To import <i>profiles</i> and <i>stereotypes</i>.<br />
+		To import <i>manifestations</i>.<br />
+		To manage files produced by Eclipse (aggregate definition on
+			other relation side)
+		<br /><br /></li>
+
+	<li> <b>XMI2 Generator 1.5.4</b><br />
+		To produce <i>profiles</i> and <i>stereotypes</i>.<br />
+		To produce the associations between <i>artifacts</i> and
+			other <i>artifact</i> or classes
+			through <i>manifestations</i>.<br />
+		To optionaly generate relation as Eclipse
+			(aggregate definition on other relation side)<br />
+		To allow to place <i>&lt;xmi:Documentation exporter="Bouml" ...&gt;</i>
+			in comment else some tools refuse to import produced XMI
+			or have problem after the import(for instance
+			<i>Rational Software Architech</i>)
+		<br /><br /></li>
+
+	<li> <b>Html documentation Generator 2.13.3</b><br />
+		To produce <i>Profile/Stereotype</i> rather than
+			<i>Package/Class</i> if needed.
+		</li>
+    </ul>
+<br /><br />
+
+<h3>4.2</h3>February, 17th 2008<br /><br />
+    <ul>
+	<li> Since the 4.0 it was not possible to modify the Php definition
+		of an operation through a <i>Plug-out</i> without blocking it
+		(including the Php reverse), fixed.
+		<br /><br /></li>
+
+	<li> New <i>drawing setting</i> named <i>show attribute initialization</i>
+		allowing to write attribute initialization in a
+		class picture in a class diagram. This setting have sense only
+		when you also ask for to show the full members definition.
+		By default this setting	is set to false.
+		<br /><br /></li>
+
+	<li> Default operation parameter direction is now <i>in</i>
+		rather than <i>inout</i>.
+		<br /><br /></li>
+
+	<li> <b>XMI2 Import 1.2.6</b><br />
+		Improve management of primitive types.
+		<br /><br /></li>
+
+	<li> <b>C++ Reverse 2.9.1</b><br />
+		To read anonymous namespaces (however they are
+		not reported in the model).
+		<br /><br /></li>
+
+	<li> <b>Uml projection 1.0</b><br />
+		New <i>plug-out</i> setting the definitions/declarations
+		with their default value according to the
+		<i>generation settings</i>. Create also the necessary 
+		<i>deployment views</i> and <i>artifacts</i>.<br />
+		Typically used after an XMI import to project
+		the imported model in the desired language.<br />
+		Refer to the <a href="doc/index_umlproj.html">documentation</a>.
+		<br /><br /></li>
+
+	<li> Because the format of the BOUML files is changed,
+	     the previous releases of BOUML cannot read a project
+	     saved with this version. Obviously this release is
+	     able to read the projects made by previous releases of BOUML.</li>
+    </ul>
+<br /><br />
+
+<h3>4.1</h3>February, 3th 2008<br /><br />
+    <ul>
+	<li> When several <i>artifacts</i> have the same name and you edit a class,
+		the shown <i>artifact</i> may not the right one, and if you change it
+		the class may not be associated to the desired one, fixed.
+		<br /><br /></li>
+
+	<li> New <i>drawing setting</i> named <i>show members multiplicity</i>
+		allowing to write attribute multiplicity in a
+		class picture in a class diagram. This setting have sense only
+		when you also ask for to show the full members definition
+		and when the <i>drawing language</i> is UML.
+		By default this setting	is set to false.
+		<br /><br /></li>
+
+	<li> New <i>drawing setting</i> named <i>max members width</i>
+		allowing to limit attribute and operation width to a given
+		number of characters. When the number of
+		characters needed by an attribute or an operation is greater
+		than <i>max members width</i>, the string is cut to
+		<i>max members width</i> characters and "..." is added.
+		Note : the optionally written visibility and stereotype
+		are not taken into in the member width.
+		<br /><br /></li>
+
+	<li> <b>XMI2 Import 1.2.5</b><br />
+		Spaces are replaced by '_' in the name of an imported class,
+		attribute or relation.<br />
+		Fixe bug on operation parameter multiplicity reading.
+		<br /><br /></li>
+
+	<li> Because the format of the BOUML files is changed,
+	     the previous releases of BOUML cannot read a project
+	     saved with this version. Obviously this release is
+	     able to read the projects made by previous releases of BOUML.</li>
+    </ul>
+<br /><br />
+
+<h3>4.0</h3>January, 27th 2008<br /><br />
+    <ul>
+	<li> In the previous releases the position of the
+		<i>use cases</i> in a <i>use case diagram</i> may
+		not be the right one when you re-open the diagram and
+		the zoom is not 100%, or when you change the zoom later,
+		fixed.
+		<br /><br /></li>
+
+	<li> It was possible to move in the browser an element by
+		<i>drag&amp;drop</i> into a <i>read-only</i> one,
+		fixed.
+		<br /><br /></li>
+
+	<li> Add management of <b>Python</b><br />
+		Currently the scope of Python is not as large as it is
+		for C++ and Java, for instance there is no Python definitions
+		in the state machine and activities because this seems useless.
+		<br /><br /></li>
+
+	<li> In the previous releases a class was always drawn as
+		an actor in a <i>use case diagram</i>,
+		now this is just the default and a class
+		can be drawn as a class (without members), or using
+		boundary, control or entity icon.<br />
+		<font color="#C05800">The name of use case is not
+		anymore a separated label and the size of an actor now
+		depend on its name, so, the position of the incoming
+		and outgoing arrows and the position of the name
+		will be impacted.</font>
+		<br /><br /></li>
+
+	<li> <b>Python Generator 1.0</b><br />
+		New <i>plug-out</i> generating code for Python.<br />
+		Refer to the <a href="documentation.html">documentation</a>.
+		<br /><br /></li>
+
+	<li> <b>Roundtrip body 1.7</b><br />
+		To roundtrip Php bodies.<br />
+		Follow the new API.
+		<br /><br /></li>
+
+	<li> <b>C++ Generator 2.12</b><br />
+	     <b>C++ Reverse 2.9</b><br />
+	     <b>Java Generator 2.15</b><br />
+	     <b>Java Reverse 2.12</b><br />
+	     <b>Java Catalog 2.11</b><br />
+	     <b>Php Generator 1.4</b><br />
+	     <b>Php Reverse 1.2</b><br />
+	     <b>Idl Generator 2.9</b><br />
+	     <b>Plug-out upgrade 1.11</b><br />
+		Follow the new API.
+		<br /><br /></li>
+
+	<li> <i>Plug-out upgrade</i> and other <i>Plug-outs</i> will
+		be upgraded later to manage Python.<br />
+	        A <i>reverse</i> for Python will be available later.
+		<br /><br /></li>
+
+	<li> Because the format of the BOUML files is changed,
+	     the previous releases of BOUML cannot read a project
+	     saved with this version. Obviously this release is
+	     able to read the projects made by previous releases of BOUML.</li>
+    </ul>
+<br /><br />
+
+<h3>Previous releases</h3>
+<a href="historic_old.html">Historic of releases 3.x, 2.x and 1.x</a>
+

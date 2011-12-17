@@ -1,0 +1,9 @@
+class UmlBaseCollaborationDiagram
+!!!17664.cpp!!!	create(inout parent : UmlItem, in s : str) : UmlCollaborationDiagram
+  return (UmlCollaborationDiagram *) parent->create_(aCollaborationDiagram, s);
+!!!17664.java!!!	create(inout parent : UmlItem, in s : str) : UmlCollaborationDiagram
+  return (UmlCollaborationDiagram) parent.create_(anItemKind.aCollaborationDiagram, s);
+!!!17792.cpp!!!	kind() : anItemKind
+  return aCollaborationDiagram;
+!!!17792.java!!!	kind() : anItemKind
+  return anItemKind.aCollaborationDiagram;

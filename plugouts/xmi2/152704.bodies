@@ -1,0 +1,34 @@
+class UmlBaseCreateObjectAction
+!!!266624.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlCreateObjectAction
+  return (UmlCreateObjectAction *) parent->create_(aCreateObjectAction, s);
+!!!266624.java!!!	create(inout parent : UmlItem, inout s : str) : UmlCreateObjectAction
+  return (UmlCreateObjectAction) parent.create_(anItemKind.aCreateObjectAction, s);
+!!!266752.cpp!!!	kind() : anItemKind
+  return aCreateObjectAction;
+!!!266752.java!!!	kind() : anItemKind
+  return anItemKind.aCreateObjectAction;
+!!!267136.cpp!!!	classifier() : string
+  read_if_needed_();
+  return _classifier;
+!!!267136.java!!!	classifier() : string
+  read_if_needed_();
+  return _classifier;
+!!!267264.cpp!!!	set_Classifier(in v : str) : bool
+  return set_it_(_classifier, v, setDefCmd);
+!!!267264.java!!!	set_Classifier(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setDefCmd, v);
+  UmlCom.check();
+
+  _classifier = v;
+!!!267392.cpp!!!	unload(in rec : bool, in del : bool) : void
+  _classifier = 0;
+  UmlBaseActivityAction::unload(rec, del);
+!!!267392.java!!!	unload(in rec : bool, in del : bool) : void
+  _classifier = null;
+  super.unload(rec, del);
+!!!267520.cpp!!!	read_uml_() : void
+  UmlBaseActivityAction::read_uml_();
+  _classifier = UmlCom::read_string();
+!!!267520.java!!!	read_uml_() : void
+  super.read_uml_();
+  _classifier = UmlCom.read_string();

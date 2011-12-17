@@ -1,0 +1,22 @@
+/* XPM */
+static const char*deletedclassdiagram_xpm[]={
+"16 16 3 1",
+"# c #000000",
+"a c #ffffff",
+". c #ff0000",
+"..##############",
+"#..a#aaaaaaa#..#",
+"#a..########..a#",
+"#aa..aaaaaa..aa#",
+"#aaa..####..#aa#",
+"#aaaa..a#..aaaa#",
+"#aaaaa....aaaaa#",
+"#aaaaa#..##aaaa#",
+"#aaaaa....aaaaa#",
+"#aaa#..##..##aa#",
+"#aaa..aaaa..#aa#",
+"#aa..######..aa#",
+"#a..#aaaaaaa..a#",
+"#..a#########..#",
+"..aa#aaaaaaa#a..",
+".##############."};

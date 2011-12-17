@@ -1,0 +1,4 @@
+class SlotRelation
+!!!193664.java!!!	SlotRelation(inout r : UmlRelation, inout v : UmlClassInstance)
+  relation = r;
+  value = v;

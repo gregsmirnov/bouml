@@ -1,0 +1,66 @@
+class UmlUseCase
+!!!130272.cpp!!!	sKind() : string
+  return "use case";
+!!!130272.java!!!	sKind() : string
+  return "use case";
+!!!128085.cpp!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  UmlItem::html(pfix, rank, "Use Case", level, "usecase");
+    
+  QCString ep = extensionPoints();
+  
+  if (! ep.isEmpty()) {
+    fw.write("<p>Extension points:<br /><div class=\"sub\">");
+    writeq(ep);
+    fw.write("</div></p>\n");
+  }
+
+  UmlDiagram * d = associatedDiagram();
+  
+  if (d != 0) {
+    fw.write("<p>Diagram : ");
+    d->write();
+    fw.write("</p>\n");
+  }
+
+  unload(FALSE, FALSE);
+!!!128085.java!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  html(pfix, rank, "Use Case", level, "usecase");
+
+  String v;
+
+  if ((v = extensionPoints()) != "") {
+    fw.write("<p>Extension points:<br /><div class=\"sub\">");
+    writeq(v);
+    fw.write("</div></p>\n");
+  }
+    
+  UmlDiagram d = associatedDiagram();
+  
+  if (d != null) {
+    fw.write("<p>Diagram : ");
+    d.write();
+    fw.write("</p>\n");
+  }
+  
+  unload(false, false);
+!!!150914.cpp!!!	memo_ref() : void
+  usecases.addElement(this);
+  UmlItem::memo_ref();
+!!!150914.java!!!	memo_ref() : void
+  usecases.addElement(this);
+  super.memo_ref();
+
+!!!150786.cpp!!!	ref_index() : void
+  if (!usecases.isEmpty())
+    fw.write("<a href=\"usecases.html\" target = \"projectFrame\"><b> -Use Cases- </b></a>");
+!!!150786.java!!!	ref_index() : void
+  if (!usecases.isEmpty())
+    fw.write("<a href=\"usecases.html\" target = \"projectFrame\"><b> -Use Cases- </b></a>");
+!!!150658.cpp!!!	generate_index() : void
+  UmlItem::generate_index(usecases, "Use Cases", "usecases");
+!!!150658.java!!!	generate_index() : void
+  generate_index(usecases, "Use Cases", "usecases");
+!!!149506.cpp!!!	chapterp() : bool
+  return TRUE;
+!!!149506.java!!!	chapterp() : bool
+  return true;

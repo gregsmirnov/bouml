@@ -1,0 +1,5 @@
+class UmlActivityRegion
+!!!195586.cpp!!!	chapterp() : bool
+  return TRUE;
+!!!195586.java!!!	chapterp() : bool
+  return true;

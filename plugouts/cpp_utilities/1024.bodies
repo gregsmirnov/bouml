@@ -1,0 +1,21 @@
+class UmlBaseFormalParameter
+!!!1664.cpp!!!	read_() : void
+  _name = UmlCom::read_string();
+  _type = UmlCom::read_string();
+  _default_value.type = (UmlClass *) UmlBaseItem::read_();
+  if (_default_value.type == 0)
+    _default_value.explicit_type = UmlCom::read_string();
+  _extends.type = (UmlClass *) UmlBaseItem::read_();
+  if (_extends.type == 0)
+    _extends.explicit_type = UmlCom::read_string();
+!!!1664.java!!!	read_() : void
+  _name = UmlCom.read_string();
+  _type = UmlCom.read_string();
+  _default_value = new UmlTypeSpec();
+  _default_value.type = (UmlClass) UmlBaseItem.read_();
+  if (_default_value.type == null)
+    _default_value.explicit_type = UmlCom.read_string();
+  _extends = new UmlTypeSpec();
+  _extends.type = (UmlClass) UmlBaseItem.read_();
+  if (_extends.type == null)
+    _extends.explicit_type = UmlCom.read_string();

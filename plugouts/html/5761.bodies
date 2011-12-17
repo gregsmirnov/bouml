@@ -1,0 +1,15 @@
+class UmlActor
+!!!128224.cpp!!!	sKind() : string
+  return "actor";
+!!!128224.java!!!	sKind() : string
+  return "actor";
+!!!129011.cpp!!!	html(in pfix : string, in rank : uint) : void
+  UmlCom::message(name());
+
+  UmlItem::html("Actor", (UmlDiagram *) associatedDiagram());
+  unload(FALSE, FALSE);
+!!!129011.java!!!	html(in pfix : string, in rank : uint) : void
+  UmlCom.message(name());
+
+  html("Actor", associatedDiagram());
+  unload(false, false);

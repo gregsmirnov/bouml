@@ -1,0 +1,9 @@
+class UmlBaseShallowHistoryPseudoState
+!!!142208.cpp!!!	create(inout parent : UmlItem) : UmlShallowHistoryPseudoState
+  return (UmlShallowHistoryPseudoState *) parent->create_(aShallowHistoryPseudoState, "");
+!!!142208.java!!!	create(inout parent : UmlItem) : UmlShallowHistoryPseudoState
+  return (UmlShallowHistoryPseudoState) parent.create_(anItemKind.aShallowHistoryPseudoState, "");
+!!!142336.cpp!!!	kind() : anItemKind
+  return aShallowHistoryPseudoState;
+!!!142336.java!!!	kind() : anItemKind
+  return anItemKind.aShallowHistoryPseudoState;

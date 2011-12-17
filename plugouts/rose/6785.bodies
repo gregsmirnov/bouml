@@ -1,0 +1,8 @@
+class UmlComponentView
+!!!130306.cpp!!!	create(inout parent : UmlPackage, in s : str, in bn : string) : UmlComponentView
+  UmlComponentView * r = UmlBaseComponentView::create(parent, s);
+  
+  if (r != 0)
+    r->_base_name = bn;
+   
+  return r;

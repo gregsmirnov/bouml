@@ -1,0 +1,28 @@
+class Slot
+!!!238466.cpp!!!	importIt(inout in : FileIn, inout token : Token) : void
+  featureId = token.valueOf("definingfeature");
+  valueId = token.valueOf("value");
+    
+  if (! token.closed()) {
+    QCString k = token.what();
+    const char * kstr = k;
+    
+    while (in.read(), !token.close(kstr)) {
+      QCString s = token.what();
+      
+      if (s == "featureid")
+	featureId = token.xmiIdref();
+      else if (s == "value") {
+	value = token.valueOf("value");
+	if (value.isEmpty())
+	  value = token.valueOf("body");
+      }
+      
+      if (! token.closed())
+	in.finish(s);
+    }
+  }
+
+  if (featureId.isEmpty())
+    in.warning("'definingFeature' is missing");
+

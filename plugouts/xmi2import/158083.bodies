@@ -1,0 +1,24 @@
+class UmlDestroyObjectAction
+!!!304771.cpp!!!	init() : void
+  declareFct("node", "uml:DestroyObjectAction", &importIt);
+  declareFct("containednode", "uml:DestroyObjectAction", &importIt);
+!!!304643.cpp!!!	importIt(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  where = where->container(aDestroyObjectAction, token, in);
+    
+  if (where != 0) {
+    QCString s = token.valueOf("name");
+    UmlDestroyObjectAction * a = create(where, s);
+    
+    if (a == 0)
+      in.error("cannot create destroy object action '"
+	       + s + "' in '" + where->name() + "'");
+    
+    a->addItem(token.xmiId(), in);
+    
+    if (token.valueOf("isdestroylinks") == "true")
+      a->set_isDestroyLinks(TRUE);
+    if (token.valueOf("isdestroyownedobjects") == "true")
+      a->set_isDestroyOwnedObjects(TRUE);
+        
+    a->import_it(in, token);
+  }

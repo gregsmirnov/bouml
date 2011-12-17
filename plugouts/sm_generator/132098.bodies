@@ -1,0 +1,12 @@
+class UmlChoicePseudoState
+!!!150914.cpp!!!	generate(inout machine : UmlClass, inout anystate : UmlClass, inout state : UmlState, inout body : string, in indent : string) : void
+  const QVector<UmlItem> ch = children();
+  QList<UmlTransition> trs;
+  unsigned index;
+  
+  for (index = 0; index != ch.count(); index += 1)
+    if (ch[index]->kind() == aTransition)
+      // theo mandatory
+      trs.append((UmlTransition *) ch[index]);
+    
+  UmlTransition::generate(trs, machine, anystate, state, body, indent, FALSE);

@@ -1,0 +1,20 @@
+class UmlBaseAccessVariableValueAction
+!!!178816.cpp!!!	variable() : UmlItem
+  read_if_needed_();
+  return _variable;
+!!!178816.java!!!	variable() : UmlItem
+  read_if_needed_();
+  return _variable;
+!!!178944.cpp!!!	set_Variable(in v : UmlItem) : bool
+  UmlCom::send_cmd(_identifier, setDefCmd, ((UmlBaseItem *) v)->_identifier);   if (UmlCom::read_bool()) {     _variable = v;     return TRUE;   }   else     return FALSE;
+!!!178944.java!!!	set_Variable(in v : UmlItem) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setDefCmd, v.identifier_());
+  UmlCom.check();
+
+  _variable = v;
+!!!179072.cpp!!!	read_uml_() : void
+  UmlBaseActivityAction::read_uml_();
+  _variable = UmlBaseItem::read_();
+!!!179072.java!!!	read_uml_() : void
+  super.read_uml_();
+  _variable = UmlBaseItem.read_();

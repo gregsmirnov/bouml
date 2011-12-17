@@ -1,0 +1,86 @@
+class Role
+!!!128657.cpp!!!	import(inout f : File) : void
+  f.read("(");
+  f.read("object");
+  f.read("Role");
+  if (f.read(name) != STRING)
+    f.syntaxError(name, "role name");
+    if (*name == '$')
+      // unnamed
+      name = "";
+
+  visibility = PublicVisibility;
+  is_navigable = FALSE;
+  is_aggregate = FALSE;
+  is_static = FALSE;
+  is_byvalue = FALSE;
+  
+  QCString ste; 
+  QCString s;
+  int k; 
+     
+  do { 
+    k = f.readDefinitionBeginning(s, id, ste, doc, prop); 
+  } while (id.isEmpty()); 
+  
+  for (;;) {
+    switch (k) {
+    case ')':
+      target = 0;
+      return;
+    case ATOM:
+      break;
+    default:
+      f.syntaxError(s);
+    }
+    
+    // atom
+    if (s == "quid") {
+      if (f.read(id) != STRING)
+	f.syntaxError(id, "quid value");
+    }
+    else if (s == "quidu") {
+      if (f.read(target_id) != STRING)
+	f.syntaxError(target_id, "quidu value");
+      target = (UmlClass *) UmlItem::findItem(target_id, aClass);
+    }
+    else if (s == "client_cardinality") {
+      f.read("(");
+      f.read("value");
+      f.read("cardinality");
+      if (f.read(cardinality) != STRING)
+	f.syntaxError(cardinality, "the cardinality");
+      f.read(")");
+    }
+    else if (s == "exportControl")
+      visibility = f.readVisibility();
+    else if (s == "is_navigable") 
+      is_navigable = f.readBool(); 
+    else if (s == "is_aggregate") 
+      is_aggregate = f.readBool(); 
+    else if (s == "Containment") {
+      if (f.read(s) != STRING)
+        f.syntaxError(s, "containment value");
+      is_byvalue = (s == "By Value");
+    }
+    else if (s == "static")
+      is_static = f.readBool();
+    else
+      f.skipNextForm();
+
+    k = f.read(s);
+  }
+!!!128033.cpp!!!	rel_kind(in bidir : bool) : aRelationKind
+  if (bidir) {
+    if (is_byvalue)
+      return anAggregationByValue;
+    if (is_aggregate)
+      return anAggregation;
+    return anAssociation;
+  }
+  
+  if (is_byvalue)
+    return aDirectionalAggregationByValue;
+  if (is_aggregate)
+    return aDirectionalAggregation;
+  return aDirectionalAssociation;

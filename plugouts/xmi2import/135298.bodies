@@ -1,0 +1,64 @@
+class UmlActivityAction
+!!!208642.cpp!!!	container(in kind : anItemKind, in token : Token, inout in : FileIn) : UmlItem
+  switch (kind) {
+  case anActivityPin:
+    return this;
+  default:
+    return parent()->container(kind, token, in);
+  }
+!!!212994.cpp!!!	import_it(inout in : FileIn, inout token : Token) : void
+  if (! token.closed()) {
+    QCString k = token.what();
+    const char * kstr = k;
+    
+    while (in.read(), !token.close(kstr))
+      import(in, token);
+  }
+!!!221186.cpp!!!	import(inout in : FileIn, inout token : Token) : void
+  QCString s = token.what();
+  
+  if ((s == "precondition") || (s == "postcondition") ||
+      (s == "localprecondition") || (s == "localpostcondition"))
+    readCondition(in, token);
+  else if (s == "ownedrule")
+    set_Constraint(UmlItem::readConstraint(in, token));
+  else
+    UmlItem::import(in, token);
+
+!!!212610.cpp!!!	readCondition(inout in : FileIn, inout token : Token) : void
+  if (! token.closed()) {
+    QCString k = token.what();
+    const char * kstr = k;
+      
+    while (in.read(), !token.close(kstr)) {
+      QCString s = token.what();
+      
+      if (s == "specification") {
+	QCString v = token.valueOf("body");
+	
+	if (v.isNull())
+	  v = token.valueOf("value");	// UMODEL
+	
+	if (! token.closed()) {
+	  while (in.read(), !token.close("specification")) {
+	    QCString b = token.what();
+	    
+	    if (b == "body")
+	      v = in.body("body");
+	    else if (! token.closed())
+	      in.finish(b);
+	  }
+	}
+	
+	if (! v.isEmpty()) {
+	  if (k[1] == 'r')
+	    set_PreCondition(v);
+	  else
+	    set_PostCondition(v);
+	}
+      }
+      
+      if (! token.closed())
+	in.finish(s);
+    }
+  }

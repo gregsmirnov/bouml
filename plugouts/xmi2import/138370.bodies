@@ -1,0 +1,18 @@
+class UmlClearVariableValueAction
+!!!204674.cpp!!!	init() : void
+  declareFct("node", "uml:ClearVariableAction", &importIt);
+  declareFct("containednode", "uml:ClearVariableAction", &importIt);
+!!!201986.cpp!!!	importIt(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  where = where->container(aClearVariableValueAction, token, in);
+    
+  if (where != 0) {
+    QCString s = token.valueOf("name");
+    UmlClearVariableValueAction * a = create(where, s);
+    
+    if (a == 0)
+      in.error("cannot create clear variable value action '"
+	       + s + "' in '" + where->name() + "'");
+    
+    a->addItem(token.xmiId(), in);
+    a->import_it(in, token);
+  }

@@ -1,0 +1,39 @@
+class UmlBaseComponent
+!!!130432.cpp!!!	create(inout parent : UmlComponentView, in s : str) : UmlComponent
+  return (UmlComponent *) parent->create_(aComponent, s);
+!!!130432.java!!!	create(inout parent : UmlComponentView, in s : str) : UmlComponent
+  return (UmlComponent) parent.create_(anItemKind.aComponent, s);
+!!!130560.cpp!!!	kind() : anItemKind
+  return aComponent;
+!!!130560.java!!!	kind() : anItemKind
+  return anItemKind.aComponent;
+!!!130688.cpp!!!	associatedDiagram() : UmlComponentDiagram
+  read_if_needed_();
+  
+  return _assoc_diagram;
+!!!130688.java!!!	associatedDiagram() : UmlComponentDiagram
+  read_if_needed_();
+  
+  return _assoc_diagram;
+!!!130816.cpp!!!	set_AssociatedDiagram(inout d : UmlComponentDiagram) : bool
+  UmlCom::send_cmd(_identifier, setAssocDiagramCmd, ((UmlBaseItem *) d)->_identifier);
+  if (UmlCom::read_bool()) {
+    _assoc_diagram = d;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!130816.java!!!	set_AssociatedDiagram(inout d : UmlComponentDiagram) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setAssocDiagramCmd, d.identifier_());
+  UmlCom.check();
+  
+  _assoc_diagram = d;
+
+!!!130944.cpp!!!	read_uml_() : void
+  _assoc_diagram = (UmlComponentDiagram *) UmlBaseItem::read_();
+  UmlBaseItem::read_uml_();
+!!!130944.java!!!	read_uml_() : void
+  _assoc_diagram = (UmlComponentDiagram) UmlBaseItem.read_();
+  super.read_uml_();
+!!!131072.cpp!!!	UmlBaseComponent(in id : item_id, in n : string)
+  _assoc_diagram = 0;

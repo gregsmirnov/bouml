@@ -1,0 +1,22 @@
+/* XPM */
+static const char*deletedusecasediagram_xpm[]={
+"16 16 3 1",
+"# c #000000",
+"a c #ffffff",
+". c #ff0000",
+"..#############.",
+"#..a#aaaaaaaaa..",
+"#a..#aaaaaaaa..#",
+"#aa..aa#aaaa..a#",
+"####..aa#aa..aa#",
+"#aa#a..aa#..aaa#",
+"#aa#aa..a..#aaa#",
+"#a#a#aa...##aaa#",
+"##aaa#a..aaaaaa#",
+"#aaaaa....###aa#",
+"#aaaa..#a..aa###",
+"#aaa..aaaa..aaa#",
+"#aa..#aaaaa..aa#",
+"#a..a#aaaaaa..a#",
+"#..aaa##aaaaa..#",
+"..############.."};

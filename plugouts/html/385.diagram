@@ -1,0 +1,48 @@
+format 5
+
+
+classcanvas 139692604 class_ref 4864 // UmlBaseUseCase
+  draw_all_relations default hide_attributs default hide_operations default show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default
+  color blue
+  xyz 166 187 2000
+note 139475308 "Do not modify the blue classes"
+  xyzwh 15 13 2000 62 98
+classcanvas 139258268 class_ref 7553 // UmlItem
+  draw_all_relations default hide_attributs default hide_operations default show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default
+  xyz 122 90 2000
+classcanvas 139643740 class_ref 8321 // UmlUseCase
+  draw_all_relations default hide_attributs default hide_operations default show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default
+  xyz 180 265 2000
+classcanvas 139258588 class_ref 2048 // UmlBaseActor
+  draw_all_relations default hide_attributs default hide_operations default show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default
+  color blue
+  xyz 38 185 2000
+classcanvas 139464964 class_ref 4096 // UmlBaseItem
+  draw_all_relations default hide_attributs default hide_operations default show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default
+  color blue
+  xyz 107 20 2000
+classcanvas 139260740 class_ref 5761 // UmlActor
+  draw_all_relations default hide_attributs default hide_operations default show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default
+  xyz 52 267 2000
+relationcanvas 139691484 relation_ref 14849 // <generalisation>
+  from ref 139260740 z 1000 to ref 139258588
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 138984228 relation_ref 16641 // <generalisation>
+  from ref 139258268 z 1000 to ref 139464964
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 138984516 relation_ref 17409 // <generalisation>
+  from ref 139643740 z 1000 to ref 139692604
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 139693788 relation_ref 13952 // <generalisation>
+  from ref 139692604 z 1000 to ref 139258268
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 139469196 relation_ref 2560 // <generalisation>
+  from ref 139258588 z 1000 to ref 139258268
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+prefered_whz 309 383 1
+end

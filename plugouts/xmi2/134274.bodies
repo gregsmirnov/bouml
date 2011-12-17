@@ -1,0 +1,25 @@
+class UmlActivityNode
+!!!200706.cpp!!!	memo_incoming_flow() : void
+  const QVector<UmlItem> ch = children(); 
+  unsigned n = ch.size();
+  unsigned i;
+     
+  for (i = 0; i != n; i += 1) {
+    UmlActivityItem * x = dynamic_cast<UmlActivityItem *>(ch[i]);
+								
+    if (x != 0)
+      x->memo_incoming_flow();
+  }
+!!!199554.cpp!!!	add_incoming_flow(inout flow : UmlFlow) : void
+  _incoming_flows.append(flow);
+!!!202882.cpp!!!	write_incoming_flows(inout out : FileOut) : void
+  QListIterator<UmlFlow> it(_incoming_flows);
+  
+  while (it.current() != 0) {
+    out.indent();
+    out << "<incoming";
+    out.idref(it.current());
+    out << "/>\n";
+    ++it;
+  }
+

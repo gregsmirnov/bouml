@@ -1,0 +1,46 @@
+class UmlBaseParameterSet
+!!!188032.cpp!!!	create(inout parent : UmlActivityAction, inout s : str) : UmlActivityParameter
+  return (UmlActivityParameter *) parent->create_(aParameterSet, s);
+!!!188032.java!!!	create(inout parent : UmlActivityAction, inout s : str) : UmlActivityParameter
+  return (UmlActivityParameter) parent.create_(anItemKind.aParameterSet, s);
+!!!188160.cpp!!!	kind() : anItemKind
+  return aParameterSet;
+!!!188160.java!!!	kind() : anItemKind
+  return anItemKind.aParameterSet;
+!!!188544.cpp!!!	pins() : UmlActivityPin
+  read_if_needed_();
+  return _pins;
+!!!188544.java!!!	pins() : UmlActivityPin
+  read_if_needed_();
+  return (UmlActivityPin[]) _pins.clone();
+!!!188672.cpp!!!	set_Pins(in v : UmlActivityPin) : bool
+  UmlCom::send_cmd(_identifier, replaceParameterCmd, (const QVector<UmlItem> &) v);
+  if (UmlCom::read_bool()) {
+      // tests != to bypass Qt 2.3 bug
+    if (_defined && (&_pins != &v)) _pins = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!188672.java!!!	set_Pins(in v : UmlActivityPin) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.replaceParameterCmd, v);
+  UmlCom.check();
+  _pins = (UmlActivityPin[]) v.clone();
+!!!188800.cpp!!!	unload(in rec : bool, in del : bool) : void
+  _pins.resize(0);
+  UmlBaseItem::unload(rec, del);
+!!!188800.java!!!	unload(in rec : bool, in del : bool) : void
+  _pins = null;
+  super.unload(rec, del);
+!!!188928.cpp!!!	read_uml_() : void
+  UmlBaseItem::read_uml_();
+  UmlCom::read_item_list((QVector<UmlItem> &) _pins);
+!!!188928.java!!!	read_uml_() : void
+  super.read_uml_();
+
+  int n = UmlCom.read_unsigned();
+
+  _pins = new UmlActivityPin[n];
+
+  for (int index = 0; index != n; index += 1)
+    _pins[index] = (UmlActivityPin) UmlBaseItem.read_();

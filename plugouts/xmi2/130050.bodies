@@ -1,0 +1,3 @@
+class UmlInitialPseudoState
+!!!207234.cpp!!!	sKind() : str
+  return "initial";

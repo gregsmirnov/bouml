@@ -1,0 +1,17 @@
+class UmlTestIdentityAction
+!!!259075.cpp!!!	sKind() : string
+  return "test identity activity action";
+!!!259075.java!!!	sKind() : string
+  return "test identity activity action";
+!!!258947.cpp!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  UmlActivityAction::html();
+
+  write_children(pfix, rank, level);
+
+  unload(FALSE, FALSE);
+!!!258947.java!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  super.html();
+
+  write_children(pfix, rank, level);
+
+  unload(false, false);

@@ -1,0 +1,195 @@
+class UmlItem
+!!!145026.cpp!!!	xmi(in argc : int, in argv : char **) : void
+  UmlCom::trace("Error : must be applied on the project<br>");
+!!!144130.cpp!!!	write(inout out : FileOut) : void
+  const QVector<UmlItem> ch = children();
+  unsigned n = ch.size();
+  
+  for (unsigned i = 0; i != n; i += 1)
+    ch[i]->write(out);
+
+!!!147074.cpp!!!	write_description_properties(inout out : FileOut) : void
+  if (! description().isEmpty()) {
+    static int rank = 0;
+    
+    out.indent();
+    out << "<ownedComment xmi:type=\"uml:Comment\" xmi:id=\"COMMENT_"
+      << ++rank << "\" body=\"";
+    out.quote(description());
+    out << "\"/>\n";
+  }
+
+  QCString ste = stereotype();
+  
+  if (_gen_extension) {
+    const QDict<QCString> up = properties();    
+    QDictIterator<QCString> it(up);
+    
+    if (it.current()) {
+      out.indent();
+      out << "<xmi:Extension extender=\"Bouml\">\n";
+      
+      if (! ste.isEmpty()) {
+	out.indent();
+	out << "\t<stereotype name=\"";
+	out.quote(ste);
+	out << "\"/>\n";
+      }
+      
+      do {
+	out.indent();
+	out << "\t<taggedValue tag=\"";
+	out.quote(it.currentKey());
+	out << "\" value=\"";
+	out.quote(*(it.current()));
+	out << "\"/>\n";
+	++it;
+      } while (it.current());
+      
+      out.indent();
+      out << "</xmi:Extension>\n";
+    }
+    else if (! ste.isEmpty()) {
+      out.indent();
+      out << "<xmi:Extension extender=\"Bouml\"><stereotype name=\"";
+      out.quote(ste);
+      out << "\"/></xmi:Extension>\n";
+    }
+  } 
+  
+  if (ste.contains(':') == 1)
+    // probably a stereotype part of profile
+    _stereotypes[ste].append(this);
+!!!130051.cpp!!!	memo_relation(inout r : UmlItem) : void
+  parent()->memo_relation(r);
+!!!134020.cpp!!!	memo_ac_uc_assoc(inout d : UmlUseCaseDiagram) : void
+  parent()->memo_ac_uc_assoc(d);
+!!!202114.cpp!!!	write_multiplicity(inout out : FileOut, in s : string, in who : UmlItem) : void
+  if (!s.isEmpty()) {
+    QCString min;
+    QCString max;
+    int index = s.find("..");
+    
+    if (index != -1) {
+      min = s.left(index).stripWhiteSpace();
+      max = s.mid(index+2).stripWhiteSpace();
+    }
+    else
+      min = max = s.stripWhiteSpace();
+    
+    out.indent();
+    out << "<lowerValue xmi:type=\"uml:LiteralString\"";
+    out.id_prefix(who, "MULTIPLICITY_L_");
+    out << " value=\"" << min << "\"/>\n";
+    
+    out.indent();
+    out << "<upperValue xmi:type=\"uml:LiteralString\"";
+    out.id_prefix(who, "MULTIPLICITY_U_");
+    out << " value=\"" << max << "\"/>\n";
+  }
+!!!202242.cpp!!!	write_type(inout out : FileOut, in t : UmlTypeSpec, in tk : str) : void
+  if (t.type != 0) {
+    out.indent();
+    out << '<' << ((tk != 0) ? tk : "type") << " xmi:type=\"uml:Class\"";
+    out.idref(t.type);
+    out << "/>\n";
+  }
+  else if (!t.explicit_type.isEmpty()) {
+    out.indent();
+    out << '<' << ((tk != 0) ? tk : "type") << " xmi:type=\"uml:";
+    
+    if (t.explicit_type == "int")
+      out << ((_uml_20)
+	      ? "PrimitiveType\" href=\"http://schema.omg.org/spec/UML/2.0/uml.xml#Integer\"/>\n"
+	      : "PrimitiveType\" href=\"http://schema.omg.org/spec/UML/2.1/uml.xml#Integer\"/>\n");
+    else if (t.explicit_type == "bool")
+      out << ((_uml_20)
+	      ? "PrimitiveType\" href=\"http://schema.omg.org/spec/UML/2.0/uml.xml#Boolean\"/>\n"
+	      : "PrimitiveType\" href=\"http://schema.omg.org/spec/UML/2.1/uml.xml#Boolean\"/>\n");
+    else if (t.explicit_type == "string")
+      out << ((_uml_20)
+	      ? "PrimitiveType\" href=\"http://schema.omg.org/spec/UML/2.0/uml.xml#String\"/>\n"
+	      : "PrimitiveType\" href=\"http://schema.omg.org/spec/UML/2.1/uml.xml#String\"/>\n");
+    else if (t.explicit_type == "long")
+      out << ((_uml_20)
+	      ? "PrimitiveType\" href=\"http://schema.omg.org/spec/UML/2.0/uml.xml#UnlimitedNatural\"/>\n"
+	      : "PrimitiveType\" href=\"http://schema.omg.org/spec/UML/2.1/uml.xml#UnlimitedNatural\"/>\n");
+    else {
+      out << "Class\"";
+      out.idref_datatype(t.explicit_type);
+      out << "/>\n";
+    }
+  }
+
+!!!129923.cpp!!!	write_default_value(inout out : FileOut, in v : string, in who : UmlItem, in rank : int) : void
+  if (! v.isEmpty()) {
+    if (v[0] == '=') {
+      v = v.mid(1);
+      if (v.isEmpty())
+	return;
+    }
+
+    out.indent();
+    out << "<defaultValue xmi:type=\"uml:LiteralString\"";
+    if (rank == -1)
+      out.id_prefix(who, "VALUE_");
+    else
+      out.id_prefix(who, "VALUE", rank);
+    out << " value=\"";
+    out.quote(v);
+    out << "\"/>\n";
+  }
+!!!223874.cpp!!!	write_stereotyped(inout out : FileOut) : void
+  QMap<QCString, QList<UmlItem> >::Iterator it;
+  
+  for (it = _stereotypes.begin(); it != _stereotypes.end(); ++it) {
+    const char * st = it.key();
+    UmlClass * cl = UmlClass::findStereotype(it.key(), TRUE);
+		     
+    if (cl != 0) {
+      QValueList<QCString> extended;
+
+      cl->get_extended(extended);
+      
+      QList<UmlItem> & l = it.data();
+      UmlItem * elt;
+      
+      for (elt = l.first(); elt != 0; elt = l.next()) {
+	out << "\t<" << st;
+	out.id_prefix(elt, "STELT_");
+	
+	const QDict<QCString> props = elt->properties();
+	QDictIterator<QCString> itp(props);
+	
+	while (itp.current()) {
+	  QString k = itp.currentKey();
+	  
+	  if (k.contains(':') == 2) {
+	    out << ' ';
+	    out.quote(k.mid(k.findRev(':') + 1));
+	    out << "=\"";
+	    out.quote(*itp.current());
+	    out << '"';
+	  }
+	  ++itp;
+	}
+	
+	QValueList<QCString>::Iterator iter_extended;
+	
+	for (iter_extended = extended.begin(); 
+	     iter_extended != extended.end();
+	     ++iter_extended) {
+	  QCString vr = "base_" + *iter_extended;
+	  
+	  out.ref(elt, vr);
+	}
+	
+	out << "/>\n";
+	
+	elt->unload();
+      }
+    }
+  }
+
+!!!237698.cpp!!!	gen_extension() : bool
+  return _gen_extension;

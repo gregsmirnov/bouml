@@ -1,0 +1,14 @@
+class UmlItem
+!!!144130.cpp!!!	fileControl(in ci : bool) : void
+UmlCom::trace("Error : must be applied on a <i>Package</i>");
+!!!144386.cpp!!!	getFiles(inout files : QDict<void>, in rec : unsigned) : void
+QFileInfo fi(supportFile());
+
+if (fi.exists())
+ files.replace(fi.fileName(), (void *) 1);
+
+const QVector<UmlItem> ch = children();
+unsigned index;
+
+for (index = 0; index != ch.size(); index += 1)
+  ch[index]->getFiles(files, rec);

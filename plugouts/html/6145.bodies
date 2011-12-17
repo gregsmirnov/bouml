@@ -1,0 +1,22 @@
+class UmlClassDiagram
+!!!128608.cpp!!!	sKind() : string
+  return "class diagram";
+!!!128608.java!!!	sKind() : string
+  return "class diagram";
+!!!128124.cpp!!!	memo_ref() : void
+  diagrams.addElement(this);
+  UmlDiagram::memo_ref();
+!!!128124.java!!!	memo_ref() : void
+  diagrams.addElement(this);
+  super.memo_ref();
+
+!!!128752.cpp!!!	ref_index() : void
+  if (!diagrams.isEmpty())
+    fw.write("<a href=\"classdiagrams.html\" target = \"projectFrame\"><b> -Class Diagrams- </b></a>");
+!!!128752.java!!!	ref_index() : void
+  if (!diagrams.isEmpty())
+    fw.write("<a href=\"classdiagrams.html\" target = \"projectFrame\"><b> -Class Diagrams- </b></a>");
+!!!128892.cpp!!!	generate_index() : void
+  UmlItem::generate_index(diagrams, "Class Diagram", "classdiagrams");
+!!!128892.java!!!	generate_index() : void
+  generate_index(diagrams, "Class Diagram", "classdiagrams");

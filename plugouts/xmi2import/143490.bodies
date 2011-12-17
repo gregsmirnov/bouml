@@ -1,0 +1,133 @@
+class Token
+!!!190850.cpp!!!	read(inout in : FileIn, in any : bool) : void
+  _couples.clear();
+  
+  const char * k;
+  BooL str;
+  
+  // bypass comment
+  for (;;) {
+    k = in.readWord(any, str);
+    if (str || (*k != '<')) {
+      if (any)
+	continue;
+      else
+	in.error("'&lt;...' expected");
+    }
+    
+    k = in.readWord(any, str);
+    if (str || (*k != '!'))
+      break;
+    
+    int minus = 0;
+    
+    for (;;) {
+      char c = *in.readWord(TRUE, str);
+      
+      if (! str) {
+	if (c == '-')
+	  minus += 1;
+	else if ((c == '>') && (minus == 2))
+	  break;
+	else
+	  minus = 0;
+      }
+    }
+  }
+
+
+  char last;
+  
+  // note : k is not a string
+  if (*k == '?') {
+    last = '?';
+    k = in.readWord(any, str);
+  }
+  else
+    last = '/';
+  
+  if (!str && (*k == '/')) {
+    _close = TRUE;
+    k = in.readWord(any, str);
+  }
+  else
+    _close = FALSE;
+  
+  if (str)
+    in.error("syntax error \"" + QCString(k) + "\" unexpected");
+    
+  _what = k;
+  
+  while (k = in.readWord(any, str), str || (*k != '>')) {
+    if (!str && (*k == last)) {
+      k = in.readWord(any, str);
+      if (str || (*k != '>'))
+	in.error("syntax error near '" + QCString(k)  + "'>' expected");
+      _closed = TRUE;
+      return;
+    }
+    
+    if (str) {
+      if (!any)
+	in.error("syntax error near '" + QCString(k) + "'");
+    }
+    else {
+      Couple cpl;
+      
+      cpl.key = k;
+      
+      if (!any || !strcmp(k, "xmi:id")) {
+	if (!any && !valueOf(k).isNull())
+	  in.error("'" + cpl.key + "' duplicated");
+	
+	if ((*in.readWord(FALSE, str) != '=') || str) {
+	  if (! any)
+	    in.error("syntax error near '" + QCString(k) + "', '=' expected");
+	}
+	else {
+	  cpl.value = in.readWord(FALSE, str);
+	  if (str)
+	    _couples.append(cpl);
+	  else if (! any)
+	    in.error("syntax error after '='");
+	}
+      }
+    }
+  }
+
+  _closed = FALSE;
+!!!189186.cpp!!!	what() : string
+  return _what;
+!!!189570.cpp!!!	xmiType() : string
+  return valueOf("xmi:type");
+!!!189698.cpp!!!	xmiId() : string
+  return valueOf("xmi:id");
+!!!205186.cpp!!!	xmiIdref() : string
+  return valueOf("xmi:idref");
+!!!189314.cpp!!!	close() : bool
+  return _close;
+!!!191234.cpp!!!	close(in what : str) : bool
+  return _close && (_what == what);
+!!!189442.cpp!!!	closed() : bool
+  return _closed;
+!!!189826.cpp!!!	valueOf(in key : string) : string
+  QValueList<Couple>::ConstIterator iter;
+  
+  for (iter = _couples.begin(); iter != _couples.end(); ++iter)
+    if ((*iter).key == key)
+      return (*iter).value;
+			  
+  static QCString null;
+  
+  return null;
+!!!254594.cpp!!!	valueOf(in key : string, inout v : string) : bool
+  QValueList<Couple>::ConstIterator iter;
+  
+  for (iter = _couples.begin(); iter != _couples.end(); ++iter) {
+    if ((*iter).key == key) {
+      v = (*iter).value;
+      return TRUE;
+    }
+  }
+			  
+  return FALSE;

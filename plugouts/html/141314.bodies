@@ -1,0 +1,5 @@
+class UmlForkActivityNode
+!!!195202.cpp!!!	sKind() : string
+  return "fork activity node";
+!!!195202.java!!!	sKind() : string
+  return "fork activity node";

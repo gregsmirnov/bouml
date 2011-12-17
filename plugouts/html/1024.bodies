@@ -1,0 +1,12 @@
+class UmlParameter
+!!!72832.java!!!	UmlParameter()
+  type = new UmlTypeSpec();
+!!!72448.java!!!	clone_it() : UmlParameter
+  UmlParameter p = new UmlParameter();
+  
+  p.dir = dir;
+  p.type = type.clone_it();
+  p.name = name;
+  p.default_value = default_value;
+
+  return p;

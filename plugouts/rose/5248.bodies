@@ -1,0 +1,931 @@
+class UmlCom
+!!!66688.cpp!!!	connect(in port : uint) : bool
+  sock = new QSocketDevice(QSocketDevice::Stream);
+  sock->setAddressReusable(TRUE);
+  
+  buffer_in_size = 1024;
+  buffer_in = new char[buffer_in_size];
+  buffer_in_end = p_buffer_in = 0;
+  
+  buffer_out_size = 1024;
+  buffer_out = new char[buffer_out_size];
+  p_buffer_out = buffer_out + 4/*bytes for length*/;
+  
+  QHostAddress ha;
+  
+  ha.setAddress("127.0.0.1");
+  
+  if (sock->connect(ha, port)) {
+    // send API version
+    write_unsigned(13);
+    flush();
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!66688.java!!!	connect(in port : uint) : bool
+  try {
+    sock = new Socket("127.0.0.1", port);
+    is = new DataInputStream(sock.getInputStream());
+    os = new DataOutputStream(sock.getOutputStream());
+  
+    buffer_in_size = 1024;
+    buffer_in = new byte[buffer_in_size];
+    p_buffer_in = 0;
+  
+    buffer_out_size = 1024;
+    buffer_out = new byte[buffer_out_size];
+    p_buffer_out = 4/*bytes for length*/;
+
+    // send API version
+    write_unsigned(13);
+    flush();
+  }
+  catch (Exception e) {
+  throw new RuntimeException("cannot establish connexion");
+  }
+!!!76672.cpp!!!	targetItem() : UmlItem
+  send_cmd(miscGlobalCmd, targetCmd);
+  return UmlBaseItem::read_();
+!!!76672.java!!!	targetItem() : UmlItem
+  send_cmd(CmdFamily.miscGlobalCmd, MiscGlobalCmd._targetCmd);
+  return UmlBaseItem.read_();
+!!!66944.cpp!!!	trace(in s : str) : void
+  send_cmd(miscGlobalCmd, traceCmd, s);
+!!!66944.java!!!	trace(in s : str) : void
+  send_cmd(CmdFamily.miscGlobalCmd, MiscGlobalCmd._traceCmd, s);
+!!!67072.cpp!!!	message(in s : str) : void
+  send_cmd(miscGlobalCmd, messageCmd, s);
+!!!67072.java!!!	message(in s : str) : void
+  send_cmd(CmdFamily.miscGlobalCmd, MiscGlobalCmd._messageCmd, s);
+!!!67200.cpp!!!	bye() : void
+  send_cmd(miscGlobalCmd, byeCmd);
+!!!67200.java!!!	bye() : void
+  send_cmd(CmdFamily.miscGlobalCmd, MiscGlobalCmd._byeCmd);
+!!!67328.cpp!!!	close() : void
+  delete sock;
+  sock = 0;
+!!!67328.java!!!	close() : void
+  try {
+    os.close();
+    is.close();
+    sock.close();
+    os = null;
+    is = null;
+    sock = null;
+  }
+  catch(Exception e) {
+  }
+
+!!!67456.cpp!!!	check_size_out(in len : uint) : void
+  unsigned used = p_buffer_out - buffer_out;
+  
+  if ((used + len) >= buffer_out_size) {
+    buffer_out_size = used + len + 1024;
+    
+    char * newbuff = new char[buffer_out_size];
+    
+    memcpy(newbuff, buffer_out, used);
+    delete [] buffer_out;
+    
+    p_buffer_out = (buffer_out = newbuff) + used;
+  }
+!!!67456.java!!!	check_size_out(in len : uint) : void
+  if ((p_buffer_out + len) >= buffer_out_size) {
+    buffer_out_size = p_buffer_out + len + 1024;
+    
+    byte[] newbuff = new byte[buffer_out_size];
+    
+    int index;
+
+    for (index = 0; index != p_buffer_out; index += 1)
+      newbuff[index] = buffer_out[index];
+    
+    buffer_out = newbuff;
+  }
+!!!67584.cpp!!!	read_if_needed() : void
+#ifdef TRACE
+  //cout << "UmlCom::read_if_needed " << buffer_in_end - p_buffer_in << '\n';
+#endif
+  
+  if (p_buffer_in == buffer_in_end) {
+    read_buffer(4);
+#ifdef TRACE
+    cout << "UmlCom::read " << ((((unsigned char *) buffer_in)[0] << 24) + (((unsigned char *) buffer_in)[1] << 16) +(((unsigned char *) buffer_in)[2] << 8) +((unsigned char *) buffer_in)[3]) << " bytes\n";
+#endif
+    read_buffer((((unsigned char *) buffer_in)[0] << 24) +
+		(((unsigned char *) buffer_in)[1] << 16) +
+		(((unsigned char *) buffer_in)[2] << 8) +
+		((unsigned char *) buffer_in)[3]);
+  }
+!!!67584.java!!!	read_if_needed() : void
+  if (p_buffer_in == buffer_in_end) {
+    read_buffer(4);
+    //System.out.print("plug-out read ");System.out.println(((((int) buffer_in[0]) & 255) << 24) + ((((int) buffer_in[1]) & 255) <<16) + ((((int) buffer_in[2]) & 255) << 8) + (((int) buffer_in[3]) & 255));
+    read_buffer(((((int) buffer_in[0]) & 255) << 24) +
+		((((int) buffer_in[1]) & 255) << 16) +
+		((((int) buffer_in[2]) & 255) << 8) +
+		(((int) buffer_in[3]) & 255));
+  }
+!!!67712.cpp!!!	read_buffer(in len : uint) : void
+#ifdef TRACE
+  //cout << "enter UmlCom::read_buffer(" << len << ")\n";
+#endif
+  
+  if (buffer_in_size < len) {
+    delete [] buffer_in;
+    buffer_in_size = len + 256;
+    buffer_in = new char[buffer_in_size];
+  }
+  
+  int remainder = (int) len;
+  int nread;
+  char * p = buffer_in;
+  
+  for (;;) {
+    if ((nread = sock->readBlock(p, remainder)) == -1) {
+      if (sock->error() != 0) {
+#ifdef TRACE
+	cout << "UmlCom::read_buffer ERROR, already " << p - buffer_in
+	  << " remainder " << remainder << '\n';
+#endif
+	fatal_error("UmlCom read error");
+      }
+      else
+	nread = 0;
+    }
+    
+#ifdef TRACE
+    //cout << "UmlCom a lu " << nread << '\n';
+#endif
+    if ((remainder -= nread) == 0)
+      break;
+    p += nread;
+    sock->waitForMore(100);
+  }
+#ifdef TRACE
+  //cout << "exit UmlCom::read_buffer()\n";
+#endif
+  
+  p_buffer_in = buffer_in;
+  buffer_in_end = buffer_in + len;
+!!!67712.java!!!	read_buffer(in len : uint) : void
+  //cout << "enter UmlCom.read_buffer(" << len << ")\n";
+  
+  if (buffer_in_size < len) {
+    buffer_in_size = len + 256;
+    buffer_in = new byte[buffer_in_size];
+  }
+  
+  int remainder = len;
+  int offset = 0;
+  int nread;
+  
+  for (;;) {
+    try {
+      if ((nread = is.read(buffer_in, offset, remainder)) == -1)
+  	nread = 0;
+    }
+    catch (Exception e) {
+      throw new RuntimeException("communication closed");
+    }
+    
+    //cout << "UmlCom a lu " << nread << '\n';
+    if ((remainder -= nread) == 0)
+      break;
+    offset += nread;
+    //...wait some time
+  }
+  //cout << "exit UmlCom.read_buffer()\n";
+  
+  p_buffer_in = 0;
+  buffer_in_end = len;
+!!!67840.cpp!!!	write_bool(in b : bool) : void
+  check_size_out(1);
+  
+  *p_buffer_out++ = (b == 0) ? 0 : 1;
+!!!67840.java!!!	write_bool(in b : bool) : void
+  check_size_out(1);
+  
+  buffer_out[p_buffer_out++] = (b) ? (byte) 0 : (byte) 1;
+!!!67968.cpp!!!	write_char(in c : sbyte) : void
+  check_size_out(1);
+  
+  *p_buffer_out++ = c;
+!!!67968.java!!!	write_char(in c : sbyte) : void
+  check_size_out(1);
+  
+  buffer_out[p_buffer_out++] = c;
+!!!68096.cpp!!!	write_unsigned(in u : uint) : void
+  check_size_out(4);
+  
+  p_buffer_out[0] = u >> 24;
+  p_buffer_out[1] = u >> 16;
+  p_buffer_out[2] = u >> 8;
+  p_buffer_out[3] = u;
+  
+  p_buffer_out += 4;
+!!!68096.java!!!	write_unsigned(in u : uint) : void
+  check_size_out(4);
+  
+  buffer_out[p_buffer_out] = (byte) (u >> 24);
+  buffer_out[p_buffer_out+1] = (byte) (u >> 16);
+  buffer_out[p_buffer_out+2] = (byte) (u >> 8);
+  buffer_out[p_buffer_out+3] = (byte) u;
+  
+  p_buffer_out += 4;
+!!!68224.cpp!!!	write_id(in id : item_id) : void
+  check_size_out(sizeof(void *));
+  
+  memcpy(p_buffer_out, &id, sizeof(void *));
+  p_buffer_out += sizeof(void *);
+!!!68224.java!!!	write_id(in id : item_id) : void
+  check_size_out((int) id_size);
+  
+  // id_size is supposed to be 8 or 4 !
+  if (id_size == (byte) 8) {
+    buffer_out[p_buffer_out] = (byte) (id >> 56);
+    buffer_out[p_buffer_out+1] = (byte) (id >> 48);
+    buffer_out[p_buffer_out+2] = (byte) (id >> 40);
+    buffer_out[p_buffer_out+3] = (byte) (id >> 32);
+
+    p_buffer_out += 4;
+  }
+  buffer_out[p_buffer_out] = (byte) (id >> 24);
+  buffer_out[p_buffer_out+1] = (byte) (id >> 16);
+  buffer_out[p_buffer_out+2] = (byte) (id >> 8);
+  buffer_out[p_buffer_out+3] = (byte) id;
+
+  p_buffer_out += 4;
+!!!68352.cpp!!!	write_string(in p : str) : void
+  if (p == 0)
+    p = "";
+  
+  unsigned len = strlen(p) + 1;
+  
+  check_size_out(len);
+  memcpy(p_buffer_out, p, len);
+  p_buffer_out += len;
+!!!68352.java!!!	write_string(in p : str) : void
+  if (p == null) {
+    check_size_out(1);
+    buffer_out[p_buffer_out++] = 0;
+  }
+  else {
+    byte[] pb = p.getBytes();
+    int index;
+  
+    check_size_out(pb.length + 1);
+    for (index = 0; index != pb.length; index += 1)
+      buffer_out[p_buffer_out + index] = pb[index];
+    buffer_out[p_buffer_out + index] = 0;
+    p_buffer_out += index + 1;
+  }
+
+  
+!!!68480.cpp!!!	send_cmd(in f : CmdFamily, in cmd : uint) : void
+#ifdef TRACE
+  cout << "UmlCom::send_cmd((CmdFamily) " << f << ", " << cmd << ")\n";
+#endif
+  
+  write_char(f);
+  write_char(cmd);
+  flush();
+!!!68480.java!!!	send_cmd(in f : CmdFamily, in cmd : uint) : void
+  //System.out.print("UmlCom.send_cmd((CmdFamily) " ); System.out.print(f.value()); System.out.print(", "); System.out.print(cmd); System.out.println(")");
+  
+  write_char((byte) f.value());
+  write_char((byte) cmd);
+  flush();
+!!!68608.cpp!!!	send_cmd(in f : CmdFamily, in cmd : uint, in arg : sbyte) : void
+#ifdef TRACE
+  cout << "UmlCom::send_cmd((CmdFamily) " << f << ", " << cmd << ", " << (int) arg << ")\n";
+#endif
+  
+  write_char(f);
+  write_char(cmd);
+  write_char(arg);
+  flush();
+!!!68608.java!!!	send_cmd(in f : CmdFamily, in cmd : uint, in arg : sbyte) : void
+  //cout << "UmlCom.send_cmd((CmdFamily) " << f << ", " << cmd << ", " << arg << ")\n";
+  
+  write_char((byte) f.value());
+  write_char((byte) cmd);
+  write_char(arg);
+  flush();
+!!!68736.cpp!!!	send_cmd(in f : CmdFamily, in cmd : uint, in id : item_id) : void
+#ifdef TRACE
+  cout << "UmlCom::send_cmd((CmdFamily) " << f << ", " << cmd << ", " << id << ")\n";
+#endif
+  
+  write_char(f);
+  write_char(cmd);
+  write_id(id);
+  flush();
+!!!68736.java!!!	send_cmd(in f : CmdFamily, in cmd : uint, in id : item_id) : void
+  //cout << "UmlCom.send_cmd((CmdFamily) " << f << ", " << cmd << ", " << id << ")\n";
+  
+  write_char((byte) f.value());
+  write_char((byte) cmd);
+  write_id(id);
+  flush();
+!!!68864.cpp!!!	send_cmd(in f : CmdFamily, in cmd : uint, in s : str) : void
+#ifdef TRACE
+  cout << "UmlCom::send_cmd((CmdFamily) " << f << ", " << cmd << ", " << ((s) ? s : "") << ")\n";
+#endif
+  
+  write_char(f);
+  write_char(cmd);
+  write_string(s);
+  flush();
+!!!68864.java!!!	send_cmd(in f : CmdFamily, in cmd : uint, in s : str) : void
+  //cout << "UmlCom.send_cmd((CmdFamily) " << f << ", " << cmd << ", " << s << ")\n";
+  
+  write_char((byte) f.value());
+  write_char((byte) cmd);
+  write_string(s);
+  flush();
+!!!68992.cpp!!!	send_cmd(in f : CmdFamily, in cmd : uint, in id : item_id, in n : str) : void
+#ifdef TRACE
+  cout << "UmlCom::send_cmd((CmdFamily) " << f << ", " << cmd << ", " << id << ", " << ((n) ? n : "") << ")\n";
+#endif
+  
+  write_char(f);
+  write_char(cmd);
+  write_id(id);
+  write_string(n);
+  flush();
+!!!68992.java!!!	send_cmd(in f : CmdFamily, in cmd : uint, in id : item_id, in n : str) : void
+  //cout << "UmlCom.send_cmd((CmdFamily) " << f << ", " << cmd << ", " << id << ")\n";
+  
+  write_char((byte) f.value());
+  write_char((byte) cmd);
+  write_id(id);
+  write_string(n);
+  flush();
+!!!69120.cpp!!!	send_cmd(in f : CmdFamily, in cmd : uint, in s : str, in v : str) : void
+#ifdef TRACE
+  cout << "UmlCom::send_cmd((CmdFamily) " << f << ", " << cmd << ", " << ((s) ? s : "") << ", " << ((v) ? v : "") << ")\n";
+#endif
+  
+  write_char(f);
+  write_char(cmd);
+  write_string(s);
+  write_string(v);
+  flush();
+!!!69120.java!!!	send_cmd(in f : CmdFamily, in cmd : uint, in s : str, in v : str) : void
+  //cout << "UmlCom.send_cmd((CmdFamily) " << f << ", " << cmd << ", " << s << ", " << v << ")\n";
+  
+  write_char((byte) f.value());
+  write_char((byte) cmd);
+  write_string(s);
+  write_string(v);
+  flush();
+!!!69248.cpp!!!	send_cmd(in f : CmdFamily, in cmd : uint, in b : bool, in s : str, in v : str) : void
+#ifdef TRACE
+  cout << "UmlCom::send_cmd((CmdFamily) " << f << ", " << cmd << ", " << b << ", " << ((s) ? s : "") << ", " << ((v) ? v : "") << ")\n";
+#endif
+  
+  write_char(f);
+  write_char(cmd);
+  write_bool(b);
+  write_string(s);
+  write_string(v);
+  flush();
+!!!69248.java!!!	send_cmd(in f : CmdFamily, in cmd : uint, in b : bool, in s : str, in v : str) : void
+  //cout << "UmlCom.send_cmd((CmdFamily) " << f << ", " << cmd << ", " << b << ", " << s << ", " << v << ")\n";
+  
+  write_char((byte) f.value());
+  write_char((byte) cmd);
+  write_bool(b);
+  write_string(s);
+  write_string(v);
+  flush();
+!!!69376.cpp!!!	send_cmd(in id : item_id, in cmd : OnInstanceCmd) : void
+#ifdef TRACE
+  cout << "UmlCom::send_cmd(id, " << cmd << ")\n";
+#endif
+  
+  write_char(onInstanceCmd);
+  write_id(id);
+  write_char(cmd);
+  flush();
+!!!69376.java!!!	send_cmd(in id : item_id, in cmd : OnInstanceCmd) : void
+  //System.out.print("UmlCom.send_cmd(id, "); System.out.print(cmd.value()); System.out.println(")");
+  
+  write_char((byte) CmdFamily._onInstanceCmd);
+  write_id(id);
+  write_char((byte) cmd.value());
+  flush();
+!!!69504.cpp!!!	send_cmd(in id : item_id, in cmd : OnInstanceCmd, in arg : str) : void
+#ifdef TRACE
+  cout << "UmlCom::send_cmd(id, " << cmd << ", " << ((arg) ? arg : "") << ")\n";
+#endif
+  
+  write_char(onInstanceCmd);
+  write_id(id);
+  write_char(cmd);
+  write_string(arg);
+  flush();
+!!!69504.java!!!	send_cmd(in id : item_id, in cmd : OnInstanceCmd, in arg : str) : void
+  //cout << "UmlCom.send_cmd(id, " << cmd << ", " << arg << ")\n";
+  
+  write_char((byte) CmdFamily._onInstanceCmd);
+  write_id(id);
+  write_char((byte) cmd.value());
+  write_string(arg);
+  flush();
+!!!69632.cpp!!!	send_cmd(in id : item_id, in cmd : OnInstanceCmd, in arg : sbyte) : void
+#ifdef TRACE
+  cout << "UmlCom::send_cmd(id, " << cmd << ", " << ((int) arg) << '\n';
+#endif
+  
+  write_char(onInstanceCmd);
+  write_id(id);
+  write_char(cmd);
+  write_char(arg);
+  flush();
+!!!69632.java!!!	send_cmd(in id : item_id, in cmd : OnInstanceCmd, in arg : sbyte) : void
+  //cout << "UmlCom.send_cmd(id, " << cmd << ", " << ((int) arg) << '\n';
+  
+  write_char((byte) CmdFamily._onInstanceCmd);
+  write_id(id);
+  write_char((byte) cmd.value());
+  write_char(arg);
+  flush();
+!!!69760.cpp!!!	send_cmd(in id : item_id, in cmd : OnInstanceCmd, in arg : uint) : void
+#ifdef TRACE
+  cout << "UmlCom::send_cmd(id, " << cmd << ", " << arg << '\n';
+#endif
+  
+  write_char(onInstanceCmd);
+  write_id(id);
+  write_char(cmd);
+  write_unsigned(arg);
+  flush();
+!!!69760.java!!!	send_cmd(in id : item_id, in cmd : OnInstanceCmd, in arg : uint) : void
+  //cout << "UmlCom.send_cmd(id, " << cmd << ", " << arg << '\n';
+  
+  write_char((byte) CmdFamily._onInstanceCmd);
+  write_id(id);
+  write_char((byte) cmd.value());
+  write_unsigned(arg);
+  flush();
+!!!69888.cpp!!!	send_cmd(in id : item_id, in cmd : OnInstanceCmd, in arg : UmlTypeSpec) : void
+#ifdef TRACE
+  cout << "UmlCom::send_cmd(id, " << cmd << ", UmlTypeSpec)\n";
+#endif
+  
+  write_char(onInstanceCmd);
+  write_id(id);
+  write_char(cmd);
+  if (arg.type) {
+    write_id(arg.type->_identifier);
+    write_string("");
+  }
+  else {
+    write_id(0);
+    write_string(arg.explicit_type);
+  }
+  flush();
+!!!69888.java!!!	send_cmd(in id : item_id, in cmd : OnInstanceCmd, in arg : UmlTypeSpec) : void
+  //cout << "UmlCom.send_cmd(id, " << cmd << ", UmlTypeSpec)\n";
+  
+  write_char((byte) CmdFamily._onInstanceCmd);
+  write_id(id);
+  write_char((byte) cmd.value());
+  if (arg.type != null) {
+    write_id(arg.type.identifier_());
+    write_string(null);
+  }
+  else {
+    write_id(0);
+    write_string(arg.explicit_type);
+  }
+  flush();
+!!!70016.cpp!!!	send_cmd(in id : item_id, in cmd : OnInstanceCmd, in arg1 : str, in arg2 : str) : void
+#ifdef TRACE
+  cout << "UmlCom::send_cmd(id, " << cmd << ", " << ((arg1) ? arg1 : "") << ", " << ((arg2) ? arg2 : "") << ")\n";
+#endif
+  
+  write_char(onInstanceCmd);
+  write_id(id);
+  write_char(cmd);
+  write_string(arg1);
+  write_string(arg2);
+  flush();
+!!!70016.java!!!	send_cmd(in id : item_id, in cmd : OnInstanceCmd, in arg1 : str, in arg2 : str) : void
+  //cout << "UmlCom.send_cmd(id, " << cmd << ", " << arg1 << ", " << arg2 << ")\n";
+  
+  write_char((byte) CmdFamily._onInstanceCmd);
+  write_id(id);
+  write_char((byte) cmd.value());
+  write_string(arg1);
+  write_string(arg2);
+  flush();
+!!!70144.cpp!!!	send_cmd(in id : item_id, in cmd : OnInstanceCmd, in arg1 : anItemKind, in arg2 : str) : void
+#ifdef TRACE
+  cout << "UmlCom::send_cmd(id, " << cmd << ", " << arg1 << ", " << ((arg2) ? arg2 : "") << ")\n";
+#endif
+  
+  write_char(onInstanceCmd);
+  write_id(id);
+  write_char(cmd);
+  write_char(arg1);
+  write_string(arg2);
+  flush();
+!!!70144.java!!!	send_cmd(in id : item_id, in cmd : OnInstanceCmd, in arg1 : anItemKind, in arg2 : str) : void
+  //cout << "UmlCom.send_cmd(id, " << cmd << ", " << arg1 << ", " << arg2 << ")\n";
+  
+  write_char((byte) CmdFamily._onInstanceCmd);
+  write_id(id);
+  write_char((byte) cmd.value());
+  write_char((byte) arg1.value());
+  write_string(arg2);
+  flush();
+!!!70272.cpp!!!	send_cmd(in id : item_id, in cmd : OnInstanceCmd, in arg1 : anItemKind, in arg2 : aRelationKind, in id2 : item_id) : void
+#ifdef TRACE
+  cout << "UmlCom::send_cmd(id, " << cmd << ", " << arg1 << ", " << arg2 << ", " << id2 << ")\n";
+#endif
+  
+  write_char(onInstanceCmd);
+  write_id(id);
+  write_char(cmd);
+  write_char(arg1);
+  write_char(arg2);
+  write_id(id2);
+  flush();
+!!!70272.java!!!	send_cmd(in id : item_id, in cmd : OnInstanceCmd, in arg1 : anItemKind, in arg2 : aRelationKind, in id2 : item_id) : void
+  //cout << "UmlCom.send_cmd(id, " << cmd << ", " << arg1 << ", " << arg2 << ", " << id2 << ")\n";
+  
+  write_char((byte) CmdFamily._onInstanceCmd);
+  write_id(id);
+  write_char((byte) cmd.value());
+  write_char((byte) arg1.value());
+  write_char((byte) arg2.value());
+  write_id(id2);
+  flush();
+!!!70400.cpp!!!	send_cmd(in id : item_id, in cmd : OnInstanceCmd, in id1 : item_id) : void
+#ifdef TRACE
+  cout << "UmlCom::send_cmd(id, " << cmd << ", id1)\n";
+#endif
+  
+  write_char(onInstanceCmd);
+  write_id(id);
+  write_char(cmd);
+  write_id(id1);
+  flush();
+!!!70400.java!!!	send_cmd(in id : item_id, in cmd : OnInstanceCmd, in id1 : item_id) : void
+  //cout << "UmlCom.send_cmd(id, " << cmd << ", id1)\n";
+  
+  write_char((byte) CmdFamily._onInstanceCmd);
+  write_id(id);
+  write_char((byte) cmd.value());
+  write_id(id1);
+  flush();
+!!!70528.cpp!!!	send_cmd(in id : item_id, in cmd : OnInstanceCmd, in id1 : item_id, in arg2 : str) : void
+#ifdef TRACE
+  cout << "UmlCom::send_cmd(id, " << cmd << ", id1, " << ((arg2) ? arg2 : "") << ")\n";
+#endif
+  
+  write_char(onInstanceCmd);
+  write_id(id);
+  write_char(cmd);
+  write_id(id1);
+  write_string(arg2);
+  flush();
+!!!70528.java!!!	send_cmd(in id : item_id, in cmd : OnInstanceCmd, in id1 : item_id, in arg2 : str) : void
+  //cout << "UmlCom.send_cmd(id, " << cmd << ", id1, " << arg2 << ")\n";
+  
+  write_char((byte) CmdFamily._onInstanceCmd);
+  write_id(id);
+  write_char((byte) cmd.value());
+  write_id(id1);
+  write_string(arg2);
+  flush();
+!!!70656.cpp!!!	send_cmd(in id : item_id, in cmd : OnInstanceCmd, in arg1 : uint, in arg2 : UmlTypeSpec) : void
+#ifdef TRACE
+  cout << "UmlCom::send_cmd(id, " << cmd << ", " << arg1 << ", UmlTypeSpec)\n";
+#endif
+  
+  write_char(onInstanceCmd);
+  write_id(id);
+  write_char(cmd);
+  write_unsigned(arg1);
+  if (arg2.type) {
+    write_id(arg2.type->_identifier);
+    write_string("");
+  }
+  else {
+    write_id(0);
+    write_string(arg2.explicit_type);
+  }
+  flush();
+!!!70656.java!!!	send_cmd(in id : item_id, in cmd : OnInstanceCmd, in arg1 : uint, in arg2 : UmlTypeSpec) : void
+  //cout << "UmlCom.send_cmd(id, " << cmd << ", " << arg1 << ", UmlTypeSpec)\n";
+  
+  write_char((byte) CmdFamily._onInstanceCmd);
+  write_id(id);
+  write_char((byte) cmd.value());
+  write_unsigned(arg1);
+  if (arg2.type != null) {
+    write_id(arg2.type.identifier_());
+    write_string(null);
+  }
+  else {
+    write_id(0);
+    write_string(arg2.explicit_type);
+  }
+  flush();
+!!!70784.cpp!!!	send_cmd(in id : item_id, in cmd : OnInstanceCmd, in arg1 : uint, in arg2 : str, in arg3 : str, in arg4 : UmlTypeSpec) : void
+#ifdef TRACE
+  cout << "UmlCom::send_cmd(id, " << cmd << ", " << arg1 << ", " << ((arg2) ? arg2 : "") << ", " << ((arg3) ? arg3 : "") << ", " << ", UmlTypeSpec)\n";
+#endif
+  
+  write_char(onInstanceCmd);
+  write_id(id);
+  write_char(cmd);
+  write_unsigned(arg1);
+  write_string(arg2);
+  write_string(arg3);
+  if (arg4.type) {
+    write_id(arg4.type->_identifier);
+    write_string("");
+  }
+  else {
+    write_id(0);
+    write_string(arg4.explicit_type);
+  }
+  flush();
+!!!70784.java!!!	send_cmd(in id : item_id, in cmd : OnInstanceCmd, in arg1 : uint, in arg2 : str, in arg3 : str, in arg4 : UmlTypeSpec) : void
+  //cout << "UmlCom.send_cmd(id, " << cmd << ", " << arg1 << ", " << arg2 << ", " << arg3 << ", " << ", UmlTypeSpec)\n";
+  
+  write_char((byte) CmdFamily._onInstanceCmd);
+  write_id(id);
+  write_char((byte) cmd.value());
+  write_unsigned(arg1);
+  write_string(arg2);
+  write_string(arg3);
+  if (arg4.type != null) {
+    write_id(arg4.type.identifier_());
+    write_string(null);
+  }
+  else {
+    write_id(0);
+    write_string(arg4.explicit_type);
+  }
+  flush();
+!!!70912.cpp!!!	send_cmd(in id : item_id, in cmd : OnInstanceCmd, in arg1 : uint, in arg2 : sbyte, in arg3 : str, in arg4 : str, in arg5 : UmlTypeSpec) : void
+#ifdef TRACE
+  cout << "UmlCom::send_cmd(id, " << cmd << ", " << arg1 << ", " << (int) arg2 << ", " << ((arg3) ? arg3 : "") << ", " << ((arg4) ? arg4 : "") << ", UmlTypeSpec)\n";
+#endif
+  
+  write_char(onInstanceCmd);
+  write_id(id);
+  write_char(cmd);
+  write_unsigned(arg1);
+  write_char(arg2);
+  write_string(arg3);
+  write_string(arg4);
+  if (arg5.type) {
+    write_id(arg5.type->_identifier);
+    write_string("");
+  }
+  else {
+    write_id(0);
+    write_string(arg5.explicit_type);
+  }
+  flush();
+!!!70912.java!!!	send_cmd(in id : item_id, in cmd : OnInstanceCmd, in arg1 : uint, in arg2 : sbyte, in arg3 : str, in arg4 : str, in arg5 : UmlTypeSpec) : void
+  //cout << "UmlCom.send_cmd(id, " << cmd << ", " << arg1 << ", " << arg2 << ", " << arg3 << ", " << arg4 << ", UmlTypeSpec)\n";
+  
+  write_char((byte) CmdFamily._onInstanceCmd);
+  write_id(id);
+  write_char((byte) cmd.value());
+  write_unsigned(arg1);
+  write_char(arg2);
+  write_string(arg3);
+  write_string(arg4);
+  if (arg5.type != null) {
+    write_id(arg5.type.identifier_());
+    write_string(null);
+  }
+  else {
+    write_id(0);
+    write_string(arg5.explicit_type);
+  }
+  flush();
+!!!71040.cpp!!!	send_cmd(in id : item_id, in cmd : OnInstanceCmd, in l : UmlClass) : void
+#ifdef TRACE
+  cout << "UmlCom::send_cmd(id, " << cmd << ", const QVector<UmlClass> & l)\n";
+#endif
+  
+  write_char(onInstanceCmd);
+  write_id(id);
+  write_char(cmd);
+  
+  unsigned n = l.count();
+  
+  write_unsigned(n);
+  
+  for (unsigned i = 0; i != n; i += 1)
+    write_id(((UmlBaseItem *) l[i])->_identifier);
+  
+  flush();
+!!!71040.java!!!	send_cmd(in id : item_id, in cmd : OnInstanceCmd, in l : UmlClass) : void
+  //cout << "UmlCom.send_cmd(id, " << cmd << ", const QVector<UmlClass> & l)\n";
+  
+  write_char((byte) CmdFamily._onInstanceCmd);
+  write_id(id);
+  write_char((byte) cmd.value());
+  
+  int n = l.length;
+  
+  write_unsigned(n);
+  
+  for (int i = 0; i != n; i += 1)
+    write_id(l[i].identifier_());
+  
+  flush();
+!!!71168.cpp!!!	read_id() : item_id
+  read_if_needed();
+  
+  void * a;
+  
+  // sizeof(void *) must be the same for bouml and
+  // the plug-out, bypass it
+  memcpy((char *) &a, p_buffer_in + 1, sizeof(void *));
+  p_buffer_in += sizeof(void *) + 1;
+  return a;
+!!!71168.java!!!	read_id() : item_id
+  read_if_needed();
+
+  id_size = buffer_in[p_buffer_in++];
+
+  long id;
+
+  // id_size is supposed to be 8 or 4 !
+  if (id_size == (byte) 8) {
+    id = ((((long) buffer_in[p_buffer_in]) & ((long) 255)) << 56)
+       + ((((long) buffer_in[p_buffer_in+1]) & ((long) 255)) << 48)
+       + ((((long) buffer_in[p_buffer_in+2]) & ((long) 255)) << 40)
+       + ((((long) buffer_in[p_buffer_in+3]) & ((long) 255)) << 32);
+
+    p_buffer_in += 4;
+  }
+  else
+    id = 0;
+
+  id += ((((long) buffer_in[p_buffer_in]) & ((long) 255)) << 24)
+     + ((((long) buffer_in[p_buffer_in+1]) & ((long) 255)) << 16)
+     + ((((long) buffer_in[p_buffer_in+2]) & ((long) 255)) << 8)
+     + (((long) buffer_in[p_buffer_in+3]) & ((long) 255));
+
+  p_buffer_in += 4;
+
+  return id;
+!!!71296.cpp!!!	read_string() : str
+  read_if_needed();
+  
+  unsigned len = strlen(p_buffer_in) + 1;
+  
+  p_buffer_in += len;
+  
+#ifdef TRACE
+  //cout << "UmlCom::read_string : \"" << p_buffer_in - len << "\"\n";
+#endif
+  
+  return p_buffer_in - len;
+!!!71296.java!!!	read_string() : str
+  read_if_needed();
+  
+  //System.out.print("read_string offset ");System.out.println(p_buffer_in);  
+  int start = p_buffer_in;
+  
+  while (buffer_in[p_buffer_in++] != 0)
+    ;
+
+  if (p_buffer_in == (start + 1))
+    return empty_string;
+    
+  return new String(buffer_in, start, p_buffer_in - start - 1);
+
+!!!71424.cpp!!!	read_bool() : bool
+  read_if_needed();
+  
+  return *p_buffer_in++ != 0;
+!!!71424.java!!!	read_bool() : bool
+  read_if_needed();
+  //System.out.print("read_bool offset ");System.out.println(p_buffer_in);  
+  
+  return buffer_in[p_buffer_in++] != 0;
+!!!71552.cpp!!!	read_char() : char
+  read_if_needed();
+  
+  return *p_buffer_in++;
+!!!71552.java!!!	read_char() : char
+  read_if_needed();
+  //System.out.print("read_char offset ");System.out.println(p_buffer_in);  
+  
+  return ((int) buffer_in[p_buffer_in++]) & 255;
+!!!71680.cpp!!!	read_unsigned() : uint
+  read_if_needed();
+  
+  p_buffer_in += 4;
+  
+  return (((unsigned char *) p_buffer_in)[-4] << 24) +
+    (((unsigned char *) p_buffer_in)[-3] << 16) +
+      (((unsigned char *) p_buffer_in)[-2] << 8) +
+	((unsigned char *) p_buffer_in)[-1];
+!!!71680.java!!!	read_unsigned() : uint
+  read_if_needed();
+  //System.out.print("read_unsigned offset ");System.out.println(p_buffer_in);  
+  
+  p_buffer_in += 4;
+  
+  return ((((int) buffer_in[p_buffer_in-4]) & 255) << 24)
+     + ((((int) buffer_in[p_buffer_in-3]) & 255) << 16)
+     + ((((int) buffer_in[p_buffer_in-2]) & 255) << 8)
+     + (((int) buffer_in[p_buffer_in-1]) & 255);
+!!!66816.cpp!!!	read_item_list(inout v : UmlItem) : void
+  unsigned n = read_unsigned();
+  
+  v.resize(n);
+  
+#ifdef TRACE
+  //cout << "UmlCom::read_item_list " << n << " items\n";
+#endif
+  
+  for (unsigned index = 0; index != n; index += 1)
+    v.insert(index, UmlBaseItem::read_());
+!!!66816.java!!!	read_item_list(inout v : UmlItem) : void
+  int n = read_unsigned();
+  UmlItem[] v = new UmlItem[n];
+  
+  //System.out.print("UmlCom.read_item_list ");System.out.print(n);System.out.println(" items");
+  
+  for (int index = 0; index != n; index += 1)
+    v[index] = UmlBaseItem.read_();
+
+  return v;
+!!!71808.cpp!!!	fatal_error(in msg : string) : void
+#ifdef DEBUG_BOUML
+  cout << msg << '\n';
+#endif
+
+  throw 0;
+!!!71808.java!!!	fatal_error(in msg : string) : void
+  System.out.println(msg);
+
+  throw new RuntimeException(msg);
+!!!71936.cpp!!!	flush() : void
+  if (sock != 0) {
+    int len = p_buffer_out - buffer_out - 4;
+    /* the four first bytes of buffer_out are free to contains the length */
+    buffer_out[0] = len >> 24;
+    buffer_out[1] = len >> 16;
+    buffer_out[2] = len >> 8;
+    buffer_out[3] = len;
+
+    len += 4;
+    p_buffer_out = buffer_out;
+
+    for (;;) {
+      int sent = sock->writeBlock(p_buffer_out, len);
+
+      if (sent == -1) {
+	close();	// to not try to send "bye" !
+	fatal_error("send error");
+      }
+      else if ((len -= sent) == 0) {
+	sock->flush();
+	p_buffer_out = buffer_out + 4/*bytes for length*/;
+	return;
+      }
+      else
+	p_buffer_out += sent;
+    }      
+  }
+!!!71936.java!!!	flush() : void
+  if (sock != null) {
+    int len = p_buffer_out - 4;
+    /* the four first bytes of buffer_out are free to contains the length */
+    buffer_out[0] = (byte) (len >> 24);
+    buffer_out[1] = (byte) (len >> 16);
+    buffer_out[2] = (byte) (len >> 8);
+    buffer_out[3] = (byte) len;
+
+    try {
+      //System.out.print("plug-out send "); System.out.println(p_buffer_out);
+      os.write(buffer_out, 0, p_buffer_out);
+      os.flush();
+      p_buffer_out = 4/*bytes for length*/;
+    }
+    catch (IOException e) {
+      close();	// to not try to send "bye" !
+      fatal_error("send error");
+    }      
+  }
+!!!72064.java!!!	check() : void
+  if (! read_bool())
+    throw new RuntimeException("Cannot be done");

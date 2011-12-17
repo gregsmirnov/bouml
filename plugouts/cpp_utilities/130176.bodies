@@ -1,0 +1,9 @@
+class UmlBaseEntryPointPseudoState
+!!!139008.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlEntryPointPseudoState
+  return (UmlEntryPointPseudoState *) parent->create_(anEntryPointPseudoState, s);
+!!!139008.java!!!	create(inout parent : UmlItem, inout s : str) : UmlEntryPointPseudoState
+  return (UmlEntryPointPseudoState) parent.create_(anItemKind.anEntryPointPseudoState, s);
+!!!139136.cpp!!!	kind() : anItemKind
+  return anEntryPointPseudoState;
+!!!139136.java!!!	kind() : anItemKind
+  return anItemKind.anEntryPointPseudoState;

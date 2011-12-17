@@ -1,0 +1,138 @@
+class UmlAttribute
+!!!145922.cpp!!!	write_if_needed(inout out : FileOut) : bool
+  switch (_lang) {
+  case Uml:
+    parent()->write(out);
+    out.indent();
+    out << "<UML:Attribute name=\"" << name() << '"';
+    break;
+  case Cpp:
+    if (cppDecl().isEmpty())
+      return FALSE;
+    
+    parent()->write(out);
+    out.indent();
+    out << "<UML:Attribute name=\"" << true_name(cppDecl()) << '"';
+    break;
+  default: // Java
+    if (javaDecl().isEmpty())
+      return FALSE;
+    
+    parent()->write(out);
+    out.indent();
+    out << "<UML:Attribute name=\"" << true_name(javaDecl()) << '"';
+    break;
+  }
+  out.id(this);
+  
+  switch (_lang) {
+  case Uml:
+    write_visibility(out);
+    break;
+  case Cpp:
+    write_visibility(out, 
+		     (cppVisibility() == DefaultVisibility)
+		     ? visibility() : cppVisibility());
+    break;
+  default: // Java
+    if (javaDecl().find("${visibility}") != -1)
+      write_visibility(out, visibility());
+    break;
+  }
+  write_scope(out);
+  out << ">\n";
+  out.indent(+1);
+  
+  const UmlTypeSpec & t = type();
+  
+  if ((t.type != 0) || !t.explicit_type.isEmpty()) {
+    out.indent();
+    out << "<UML:StructuralFeature.type>\n";
+    out.indent();
+    out << "\t<UML:DataType";
+    switch (_lang) {
+    case Uml:
+      if (t.type != 0)
+	out.idref(t.type);
+      else
+	out.idref_datatype(t.explicit_type);
+      break;
+    case Cpp:
+      write_cpp_type(out);
+      break;
+    default: // java
+      write_java_type(out);
+    }
+    out << "/>\n";
+    out.indent();
+    out << "</UML:StructuralFeature.type>\n";
+  }
+
+  write_stereotype(out);
+  write_annotation(out);
+  write_description_properties(out);
+
+  out.indent(-1);
+  out.indent();
+  out << "</UML:Attribute>\n";
+
+  unload();
+ 
+  return TRUE;
+!!!148866.cpp!!!	write_cpp_type(inout out : FileOut) : void
+// note : doesn't manage function/operation pointer
+QCString s = cppDecl();
+int index;
+
+remove_comments(s);
+
+// remove keywords not linked to the type
+if ((index = s.find("${static}")) != -1)
+  s.replace(index, 9, " ");
+if ((index = s.find("${mutable}")) != -1)
+  s.replace(index, 10, (isCppMutable()) ? "mutable " : "");
+if ((index = s.find("${volatile}")) != -1)
+  s.replace(index, 11, (isVolatile()) ? "volatile " : "");
+if ((index = s.find("${value}")) != -1)
+  s.replace(index, 8, " ");
+if ((index = s.find("${h_value}")) != -1)
+  s.replace(index, 10, " ");
+
+// replace keywords linked to the type
+if ((index = s.find("${const}")) != -1)
+  s.replace(index, 8, isReadOnly() ? "const" : "");
+
+UmlTypeSpec t = type();
+
+if (t.type == 0)
+  t.explicit_type = CppSettings::type(t.explicit_type);
+
+write_type(out, t, s, "${name}", "${type}");
+!!!149378.cpp!!!	write_java_type(inout out : FileOut) : void
+QCString s = javaDecl();
+int index;
+
+remove_comments(s);
+
+// remove keywords not linked to the type
+if ((index = s.find("${visibility}")) != -1)
+  s.replace(index, 13, " ");
+if ((index = s.find("${static}")) != -1)
+  s.replace(index, 9, " ");
+if ((index = s.find("${final}")) != -1)
+  s.replace(index, 8, " ");
+if ((index = s.find("${transient}")) != -1)
+  s.replace(index, 12, " ");
+if ((index = s.find("${volatile}")) != -1)
+  s.replace(index, 11, " ");
+if ((index = s.find("${value}")) != -1)
+  s.replace(index, 8, " ");
+if ((index = s.find("${@}")) != -1)
+  s.replace(index, 4, " ");
+
+UmlTypeSpec t = type();
+
+if (t.type == 0)
+  t.explicit_type = JavaSettings::type(t.explicit_type);
+
+write_type(out, t, s, "${name}", "${type}");

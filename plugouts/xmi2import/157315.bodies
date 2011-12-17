@@ -1,0 +1,61 @@
+class UmlAcceptCallAction
+!!!303619.cpp!!!	init() : void
+  declareFct("node", "uml:AcceptCallAction", &importIt);
+  declareFct("containednode", "uml:AcceptCallAction", &importIt);
+!!!303491.cpp!!!	importIt(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  where = where->container(anAcceptCallAction, token, in);
+    
+  if (where != 0) {
+    QCString s = token.valueOf("name");
+    UmlAcceptCallAction * a = create(where, s);
+    
+    if (a == 0)
+      in.error("cannot create accept call action '"
+	       + s + "' in '" + where->name() + "'");
+    
+    a->addItem(token.xmiId(), in);
+    
+    if (!(s = token.valueOf("trigger")).isEmpty()) {
+      QCString tr = Trigger::get(s);
+      
+      if (!tr.isNull())
+	a->set_Trigger(tr);
+      else
+	Unresolved::addRef(a, s);
+    }
+    
+    if (! token.closed()) {
+      QCString k = token.what();
+      const char * kstr = k;
+      
+      while (in.read(), !token.close(kstr)) {
+	if (token.what() == "trigger") {
+	  QCString tr_name;
+	  QCString tr_ref;
+	  
+	  Trigger::add(in, token, tr_name, tr_ref);
+      
+	  if (!tr_name.isNull())
+	    a->set_Trigger(tr_name);
+	  else
+	    Unresolved::addRef(a, tr_ref);
+	}
+	else if (token.what() == "isunmarshall") {
+	  // not memorized : always true
+	  if (! token.closed())
+	    in.finish(token.what());
+	}
+	else
+	  a->import(in, token);
+      }
+    }
+  }
+!!!303363.cpp!!!	solve(in idref : string) : void
+  QCString tr = Trigger::get(idref);
+  
+  if (tr.isNull()) {
+    if (!FileIn::isBypassedId(idref))
+      UmlCom::trace("accept call activity action : unknown trigger reference '" + idref + "'<br>");
+  }
+  else
+    set_Trigger(tr);

@@ -1,0 +1,68 @@
+format 29
+
+classcanvas 128002 class_ref 128386 // UmlState
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  visible_operations
+    operation_ref 198658 // memo_incoming_trans
+    operation_ref 196482 // memo_trans
+    operation_ref 196738 // add_incoming_trans
+  xyz 115 12 2000
+classcanvas 128130 class_ref 129026 // UmlTransition
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_operations
+    operation_ref 135938 // UmlTransition
+    operation_ref 198018 // write
+    operation_ref 198274 // write_it
+    operation_ref 199298 // write_in
+  xyz 340 102 2000
+classcanvas 131458 class_ref 129410 // UmlRegion
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_operations
+    operation_ref 136450 // UmlRegion
+    operation_ref 198146 // write
+  xyz 219 228 2000
+classcanvas 131842 class_ref 129666 // UmlStateAction
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_operations
+    operation_ref 136578 // UmlStateAction
+    operation_ref 199426 // write
+  xyz 525 194 2000
+classcanvas 132226 class_ref 129794 // UmlPseudoState
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_operations
+    operation_ref 138370 // UmlPseudoState
+    operation_ref 198530 // write
+  xyz 446 258 2000
+relationcanvas 128258 relation_ref 155010 // <directional aggregation>
+  geometry HV
+  from ref 128002 z 1999 stereotype "<<list>>" xyz 326 58 3000 to point 421 56
+  line 130178 z 1999 to ref 128130
+  role_a_pos 433 79 3000 no_role_b
+  multiplicity_a_pos 406 79 3000 no_multiplicity_b
+relationcanvas 130306 relation_ref 155138 // <directional aggregation>
+  geometry VH
+  from ref 128002 z 1999 to point 196 127
+  line 131330 z 1999 stereotype "<<list>>" xyz 242 129 3000 to ref 128130
+  role_a_pos 288 107 3000 no_role_b
+  multiplicity_a_pos 322 137 3000 no_multiplicity_b
+relationcanvas 131586 relation_ref 155266 // <directional aggregation>
+  from ref 131458 z 1999 stereotype "<<list>>" xyz 338 191 3000 to ref 128130
+  role_a_pos 383 171 3000 no_role_b
+  multiplicity_a_pos 371 164 3000 no_multiplicity_b
+relationcanvas 131970 relation_ref 155394 // <directional aggregation>
+  geometry HVr
+  from ref 131842 z 1999 stereotype "<<list>>" xyz 583 163 3000 to point 606 127
+  line 132098 z 1999 to ref 128130
+  role_a_pos 516 107 3000 no_role_b
+  multiplicity_a_pos 516 137 3000 no_multiplicity_b
+relationcanvas 132482 relation_ref 155522 // <directional aggregation>
+  from ref 132226 z 1999 stereotype "<<list>>" xyz 447 206 3000 to ref 128130
+  role_a_pos 453 164 3000 no_role_b
+  multiplicity_a_pos 426 164 3000 no_multiplicity_b
+relationcanvas 132610 relation_ref 155650 // <directional aggregation>
+  from ref 128002 z 1999 to point 105 135
+  line 132738 z 1999 stereotype "<<map>>" xyz 65 116 3000 to point 80 94
+  line 132866 z 1999 to ref 128002
+  role_a_pos 82 57 3000 no_role_b
+  multiplicity_a_pos 97 87 3000 no_multiplicity_b
+end

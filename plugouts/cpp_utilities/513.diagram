@@ -1,0 +1,77 @@
+format 10
+
+classinstance 128 class_ref 6529 // bouml
+  name "" xyz 13 4 2000 life_line_z 2000
+classinstance 256 class_ref 6657 // plug_out
+  name "" mortal xyz 168 69 2000 life_line_z 2000
+classinstance 768 class_ref 5248 // UmlCom
+  name "" mortal xyz 342 71 2000 life_line_z 2000
+classinstance 1408 class_ref 8833 // UmlItem
+  name "" mortal xyz 442 149 2000 life_line_z 2000
+note 2816 "to get the item on which the plug-out is applied, you may also get the market items"
+  xyzwh 425 28 2000 146 111
+note 3712 "interactions with BOUML to get items definitions and execute commands are not shown"
+  xyzwh 52 176 2000 112 154
+note 4096 "Applicative part of the plug-out"
+  xyzwh 482 238 2000 128 59
+durationcanvas 384 classinstance_ref 128 // :bouml
+  xyzwh 32 120 2010 11 40
+durationcanvas 512 classinstance_ref 256 // :plug_out
+  xyzwh 193 120 2010 11 272
+durationcanvas 896 classinstance_ref 768 // :UmlCom
+  xyzwh 367 132 2010 11 25
+durationcanvas 1152 classinstance_ref 768 // :UmlCom
+  xyzwh 367 177 2010 11 44
+durationcanvas 1536 classinstance_ref 1408 // :UmlItem
+  xyzwh 467 239 2010 11 154
+durationcanvas 1920 classinstance_ref 768 // :UmlCom
+  xyzwh 367 314 2010 11 27
+durationcanvas 2176 classinstance_ref 768 // :UmlCom
+  xyzwh 367 359 2010 11 32
+durationcanvas 3456 classinstance_ref 1408 // :UmlItem
+  xyzwh 467 188 2010 11 25
+msg 640 asynchronous
+  from durationcanvas_ref 384 // 128
+  to durationcanvas_ref 512 // 256
+  yz 120 2000 explicitmsg "main(2, port_number)"
+  label_xy 47 103
+msg 1024 synchronous
+  from durationcanvas_ref 512 // 256
+  to durationcanvas_ref 896 // 768
+  yz 132 2000 explicitmsg "connect()"
+  args "port_number"
+  label_xy 213 115
+msg 1280 synchronous
+  from durationcanvas_ref 512 // 256
+  to durationcanvas_ref 1152 // 768
+  yz 177 2000 msg operation_ref 71296 // "targetItem() : UmlItem"
+  label_xy 217 158
+msg 1664 synchronous
+  from durationcanvas_ref 512 // 256
+  to durationcanvas_ref 1536 // 1408
+  yz 245 2000 explicitmsg "'do it'"
+  label_xy 316 228
+msg 1792 return
+  from durationcanvas_ref 1536 // 1408
+  to durationcanvas_ref 512 // 256
+  yz 279 2000 unspecifiedmsg
+msg 2048 synchronous
+  from durationcanvas_ref 512 // 256
+  to durationcanvas_ref 1920 // 768
+  yz 316 2000 msg operation_ref 71680 // "bye() : void"
+  label_xy 263 299
+msg 2304 synchronous
+  from durationcanvas_ref 512 // 256
+  to durationcanvas_ref 2176 // 768
+  yz 361 2000 msg operation_ref 71808 // "close() : void"
+  label_xy 255 344
+msg 3968 synchronous
+  from durationcanvas_ref 1152 // 768
+  to durationcanvas_ref 3456 // 1408
+  yz 188 2000 explicitmsg "read"
+  label_xy 404 171
+line 2944 -_-_
+  from ref 2816 z 1000 to point 397 161
+  line 3840 z 1000 to ref 1280
+preferred_whz 643 456 1
+end

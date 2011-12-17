@@ -1,0 +1,21 @@
+class UmlComponentDiagram
+!!!128992.cpp!!!	sKind() : string
+  return "component diagram";
+!!!128992.java!!!	sKind() : string
+  return "component diagram";
+!!!128380.cpp!!!	memo_ref() : void
+  diagrams.addElement(this);
+  UmlDiagram::memo_ref();
+!!!128380.java!!!	memo_ref() : void
+  diagrams.addElement(this);
+  super.memo_ref();
+!!!128880.cpp!!!	ref_index() : void
+  if (!diagrams.isEmpty())
+    fw.write("<a href=\"componentdiagrams.html\" target = \"projectFrame\"><b> -Component Diagrams- </b></a>");
+!!!128880.java!!!	ref_index() : void
+  if (!diagrams.isEmpty())
+    fw.write("<a href=\"componentdiagrams.html\" target = \"projectFrame\"><b> -Component Diagrams- </b></a>");
+!!!129020.cpp!!!	generate_index() : void
+  UmlItem::generate_index(diagrams, "Component Diagram", "componentdiagrams");
+!!!129020.java!!!	generate_index() : void
+  generate_index(diagrams, "Component Diagram", "componentdiagrams");

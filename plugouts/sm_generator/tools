@@ -1,0 +1,4 @@
+// 'tool' "the executable" "displayed string" {target}+
+tool "generate .pro" "gpro" Artifact
+tool "html (C++ version)" "ghtml" Class Operation Attribute Generalisation Realize Dependency Association DirectionalAssociation Aggregation AggregationByValue DirectionalAggregation DirectionalAggregationByValue ExtraMember State Region StateAction Initial EntryPoint Final Terminate ExitPoint DeepHistory ShallowHistory Junction Choice Fork Join Project Package UseCaseView ClassView ComponentView DeploymentView UseCaseDiagram SeqDiagram ColDiagram ClassDiagram StateDiagram ComponentDiagram DeploymentDiagram UseCase Component Node Artifact
+tool "C++ utilities" "cpp_util" Class

@@ -1,0 +1,12 @@
+class UmlTypeSpec
+!!!1920.cpp!!!	toString() : string
+  return (type) ? type->name() : explicit_type;
+!!!1920.java!!!	toString() : string
+  return (type != null) ? type.name() : explicit_type;
+!!!2048.java!!!	clone_it() : UmlTypeSpec
+  UmlTypeSpec result = new UmlTypeSpec();
+  
+  result.type = type;
+  result.explicit_type = explicit_type;
+  
+  return result;

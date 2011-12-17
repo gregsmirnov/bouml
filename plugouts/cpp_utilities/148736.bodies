@@ -1,0 +1,100 @@
+class UmlBaseUseCaseDiagramDefinition
+!!!214784.cpp!!!	read_() : void
+  QPtrDict<UmlUseCaseReference> ucrefs;
+  unsigned n;
+  unsigned rank;
+
+  n = UmlCom::read_unsigned();
+  _fragments.resize(n);
+  for (rank = 0; rank != n; rank += 1) {
+    UmlFragment * f = new UmlFragment();
+
+    _fragments.insert(rank, f);
+    f->read_();
+  }
+  _fragments.setAutoDelete(TRUE);
+  UmlBaseFragment::compute_container_(_fragments);
+
+  n = UmlCom::read_unsigned();
+  _subjects.resize(n);
+  for (rank = 0; rank != n; rank += 1) {
+    UmlSubject * sb = new UmlSubject();
+
+    _subjects.insert(rank, sb);
+    sb->read_();
+  }
+  _subjects.setAutoDelete(TRUE);
+
+  n = UmlCom::read_unsigned();
+  _use_cases.resize(n);
+  for (rank = 0; rank != n; rank += 1) {
+    UmlUseCaseReference * uc = new UmlUseCaseReference();
+
+    _use_cases.insert(rank, uc);
+    ucrefs.insert((void *) UmlCom::read_unsigned(), uc);
+    uc->read_(_fragments, _subjects);
+  }
+  _use_cases.setAutoDelete(TRUE);
+
+  n = UmlCom::read_unsigned();
+  _actors.resize(n);
+  for (rank = 0; rank != n; rank += 1)
+    _actors.insert(rank, (UmlClass *) UmlBaseItem::read_());
+
+  n = UmlCom::read_unsigned();
+  _rels.resize(n);
+  for (rank = 0; rank != n; rank += 1) {
+    UmlUseCaseAssociation * r = new UmlUseCaseAssociation();
+
+    _rels.insert(rank, r);
+    r->read_(ucrefs);
+  }
+  _rels.setAutoDelete(TRUE);
+!!!214784.java!!!	read_() : void
+  Hashtable ucrefs;
+  int n;
+  int rank;
+
+  n = UmlCom.read_unsigned();
+  _fragments = new UmlFragment[n];
+  for (rank = 0; rank != n; rank += 1) {
+    UmlFragment f = new UmlFragment();
+
+    _fragments[rank] = f;
+    f.read_();
+  }
+  UmlBaseFragment.compute_container_(_fragments);
+
+  n = UmlCom.read_unsigned();
+  _subjects = new UmlSubject[n];
+  for (rank = 0; rank != n; rank += 1) {
+    UmlSubject sb = new UmlSubject();
+
+    _subjects[rank] = sb;
+    sb.read_();
+  }
+
+  n = UmlCom.read_unsigned();
+  _use_cases = new UmlUseCaseReference[n];
+  ucrefs = new Hashtable((n == 0) ? 1 : n);
+  for (rank = 0; rank != n; rank += 1) {
+    UmlUseCaseReference uc = new UmlUseCaseReference();
+
+    _use_cases[rank] = uc;
+    ucrefs.put(new Integer(UmlCom.read_unsigned()), uc);
+    uc.read_(_fragments, _subjects);
+  }
+
+  n = UmlCom.read_unsigned();
+  _actors = new UmlClass[n];
+  for (rank = 0; rank != n; rank += 1)
+    _actors[rank] = (UmlClass) UmlBaseItem.read_();
+
+  n = UmlCom.read_unsigned();
+  _rels = new UmlUseCaseAssociation[n];
+  for (rank = 0; rank != n; rank += 1) {
+    UmlUseCaseAssociation r = new UmlUseCaseAssociation();
+
+    _rels[rank] = r;
+    r.read_(ucrefs);
+  }

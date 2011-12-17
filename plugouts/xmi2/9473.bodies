@@ -1,0 +1,67 @@
+class UmlNcRelation
+!!!195330.cpp!!!	write(inout out : FileOut) : void
+  if ((relationKind() == aDependency) &&
+      (parent()->kind() == anUseCase) &&
+      (target()->kind() == anUseCase)) {
+    const char * t;
+    const char * r;
+    
+    if (stereotype() == "include") {
+      t = "Include";
+      r = "addition";
+    }
+    else if (stereotype() == "extend") {
+      t = "Extend";
+      r = "extendedCase";
+    }
+    else {
+      write(out, TRUE);
+      return;
+    }
+      
+    out.indent();
+    out << "<" << stereotype() << " xmi:type=\"uml:" << t << "\"";
+    out.id(this);
+    out.ref(target(), r);
+    out << ">\n";
+    out.indent(+1); 
+    write_description_properties(out);
+    out.indent(-1);
+    out.indent();
+    out << "</" << stereotype() << ">\n";
+  }
+  else
+    write(out, TRUE);
+!!!195202.cpp!!!	write(inout out : FileOut, in inside : bool) : void
+  if (relationKind() == aGeneralisation) {
+    if (inside)
+      write_generalization(out);
+  }
+  else {
+    if (inside)
+      parent()->memo_relation(this);
+    else
+      write_dependency(out);
+  }
+!!!195074.cpp!!!	write_generalization(inout out : FileOut) : void
+  out.indent();
+  out << "<generalization xmi:type=\"uml:Generalization\"";
+  out.id(this);
+  out.ref(target(), "general");
+  out << "/>\n";
+!!!194946.cpp!!!	write_dependency(inout out : FileOut) : void
+  const char * k = (_uml_20) ? "ownedElement" : "packagedElement";
+
+  out.indent();
+  out << '<' << k <<
+    (((parent()->kind() == anArtifact) && (stereotype() == "manifest"))
+     ?  " xmi:type=\"uml:Manifestation\"" : " xmi:type=\"uml:Dependency\"");
+  out.id(this);
+  out.ref(parent(), "client");
+  out.ref(target(), "supplier");
+  out << ">\n";
+  out.indent(+1); 
+  write_description_properties(out);
+  out.indent(-1);
+  out.indent();
+  out << "</" << k << ">\n";

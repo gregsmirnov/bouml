@@ -1,0 +1,52 @@
+class UmlBaseUseCase
+!!!43008.cpp!!!	create(inout parent : UmlItem, in s : str) : UmlUseCase
+  return (UmlUseCase *) parent->create_(anUseCase, s);
+!!!43008.java!!!	create(inout parent : UmlItem, in s : str) : UmlUseCase
+  return (UmlUseCase) parent.create_(anItemKind.anUseCase, s);
+!!!43136.cpp!!!	kind() : anItemKind
+  return anUseCase;
+!!!43136.java!!!	kind() : anItemKind
+  return anItemKind.anUseCase;
+!!!43264.cpp!!!	associatedDiagram() : UmlUseCaseDiagram
+  read_if_needed_();
+  
+  return _assoc_diagram;
+!!!43264.java!!!	associatedDiagram() : UmlUseCaseDiagram
+  read_if_needed_();
+  
+  return _assoc_diagram;
+!!!43392.cpp!!!	set_AssociatedDiagram(inout d : UmlUseCaseDiagram) : bool
+  UmlCom::send_cmd(_identifier, setAssocDiagramCmd, ((UmlBaseItem *) d)->_identifier);
+  if (UmlCom::read_bool()) {
+    _assoc_diagram = d;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!43392.java!!!	set_AssociatedDiagram(inout d : UmlUseCaseDiagram) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setAssocDiagramCmd, d.identifier_());
+  UmlCom.check();
+  
+  _assoc_diagram = d;
+
+!!!196736.cpp!!!	extensionPoints() : string
+  read_if_needed_();
+  return _extension_points;
+!!!196736.java!!!	extensionPoints() : string
+  read_if_needed_();
+  return _extension_points;
+!!!196864.cpp!!!	set_ExtensionPoints(in v : str) : bool
+  return set_it_(_extension_points, v, replaceExceptionCmd);
+!!!196864.java!!!	set_ExtensionPoints(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.replaceExceptionCmd, v);
+  UmlCom.check();
+
+  _extension_points = v;
+!!!43520.cpp!!!	read_uml_() : void
+  _assoc_diagram = (UmlUseCaseDiagram *) UmlBaseItem::read_();
+  UmlBaseItem::read_uml_();
+  _extension_points = UmlCom::read_string();
+!!!43520.java!!!	read_uml_() : void
+  _assoc_diagram = (UmlUseCaseDiagram) UmlBaseItem.read_();
+  super.read_uml_();
+  _extension_points = UmlCom.read_string();

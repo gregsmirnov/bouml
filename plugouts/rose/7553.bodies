@@ -1,0 +1,61 @@
+class UmlItem
+!!!128129.cpp!!!	fullName() : string
+  return parent()->fullName() + "::" + name();
+!!!130561.cpp!!!	setProperties(inout d : string) : void
+  QDictIterator<QCString> it(d);
+
+  while (it.current()) {
+    set_PropertyValue(QCString(it.currentKey()), *(it.current()));
+    ++it;
+  }
+
+  d.clear();
+!!!128641.cpp!!!	newItem(inout x : UmlItem, in id : str) : void
+  QAsciiDict<UmlItem> & d = all_items[x->kind()];
+
+  if (d[id] != 0) {
+    UmlCom::trace(QCString("<br>id '") + id + "' used for several objects");
+    throw 0;
+  }
+
+  d.insert(strdup(id), x);
+  
+  if (d.size() < (d.count() >> 3))
+    d.resize(d.size() << 4);
+
+  x->set_PropertyValue("rose/quid", id);
+!!!128769.cpp!!!	findItem(in id : str, in k : anItemKind) : UmlItem
+  return all_items[k][id];
+!!!128002.cpp!!!	statistic() : void
+  QCString msg = "<br>";
+
+#define add_nbr(x, str) \
+  if (cpt[x] != 0) { \
+    QCString s; \
+    \
+    s.sprintf("%d %s<br>", cpt[x], str); \
+    msg += s; \
+  }
+  
+  add_nbr(aPackage, "Packages");
+  add_nbr(anUseCaseView, "Use Case Views");
+  add_nbr(aClassView, "Class Views");
+  add_nbr(aComponentView, "Component Views");
+  add_nbr(aDeploymentView, "Deployment Views");
+  add_nbr(anUseCaseDiagram, "Use Case Diagrams");
+  add_nbr(aSequenceDiagram, "Sequence Diagrams");
+  add_nbr(aCollaborationDiagram, "Collaboration Diagrams");
+  add_nbr(aClassDiagram, "Class Diagrams");
+  add_nbr(aComponentDiagram, "Component Diagrams");
+  add_nbr(aDeploymentDiagram, "Deployment Diagrams");
+  add_nbr(anUseCase, "Use Cases");
+  add_nbr(aClass, "Classes");
+  add_nbr(aRelation, "Relations");
+  add_nbr(aNcRelation, "Non Class Relations");
+  add_nbr(anAttribute, "Attributes");
+  add_nbr(anOperation, "Operations");
+  add_nbr(anExtraClassMember, "Extra Class Members");
+  add_nbr(aComponent, "Components");
+  add_nbr(aNode, "Nodes");
+  
+  UmlCom::trace(msg);

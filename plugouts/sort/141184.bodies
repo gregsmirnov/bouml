@@ -1,0 +1,9 @@
+class UmlBaseMergeActivityNode
+!!!181632.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlMergeActivityNode
+  return (UmlMergeActivityNode *) parent->create_(aMergeActivityNode, s);
+!!!181632.java!!!	create(inout parent : UmlItem, inout s : str) : UmlMergeActivityNode
+  return (UmlMergeActivityNode) parent.create_(anItemKind.aMergeActivityNode, s);
+!!!181760.cpp!!!	kind() : anItemKind
+  return aMergeActivityNode;
+!!!181760.java!!!	kind() : anItemKind
+  return anItemKind.aMergeActivityNode;

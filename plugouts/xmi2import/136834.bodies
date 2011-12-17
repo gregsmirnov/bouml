@@ -1,0 +1,39 @@
+class UmlValueSpecificationAction
+!!!200834.cpp!!!	init() : void
+  declareFct("node", "uml:ValueSpecificationAction", &importIt);
+  declareFct("containednode", "uml:ValueSpecificationAction", &importIt);
+!!!200706.cpp!!!	importIt(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  where = where->container(aValueSpecificationAction, token, in);
+    
+  if (where != 0) {
+    QCString s = token.valueOf("name");
+    UmlValueSpecificationAction * a = create(where, s);
+    
+    if (a == 0)
+      in.error("cannot create value specification action '"
+	       + s + "' in '" + where->name() + "'");
+    
+    a->addItem(token.xmiId(), in);
+    
+    QCString v = token.valueOf("value");
+    
+    if (! v.isEmpty())
+      a->setValue(v);
+    
+    a->import_it(in, token);
+  }
+!!!212482.cpp!!!	setValue(in idref : string) : void
+  QMap<QCString, QCString>::Iterator it = OpaqueDefs.find(idref);
+  
+  if (it != OpaqueDefs.end())
+    set_Value(*it);
+  else
+    Unresolved::addRef(this, idref);
+!!!212354.cpp!!!	solve(in idref : string) : void
+  QMap<QCString, QCString>::Iterator it = OpaqueDefs.find(idref);
+  
+  if (it != OpaqueDefs.end())
+    set_Value(*it);
+  else if (!FileIn::isBypassedId(idref))
+    UmlCom::trace("value specification action : unknown opaque definition reference '" + idref + "'<br>");
+

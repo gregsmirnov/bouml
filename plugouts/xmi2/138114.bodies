@@ -1,0 +1,16 @@
+class UmlCallOperationAction
+!!!204674.cpp!!!	write(inout out : FileOut) : void
+  write_begin(out, "CallOperationAction");
+  write_end(out, TRUE);
+  
+  UmlOperation * op = operation();
+  
+  if (op != 0) {
+    out.indent();
+    out << "<operation";
+    out.idref(op);
+    out << "/>\n";
+  }
+
+  write_close(out);
+

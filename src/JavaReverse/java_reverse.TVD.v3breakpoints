@@ -1,0 +1,27 @@
+# Magic: LR-70-2595584-9ER
+# Generated file -- DO NOT EDIT
+# Breakpoint list saved by Linux x86 TotalView 8.0.1-0
+
+dset TV::Private::saved_breakpoint_actual_format 3
+dset TV::Private::saved_breakpoint_actual_revision 0
+
+namespace eval TV::Private {
+
+BP_initiate_saved_bp 1
+BP_set_saved_property 	ContextPath {/local/uml/JavaReverse/main.cpp#58}
+BP_set_saved_property 	LinePath {/local/uml/JavaCat/Lex.cpp#520}
+BP_set_saved_property 	InnerUnitPath {##/local/uml/JavaReverse/java_reverse#JavaCat/Lex.cpp#Lex::read_annotation(void)}
+BP_set_saved_property 	InnerUnitLineOffset {1}
+BP_set_saved_property 	Share {g}
+BP_set_saved_property 	ProcEnabled {1}
+BP_set_saved_property 	BreakSWH {p}
+BP_set_saved_property 	BarrSWH {g}
+BP_set_saved_property 	BarrSWD {g}
+BP_set_saved_property 	SatSet {C}
+# List property BlockEnabled was null
+# List property BlockAddress was null
+BP_set_saved_property 	SourceText {  char * p1 = context.pointer - 1;	// '@' was read}
+BP_set_saved_property 	Instruction {movl     0x80a96cc,%eax}
+BP_instantiate_saved_bp 1
+
+}

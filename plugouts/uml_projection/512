@@ -1,0 +1,5773 @@
+format 62
+"Com" // API BASE::Com
+  revision 28
+  modified_by 3 "bruno"
+  // class settings
+  //class diagram settings
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+  show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+  show_infonote default drawing_language default show_stereotype_properties default
+  
+  comment "The API system classes and components concerning the communication with BOUML
+
+DO NOT MODIFY THEM !!!
+"
+  classview 512 "Com Class view"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default show_stereotype_properties default
+    associated_deployment_view deploymentview_ref 512 // Com Deployment view
+    comment "The API system classes concerning the communication with BOUML
+
+DO NOT MODIFY THEM !!!
+"
+    class 5248 "UmlCom"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}};
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class manages the communications
+
+ This class may be defined as a 'singleton', but I prefer to use static 
+ members allowing to just write 'UmlCom::member' rather than
+ 'UmlCom::instance()->member' or other long sentence like this.
+
+ The operation you can use yourself are :
+
+ - connect()
+
+ - targetItem()
+
+ - trace()
+
+ - showTrace()
+
+ - traceAutoRaise()
+
+ - message()
+
+ - bye()
+
+ - close()
+ 
+ you must NOT call the others
+"
+      operation 71168 "connect"
+	class_operation public explicit_return_type "bool"
+	nparams 1
+	  param in name "port" explicit_type "uint"
+	nexceptions 1
+	  explicit_exception "RuntimeException"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}void ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment " does the connexion
+ 
+ On error return FALSE in C++, produce a RuntimeException in Java"
+      end
+
+      operation 71296 "targetItem"
+	class_operation public return_type class_ref 8833 // UmlItem
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} * ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} * ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "  returns the item on which the tool is applied"
+      end
+
+      operation 71424 "trace"
+	class_operation public explicit_return_type "void"
+	nparams 1
+	  param in name "s" explicit_type "str"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}const ${t0} ${p0}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment " to write messages in the tool window,
+ use Qt rich text : allows HTML like formatting"
+      end
+
+      operation 189056 "showTrace"
+	class_operation public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "to show the trace window
+"
+      end
+
+      operation 189184 "traceAutoRaise"
+	class_operation public explicit_return_type "void"
+	nparams 1
+	  param in name "y" explicit_type "bool"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "to automatically raise the trace window
+each time trace() is called
+"
+      end
+
+      operation 71552 "message"
+	class_operation public explicit_return_type "void"
+	nparams 1
+	  param in name "s" explicit_type "str"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}const ${t0} ${p0}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment " to write a message in the status bar line
+ does not use Qt rich text"
+      end
+
+      operation 71680 "bye"
+	class_operation public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment " must be called just before the disconnexion"
+      end
+
+      operation 71808 "close"
+	class_operation public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment " disconnexion"
+      end
+
+      attribute 25344 "sock"
+	class_attribute private explicit_type "Socket"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 25472 "is"
+	class_attribute private explicit_type "DataInputStream"
+	cpp_decl ""
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 25600 "os"
+	class_attribute private explicit_type "DataOutputStream"
+	cpp_decl ""
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 25728 "buffer_in"
+	class_attribute private explicit_type "sbyte"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type}[] ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 25856 "buffer_in_size"
+	class_attribute private explicit_type "uint"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 25984 "p_buffer_in"
+	class_attribute private explicit_type "sbyte"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}int ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 26112 "buffer_in_end"
+	class_attribute private explicit_type "char"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}int ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 26240 "buffer_out"
+	class_attribute private explicit_type "sbyte"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type}[] ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 26368 "p_buffer_out"
+	class_attribute private explicit_type "char"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}int ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 26496 "buffer_out_size"
+	class_attribute private explicit_type "uint"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 26624 "id_size"
+	class_attribute private explicit_type "byte"
+	cpp_decl ""
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 26752 "empty_string"
+	class_attribute private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      extra_member 640 "initialization"
+	
+	cpp "" ""
+	java "  static { empty_string = new String(); }"
+	php ""
+	python ""
+	idl ""
+      end
+
+      operation 71936 "check_size_out"
+	class_operation protected explicit_return_type "void"
+	nparams 1
+	  param in name "len" explicit_type "uint"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 72064 "read_if_needed"
+	class_operation protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 72192 "read_buffer"
+	class_operation protected explicit_return_type "void"
+	nparams 1
+	  param in name "len" explicit_type "uint"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 72320 "write_bool"
+	class_operation protected explicit_return_type "void"
+	nparams 1
+	  param in name "b" explicit_type "bool"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 72448 "write_char"
+	class_operation protected explicit_return_type "void"
+	nparams 1
+	  param in name "c" explicit_type "sbyte"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 72576 "write_unsigned"
+	class_operation protected explicit_return_type "void"
+	nparams 1
+	  param in name "u" explicit_type "uint"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 72704 "write_id"
+	class_operation protected explicit_return_type "void"
+	nparams 1
+	  param in name "id" explicit_type "item_id"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}const ${t0} ${p0}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 72832 "write_string"
+	class_operation protected explicit_return_type "void"
+	nparams 1
+	  param in name "p" explicit_type "str"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}const ${t0} ${p0}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 72960 "send_cmd"
+	class_operation public explicit_return_type "void"
+	nparams 2
+	  param in name "f" explicit_type "CmdFamily"
+	  param in name "cmd" explicit_type "uint"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment " internal, do NOT use it
+"
+      end
+
+      operation 220928 "send_cmd"
+	class_operation public explicit_return_type "void"
+	nparams 4
+	  param in name "f" explicit_type "CmdFamily"
+	  param in name "cmd" explicit_type "uint"
+	  param in name "s" explicit_type "str"
+	  param in name "b" explicit_type "bool"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, const ${t2} ${p2}, ${t3} ${p3}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, const ${t2} ${p2}, ${t3} ${p3}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 73088 "send_cmd"
+	class_operation public explicit_return_type "void"
+	nparams 3
+	  param in name "f" explicit_type "CmdFamily"
+	  param in name "cmd" explicit_type "uint"
+	  param in name "arg" explicit_type "sbyte"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 218880 "send_cmd"
+	class_operation public explicit_return_type "void"
+	nparams 4
+	  param in name "f" explicit_type "CmdFamily"
+	  param in name "cmd" explicit_type "uint"
+	  param in name "arg" explicit_type "int"
+	  param in name "dummy" explicit_type "str"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, const ${t3} ${p3}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, const ${t3}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 73216 "send_cmd"
+	class_operation public explicit_return_type "void"
+	nparams 3
+	  param in name "f" explicit_type "CmdFamily"
+	  param in name "cmd" explicit_type "uint"
+	  param in name "id" explicit_type "item_id"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 73344 "send_cmd"
+	class_operation public explicit_return_type "void"
+	nparams 3
+	  param in name "f" explicit_type "CmdFamily"
+	  param in name "cmd" explicit_type "uint"
+	  param in name "s" explicit_type "str"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, const ${t2} ${p2}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, const ${t2} ${p2}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 73472 "send_cmd"
+	class_operation public explicit_return_type "void"
+	nparams 4
+	  param in name "f" explicit_type "CmdFamily"
+	  param in name "cmd" explicit_type "uint"
+	  param in name "id" explicit_type "item_id"
+	  param in name "n" explicit_type "str"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, const ${t3} ${p3}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, const ${t3} ${p3}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 73600 "send_cmd"
+	class_operation public explicit_return_type "void"
+	nparams 4
+	  param in name "f" explicit_type "CmdFamily"
+	  param in name "cmd" explicit_type "uint"
+	  param in name "s" explicit_type "str"
+	  param in name "v" explicit_type "str"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, const ${t2} ${p2}, const ${t3} ${p3}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, const ${t2} ${p2}, const ${t3} ${p3}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 73728 "send_cmd"
+	class_operation public explicit_return_type "void"
+	nparams 5
+	  param in name "f" explicit_type "CmdFamily"
+	  param in name "cmd" explicit_type "uint"
+	  param in name "b" explicit_type "bool"
+	  param in name "s" explicit_type "str"
+	  param in name "v" explicit_type "str"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, const ${t3} ${p3}, const ${t4} ${p4}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, const ${t3} ${p3}, const ${t4} ${p4}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 73856 "send_cmd"
+	class_operation public explicit_return_type "void"
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "cmd" explicit_type "OnInstanceCmd"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}const ${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 73984 "send_cmd"
+	class_operation public explicit_return_type "void"
+	nparams 3
+	  param in name "id" explicit_type "item_id"
+	  param in name "cmd" explicit_type "OnInstanceCmd"
+	  param in name "arg" explicit_type "str"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}const ${t0} ${p0}, ${t1} ${p1}, const ${t2} ${p2}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} ${p0}, ${t1} ${p1}, const ${t2} ${p2}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 74112 "send_cmd"
+	class_operation public explicit_return_type "void"
+	nparams 3
+	  param in name "id" explicit_type "item_id"
+	  param in name "cmd" explicit_type "OnInstanceCmd"
+	  param in name "arg" explicit_type "sbyte"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}const ${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 74240 "send_cmd"
+	class_operation public explicit_return_type "void"
+	nparams 3
+	  param in name "id" explicit_type "item_id"
+	  param in name "cmd" explicit_type "OnInstanceCmd"
+	  param in name "arg" explicit_type "uint"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}const ${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 74368 "send_cmd"
+	class_operation public explicit_return_type "void"
+	nparams 3
+	  param in name "id" explicit_type "item_id"
+	  param in name "cmd" explicit_type "OnInstanceCmd"
+	  param in name "arg" explicit_type "UmlTypeSpec"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}const ${t0} ${p0}, ${t1} ${p1}, const ${t2} & ${p2}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} ${p0}, ${t1} ${p1}, const ${t2} & ${p2}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 74496 "send_cmd"
+	class_operation public explicit_return_type "void"
+	nparams 4
+	  param in name "id" explicit_type "item_id"
+	  param in name "cmd" explicit_type "OnInstanceCmd"
+	  param in name "arg1" explicit_type "str"
+	  param in name "arg2" explicit_type "str"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}const ${t0} ${p0}, ${t1} ${p1}, const ${t2} ${p2}, const ${t3} ${p3}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} ${p0}, ${t1} ${p1}, const ${t2} ${p2}, const ${t3} ${p3}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 74624 "send_cmd"
+	class_operation public explicit_return_type "void"
+	nparams 4
+	  param in name "id" explicit_type "item_id"
+	  param in name "cmd" explicit_type "OnInstanceCmd"
+	  param in name "arg1" explicit_type "anItemKind"
+	  param in name "arg2" explicit_type "str"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}const ${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, const ${t3} ${p3}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, const ${t3} ${p3}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 74752 "send_cmd"
+	class_operation public explicit_return_type "void"
+	nparams 5
+	  param in name "id" explicit_type "item_id"
+	  param in name "cmd" explicit_type "OnInstanceCmd"
+	  param in name "arg1" explicit_type "anItemKind"
+	  param in name "arg2" explicit_type "aRelationKind"
+	  param in name "id2" explicit_type "item_id"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}const ${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, const ${t4} ${p4}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, const ${t4} ${p4}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 74880 "send_cmd"
+	class_operation public explicit_return_type "void"
+	nparams 3
+	  param in name "id" explicit_type "item_id"
+	  param in name "cmd" explicit_type "OnInstanceCmd"
+	  param in name "id1" explicit_type "item_id"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}const ${t0} ${p0}, ${t1} ${p1}, const ${t2} ${p2}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} ${p0}, ${t1} ${p1}, const ${t2} ${p2}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 75008 "send_cmd"
+	class_operation public explicit_return_type "void"
+	nparams 4
+	  param in name "id" explicit_type "item_id"
+	  param in name "cmd" explicit_type "OnInstanceCmd"
+	  param in name "id1" explicit_type "item_id"
+	  param in name "arg2" explicit_type "str"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}const ${t0} ${p0}, ${t1} ${p1}, const ${t2} ${p2}, const ${t3} ${p3}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} ${p0}, ${t1} ${p1}, const ${t2} ${p2}, const ${t3} ${p3}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 75136 "send_cmd"
+	class_operation public explicit_return_type "void"
+	nparams 4
+	  param in name "id" explicit_type "item_id"
+	  param in name "cmd" explicit_type "OnInstanceCmd"
+	  param in name "arg1" explicit_type "uint"
+	  param in name "arg2" explicit_type "UmlTypeSpec"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}const ${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, const ${t3} & ${p3}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, const ${t3} & ${p3}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 75264 "send_cmd"
+	class_operation public explicit_return_type "void"
+	nparams 7
+	  param in name "id" explicit_type "item_id"
+	  param in name "cmd" explicit_type "OnInstanceCmd"
+	  param in name "arg1" explicit_type "uint"
+	  param in name "arg2" explicit_type "str"
+	  param in name "arg3" explicit_type "str"
+	  param in name "arg4" explicit_type "UmlTypeSpec"
+	  param in name "arg5" explicit_type "UmlTypeSpec"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}const ${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, const ${t3} ${p3}, const ${t4} ${p4}, const ${t5} & ${p5}, const ${t6} & ${p6}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, const ${t3} ${p3}, const ${t4} ${p4}, const ${t5} & ${p5}, const ${t6} & ${p6}${)}${const}${volatile}${staticnl}{
+${body}}"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}, ${t6} ${p6}${)}${throws}${staticnl}{
+${body}}"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 75392 "send_cmd"
+	class_operation public explicit_return_type "void"
+	nparams 7
+	  param in name "id" explicit_type "item_id"
+	  param in name "cmd" explicit_type "OnInstanceCmd"
+	  param in name "arg1" explicit_type "uint"
+	  param in name "arg2" explicit_type "sbyte"
+	  param in name "arg3" explicit_type "str"
+	  param in name "arg4" explicit_type "str"
+	  param in name "arg5" explicit_type "UmlTypeSpec"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}const ${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, const ${t4} ${p4}, const ${t5} ${p5}, const ${t6} & ${p6}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, const ${t4} ${p4}, const ${t5} ${p5}, const ${t6} & ${p6}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}, ${t6} ${p6}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 75520 "send_cmd"
+	class_operation public explicit_return_type "void"
+	nparams 3
+	  param in name "id" explicit_type "item_id"
+	  param in name "cmd" explicit_type "OnInstanceCmd"
+	  param in name "l" type class_ref 8833 // UmlItem
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}const ${t0} ${p0}, ${t1} ${p1}, const QVector<${t2}> & ${p2}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} ${p0}, ${t1} ${p1}, const QVector<${t2}> & ${p2}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2}[] ${p2}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 77952 "send_cmd"
+	class_operation public explicit_return_type "void"
+	nparams 5
+	  param in name "id" explicit_type "item_id"
+	  param in name "cmd" explicit_type "OnInstanceCmd"
+	  param in name "l1" type class_ref 7169 // UmlClass
+	  param in name "l2" type class_ref 7169 // UmlClass
+	  param in name "l3" type class_ref 7169 // UmlClass
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}const ${t0} ${p0}, ${t1} ${p1}, const QVector<${t2}> & ${p2}, const QVector<${t3}> & ${p3}, const QVector<${t4}> & ${p4}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} ${p0}, ${t1} ${p1}, const QVector<${t2}> & ${p2}, const QVector<${t3}> & ${p3}, const QVector<${t4}> & ${p4}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2}[] ${p2}, ${t3}[] ${p3}, ${t4}[] ${p4}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+      end
+
+      operation 144128 "send_cmd"
+	class_operation public explicit_return_type "void"
+	nparams 4
+	  param in name "id" explicit_type "item_id"
+	  param in name "cmd" type class_ref 5632 // OnInstanceCmd
+	  param inout name "arg" type class_ref 640 // anItemKind
+	  param inout name "id2" explicit_type "item_id"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}const ${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, const ${t3} ${p3}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, const ${t3} ${p3}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 75648 "read_id"
+	class_operation public explicit_return_type "item_id"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 75776 "read_string"
+	class_operation public explicit_return_type "str"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${virtual}const ${type} ${name}${(}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}const ${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 75904 "read_bool"
+	class_operation public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 76032 "read_char"
+	class_operation public explicit_return_type "char"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}int ${name}${(}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 76160 "read_unsigned"
+	class_operation public explicit_return_type "uint"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 76288 "read_item_list"
+	class_operation public explicit_return_type "void"
+	nparams 1
+	  param inout name "v" type class_ref 8833 // UmlItem
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}QVector<${t0}> & ${p0}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}QVector<${t0}> & ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}UmlItem[] ${name}${(}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment " internal, do NOT use it
+"
+      end
+
+      operation 76416 "fatal_error"
+	class_operation public explicit_return_type "void"
+	nparams 1
+	  param in name "msg" explicit_type "string"
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}const ${t0} & ${p0}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} & 
+#ifdef DEBUG_BOUML
+                         ${p0}
+#endif
+                         ${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 76544 "flush"
+	class_operation public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+
+      operation 76672 "check"
+	class_operation public explicit_return_type "void"
+	nparams 0
+	
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+	comment "internal, do NOT use it
+"
+      end
+    end
+
+    class 5376 "CmdFamily"
+      visibility package stereotype "enum_pattern"
+      cpp_decl "${comment}enum ${name} {
+${items}
+};
+"
+      java_decl "${comment}${public}final class ${name} {
+${members}
+  private int value;
+
+  public int value() {
+    return value;
+  }
+
+  public static ${name} fromInt(int value) {
+    switch (value) {
+${cases}    default: throw new Error();
+    }
+  }
+
+  private ${name}(int v) { value = v; }; 
+}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " Internal enum"
+      attribute 26880 "onInstanceCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 27008 "classGlobalCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 27136 "packageGlobalCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 27264 "miscGlobalCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 27392 "umlSettingsCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 27520 "cppSettingsCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 27648 "javaSettingsCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 27776 "idlSettingsCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 133888 "phpSettingsCmd"
+	public type class_ref 5376 // CmdFamily
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 152064 "pythonSettingsCmd"
+	public type class_ref 5376 // CmdFamily
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 5504 "MiscGlobalCmd"
+      visibility package stereotype "enum_pattern"
+      cpp_decl "${comment}enum ${name} {
+${items}
+};
+"
+      java_decl "${comment}${public}final class ${name} {
+${members}
+  private int value;
+
+  public int value() {
+    return value;
+  }
+
+  public static ${name} fromInt(int value) {
+    switch (value) {
+${cases}    default: throw new Error();
+    }
+  }
+
+  private ${name}(int v) { value = v; }; 
+}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " Internal enum"
+      attribute 27904 "byeCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 28032 "traceCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 28160 "messageCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 28288 "toolRunningCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 28416 "targetCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 28544 "allMarkedCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 28672 "loadCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 76672 "showTraceCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 76800 "traceAutoRaiseCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 5632 "OnInstanceCmd"
+      visibility package stereotype "enum_pattern"
+      cpp_decl "${comment}enum ${name} {
+${items}
+};
+"
+      java_decl "${comment}${public}final class ${name} {
+${members}
+  private int value;
+
+  public int value() {
+    return value;
+  }
+
+  public static ${name} fromInt(int value) {
+    switch (value) {
+${cases}    default: throw new Error();
+    }
+  }
+
+  private ${name}(int v) { value = v; }; 
+}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " Internal enum"
+      attribute 28800 "parentCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 28928 "childrenCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 29056 "getDefCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 29184 "getUmlDefCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 29312 "getCppDefCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 29440 "getJavaDefCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 29568 "getIdlDefCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 29696 "isWritableCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 29824 "supportFileCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 29952 "isOpenCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 30080 "setOpenCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 30208 "assocComponentCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 54656 "assocArtifactCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 30336 "saveInCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 30464 "formalsCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 30592 "actualsCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 30720 "cppBodyCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 30848 "javaBodyCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 30976 "applyCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 31104 "referencedByCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 63360 "sideCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 81280 "attributesCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 81408 "relationsCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 135168 "getPhpDefCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 135296 "phpBodyCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 152192 "getPythonDefCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 152320 "pythonBodyCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 31232 "firstSetCmd"
+	public explicit_type ""
+	init_value "= 50"
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment " just a mark"
+      end
+
+      attribute 31360 "createCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 31488 "setCoupleValueCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 31616 "setDescriptionCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 31744 "setNameCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 31872 "setStereotypeCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 32000 "addAssocClassCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 32128 "removeAssocClassCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 32256 "setAssocClassesCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 32384 "setAssocDiagramCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 32512 "setAssocViewCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 32640 "addGetOperCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 32768 "addSetOperCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 32896 "setIsClassMemberCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 33024 "setVisibilityCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 33152 "setCppDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 33280 "setCppDefCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 33408 "setJavaDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 33536 "setIdlDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 33664 "setCppVisibilityCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 33792 "setIsReadOnlyCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 33920 "setDefaultValueCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 34048 "setTypeCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 34176 "setIsVolatileCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 34304 "setIsCppMutableCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 34432 "setIsJavaTransientCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 34560 "setIdlCaseCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 34688 "setIsCppInlineCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 34816 "setIsAbstractCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 34944 "setBaseTypeCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 35072 "setIsCppExternalCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 35200 "setIsJavaExternalCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 35328 "setIsIdlExternalCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 35456 "setIsJavaPublicCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 35584 "setIsJavaFinalCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 35712 "setIsIdlLocalCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 35840 "setIsIdlCustomCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 35968 "setSwitchTypeCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 36096 "removeFormalCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 36224 "addFormalCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 36352 "replaceFormalCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 36480 "replaceActualCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 36608 "setCppHCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 36736 "setCppSrcCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 36864 "setJavaSrcCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 36992 "setIdlSrcCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 37120 "addAssocArtifactCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 37248 "removeAssocArtifactCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 37376 "removeAllAssocArtifactsCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 37504 "setReturnTypeCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 37632 "setIsCppConstCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 37760 "setIsCppFriendCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 37888 "setIsCppVirtualCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 38016 "setIsIdlTruncatableCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 38144 "setCppBodyCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 38272 "setCppNameSpecCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 38400 "setJavaFinalCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 38528 "setJavaSynchronizedCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 38656 "setJavaBodyCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 38784 "setJavaNameSpecCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 38912 "setIsIdlOnewayCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 39040 "setIdlNameSpecCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 39168 "addParameterCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 39296 "removeParameterCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 39424 "replaceParameterCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 39552 "addExceptionCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 39680 "removeExceptionCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 39808 "replaceExceptionCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 39936 "setCppSrcDirCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 40064 "setCppHDirCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 40192 "setCppNamespaceCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 40320 "setJavaDirCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 40448 "setJavaPackageCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 40576 "setIdlDirCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 40704 "setIdlModuleCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 40832 "setRoleNameCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 40960 "setMultiplicityCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 41088 "setCppVirtualInheritanceCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 41216 "setMarkedCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 58112 "setUmlEntryBehaviorCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 58240 "setUmlExitBehaviorCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 58368 "setUmlActivityCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 58496 "setCppEntryBehaviorCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 58624 "setCppExitBehaviorCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 58752 "setCppActivityCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 58880 "setJavaEntryBehaviorCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 59008 "setJavaExitBehaviorCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 59136 "setJavaActivityCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 59264 "setUmlTriggerCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 59392 "setUmlGuardCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 59520 "setCppTriggerCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 59648 "setCppGuardCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 59776 "setJavaGuardCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 59904 "setJavaTriggerCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 60032 "setDefCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 60160 "moveAfterCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 62848 "setJavaAnnotationCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 63104 "setRelationAssocClassCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 75392 "setReadOnlyCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 75520 "setSingleExecutionCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 75648 "setUnmarshallCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 75776 "setTimeEventCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 75904 "setFlagCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 76032 "setUniqueCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 76160 "setStreamCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 76288 "setInStateCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 76416 "setOrderingCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 77184 "setCppFrozenCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 77312 "setJavaFrozenCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 77440 "setIdlFrozenCmd"
+	protected explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 80256 "setConstraintCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 80384 "deleteCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 80896 "setAttributeCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 81024 "addRelationCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 81152 "removeRelationCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 134016 "setPhpDeclCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 134144 "setIsPhpExternalCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 134272 "setIsPhpFinalCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 134400 "setPhpSrcCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 134528 "setPhpFinalCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 134656 "setPhpBodyCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 134784 "setPhpNameSpecCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 134912 "setPhpDirCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 135040 "setPhpFrozenCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 136832 "setIsForceBodyGenCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 141440 "setCppContextualBodyIndentCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 141568 "setJavaContextualBodyIndentCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 141696 "setPhpContextualBodyIndentCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 142464 "setPythonDeclCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 142592 "setIsPythonExternalCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 142720 "setPythonSrcCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 142848 "setPythonBodyCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 142976 "setPythonNameSpecCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 143104 "setPythonDirCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 143232 "setPythonFrozenCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 143360 "setIsPython2_2Cmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 143488 "setPythonDecoratorsCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 143616 "setPythonPackageCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 143744 "setPythonContextualBodyIndentCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 143872 "applyStereotypeCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 147200 "setDerivedCmd"
+	public type class_ref 5632 // OnInstanceCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 5760 "ClassGlobalCmd"
+      visibility package stereotype "enum_pattern"
+      cpp_decl "${comment}enum ${name} {
+${items}
+};
+"
+      java_decl "${comment}${public}final class ${name} {
+${members}
+  private int value;
+
+  public int value() {
+    return value;
+  }
+
+  public static ${name} fromInt(int value) {
+    switch (value) {
+${cases}    default: throw new Error();
+    }
+  }
+
+  private ${name}(int v) { value = v; }; 
+}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " Internal enum"
+      attribute 41344 "findClassCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 5888 "PackageGlobalCmd"
+      visibility package stereotype "enum_pattern"
+      cpp_decl "${comment}enum ${name} {
+${items}
+};
+"
+      java_decl "${comment}${public}final class ${name} {
+${members}
+  private int value;
+
+  public int value() {
+    return value;
+  }
+
+  public static ${name} fromInt(int value) {
+    switch (value) {
+${cases}    default: throw new Error();
+    }
+  }
+
+  private ${name}(int v) { value = v; }; 
+}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " Internal enum"
+      attribute 41472 "findCppNamespaceCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 41600 "findJavaPackageCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 41728 "findIdlModuleCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 41856 "getProjectCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 41984 "isProjectModifiedCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 42112 "saveProjectCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 142080 "findPythonPackageCmd"
+	public type class_ref 5888 // PackageGlobalCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 142208 "updateProfileCmd"
+	public type class_ref 5888 // PackageGlobalCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 142336 "findStereotypeCmd"
+	public type class_ref 5888 // PackageGlobalCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 6016 "UmlSettingsCmd"
+      visibility package stereotype "enum_pattern"
+      cpp_decl "${comment}enum ${name} {
+${items}
+};
+"
+      java_decl "${comment}${public}final class ${name} {
+${members}
+  private int value;
+
+  public int value() {
+    return value;
+  }
+
+  public static ${name} fromInt(int value) {
+    switch (value) {
+${cases}    default: throw new Error();
+    }
+  }
+
+  private ${name}(int v) { value = v; }; 
+}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " Internal enum"
+      attribute 42240 "getUmlSettingsCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 60288 "firstSetUmlSettingsCmd"
+	public explicit_type ""
+	init_value "= 50"
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 60416 "setDefaultArtifactDescriptionCmd"
+	public explicit_type ""
+	init_value "= 50"
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 60544 "setDefaultClassDescriptionCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 60672 "setDefaultOperationDescriptionCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 60800 "setDefaultAttributeDescriptionCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 60928 "setDefaultRelationDescriptionCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 78976 "setUmlDefaultGetNameCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 79104 "setUmlDefaultSetNameCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 6144 "CppSettingsCmd"
+      visibility package stereotype "enum_pattern"
+      cpp_decl "${comment}enum ${name} {
+${items}
+};
+"
+      java_decl "${comment}${public}final class ${name} {
+${members}
+  private int value;
+
+  public int value() {
+    return value;
+  }
+
+  public static ${name} fromInt(int value) {
+    switch (value) {
+${cases}    default: throw new Error();
+    }
+  }
+
+  private ${name}(int v) { value = v; }; 
+}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " Internal enum"
+      attribute 42368 "getCppSettingsCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 42496 "getCppUseDefaultsCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 42624 "setCppUseDefaultsCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 42752 "setCppTypeCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 42880 "setCppRelationAttributeStereotypeCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 43008 "setCppClassStereotypeCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 43136 "setCppIncludeCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 43264 "setCppHeaderContentCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 43392 "setCppRootDirCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 43520 "setCppSourceContentCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 43648 "setCppHeaderExtensionCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 43776 "setCppSourceExtensionCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 43904 "setCppIncludeWithPathCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 44032 "setCppEnumInCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 44160 "setCppEnumOutCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 44288 "setCppEnumInOutCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 44416 "setCppInCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 44544 "setCppOutCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 44672 "setCppInOutCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 44800 "setCppClassDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 44928 "setCppExternalClassDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 45056 "setCppStructDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 45184 "setCppUnionDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 45312 "setCppEnumDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 45440 "setCppTypedefDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 45568 "setCppAttributeDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 45696 "setCppEnumItemDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 45824 "setCppRelationDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 45952 "setCppOperationDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 46080 "setCppOperationDefCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 46208 "setCppOperationForceThrowCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 46336 "setCppGetVisibilityCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 46464 "setCppGetNameCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 46592 "setCppIsGetInlineCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 46720 "setCppIsGetConstCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 46848 "setCppIsGetValueConstCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 46976 "setCppSetVisibilityCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 47104 "setCppSetNameCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 47232 "setCppIsSetInlineCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 47360 "setCppIsSetParamConstCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 61056 "setCppEnumReturnCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 61184 "setCppReturnCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 77056 "setCppIsSetParamRefCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 78208 "setCppRelativePathCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 78336 "setCppForceNamespaceGenCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 79488 "setCppRootRelativePathCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 79744 "setCppJavadocStyleCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 6272 "JavaSettingsCmd"
+      visibility package stereotype "enum_pattern"
+      cpp_decl "${comment}enum ${name} {
+${items}
+};
+"
+      java_decl "${comment}${public}final class ${name} {
+${members}
+  private int value;
+
+  public int value() {
+    return value;
+  }
+
+  public static ${name} fromInt(int value) {
+    switch (value) {
+${cases}    default: throw new Error();
+    }
+  }
+
+  private ${name}(int v) { value = v; }; 
+}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " Internal enum"
+      attribute 47488 "getJavaSettingsCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 47616 "getJavaUseDefaultsCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 47744 "setJavaUseDefaultsCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 47872 "setJavaTypeCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 48000 "setJavaRelationAttributeStereotypeCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 48128 "setJavaClassStereotypeCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 48256 "setJavaImportCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 48384 "setJavaRootdirCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 48512 "setJavaSourceContentCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 48640 "setJavaSourceExtensionCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 48768 "setJavaClassDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 48896 "setJavaExternalClassDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 49024 "setJavaEnumPatternDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 49152 "setJavaInterfaceDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 49280 "setJavaAttributeDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 49408 "setJavaEnumPatternItemDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 49536 "setJavaEnumPatternItemCaseCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 49664 "setJavaRelationDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 49792 "setJavaOperationDefCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 49920 "setJavaGetvisibilityCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 50048 "setJavaGetNameCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 50176 "setJavaSetNameCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 50304 "setJavaIsGetFinalCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 50432 "setJavaIsSetFinalCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 50560 "setJavaSetVisibilityCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 50688 "setJavaIsSetParamFinalCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 62592 "setJavaEnumDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 62720 "setJavaEnumItemDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 80000 "setJavaJavadocStyleCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 145408 "setJavaForcePackageGenCmd"
+	public type class_ref 6272 // JavaSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 146688 "PhpSettingsCmd"
+      visibility package stereotype "enum_pattern"
+      cpp_decl "${comment}enum ${name} {
+${items}
+};
+"
+      java_decl "${comment}${public}final class ${name} {
+${members}
+  private int value;
+
+  public int value() {
+    return value;
+  }
+
+  public static ${name} fromInt(int value) {
+    switch (value) {
+${cases}    default: throw new Error();
+    }
+  }
+
+  private ${name}(int v) { value = v; }; 
+}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 131328 "getPhpSettingsCmd"
+	public type class_ref 146688 // PhpSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 131456 "getPhpUseDefaultsCmd"
+	public type class_ref 146688 // PhpSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 131584 "setPhpUseDefaultsCmd"
+	public type class_ref 146688 // PhpSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 131712 "setPhpClassStereotypeCmd"
+	public type class_ref 146688 // PhpSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 131840 "setPhpRootdirCmd"
+	public type class_ref 146688 // PhpSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 131968 "setPhpSourceContentCmd"
+	public type class_ref 146688 // PhpSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 132096 "setPhpSourceExtensionCmd"
+	public type class_ref 146688 // PhpSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 132224 "setPhpClassDeclCmd"
+	public type class_ref 146688 // PhpSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 132352 "setPhpEnumDeclCmd"
+	public type class_ref 146688 // PhpSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 132480 "setPhpExternalClassDeclCmd"
+	public type class_ref 146688 // PhpSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 132608 "setPhpInterfaceDeclCmd"
+	public type class_ref 146688 // PhpSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 132736 "setPhpAttributeDeclCmd"
+	public type class_ref 146688 // PhpSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 132864 "setPhpEnumItemDeclCmd"
+	public type class_ref 146688 // PhpSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 132992 "setPhpRelationDeclCmd"
+	public type class_ref 146688 // PhpSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 133120 "setPhpOperationDefCmd"
+	public type class_ref 146688 // PhpSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 133248 "setPhpGetNameCmd"
+	public type class_ref 146688 // PhpSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 133376 "setPhpSetNameCmd"
+	public type class_ref 146688 // PhpSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 133504 "setPhpIsGetFinalCmd"
+	public type class_ref 146688 // PhpSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 133632 "setPhpIsSetFinalCmd"
+	public type class_ref 146688 // PhpSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 133760 "setPhpIsSetParamFinalCmd"
+	public type class_ref 146688 // PhpSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 141952 "setPhpJavadocStyleCmd"
+	public type class_ref 146688 // PhpSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 150144 "PythonSettingsCmd"
+      visibility package stereotype "enum_pattern"
+      cpp_decl "${comment}enum ${name} {
+${items}
+};
+"
+      java_decl "${comment}${public}final class ${name} {
+${members}
+  private int value;
+
+  public int value() {
+    return value;
+  }
+
+  public static ${name} fromInt(int value) {
+    switch (value) {
+${cases}    default: throw new Error();
+    }
+  }
+
+  private ${name}(int v) { value = v; }; 
+}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 149376 "getPythonSettingsCmd"
+	public type class_ref 150144 // PythonSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 149504 "getPythonUseDefaultsCmd"
+	public type class_ref 150144 // PythonSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 149632 "setPythonUseDefaultsCmd"
+	public type class_ref 150144 // PythonSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 149760 "setPython22Cmd"
+	public type class_ref 150144 // PythonSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 149888 "setPythonIndentStepCmd"
+	public type class_ref 150144 // PythonSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 150016 "setPythonRelationAttributeStereotypeCmd"
+	public type class_ref 150144 // PythonSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 150144 "setPythonClassStereotypeCmd"
+	public type class_ref 150144 // PythonSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 150272 "setPythonImportCmd"
+	public type class_ref 150144 // PythonSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 150400 "setPythonRootdirCmd"
+	public type class_ref 150144 // PythonSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 150528 "setPythonSourceContentCmd"
+	public type class_ref 150144 // PythonSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 150656 "setPythonSourceExtensionCmd"
+	public type class_ref 150144 // PythonSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 150784 "setPythonClassDeclCmd"
+	public type class_ref 150144 // PythonSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 150912 "setPythonEnumDeclCmd"
+	public type class_ref 150144 // PythonSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 151040 "setPythonExternalClassDeclCmd"
+	public type class_ref 150144 // PythonSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 151168 "setPythonInterfaceDeclCmd"
+	public type class_ref 150144 // PythonSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 151296 "setPythonAttributeDeclCmd"
+	public type class_ref 150144 // PythonSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 151424 "setPythonEnumItemDeclCmd"
+	public type class_ref 150144 // PythonSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 151552 "setPythonRelationDeclCmd"
+	public type class_ref 150144 // PythonSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 151680 "setPythonOperationDefCmd"
+	public type class_ref 150144 // PythonSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 151808 "setPythonGetNameCmd"
+	public type class_ref 150144 // PythonSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 151936 "setPythonSetNameCmd"
+	public type class_ref 150144 // PythonSettingsCmd
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 6400 "IdlSettingsCmd"
+      visibility package stereotype "enum_pattern"
+      cpp_decl "${comment}enum ${name} {
+${items}
+};
+"
+      java_decl "${comment}${public}final class ${name} {
+${members}
+  private int value;
+
+  public int value() {
+    return value;
+  }
+
+  public static ${name} fromInt(int value) {
+    switch (value) {
+${cases}    default: throw new Error();
+    }
+  }
+
+  private ${name}(int v) { value = v; }; 
+}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " Internal enum"
+      attribute 50816 "getIdlSettingsCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 50944 "getIdlUseDefaultsCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 51072 "setIdlUseDefaultsCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 51200 "setIdlTypeCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 51328 "setIdlRelationAttributeStereotypeCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 51456 "setIdlClassStereotypeCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 51584 "setIdlIncludeCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 51712 "setIdlRootDirCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 51840 "setIdlSourceContentCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 51968 "setIdlSourceExtensionCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 52096 "setIdlInterfaceDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 52224 "setIdlValuetypeDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 52352 "setIdlStructDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 52480 "setIdlTypedefDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 52608 "setIdlExceptionDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 52736 "setIdlUnionDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 52864 "setIdlEnumDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 52992 "setIdlExternalClassDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 53120 "setIdlAttributeDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 53248 "setIdlValuetypeAttributeDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 53376 "setIdlUnionItemDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 53504 "setIdlEnumItemDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 53632 "setIdlConstDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 53760 "setIdlRelationDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 53888 "setIdlValuetypeRelationDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 54016 "setIdlUnionRelationDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 54144 "setIdlOperationDeclCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 54272 "setIdlGetNameCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 54400 "setIdlSetNameCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 54528 "setIdlIsSetOneWayCmd"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl "  ${comment}public static final int _${name}${value};
+public static final ${class} ${name} = new ${class}(_${name});
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+  end
+
+  deploymentview 512 "Com Deployment view"
+    //deployment diagram settings
+    package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+    draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+    comment "The API system artifacts concerning the communication with BOUML
+
+DO NOT MODIFY THEM !!!
+"
+    artifact 5248 "UmlCom"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+#include <qvector.h>
+#include <qstring.h>
+
+${declarations}
+class QSocketDevice;
+class UmlItem;
+class UmlTypeSpec;
+class UmlClass;
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+#include <qsocketdevice.h> 
+
+#include \"UmlCom.h\"
+#include \"UmlItem.h\"
+#include \"UmlTypeSpec.h\"
+#include \"UmlClass.h\"
+#include \"UmlSettings.h\"
+#include \"MiscGlobalCmd.h\"
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+import java.io.*;
+import java.net.*;
+
+${package}
+${definition}"
+      associated_classes
+	class_ref 5248 // UmlCom
+      end
+    end
+
+    artifact 5376 "CmdFamily"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 5376 // CmdFamily
+      end
+    end
+
+    artifact 5504 "MiscGlobalCmd"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 5504 // MiscGlobalCmd
+      end
+    end
+
+    artifact 5632 "OnInstanceCmd"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 5632 // OnInstanceCmd
+      end
+    end
+
+    artifact 5760 "ClassGlobalCmd"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 5760 // ClassGlobalCmd
+      end
+    end
+
+    artifact 5888 "PackageGlobalCmd"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 5888 // PackageGlobalCmd
+      end
+    end
+
+    artifact 6016 "UmlSettingsCmd"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 6016 // UmlSettingsCmd
+      end
+    end
+
+    artifact 6144 "CppSettingsCmd"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 6144 // CppSettingsCmd
+      end
+    end
+
+    artifact 6272 "JavaSettingsCmd"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 6272 // JavaSettingsCmd
+      end
+    end
+
+    artifact 141824 "PhpSettingsCmd"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 146688 // PhpSettingsCmd
+      end
+    end
+
+    artifact 145280 "PythonSettingsCmd"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 150144 // PythonSettingsCmd
+      end
+    end
+
+    artifact 6400 "IdlSettingsCmd"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 6400 // IdlSettingsCmd
+      end
+    end
+  end
+end

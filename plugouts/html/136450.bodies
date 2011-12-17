@@ -1,0 +1,5 @@
+class UmlSendSignalAction
+!!!200066.cpp!!!	sKind() : string
+  return "send signal activity action";
+!!!200066.java!!!	sKind() : string
+  return "send signal activity action";

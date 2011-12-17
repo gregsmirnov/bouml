@@ -1,0 +1,90 @@
+class UmlDecisionActivityNode
+!!!208514.cpp!!!	sKind() : str
+  return "DecisionNode";
+!!!285827.cpp!!!	solve_output_flows() : void
+  // input and outputs flows must be control/data
+  // except a possible decision input being data
+  ControlOrData k = Unset;
+
+  // look at output flows
+  const QVector<UmlItem> ch = children();
+  unsigned n = ch.size();
+  unsigned i;
+  
+  for (i = 0; i != n; i += 1) {
+    UmlFlow * f = dynamic_cast<UmlFlow *>(ch[i]);
+
+    if ((f != 0) && ((k = f->control_or_data()) != Unset))
+      break;
+  }
+
+  if (k == Unset) {
+    bool already = FALSE;
+
+    for (;;) {
+      // look at input flows
+      int ndata = 0;
+      bool hascontrol = FALSE;
+      bool hasunset = FALSE;
+      QListIterator<UmlFlow> it(_incoming_flows);
+
+      while (it.current() != 0) {
+	k = it.current()->control_or_data();
+
+	if (k == IsControl) {
+	  hascontrol = TRUE;
+	  break;
+	}
+	else if (k == IsData) {
+	  if (++ndata == 2)
+	    // more than a single decision input
+	    break;
+	}
+	else
+	  hasunset = TRUE;
+
+	++it;
+      }
+
+      if (hascontrol) {
+	// already has k = IsControl;
+	break;
+      }
+      else if ((ndata == 2) || ((ndata == 1) && !hasunset)) {
+	k = IsData;
+	break;
+      }
+      else if (already || !hasunset) {
+	// not possible to know, force control
+	k = IsControl;
+	break;
+      }
+
+      already = TRUE;
+
+      // solve input flows
+      it.toFirst();
+      while (it.current() != 0) {
+	((UmlActivityNode *) it.current()->parent())->solve_output_flows();
+	++it;
+      }
+    }
+  }
+
+  // propagate
+  for (i = 0; i != n; i += 1) {
+    UmlFlow * f = dynamic_cast<UmlFlow *>(ch[i]);
+
+    if ((f != 0) && (f->control_or_data() == Unset))
+      f->set_control_or_data(k);
+  }
+
+  QListIterator<UmlFlow> it(_incoming_flows);
+
+  while (it.current() != 0) {
+    if (it.current()->control_or_data() == Unset)
+      it.current()->set_control_or_data(k);
+
+    ++it;
+  }
+

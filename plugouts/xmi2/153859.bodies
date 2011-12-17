@@ -1,0 +1,19 @@
+class UmlReduceAction
+!!!272131.cpp!!!	write(inout out : FileOut) : void
+  write_begin(out, "ReduceAction");
+  
+  if (isOrdered())
+    out << " isOrdered=\"true\"";
+  
+  write_end(out, TRUE);
+
+  UmlItem * r = reducer();
+  
+  if (r != 0) {
+    out.indent();
+    out << "<reducer";
+    out.idref(r);
+    out << "/>\n";
+  }
+
+  write_close(out);

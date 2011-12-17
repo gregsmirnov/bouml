@@ -1,0 +1,10 @@
+class UmlDeploymentView
+!!!193922.cpp!!!	container(in kind : anItemKind, in token : Token, inout in : FileIn) : UmlItem
+  switch (kind) {
+  case aNode:
+  case anArtifact:
+    return this;
+  default:
+    return parent()->container(kind, token, in);
+  }
+

@@ -1,0 +1,62 @@
+class UmlItem
+!!!144386.cpp!!!	getChild(in k : anItemKind, in s : string) : UmlItem
+  const QVector<UmlItem> ch = children();
+  unsigned index;
+  
+  if (k == aRelation) {
+    for (index = 0; index != ch.count(); index += 1)
+      if ((ch[index]->kind() == aRelation) &&
+	  (((UmlRelation *) ch[index])->roleName() == s))
+	return ch[index];
+  }
+  else {
+    for (index = 0; index != ch.count(); index += 1)
+      if ((ch[index]->kind() == k) && (ch[index]->name() == s))
+	return ch[index];
+  }
+
+  return 0;
+!!!144770.cpp!!!	quotedName() : string
+  QCString r;
+  const char * s = name();
+
+  for (;;) {
+    char c = *s++;
+    
+    if (((c >= 'a') && (c <= 'z')) ||
+	((c >= 'A') && (c <= 'Z')) ||
+	((c >= '0') && (c <= '9')) ||
+	(c == '_'))
+      r += c;
+    else if (c == ' ')
+      r += '_';
+    else if (c == 0)
+      return r;
+  }
+
+!!!144130.cpp!!!	generate() : void
+  UmlCom::trace("Error : must be applied on a state machine<br>");
+!!!193666.cpp!!!	setUseless() : void
+ QCString dummy;
+ 
+ if (propertyValue("STM generated", dummy))
+   set_PropertyValue("STM generated", "0");
+ 
+ const QVector<UmlItem> v = children();
+    
+ for (unsigned index = v.count(); index != 0; index -= 1)
+   v[index - 1]->setUseless();
+!!!193794.cpp!!!	setUsed() : void
+  set_PropertyValue("STM generated", "");
+!!!193922.cpp!!!	deleteUseless() : void
+  QCString v;
+  
+  if (propertyValue("STM generated", v) && (v == "0"))
+    // useless
+    deleteIt();
+  else {
+    const QVector<UmlItem> v = children();
+    
+    for (unsigned index = v.count(); index != 0; index -= 1)
+      v[index - 1]->deleteUseless();
+  }

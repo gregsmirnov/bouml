@@ -1,0 +1,59 @@
+class UmlAcceptEventAction
+!!!201346.cpp!!!	init() : void
+  declareFct("node", "uml:AcceptEventAction", &importIt);
+  declareFct("containednode", "uml:AcceptEventAction", &importIt);
+!!!201218.cpp!!!	importIt(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  where = where->container(anAcceptEventAction, token, in);
+    
+  if (where != 0) {
+    QCString s = token.valueOf("name");
+    UmlAcceptEventAction * a = create(where, s);
+    
+    if (a == 0)
+      in.error("cannot create accept event action '"
+	       + s + "' in '" + where->name() + "'");
+    
+    a->addItem(token.xmiId(), in);
+    
+    if (token.valueOf("isunmarshall") == "true")
+      a->set_isUnmarshall(TRUE);
+    
+    if (!(s = token.valueOf("trigger")).isEmpty()) {
+      QCString tr = Trigger::get(s);
+      
+      if (!tr.isNull())
+	a->set_Trigger(tr);
+      else
+	Unresolved::addRef(a, s);
+    }
+    
+    if (! token.closed()) {
+      QCString k = token.what();
+      const char * kstr = k;
+      
+      while (in.read(), !token.close(kstr)) {
+	if (token.what() == "trigger") {
+	  QCString tr_name;
+	  QCString tr_ref;
+	  
+	  Trigger::add(in, token, tr_name, tr_ref);
+      
+	  if (!tr_name.isNull())
+	    a->set_Trigger(tr_name);
+	  else
+	    Unresolved::addRef(a, tr_ref);
+	}
+	else
+	  a->import(in, token);
+      }
+    }
+  }
+!!!221058.cpp!!!	solve(in idref : string) : void
+  QCString tr = Trigger::get(idref);
+  
+  if (tr.isNull()) {
+    if (!FileIn::isBypassedId(idref))
+      UmlCom::trace("accept event activity action : unknown trigger reference '" + idref + "'<br>");
+  }
+  else
+    set_Trigger(tr);

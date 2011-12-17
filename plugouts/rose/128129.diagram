@@ -1,0 +1,39 @@
+format 10
+
+classcanvas 128002 class_ref 8577 // UmlUseCaseView
+  draw_all_relations default hide_attributes yes hide_operations yes show_full_members_definition default package_name_in_tab default class_drawing_mode class drawing_language default show_context_mode default auto_label_position default
+  xyz 155.75 118.75 2000
+classcanvas 128642 class_ref 128129 // Uc
+  draw_all_relations default hide_attributes default hide_operations default show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default
+  xyz 135 26.75 2000
+classcanvas 128770 class_ref 8321 // UmlUseCase
+  draw_all_relations default hide_attributes yes hide_operations yes show_full_members_definition default package_name_in_tab default class_drawing_mode class drawing_language default show_context_mode default auto_label_position default
+  xyz 36 117.25 2000
+classcanvas 129282 class_ref 128002 // Component
+  draw_all_relations default hide_attributes yes hide_operations yes show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default
+  xyz 399 72 2000
+classcanvas 130690 class_ref 7937 // UmlPackage
+  draw_all_relations default hide_attributes default hide_operations default show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default
+  xyz 53 251 2000
+classcanvas 130818 class_ref 6785 // UmlComponentView
+  draw_all_relations default hide_attributes default hide_operations default show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default
+  xyz 266 252 2000
+relationcanvas 128898 relation_ref 128641 // <realization>
+  from ref 128770 z 1000 to ref 128642
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129154 relation_ref 128513 // <realization>
+  from ref 128002 z 1000 to ref 128642
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130306 relation_ref 128002 // <directional aggregation by value>
+  from ref 129282 z 1000 stereotype "<<asciidict>>" xyz 520 79 3000 to point 517 72
+  line 130434 z 1000 to point 517 102
+  line 130562 z 1000 to ref 129282
+  role_a_pos 497 76 3000 no_role_b
+  multiplicity_a_pos 497 106 3000 no_multiplicity_b
+relationcanvas 130946 relation_ref 128130 // <unidirectional association>
+  from ref 130690 z 1000 stereotype "<<list>>" xyz 180 269 3000 to ref 130818
+  role_a_pos 175 247 3000 no_role_b
+  multiplicity_a_pos 248 277 3000 no_multiplicity_b
+end

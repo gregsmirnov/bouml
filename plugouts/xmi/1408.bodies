@@ -1,0 +1,482 @@
+class UmlBaseClass
+!!!5376.cpp!!!	create(inout parent : UmlItem, in s : str) : UmlClass
+  return (UmlClass *) parent->create_(aClass, s);
+!!!5376.java!!!	create(inout parent : UmlItem, in s : str) : UmlClass
+  return (UmlClass) parent.create_(anItemKind.aClass, s);
+!!!5504.cpp!!!	kind() : anItemKind
+  return aClass;
+!!!5504.java!!!	kind() : anItemKind
+  return anItemKind.aClass;
+!!!5632.cpp!!!	isAbstract() : bool
+  read_if_needed_();
+  
+  return _abstract;
+!!!5632.java!!!	isAbstract() : bool
+  read_if_needed_();
+  
+  return _abstract;
+!!!5760.cpp!!!	set_isAbstract(in y : bool) : bool
+  return set_it_(_abstract, y, setIsAbstractCmd);
+!!!5760.java!!!	set_isAbstract(in y : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setIsAbstractCmd, (y) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _abstract = y;
+!!!5888.cpp!!!	baseType() : UmlTypeSpec
+  read_if_needed_();
+  
+  return _base_type;
+!!!5888.java!!!	baseType() : UmlTypeSpec
+  read_if_needed_();
+  
+  return _base_type;
+!!!6016.cpp!!!	set_BaseType(in t : UmlTypeSpec) : bool
+  return set_it_(_base_type, t, setBaseTypeCmd);
+!!!6016.java!!!	set_BaseType(in t : UmlTypeSpec) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setBaseTypeCmd, t);
+  UmlCom.check();
+
+  _base_type = t;
+!!!6144.cpp!!!	formals() : UmlFormalParameter
+  UmlCom::send_cmd(_identifier, formalsCmd);
+  
+  QValueList<UmlFormalParameter> formals;
+  
+  for (unsigned n = UmlCom::read_unsigned(); n; n -= 1) {
+    UmlFormalParameter f;
+    
+    f.read_();
+    formals.append(f);
+  }
+  
+  return formals;
+!!!6144.java!!!	formals() : UmlFormalParameter
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.formalsCmd);
+  
+  int n = UmlCom.read_unsigned();
+  UmlFormalParameter[] formals = new UmlFormalParameter[n];
+  
+  for (int i = 0; i != n; i += 1) {
+    UmlFormalParameter f = new UmlFormalParameter();
+    
+    f.read_();
+    formals[i] = f;
+  }
+  
+  return formals;
+!!!6272.cpp!!!	removeFormal(in rank : uint) : bool
+  UmlCom::send_cmd(_identifier, removeFormalCmd, rank);
+  return UmlCom::read_bool();
+!!!6272.java!!!	removeFormal(in rank : uint) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.removeFormalCmd, rank);
+  UmlCom.check();
+!!!6400.cpp!!!	addFormal(in rank : uint, in formal : UmlFormalParameter) : bool
+  UmlCom::send_cmd(_identifier, addFormalCmd, rank, formal._name, 
+		   formal._type, formal._default_value, formal._extends);
+  return UmlCom::read_bool();
+!!!6400.java!!!	addFormal(in rank : uint, in formal : UmlFormalParameter) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.addFormalCmd, rank, formal._name, 
+		   formal._type, formal._default_value, formal._extends);
+  UmlCom.check();
+!!!6528.cpp!!!	replaceFormal(in rank : uint, in formal : UmlFormalParameter) : bool
+  UmlCom::send_cmd(_identifier, replaceFormalCmd, rank, formal._name, 
+		   formal._type, formal._default_value, formal._extends);
+  return UmlCom::read_bool();
+!!!6528.java!!!	replaceFormal(in rank : uint, in formal : UmlFormalParameter) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.replaceFormalCmd, rank, formal._name, 
+		   formal._type, formal._default_value, formal._extends);
+  UmlCom.check();
+!!!6656.cpp!!!	actuals() : UmlActualParameter
+  UmlCom::send_cmd(_identifier, actualsCmd);
+  
+  QValueList<UmlActualParameter> actuals;
+  
+  for (unsigned n = UmlCom::read_unsigned(); n; n -= 1) {
+    UmlActualParameter a;
+    
+    a.read_();
+    actuals.append(a);
+  }
+  
+  return actuals;
+!!!6656.java!!!	actuals() : UmlActualParameter
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.actualsCmd);
+  
+  int n = UmlCom.read_unsigned();
+  UmlActualParameter[] actuals = new UmlActualParameter[n];
+  
+  for (int i = 0; i != n; i += 1) {
+    UmlActualParameter a = new UmlActualParameter();
+    
+    a.read_();
+    actuals[i] = a;
+  }
+  
+  return actuals;
+!!!6784.cpp!!!	replaceActual(in rank : uint, in type : UmlTypeSpec) : bool
+  UmlCom::send_cmd(_identifier, replaceActualCmd, rank, type);
+  return UmlCom::read_bool();
+!!!6784.java!!!	replaceActual(in rank : uint, in type : UmlTypeSpec) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.replaceActualCmd, rank, type);
+  UmlCom.check();
+!!!6912.cpp!!!	associatedDiagram() : UmlClassDiagram
+  read_if_needed_();
+  
+  return _assoc_diagram;
+!!!6912.java!!!	associatedDiagram() : UmlClassDiagram
+  read_if_needed_();
+  
+  return _assoc_diagram;
+!!!7040.cpp!!!	set_AssociatedDiagram(inout d : UmlClassDiagram) : bool
+  UmlCom::send_cmd(_identifier, setAssocDiagramCmd, ((UmlBaseItem *) d)->_identifier);
+  if (UmlCom::read_bool()) {
+    _assoc_diagram = d;
+    return TRUE;
+  }
+  else
+    return FALSE;
+
+!!!7040.java!!!	set_AssociatedDiagram(inout d : UmlClassDiagram) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setAssocDiagramCmd, d.identifier_());
+  UmlCom.check();
+  _assoc_diagram = d;
+!!!7168.cpp!!!	associatedArtifact() : UmlArtifact
+  UmlCom::send_cmd(_identifier, assocArtifactCmd);
+  
+  return (UmlArtifact *) UmlBaseItem::read_();
+!!!7168.java!!!	associatedArtifact() : UmlArtifact
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.assocArtifactCmd);
+  
+  return (UmlArtifact) UmlBaseItem.read_();
+!!!77568.cpp!!!	associatedComponents() : UmlComponent
+  UmlCom::send_cmd(_identifier, assocComponentCmd);
+
+  QVector<UmlComponent> result;
+  unsigned n = UmlCom::read_unsigned();
+
+  result.resize(n);
+
+  for (unsigned index = 0; index != n; index += 1)
+    result.insert(index, (UmlComponent *) UmlBaseItem::read_());
+
+  return result;
+!!!77568.java!!!	associatedComponents() : UmlComponent
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.assocComponentCmd);
+
+  int n = UmlCom.read_unsigned();
+  UmlComponent[] result = new UmlComponent[n];
+
+  for (int index = 0; index != n; index += 1)
+    result[index] = (UmlComponent) UmlBaseItem.read_();
+
+  return result;
+!!!7296.cpp!!!	isCppExternal() : bool
+  read_if_needed_();
+  
+  return _cpp_external;
+!!!7296.java!!!	isCppExternal() : bool
+  read_if_needed_();
+  
+  return _cpp_external;
+!!!7424.cpp!!!	set_isCppExternal(in y : bool) : bool
+  bool r;
+  
+  if (set_it_(r, y, setIsCppExternalCmd)) {
+    _cpp_external = y;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!7424.java!!!	set_isCppExternal(in y : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setIsCppExternalCmd, (y) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _cpp_external = y;
+!!!7552.cpp!!!	isJavaExternal() : bool
+  read_if_needed_();
+  
+  return _java_external;
+!!!7552.java!!!	isJavaExternal() : bool
+  read_if_needed_();
+  
+  return _java_external;
+!!!7680.cpp!!!	set_isJavaExternal(in y : bool) : bool
+  bool r;
+  
+  if (set_it_(r, y, setIsJavaExternalCmd)) {
+    _java_external = y;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!7680.java!!!	set_isJavaExternal(in y : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setIsJavaExternalCmd, (y) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _java_external = y;
+!!!7808.cpp!!!	isJavaPublic() : bool
+  read_if_needed_();
+  
+  return _java_public;
+!!!7808.java!!!	isJavaPublic() : bool
+  read_if_needed_();
+  
+  return _java_public;
+!!!7936.cpp!!!	set_isJavaPublic(in y : bool) : bool
+  bool r;
+  
+  if (set_it_(r, y, setIsJavaPublicCmd)) {
+    _java_public = y;
+    return TRUE;
+  }
+  else
+    return FALSE;
+
+!!!7936.java!!!	set_isJavaPublic(in y : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setIsJavaPublicCmd, (y) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _java_public = y;
+!!!8064.cpp!!!	isJavaFinal() : bool
+  read_if_needed_();
+  
+  return _java_final;
+!!!8064.java!!!	isJavaFinal() : bool
+  read_if_needed_();
+  
+  return _java_final;
+!!!8192.cpp!!!	set_isJavaFinal(in y : bool) : bool
+  bool r;
+  
+  if (set_it_(r, y, setIsJavaFinalCmd)) {
+    _java_final = y;
+    return TRUE;
+  }
+  else
+    return FALSE;
+
+!!!8192.java!!!	set_isJavaFinal(in y : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setIsJavaFinalCmd, (y) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _java_final = y;
+!!!8320.cpp!!!	switchType() : UmlTypeSpec
+  read_if_needed_();
+  
+  return _switch_type;
+!!!8320.java!!!	switchType() : UmlTypeSpec
+  read_if_needed_();
+  
+  return _switch_type.clone_it();
+!!!8448.cpp!!!	set_SwitchType(in t : UmlTypeSpec) : bool
+  return set_it_(_switch_type, t, setSwitchTypeCmd);
+!!!8448.java!!!	set_SwitchType(in t : UmlTypeSpec) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setSwitchTypeCmd, t);
+  UmlCom.check();
+
+  _switch_type = t.clone_it();
+!!!8576.cpp!!!	isIdlExternal() : bool
+  read_if_needed_();
+  
+  return _idl_external;
+!!!8576.java!!!	isIdlExternal() : bool
+  read_if_needed_();
+  
+  return _idl_external;
+!!!8704.cpp!!!	set_isIdlExternal(in y : bool) : bool
+  bool r;
+  
+  if (set_it_(r, y, setIsIdlExternalCmd)) {
+    _idl_external = y;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!8704.java!!!	set_isIdlExternal(in y : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setIsIdlExternalCmd, (y) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _idl_external = y;
+!!!8832.cpp!!!	isIdlLocal() : bool
+  read_if_needed_();
+  
+  return _idl_local;
+!!!8832.java!!!	isIdlLocal() : bool
+  read_if_needed_();
+  
+  return _idl_local;
+!!!8960.cpp!!!	set_isIdlLocal(in y : bool) : bool
+  bool r;
+  
+  if (set_it_(r, y, setIsIdlLocalCmd)) {
+    _idl_local = y;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!8960.java!!!	set_isIdlLocal(in y : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setIsIdlLocalCmd, (y) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _idl_local = y;
+!!!9088.cpp!!!	isIdlCustom() : bool
+  read_if_needed_();
+  
+  return _idl_custom;
+!!!9088.java!!!	isIdlCustom() : bool
+  read_if_needed_();
+  
+  return _idl_custom;
+!!!9216.cpp!!!	set_isIdlCustom(in y : bool) : bool
+  bool r;
+  
+  if (set_it_(r, y, setIsIdlCustomCmd)) {
+    _idl_custom = y;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!9216.java!!!	set_isIdlCustom(in y : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setIsIdlCustomCmd, (y) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _idl_custom = y;
+!!!9344.cpp!!!	get(in n : string, in p : UmlPackage = 0) : UmlClass
+  if (p == 0) {
+    UmlClass * x = _classes[n];
+    
+    if (x != 0)
+      return x;
+  }
+  
+  UmlCom::send_cmd(classGlobalCmd, findClassCmd,
+		   (p) ? p->_identifier : 0, n);
+  
+  return (UmlClass *) UmlBaseItem::read_();
+!!!9344.java!!!	get(in n : string, in p : UmlPackage = 0) : UmlClass
+  if (p == null) {
+    UmlClass x = (UmlClass) _classes.get(n);
+    
+    if (x != null)
+      return x;
+  }
+  
+  UmlCom.send_cmd(CmdFamily.classGlobalCmd, ClassGlobalCmd._findClassCmd,
+		  (p != null) ? ((UmlBaseItem) p).identifier_() : 0, n);
+  
+  return (UmlClass) UmlBaseItem.read_();
+!!!9472.cpp!!!	unload(in rec : bool, in del : bool) : void
+  _base_type.explicit_type = 0;
+  
+#ifdef WITHIDL
+  _switch_type.explicit_type = 0;
+#endif
+  
+  UmlBaseClassItem::unload(rec, del);
+!!!9472.java!!!	unload(in rec : bool, in del : bool) : void
+  _base_type = null;
+  _switch_type = null;
+  
+  super.unload(rec, del);
+!!!144256.cpp!!!	set_Name(in s : string) : bool
+  if (!UmlBaseItem::set_Name(s))
+    return FALSE;
+
+  const QVector<UmlItem> ch = children();
+  QCString destr = "~" + name();
+
+  for (unsigned i = 0; i != ch.size(); i += 1) {
+    if (ch[i]->kind() == anOperation) {
+      if (ch[i]->name() == name())
+	ch[i]->set_Name(s);
+      else if (ch[i]->name() == destr)
+	ch[i]->set_Name("~" + s);
+    }
+  }
+
+  return TRUE;
+!!!144256.java!!!	set_Name(in s : string) : bool
+  super.set_Name(s);
+
+  UmlItem[] ch = children();
+  String destr = "~" + name();
+
+  for (int i = 0; i != ch.length; i += 1) {
+    if (ch[i].kind() == anItemKind.anOperation) {
+      if (ch[i].name() == name())
+	ch[i].set_Name(s);
+      else if (ch[i].name() == destr)
+	ch[i].set_Name("~" + s);
+    }
+  }
+!!!9600.cpp!!!	UmlBaseClass(in id : item_id, in n : string)
+  _assoc_diagram = 0;
+  
+  _classes.insert(n, (UmlClass *) this);
+  
+  if ((_classes.count() / 2) >= _classes.size())
+    _classes.resize(_classes.size() * 2 - 1);
+!!!9728.cpp!!!	read_uml_() : void
+  _assoc_diagram = (UmlClassDiagram *) UmlBaseItem::read_();
+  UmlBaseClassMember::read_uml_();
+  _abstract = UmlCom::read_bool();
+  
+  if (_stereotype == "typedef") {
+    _base_type.type = (UmlClass *) UmlBaseItem::read_();
+    if (_base_type.type == 0)
+      _base_type.explicit_type = UmlCom::read_string();
+  }
+!!!9728.java!!!	read_uml_() : void
+  _assoc_diagram = (UmlClassDiagram) UmlBaseItem.read_();
+  super.read_uml_();
+  _abstract = UmlCom.read_bool();
+  
+  if (_stereotype.equals("typedef")) {
+    _base_type = new UmlTypeSpec();
+    _base_type.type = (UmlClass) UmlBaseItem.read_();
+    if (_base_type.type == null)
+      _base_type.explicit_type = UmlCom.read_string();
+  }
+!!!9856.cpp!!!	read_cpp_() : void
+  UmlBaseClassMember::read_cpp_();  
+  _cpp_external = UmlCom::read_bool();
+!!!9856.java!!!	read_cpp_() : void
+  super.read_cpp_();  
+  _cpp_external = UmlCom.read_bool();
+!!!9984.cpp!!!	read_java_() : void
+  UmlBaseClassMember::read_java_();
+  _java_public = UmlCom::read_bool();
+  _java_final = UmlCom::read_bool();
+  _java_external = UmlCom::read_bool();
+!!!9984.java!!!	read_java_() : void
+  super.read_java_();  
+  _java_public = UmlCom.read_bool();
+  _java_final = UmlCom.read_bool();
+  _java_external = UmlCom.read_bool();
+!!!10112.cpp!!!	read_idl_() : void
+  UmlBaseClassItem::read_idl_();
+  _switch_type.type = (UmlClass *) UmlBaseItem::read_();
+  if (_switch_type.type == 0)
+    _switch_type.explicit_type = UmlCom::read_string();
+  _idl_local = UmlCom::read_bool();
+  _idl_custom = UmlCom::read_bool();
+  _idl_external = UmlCom::read_bool();
+!!!10112.java!!!	read_idl_() : void
+  super.read_idl_();
+  _switch_type = new UmlTypeSpec();
+  _switch_type.type = (UmlClass) UmlBaseItem.read_();
+  if (_switch_type.type == null)
+    _switch_type.explicit_type = UmlCom.read_string();
+  _idl_local = UmlCom.read_bool();
+  _idl_custom = UmlCom.read_bool();
+  _idl_external = UmlCom.read_bool();
+!!!10240.cpp!!!	reread_if_needed_() : void
+  if (_defined) {
+    UmlCom::send_cmd(_identifier, getUmlDefCmd);
+    read_uml_();
+  }
+!!!10240.java!!!	reread_if_needed_() : void
+  if (defined_()) {
+    UmlCom.send_cmd(identifier_(), OnInstanceCmd.getUmlDefCmd);
+    read_uml_();
+  }

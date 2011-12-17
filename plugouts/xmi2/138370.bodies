@@ -1,0 +1,16 @@
+class UmlCallBehaviorAction
+!!!205954.cpp!!!	write(inout out : FileOut) : void
+  write_begin(out, "CallBehaviorAction");
+  write_end(out, TRUE);
+  
+  UmlItem * b = behavior();
+  
+  if (b != 0) {
+    out.indent();
+    out << "<behavior";
+    out.idref(b);
+    out << "/>\n";
+  }
+
+  write_close(out);
+

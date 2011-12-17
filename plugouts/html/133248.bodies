@@ -1,0 +1,232 @@
+class UmlBaseActivity
+!!!152704.cpp!!!	create(inout parent : UmlClassView, inout s : str) : UmlActivity
+  return (UmlActivity *) parent->create_(anActivity, s);
+!!!152704.java!!!	create(inout parent : UmlClassView, inout s : str) : UmlActivity
+  return (UmlActivity) parent.create_(anItemKind.anActivity, s);
+!!!152832.cpp!!!	kind() : anItemKind
+  return anActivity;
+!!!152832.java!!!	kind() : anItemKind
+  return anItemKind.anActivity;
+!!!153216.cpp!!!	preCondition() : string
+  read_if_needed_();
+  return _pre_condition;
+!!!153216.java!!!	preCondition() : string
+  read_if_needed_();
+  return _pre_condition;
+!!!153344.cpp!!!	set_PreCondition(in v : str) : bool
+  return set_it_(_pre_condition, v, setUmlEntryBehaviorCmd);
+!!!153344.java!!!	set_PreCondition(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setUmlEntryBehaviorCmd, v);
+  UmlCom.check();
+
+  _pre_condition = v;
+!!!153472.cpp!!!	postCondition() : string
+  read_if_needed_();
+  return _post_condition;
+!!!153472.java!!!	postCondition() : string
+  read_if_needed_();
+  return _post_condition;
+!!!153600.cpp!!!	set_PostCondition(in v : str) : bool
+  return set_it_(_post_condition, v, setUmlExitBehaviorCmd);
+!!!153600.java!!!	set_PostCondition(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setUmlExitBehaviorCmd, v);
+  UmlCom.check();
+
+  _post_condition = v;
+!!!153728.cpp!!!	cppPreCondition() : string
+  read_if_needed_();
+  return _cpp_pre_condition;
+!!!153728.java!!!	cppPreCondition() : string
+  read_if_needed_();
+  return _cpp_pre_condition;
+!!!153856.cpp!!!	set_CppPreCondition(in v : str) : bool
+  return set_it_(_cpp_pre_condition, v, setCppEntryBehaviorCmd);
+!!!153856.java!!!	set_CppPreCondition(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setCppEntryBehaviorCmd, v);
+  UmlCom.check();
+
+  _cpp_pre_condition = v;
+!!!153984.cpp!!!	cppPostCondition() : string
+  read_if_needed_();
+  return _cpp_post_condition;
+!!!153984.java!!!	cppPostCondition() : string
+  read_if_needed_();
+  return _cpp_post_condition;
+!!!154112.cpp!!!	set_CppPostCondition(in v : str) : bool
+  return set_it_(_cpp_post_condition, v, setCppExitBehaviorCmd);
+!!!154112.java!!!	set_CppPostCondition(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setCppExitBehaviorCmd, v);
+  UmlCom.check();
+
+  _cpp_post_condition = v;
+!!!154240.cpp!!!	javaPreCondition() : string
+  read_if_needed_();
+  return _java_pre_condition;
+!!!154240.java!!!	javaPreCondition() : string
+  read_if_needed_();
+  return _java_pre_condition;
+!!!154368.cpp!!!	set_JavaPreCondition(in v : str) : bool
+  return set_it_(_java_pre_condition, v, setJavaEntryBehaviorCmd);
+!!!154368.java!!!	set_JavaPreCondition(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setJavaEntryBehaviorCmd, v);
+  UmlCom.check();
+
+  _java_pre_condition = v;
+!!!154496.cpp!!!	javaPostCondition() : string
+  read_if_needed_();
+  return _java_post_condition;
+!!!154496.java!!!	javaPostCondition() : string
+  read_if_needed_();
+  return _java_post_condition;
+!!!154624.cpp!!!	set_JavaPostCondition(in v : str) : bool
+  return set_it_(_java_post_condition, v, setJavaExitBehaviorCmd);
+!!!154624.java!!!	set_JavaPostCondition(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setJavaExitBehaviorCmd, v);
+  UmlCom.check();
+
+  _java_post_condition = v;
+!!!263168.cpp!!!	constraint() : string
+  read_if_needed_();
+  return _constraint;
+!!!263168.java!!!	constraint() : string
+  read_if_needed_();
+  return _constraint;
+!!!263296.cpp!!!	set_Constraint(in v : str) : bool
+  return set_it_(_constraint, v, setConstraintCmd);
+!!!263296.java!!!	set_Constraint(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setConstraintCmd, v);
+  UmlCom.check();
+
+  _constraint = v;
+!!!154752.cpp!!!	isReadOnly() : bool
+  read_if_needed_();
+  return _read_only;
+!!!154752.java!!!	isReadOnly() : bool
+  read_if_needed_();
+  return _read_only;
+!!!154880.cpp!!!	set_isReadOnly(in v : bool) : bool
+  return set_it_(_read_only, v, setReadOnlyCmd);
+!!!154880.java!!!	set_isReadOnly(in v : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setReadOnlyCmd, (v) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _read_only = v;
+!!!155008.cpp!!!	isSingleExecution() : bool
+  read_if_needed_();
+  return _single_execution;
+!!!155008.java!!!	isSingleExecution() : bool
+  read_if_needed_();
+  return _single_execution;
+!!!155136.cpp!!!	set_isSingleExecution(in v : bool) : bool
+  return set_it_(_single_execution, v, setSingleExecutionCmd);
+!!!155136.java!!!	set_isSingleExecution(in v : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setSingleExecutionCmd, (v) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _single_execution = v;
+!!!262272.cpp!!!	isActive() : bool
+  read_if_needed_();
+  return _active;
+!!!262272.java!!!	isActive() : bool
+  read_if_needed_();
+  return _active;
+!!!262400.cpp!!!	set_isActive(in v : bool) : bool
+  return set_it_(_active, v, setActiveCmd);
+!!!262400.java!!!	set_isActive(in v : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setActiveCmd, (v) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _active = v;
+!!!261376.cpp!!!	specification() : UmlOperation
+  read_if_needed_();
+  return _specification;
+!!!261376.java!!!	specification() : UmlOperation
+  read_if_needed_();
+  return _specification;
+!!!261504.cpp!!!	set_Specification(in v : UmlOperation) : bool
+  UmlCom::send_cmd(_identifier, setDefCmd, (v == 0) ? (void *) v : ((UmlBaseItem *) v)->_identifier);
+  if (UmlCom::read_bool()) {
+    _specification = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!261504.java!!!	set_Specification(in v : UmlOperation) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setDefCmd, (v == null) ? (long) 0 : v.identifier_());
+  UmlCom.check();
+
+  _specification = v;
+!!!155776.cpp!!!	associatedDiagram() : UmlActivityDiagram
+  read_if_needed_();
+
+  return _assoc_diagram;
+!!!155776.java!!!	associatedDiagram() : UmlActivityDiagram
+  read_if_needed_();
+
+  return _assoc_diagram;
+!!!155904.cpp!!!	set_AssociatedDiagram(in d : UmlActivityDiagram) : bool
+  UmlCom::send_cmd(_identifier, setAssocDiagramCmd, (d == 0) ? (void *) 0 : ((UmlBaseItem *) d)->_identifier);
+  if (UmlCom::read_bool()) {
+    _assoc_diagram = d;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!155904.java!!!	set_AssociatedDiagram(in d : UmlActivityDiagram) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setAssocDiagramCmd, (d == null) ? (long) 0 : d.identifier_());
+  UmlCom.check();
+  _assoc_diagram = d;
+!!!156032.cpp!!!	unload(in rec : bool, in del : bool) : void
+  _pre_condition = 0;
+  _post_condition = 0;
+#ifdef WITHCPP
+  _cpp_pre_condition = 0;
+  _cpp_post_condition = 0;
+#endif
+#ifdef WITHJAVA
+  _java_pre_condition = 0;
+  _java_post_condition = 0;
+#endif
+  UmlBaseItem::unload(rec, del);
+  _constraint = 0;
+!!!156032.java!!!	unload(in rec : bool, in del : bool) : void
+  _pre_condition = null;
+  _post_condition = null;
+  _cpp_pre_condition = null;
+  _cpp_post_condition = null;
+  _java_pre_condition = null;
+  _java_post_condition = null;
+  super.unload(rec, del);
+  _constraint = null;
+!!!156160.cpp!!!	read_uml_() : void
+  _assoc_diagram = (UmlActivityDiagram *) UmlBaseItem::read_();
+  UmlBaseItem::read_uml_();
+  _pre_condition = UmlCom::read_string();
+  _post_condition = UmlCom::read_string();
+  _read_only = UmlCom::read_bool();
+  _single_execution = UmlCom::read_bool();
+  _specification = (UmlOperation *) UmlBaseItem::read_();
+  _active = UmlCom::read_bool();
+  _constraint = UmlCom::read_string();
+!!!156160.java!!!	read_uml_() : void
+  _assoc_diagram = (UmlActivityDiagram) UmlBaseItem.read_();
+  super.read_uml_();
+  _pre_condition = UmlCom.read_string();
+  _post_condition = UmlCom.read_string();
+  _read_only = UmlCom.read_bool();
+  _single_execution = UmlCom.read_bool();
+  _specification = (UmlOperation) UmlBaseItem.read_();
+  _active = UmlCom.read_bool();
+  _constraint = UmlCom.read_string();
+!!!156288.cpp!!!	read_cpp_() : void
+  _cpp_pre_condition = UmlCom::read_string();
+  _cpp_post_condition = UmlCom::read_string();
+!!!156288.java!!!	read_cpp_() : void
+  _cpp_pre_condition = UmlCom.read_string();
+  _cpp_post_condition = UmlCom.read_string();
+!!!156416.cpp!!!	read_java_() : void
+  _java_pre_condition = UmlCom::read_string();
+  _java_post_condition = UmlCom::read_string();
+!!!156416.java!!!	read_java_() : void
+  _java_pre_condition = UmlCom.read_string();
+  _java_post_condition = UmlCom.read_string();

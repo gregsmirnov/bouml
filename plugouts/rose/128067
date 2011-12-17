@@ -1,0 +1,914 @@
+format 27
+"Aux" // Aux
+  // class settings
+  //class diagram settings
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position yes shadow default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position yes shadow default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default drawing_language default shadow default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position yes shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position yes shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default shadow default
+  show_activities default region_horizontally default drawing_language default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+  show_infonote default drawing_language default
+  
+  classview 128067 "Aux"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default drawing_language default shadow default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default shadow default
+    show_activities default region_horizontally default drawing_language default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+    show_infonote default drawing_language default
+    
+    associated_deployment_view deploymentview_ref 128067 // Aux
+    classdiagram 128129 "Diagram"
+      draw_all_relations default hide_attributes yes hide_operations yes show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+      size A4
+    end
+
+    class 128129 "Uc"
+      abstract 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 132609 "item"
+	abstract cpp_virtual public return_type class_ref 7553 // UmlItem
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} * ${name}${(}${)}${const}${volatile}${abstract};
+"
+	
+	
+	comment "return the UmlItem implementing Uc
+"
+      end
+
+      operation 128017 "readObject"
+	abstract cpp_virtual public explicit_return_type "void"
+	nparams 2
+	  param inout name "f" type class_ref 128067 // File
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} & ${p0}, ${t1} ${p1}${)}${const}${volatile}${abstract};
+"
+	
+	
+      end
+
+      operation 128385 "import"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "f" type class_ref 128067 // File
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} & ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} & ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+      end
+
+      operation 128897 "readObjects"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "f" type class_ref 128067 // File
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} & ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} & ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+      end
+
+      operation 131458 "~Uc"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${virtual}${name}${(}${)}${volatile};
+"
+	cpp_def "${inline}${class}::${name}${(}${)}${volatile} {
+${body}}
+"
+	
+	
+	comment "Just to not have warning"
+      end
+    end
+
+    class 128063 "Language"
+       stereotype "enum_pattern"
+      cpp_decl "${comment}enum ${name} {
+${items}
+};
+"
+      java_decl "${comment}${public}final class ${name} {
+${members}
+  private int value;
+
+  public int value() {
+    return value;
+  }
+
+  public static ${name} fromInt(int value) {
+    switch (value) {
+${cases}    default: throw new Error();
+    }
+  }
+
+  private ${name}(int v) { value = v; }; 
+}
+"
+      idl_decl "${comment}enum ${name} {
+${items}};
+"
+      explicit_switch_type ""
+      
+      attribute 128063 "None"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 128191 "Cplusplus"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 128319 "AnsiCplusplus"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 128447 "VCplusplus"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 128575 "Oracle8"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 128703 "Corba"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 128029 "Java"
+	public explicit_type ""
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 128067 "File"cpp_decl "${comment}${template}class ${name} : public QFile {
+${members}};
+
+${inlines}
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 129347 "File"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "s" explicit_type "QString"
+	  param in name "here" explicit_type "QString"
+	cpp_decl "    ${comment}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${volatile};
+"
+	cpp_def "${inline}${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${volatile} {
+${body}}
+"
+	
+	
+      end
+
+      operation 128451 "open"
+	public explicit_return_type "bool"
+	nparams 1
+	  param in name "m" explicit_type "int"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+      end
+
+      operation 128579 "read"
+	public explicit_return_type "int"
+	nparams 1
+	  param inout name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} & ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} & ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+	comment "// read a token in 's', returns its kind
+"
+      end
+
+      operation 128001 "read"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "e" explicit_type "str"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}const ${t0} ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+	comment "// e is expected, return TRUE if ok
+"
+      end
+
+      operation 130689 "unread"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "k" explicit_type "int"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+      end
+
+      operation 128707 "context"
+	public explicit_return_type "string"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+      end
+
+      operation 128835 "readString"
+	protected explicit_return_type "int"
+	nparams 1
+	  param inout name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} & ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} & ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+      end
+
+      operation 129091 "readMLString"
+	protected explicit_return_type "int"
+	nparams 1
+	  param inout name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} & ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} & ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+      end
+
+      operation 129219 "readAtom"
+	protected explicit_return_type "int"
+	nparams 1
+	  param inout name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} & ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} & ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+      end
+
+      operation 129475 "syntaxError"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}const ${t0} ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+      end
+
+      operation 129603 "syntaxError"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "s" explicit_type "string"
+	  param in name "e" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}const ${t0} ${p0}, const ${t1} ${p1}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}const ${t0} ${p0}, const ${t1} ${p1}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+      end
+
+      operation 128168 "skipBlock"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+	comment "// skip the end of the current block
+// '(' already read"
+      end
+
+      operation 128296 "skipNextForm"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+	comment "// skip the next form
+"
+      end
+
+      operation 128424 "eof"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+      end
+
+      operation 130049 "rewind"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+      end
+
+      operation 128785 "readVisibility"
+	public return_type class_ref 512 // aVisibility
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+      end
+
+      operation 128913 "readBool"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+      end
+
+      operation 128063 "readLanguage"
+	public return_type class_ref 128063 // Language
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+      end
+
+      operation 130305 "readDefinitionBeginning"
+	public explicit_return_type "int"
+	nparams 5
+	  param out name "s" explicit_type "string"
+	  param out name "id" explicit_type "string"
+	  param out name "ste" explicit_type "string"
+	  param out name "doc" explicit_type "string"
+	  param out name "prop" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} & ${p0}, ${t1} & ${p1}, ${t2} & ${p2}, ${t3} & ${p3}, QDict<${t4}> & ${p4}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} & ${p0}, ${t1} & ${p1}, ${t2} & ${p2}, ${t3} & ${p3}, QDict<${t4}> & ${p4}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+      end
+
+      operation 130433 "readProperties"
+	public explicit_return_type "void"
+	nparams 1
+	  param out name "d" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}QDict<${t0}> & ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}QDict<${t0}> & ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+      end
+
+      attribute 128067 "line_number"
+	protected explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 128129 "unread_k"
+	protected explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 128257 "unread_s"
+	protected explicit_type "string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 128002 "Artifact"cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 129154 "language"
+	protected type class_ref 128063 // Language
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 128898 "name"
+	protected explicit_type "string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 128386 "stereotype"
+	protected explicit_type "string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 129026 "description"
+	protected explicit_type "string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 128130 "cpp_path"
+	protected explicit_type "string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 128258 "java_path"
+	protected explicit_type "string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 128514 "cpp_namespace"
+	protected explicit_type "string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 128642 "java_package"
+	protected explicit_type "string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 128770 "idl_module"
+	protected explicit_type "string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      classrelation 128002 // all (<directional aggregation by value>)
+	relation 128002 *-->
+	  stereotype "asciidict"
+	  a role_name "all" multiplicity "*" class_relation protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${stereotype}<${type}> ${name}${value};
+"
+	    classrelation_ref 128002 // all (<directional aggregation by value>)
+	  b parent class_ref 128002 // Artifact
+      end
+
+      operation 128130 "find"
+	class_operation public return_type class_ref 128002 // Artifact
+	nparams 1
+	  param in name "uid" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} * ${name}${(}const ${t0} & ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} * ${class}::${name}${(}const ${t0} & ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+      end
+
+      operation 128258 "import_component_view"
+	class_operation public explicit_return_type "void"
+	nparams 1
+	  param inout name "f" type class_ref 128067 // File
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} & ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} & ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+      end
+
+      operation 128386 "import_components"
+	class_operation public explicit_return_type "void"
+	nparams 1
+	  param inout name "f" type class_ref 128067 // File
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} & ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} & ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+      end
+
+      operation 128514 "import"
+	class_operation public explicit_return_type "void"
+	nparams 1
+	  param inout name "f" type class_ref 128067 // File
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} & ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} & ${p0}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+      end
+
+      operation 128770 "add"
+	public explicit_return_type "void"
+	nparams 3
+	  param inout name "pack" type class_ref 7937 // UmlPackage
+	  param inout name "cl" type class_ref 6017 // UmlClass
+	  param inout name "art_path" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} * ${p0}, ${t1} * ${p1}, ${t2} & ${p2}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} * ${p0}, ${t1} * ${p1}, ${t2} & ${p2}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+	comment "'pack' is the package containing the class view where 'cl' is defined
+'cl' is not nested in an other class
+'art_path' is the rose path of the artifact"
+      end
+
+      operation 129154 "add_cpp"
+	public explicit_return_type "void"
+	nparams 4
+	  param inout name "pack" type class_ref 7937 // UmlPackage
+	  param inout name "cl" type class_ref 6017 // UmlClass
+	  param inout name "h" explicit_type "string"
+	  param inout name "src" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} * ${p0}, ${t1} * ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} * ${p0}, ${t1} * ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+      end
+
+      operation 129282 "add_corba"
+	public explicit_return_type "void"
+	nparams 3
+	  param inout name "pack" type class_ref 7937 // UmlPackage
+	  param inout name "cl" type class_ref 6017 // UmlClass
+	  param inout name "src" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} * ${p0}, ${t1} * ${p1}, ${t2} ${p2}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} * ${p0}, ${t1} * ${p1}, ${t2} ${p2}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+      end
+
+      operation 129410 "add_java"
+	public explicit_return_type "void"
+	nparams 4
+	  param inout name "pack" type class_ref 7937 // UmlPackage
+	  param inout name "cl" type class_ref 6017 // UmlClass
+	  param in name "art_path" explicit_type "string"
+	  param in name "src" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} * ${p0}, ${t1} * ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} * ${p0}, ${t1} * ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+      end
+
+      operation 129538 "normalize"
+	public explicit_return_type "string"
+	nparams 2
+	  param inout name "path" explicit_type "string"
+	  param in name "root" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	
+	
+      end
+    end
+  end
+
+  deploymentview 128067 "Aux"
+    //deployment diagram settings
+    package_name_in_tab default show_context default write_horizontally default auto_label_position default shadow default
+    draw_component_as_icon default show_component_req_prov default show_component_rea default
+    artifact 128129 "Uc"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+#include \"UmlClass.h\"
+#include \"UmlUseCase.h\"
+#include \"UmlUseCaseView.h\"
+#include \"UmlUseCaseDiagram.h\"
+#include \"UmlSequenceDiagram.h\"
+#include \"UmlCollaborationDiagram.h\"
+#include \"UmlCom.h\"
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 128129 // Uc
+      end
+    end
+
+    artifact 128067 "File"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+#include <qfile.h>
+${declarations}
+${namespace_start}
+enum { ATOM = 1, STRING = 2 };
+
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+#include <stdlib.h>
+#include <qinputdialog.h>
+#include <qdict.h>
+#include <qfileinfo.h> 
+#include <qdir.h>
+#include \"UmlCom.h\"
+
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 128067 // File
+      end
+    end
+
+    artifact 128257 "util"
+      stereotype "source"
+      cpp_h "#ifndef ${NAME}_H
+#define UTIL_H
+
+extern QCString legalName(QCString);
+extern QCString replace(QCString f, QCString k, QCString v);
+extern bool isSep(int c);
+
+#endif
+"
+      cpp_src "#include \"qcstring.h\"
+
+#include \"${name}.h\"
+
+QCString legalName(QCString s)
+{
+  for (unsigned index = 0; index != s.length(); index += 1) {
+    char c = s.at(index);
+    
+    if ((c != '_') && 
+	!((c >= 'a') && (c <= 'z')) &&
+        !((c >= 'A') && (c <= 'Z')) &&
+	!((c >= '0') && (c <= '9'))) {
+      s.replace(index, 1, \"__\");
+      index += 1;
+    }
+  }
+
+  return s;
+}
+
+QCString replace(QCString f, QCString k, QCString v)
+{
+  int index = f.find(k);
+
+  return (index != -1)
+    ? f.replace(index, k.length(), v)
+    : f;
+}
+
+bool isSep(int c)
+{
+  return ((c != '_') && 
+	  !((c >= 'a') && (c <= 'z')) &&
+          !((c >= 'A') && (c <= 'Z')) &&
+	  !((c >= '0') && (c <= '9')));
+}
+"
+      associated_classes
+      end
+    end
+
+    artifact 128063 "Language"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      idl_src "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${module_start}
+${definition}
+${module_end}
+#endif
+"
+      associated_classes
+	class_ref 128063 // Language
+      end
+    end
+
+    artifact 128002 "Artifact"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+#include <qdir.h>
+#include <qfileinfo.h>
+#include \"CppSettings.h\"
+#include \"JavaSettings.h\"
+#include \"IdlSettings.h\"
+#include \"UmlCom.h\"
+#include \"UmlClass.h\"
+#include \"UmlDeploymentView.h\"
+#include \"UmlArtifact.h\"
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 128002 // Artifact
+      end
+    end
+  end
+end

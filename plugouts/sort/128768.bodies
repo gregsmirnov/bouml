@@ -1,0 +1,13 @@
+class StateBehavior
+!!!131712.cpp!!!	read() : void
+  on_entry = UmlCom::read_string();
+  on_exit = UmlCom::read_string();
+  do_activity = UmlCom::read_string();
+!!!131712.java!!!	read() : void
+  on_entry = UmlCom.read_string();
+  on_exit = UmlCom.read_string();
+  do_activity = UmlCom.read_string();
+!!!131840.cpp!!!	unload() : void
+  on_entry = 0;
+  on_exit = 0;
+  do_activity = 0;

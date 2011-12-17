@@ -1,0 +1,4 @@
+class UmlUnmarshallAction
+!!!203906.cpp!!!	write(inout out : FileOut) : void
+  write_begin(out, "UnmarshallAction");
+  write_end(out);

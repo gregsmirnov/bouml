@@ -1,0 +1,37 @@
+class UmlBaseClassView
+!!!13568.cpp!!!	create(inout parent : UmlPackage, in s : str) : UmlClassView
+  return (UmlClassView *) parent->create_(aClassView, s);
+!!!13568.java!!!	create(inout parent : UmlPackage, in s : str) : UmlClassView
+  return (UmlClassView) parent.create_(anItemKind.aClassView, s);
+!!!13696.cpp!!!	kind() : anItemKind
+  return aClassView;
+!!!13696.java!!!	kind() : anItemKind
+  return anItemKind.aClassView;
+!!!13824.cpp!!!	associatedDeploymentView() : UmlDeploymentView
+  read_if_needed_();
+  
+  return _assoc_view;
+!!!13824.java!!!	associatedDeploymentView() : UmlDeploymentView
+  read_if_needed_();
+  
+  return _assoc_view;
+!!!13952.cpp!!!	set_AssociatedDeploymentView(inout v : UmlDeploymentView) : bool
+  UmlCom::send_cmd(_identifier, setAssocViewCmd, ((UmlBaseItem *) v)->_identifier);
+  if (UmlCom::read_bool()) {
+    _assoc_view = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!13952.java!!!	set_AssociatedDeploymentView(inout v : UmlDeploymentView) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setAssocViewCmd, v.identifier_());
+  UmlCom.check();
+  
+  _assoc_view = v;
+
+!!!14080.cpp!!!	read_uml_() : void
+  _assoc_view = (UmlDeploymentView *) UmlBaseItem::read_();
+  UmlBaseItem::read_uml_();
+!!!14080.java!!!	read_uml_() : void
+  _assoc_view = (UmlDeploymentView) UmlBaseItem.read_();
+  super.read_uml_();

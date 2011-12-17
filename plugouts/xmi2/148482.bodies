@@ -1,0 +1,32 @@
+class UmlUseCaseAssociation
+!!!132484.cpp!!!	write(inout out : FileOut, in d : UmlItem, in rank : int, in k : str) : void
+  
+  out.indent();
+  out << '<' << k << " xmi:type=\"uml:Association\"";
+  out.id_prefix(d, "UCAC", rank);
+  if (! name().isEmpty()){
+    out << " name=\"";
+    out.quote(name());
+    out << "\">\n";
+  }
+  else
+    out << ">\n";
+  out.indent(+1); 
+  
+  out.indent();
+  out << "<ownedEnd xmi:type=\"uml:Property\"";
+  out.id_prefix(d, "AC", rank);
+  out.ref(actor(), "type");
+  out.ref(d, "association", "UCAC", rank);
+  out << "/>\n";
+  
+  out.indent();
+  out << "<ownedEnd xmi:type=\"uml:Property\"";
+  out.id_prefix(d, "UC", rank);
+  out.ref(useCase()->useCase(), "type");
+  out.ref(d, "association", "UCAC", rank);
+  out << "/>\n";
+
+  out.indent(-1);
+  out.indent();
+  out << "</" << k << ">\n";

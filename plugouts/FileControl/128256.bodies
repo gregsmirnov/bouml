@@ -1,0 +1,167 @@
+class UmlBaseState
+!!!128128.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlState
+  return (UmlState *) parent->create_(aState, s);
+!!!128128.java!!!	create(inout parent : UmlItem, inout s : str) : UmlState
+  return (UmlState) parent.create_(anItemKind.aState, s);
+!!!128256.cpp!!!	kind() : anItemKind
+  return aState;
+!!!128256.java!!!	kind() : anItemKind
+  return anItemKind.aState;
+!!!129152.cpp!!!	entryBehavior() : string
+  read_if_needed_();
+  return _uml.on_entry;
+!!!129152.java!!!	entryBehavior() : string
+  read_if_needed_();
+  return _uml.on_entry;
+!!!129280.cpp!!!	set_EntryBehavior(in s : str) : bool
+  return set_it_(_uml.on_entry, s, setUmlEntryBehaviorCmd);
+!!!129280.java!!!	set_EntryBehavior(in s : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setUmlEntryBehaviorCmd, s);
+  UmlCom.check();
+
+  _uml.on_entry = s;
+!!!129408.cpp!!!	exitBehavior() : string
+  read_if_needed_();
+  return _uml.on_exit;
+!!!129408.java!!!	exitBehavior() : string
+  read_if_needed_();
+  return _uml.on_exit;
+!!!129536.cpp!!!	set_ExitBehavior(in s : str) : bool
+  return set_it_(_uml.on_exit, s, setUmlExitBehaviorCmd);
+!!!129536.java!!!	set_ExitBehavior(in s : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setUmlExitBehaviorCmd, s);
+  UmlCom.check();
+
+  _uml.on_exit = s;
+!!!129664.cpp!!!	doActivity() : string
+  read_if_needed_();
+  return _uml.do_activity;
+!!!129664.java!!!	doActivity() : string
+  read_if_needed_();
+  return _uml.do_activity;
+!!!129792.cpp!!!	set_DoActivity(in s : str) : bool
+  return set_it_(_uml.do_activity, s, setUmlActivityCmd);
+!!!129792.java!!!	set_DoActivity(in s : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setUmlActivityCmd, s);
+  UmlCom.check();
+
+  _uml.do_activity = s;
+!!!129920.cpp!!!	cppEntryBehavior() : string
+  read_if_needed_();
+  return _cpp.on_entry;
+!!!129920.java!!!	cppEntryBehavior() : string
+  read_if_needed_();
+  return _cpp.on_entry;
+!!!130048.cpp!!!	set_CppEntryBehavior(in s : str) : bool
+  return set_it_(_cpp.on_entry, s, setCppEntryBehaviorCmd);
+!!!130048.java!!!	set_CppEntryBehavior(in s : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setCppEntryBehaviorCmd, s);
+  UmlCom.check();
+
+  _cpp.on_entry = s;
+!!!130176.cpp!!!	cppExitBehavior() : string
+  read_if_needed_();
+  return _cpp.on_exit;
+!!!130176.java!!!	cppExitBehavior() : string
+  read_if_needed_();
+  return _cpp.on_exit;
+!!!130304.cpp!!!	set_CppExitBehavior(in s : str) : bool
+  return set_it_(_cpp.on_exit, s, setCppExitBehaviorCmd);
+!!!130304.java!!!	set_CppExitBehavior(in s : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setCppExitBehaviorCmd, s);
+  UmlCom.check();
+
+  _cpp.on_exit = s;
+!!!130432.cpp!!!	cppDoActivity() : string
+  read_if_needed_();
+  return _cpp.do_activity;
+!!!130432.java!!!	cppDoActivity() : string
+  read_if_needed_();
+  return _cpp.do_activity;
+!!!130560.cpp!!!	set_CppDoActivity(in s : str) : bool
+  return set_it_(_cpp.do_activity, s, setCppActivityCmd);
+!!!130560.java!!!	set_CppDoActivity(in s : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setCppActivityCmd, s);
+  UmlCom.check();
+
+  _cpp.do_activity = s;
+!!!130688.cpp!!!	javaEntryBehavior() : string
+  read_if_needed_();
+  return _java.on_entry;
+!!!130688.java!!!	javaEntryBehavior() : string
+  read_if_needed_();
+  return _java.on_entry;
+!!!130816.cpp!!!	set_JavaEntryBehavior(in s : str) : bool
+  return set_it_(_java.on_entry, s, setJavaEntryBehaviorCmd);
+!!!130816.java!!!	set_JavaEntryBehavior(in s : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setJavaEntryBehaviorCmd, s);
+  UmlCom.check();
+
+  _java.on_entry = s;
+!!!130944.cpp!!!	javaExitBehavior() : string
+  read_if_needed_();
+  return _java.on_exit;
+!!!130944.java!!!	javaExitBehavior() : string
+  read_if_needed_();
+  return _java.on_exit;
+!!!131072.cpp!!!	set_JavaExitBehavior(in s : str) : bool
+  return set_it_(_java.on_exit, s, setJavaExitBehaviorCmd);
+!!!131072.java!!!	set_JavaExitBehavior(in s : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setJavaExitBehaviorCmd, s);
+  UmlCom.check();
+
+  _java.on_exit = s;
+!!!131200.cpp!!!	javaDoActivity() : string
+  read_if_needed_();
+  return _java.do_activity;
+!!!131200.java!!!	javaDoActivity() : string
+  read_if_needed_();
+  return _java.do_activity;
+!!!131328.cpp!!!	set_JavaDoActivity(in s : str) : bool
+  return set_it_(_java.do_activity, s, setJavaActivityCmd);
+!!!131328.java!!!	set_JavaDoActivity(in s : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setJavaActivityCmd, s);
+  UmlCom.check();
+
+  _java.do_activity = s;
+!!!131456.cpp!!!	associatedDiagram() : UmlStateDiagram
+  read_if_needed_();
+
+  return _assoc_diagram;
+!!!131456.java!!!	associatedDiagram() : UmlStateDiagram
+  read_if_needed_();
+
+  return _assoc_diagram;
+!!!131584.cpp!!!	unload(in rec : bool, in del : bool) : void
+  _uml.unload();
+#ifdef WITHCPP
+  _cpp.unload();
+#endif
+#ifdef WITHJAVA
+  _java.unload();
+#endif
+  UmlBaseItem::unload(rec, del);
+!!!131584.java!!!	unload(in rec : bool, in del : bool) : void
+  _uml = null;
+  _cpp = null;
+  _java = null;
+  super.unload(rec, del);
+!!!131968.cpp!!!	read_uml_() : void
+  _assoc_diagram = (UmlStateDiagram *) UmlBaseItem::read_();
+  UmlBaseItem::read_uml_();
+  _uml.read();
+!!!131968.java!!!	read_uml_() : void
+  _assoc_diagram = (UmlStateDiagram) UmlBaseItem.read_();
+  super.read_uml_();
+  _uml = new StateBehavior();
+  _uml.read();
+!!!132096.cpp!!!	read_cpp_() : void
+  _cpp.read();
+!!!132096.java!!!	read_cpp_() : void
+  _cpp = new StateBehavior();
+  _cpp.read();
+!!!132224.cpp!!!	read_java_() : void
+  _java.read();
+!!!132224.java!!!	read_java_() : void
+  _java = new StateBehavior();
+  _java.read();

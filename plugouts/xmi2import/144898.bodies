@@ -1,0 +1,42 @@
+class Trigger
+!!!220674.cpp!!!	init() : void
+  UmlItem::declareFct("ownedmember", "uml:Trigger", &importIt);
+  UmlItem::declareFct("packagedelement", "uml:Trigger", &importIt);
+  UmlItem::declareFct("trigger", "uml:Trigger", &importIt);
+
+  UmlItem::declareFct("ownedtrigger", "uml:AnyTrigger", &importIt); // Borland Together 2006 for Eclipse
+!!!220546.cpp!!!	importIt(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  All.insert(token.xmiId(), token.valueOf("name"));
+      
+  if (! token.closed())
+    in.finish(token.what());
+!!!220802.cpp!!!	get(in idref : string) : string
+  QMap<QCString, QCString>::Iterator iter = All.find(idref);
+  static QCString null_str;
+  
+  return (iter == All.end()) ? null_str : *iter;
+!!!220930.cpp!!!	add(inout in : FileIn, inout token : Token, out name : string, out idref : string) : void
+  // token is <trigger ...>
+  QCString t = token.xmiIdref();
+  
+  if (! t.isEmpty()) {
+    QMap<QCString, QCString>::Iterator iter = All.find(t);
+    
+    if (iter == All.end()) {
+      idref = t;
+      name = "";
+    }
+    else {
+      name = *iter;
+      idref = "";
+    }
+  }
+  else {
+    name = token.valueOf("name");
+    idref = "";
+    All.insert(token.xmiId(), name);
+  }
+
+  if (! token.closed())
+    in.finish(token.what());
+

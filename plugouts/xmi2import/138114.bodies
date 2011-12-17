@@ -1,0 +1,53 @@
+class UmlAccessVariableValueAction
+!!!205698.cpp!!!	import_it(inout in : FileIn, inout token : Token) : void
+  QCString s = token.valueOf("variable");
+  
+  if (! s.isEmpty())
+    setVariable(s);
+    
+  if (! token.closed()) {
+    QCString k = token.what();
+    const char * kstr = k;
+    
+    while (in.read(), !token.close(kstr)) {
+      s = token.what();
+      
+      if (s == "variable") {
+	setVariable(token.xmiIdref());
+	if (! token.closed())
+	  in.finish("variable");
+      }
+      else
+	import(in, token);
+    }
+  }
+!!!205826.cpp!!!	setVariable(in idref : string) : void
+  QMap<QCString, UmlItem *>::Iterator it = All.find(idref);
+  
+  if (it == All.end())
+    Unresolved::addRef(this, idref);
+  else {
+    switch ((*it)->kind()) {
+    case anAttribute:
+    case aRelation:
+      set_Variable(*it);
+    default:
+      break;
+    }
+  }
+!!!211586.cpp!!!	solve(in idref : string) : void
+  QMap<QCString, UmlItem *>::Iterator it = All.find(idref);
+  
+  if (it == All.end()) {
+    if (!FileIn::isBypassedId(idref))
+      UmlCom::trace("activity action : unknown variable reference '" + idref + "'<br>");
+  }
+  else {
+    switch ((*it)->kind()) {
+    case anAttribute:
+    case aRelation:
+      set_Variable(*it);
+    default:
+      break;
+    }
+  }

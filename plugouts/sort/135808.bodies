@@ -1,0 +1,9 @@
+class UmlBaseSendObjectAction
+!!!163584.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlSendObjectAction
+  return (UmlSendObjectAction *) parent->create_(aSendObjectAction, s);
+!!!163584.java!!!	create(inout parent : UmlItem, inout s : str) : UmlSendObjectAction
+  return (UmlSendObjectAction) parent.create_(anItemKind.aSendObjectAction, s);
+!!!163712.cpp!!!	kind() : anItemKind
+  return aSendObjectAction;
+!!!163712.java!!!	kind() : anItemKind
+  return anItemKind.aSendObjectAction;

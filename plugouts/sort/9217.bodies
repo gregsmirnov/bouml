@@ -1,0 +1,9 @@
+class UmlPackage
+!!!144258.cpp!!!	sort() : void
+sortChildren();
+!!!144258.java!!!	sort() : void
+sortChildren();
+!!!145666.cpp!!!	orderWeight() : int
+return 1;
+!!!145666.java!!!	orderWeight() : int
+return 1;

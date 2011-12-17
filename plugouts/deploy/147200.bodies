@@ -1,0 +1,9 @@
+class UmlBaseCollaborationMessage
+!!!212224.cpp!!!	read_(in instances : UmlClassInstanceReference) : void
+  UmlBaseMessage::read_(instances);
+  _rank = (int) UmlCom::read_unsigned();
+  _hrank = UmlCom::read_string();
+!!!212224.java!!!	read_(in instances : UmlClassInstanceReference) : void
+  super.read_(instances);
+  _rank = UmlCom.read_unsigned();
+  _hrank = UmlCom.read_string();

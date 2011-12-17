@@ -1,0 +1,7 @@
+class UmlBaseDiagram
+!!!19712.cpp!!!	saveIn(in s : string) : bool
+  UmlCom::send_cmd(_identifier, saveInCmd, s);
+  return UmlCom::read_bool();
+!!!19712.java!!!	saveIn(in s : string) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.saveInCmd, s);
+  UmlCom.check();

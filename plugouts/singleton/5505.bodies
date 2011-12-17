@@ -1,0 +1,5 @@
+class UmlClassItem
+!!!128208.cpp!!!	check() : bool
+  return TRUE;
+!!!128208.java!!!	check() : bool
+  return true;

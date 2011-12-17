@@ -1,0 +1,14 @@
+class UmlBaseActualParameter
+!!!1024.cpp!!!	read_() : void
+  _superClass = (UmlClass *) UmlBaseItem::read_();	// cannot be 0
+  _rank = UmlCom::read_unsigned();
+  _value.type = (UmlClass *) UmlBaseItem::read_();
+  if (_value.type == 0)
+    _value.explicit_type = UmlCom::read_string();
+!!!1024.java!!!	read_() : void
+  _superClass = (UmlClass) UmlBaseItem.read_();	// cannot be 0
+  _rank = UmlCom.read_unsigned();
+  _value = new UmlTypeSpec();
+  _value.type = (UmlClass) UmlBaseItem.read_();
+  if (_value.type == null)
+    _value.explicit_type = UmlCom.read_string();

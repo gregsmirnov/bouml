@@ -1,0 +1,9 @@
+class UmlBaseUnmarshallAction
+!!!167296.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlUnmarshallAction
+  return (UmlUnmarshallAction *) parent->create_(anUnmarshallAction, s);
+!!!167296.java!!!	create(inout parent : UmlItem, inout s : str) : UmlUnmarshallAction
+  return (UmlUnmarshallAction) parent.create_(anItemKind.anUnmarshallAction, s);
+!!!167424.cpp!!!	kind() : anItemKind
+  return anUnmarshallAction;
+!!!167424.java!!!	kind() : anItemKind
+  return anItemKind.anUnmarshallAction;

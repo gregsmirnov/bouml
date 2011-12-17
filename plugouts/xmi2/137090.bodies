@@ -1,0 +1,6 @@
+class UmlBroadcastSignalAction
+!!!204162.cpp!!!	write(inout out : FileOut) : void
+  write_begin(out, "BroadcastSignalAction");
+  write_end(out, TRUE);
+  write_signal(out);
+  write_close(out);

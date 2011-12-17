@@ -1,0 +1,9 @@
+class UmlBaseJunctionPseudoState
+!!!142080.cpp!!!	create(inout parent : UmlItem) : UmlJunctionPseudoState
+  return (UmlJunctionPseudoState *) parent->create_(aJunctionPseudoState, "");
+!!!142080.java!!!	create(inout parent : UmlItem) : UmlJunctionPseudoState
+  return (UmlJunctionPseudoState) parent.create_(anItemKind.aJunctionPseudoState, "");
+!!!142208.cpp!!!	kind() : anItemKind
+  return aJunctionPseudoState;
+!!!142208.java!!!	kind() : anItemKind
+  return anItemKind.aJunctionPseudoState;

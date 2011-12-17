@@ -1,0 +1,5 @@
+class UmlFormalParameter
+!!!207746.cpp!!!	UmlFormalParameter(in name : string, in value : string)
+  _name = name;
+  _type = "typename";
+  _default_value.explicit_type = value;

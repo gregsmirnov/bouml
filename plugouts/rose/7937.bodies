@@ -1,0 +1,169 @@
+class UmlPackage
+!!!128195.cpp!!!	roseImport() : void
+  QString s = QFileDialog::getOpenFileName(QString::null, "*.mdl", 0);
+
+  if (!s.isEmpty()) {
+    File f(s, "");
+
+    if (! f.open(IO_ReadOnly)) {
+      UmlCom::trace("<br>cannot open " + s);
+      throw 0;
+    }
+    
+    UmlItem * prj = this;
+    
+    while (prj->parent() != 0)
+      prj = prj->parent();
+    
+    prj->set_childrenVisible(FALSE);
+    
+    try {
+      UmlCom::message("Phase 1");
+      scanning = TRUE;
+      
+      while (import(f))
+	;
+      
+      scanning = FALSE;
+      UmlCom::message("Phase 2");
+      f.rewind();
+      
+      while (import(f))
+	;
+    }
+    catch (...) {
+      set_childrenVisible(TRUE);
+      throw 0;
+    }
+    
+    set_childrenVisible(TRUE);
+  }
+!!!128257.cpp!!!	fullName() : string
+  return (this == getProject()) ? name() : UmlItem::fullName();
+!!!129666.cpp!!!	subArtifacts(inout l : UmlArtifact, in name : string, in deplview_name : string) : void
+  UmlDeploymentView * deplview;
+  
+  for (deplview = _deplviews.first(); deplview != 0; deplview = _deplviews.next()) {
+    if (deplview->baseName() == deplview_name) {
+      const QVector<UmlItem> ch = deplview->children();
+      unsigned i;
+      
+      for (i = 0; i != ch.size(); i += 1) {
+	UmlItem * it = ch[i];
+	
+	if ((it->kind() == anArtifact) && (it->name() == name))
+	  l.append((UmlArtifact *) it);
+      }
+    }
+  }
+
+!!!129794.cpp!!!	subDeplViews(inout l : UmlDeploymentView, in s : string) : void
+  UmlDeploymentView * deplview;
+  
+  for (deplview = _deplviews.first(); deplview != 0; deplview = _deplviews.next())
+    if (deplview->baseName() == s)
+      l.append(deplview);
+!!!130050.cpp!!!	addPackage(in s : string) : UmlPackage
+  UmlPackage * r;
+  
+  while ((r = UmlPackage::create(this, s)) == 0)
+    s += "_";
+    
+  return r;
+!!!130178.cpp!!!	addDeplView(in s : string, inout p : UmlPackage) : UmlDeploymentView
+  UmlDeploymentView * dpv;
+  QCString bn = s;
+  
+  while ((dpv = UmlDeploymentView::create(p, s, bn)) == 0)
+    s += '_';
+    
+  _deplviews.append(dpv);
+  
+  return dpv;
+!!!128323.cpp!!!	import(inout f : File) : bool
+  QCString s;
+
+  switch (f.read(s)) {
+  case -1:
+    return FALSE;
+  case '(':
+    break;
+  default:
+    f.syntaxError(s);
+  }
+
+  if ((f.read(s) != ATOM) || (s != "object"))
+    f.syntaxError(s, "object");
+
+  if (f.read(s) != ATOM)
+    f.syntaxError(s);
+
+  if (s == "Design") {
+    f.read(s);	// "Logical View"
+
+    for (;;) {
+      switch (f.read(s)) {
+      case ATOM:
+        break;
+      case ')':
+        return TRUE;
+      case -1:
+        f.eof();
+        throw 0;
+      default:
+        f.syntaxError(s, "an atom");
+      }
+
+      if (s == "root_usecase_package")
+        readUseCaseView(f);
+      else if (s == "root_category")
+        readClassView(f);
+      else if (s == "root_subsystem")
+        readComponentView(f);
+      else if (s == "process_structure")
+        readDeploymentView(f);
+      else {
+#ifdef DEBUGROSE
+        if (s != "properties")
+	  UmlCom::trace("<br>import does not manage '" + s + "'");
+#endif
+        f.skipNextForm();
+      }
+    }
+    return TRUE;
+  }
+  else if (s == "Petal") {
+    f.skipBlock();
+    return TRUE;
+  }
+  else {
+    UmlCom::trace("<br>" + s + " : not yet managed " + f.context());
+    throw 0;
+  }
+!!!128083.cpp!!!	readUseCaseView(inout f : File) : void
+  f.read("(");
+  f.read("object");
+  f.read("Class_Category");
+
+  UmlUseCaseView::import(this, f);
+!!!128211.cpp!!!	readClassView(inout f : File) : void
+  f.read("(");
+  f.read("object");
+  f.read("Class_Category");
+
+  UmlClassView::import(this, f);
+!!!128339.cpp!!!	readComponentView(inout f : File) : void
+  if (scanning) {
+    f.read("(");
+    f.read("object");
+    f.read("SubSystem");
+    Artifact::import_component_view(f);
+  }
+  else
+    f.skipNextForm();
+!!!128467.cpp!!!	readDeploymentView(inout f : File) : void
+  f.read("(");
+  f.read("object");
+  f.read("Processes");
+
+  UmlDeploymentView::import(this, f);

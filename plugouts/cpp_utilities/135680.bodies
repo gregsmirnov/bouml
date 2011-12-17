@@ -1,0 +1,49 @@
+class UmlBaseExpansionRegion
+!!!159232.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlExpansionRegion
+  return (UmlExpansionRegion *) parent->create_(anExpansionRegion, s);
+!!!159232.java!!!	create(inout parent : UmlItem, inout s : str) : UmlExpansionRegion
+  return (UmlExpansionRegion) parent.create_(anItemKind.anExpansionRegion, s);
+!!!159360.cpp!!!	kind() : anItemKind
+  return anExpansionRegion;
+!!!159360.java!!!	kind() : anItemKind
+  return anItemKind.anExpansionRegion;
+!!!159744.cpp!!!	isMustIsolate() : bool
+  read_if_needed_();
+  return _must_isolate;
+!!!159744.java!!!	isMustIsolate() : bool
+  read_if_needed_();
+  return _must_isolate;
+!!!159872.cpp!!!	set_isMustIsolate(in v : bool) : bool
+  return set_it_(_must_isolate, v, setFlagCmd);
+!!!159872.java!!!	set_isMustIsolate(in v : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setFlagCmd, (v) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _must_isolate = v;
+!!!160000.cpp!!!	mode() : anExpansionKind
+  read_if_needed_();
+  return _mode;
+!!!160000.java!!!	mode() : anExpansionKind
+  read_if_needed_();
+  return _mode;
+!!!160128.cpp!!!	set_Mode(in v : anExpansionKind) : bool
+  UmlCom::send_cmd(_identifier, setDefCmd, (char) v);
+  if (UmlCom::read_bool()) {
+    _mode = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!160128.java!!!	set_Mode(in v : anExpansionKind) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setDefCmd, (byte) v.value());
+  UmlCom.check();
+
+  _mode = v;
+!!!160256.cpp!!!	read_uml_() : void
+  UmlBaseActivityRegion::read_uml_();
+  _must_isolate = UmlCom::read_bool();
+  _mode = (anExpansionKind) UmlCom::read_char();
+!!!160256.java!!!	read_uml_() : void
+  super.read_uml_();
+  _must_isolate = UmlCom.read_bool();
+  _mode = anExpansionKind.fromInt(UmlCom.read_char());

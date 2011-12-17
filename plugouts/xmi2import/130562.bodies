@@ -1,0 +1,23 @@
+class UmlFinalState
+!!!198146.cpp!!!	init() : void
+  declareFct("subvertex", "uml:FinalState", &importIt);
+
+!!!198018.cpp!!!	importIt(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  where = where->container(aFinalState, token, in);
+    
+  if (where != 0) {
+    UmlFinalState * fs = UmlFinalState::create(where);
+    
+    if (fs == 0)
+      in.error("cannot create final state in '" + where->name() + "'");
+
+    fs->addItem(token.xmiId(), in);
+    
+    if (! token.closed()) {
+      QCString k = token.what();
+      const char * kstr = k;
+      
+      while (in.read(), !token.close(kstr))
+	fs->UmlItem::import(in, token);
+    }
+  }

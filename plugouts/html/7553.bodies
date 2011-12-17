@@ -1,0 +1,1670 @@
+class UmlItem
+!!!128096.cpp!!!	sKind() : string
+  return "???";
+!!!128096.java!!!	sKind() : string
+  return "???";
+!!!128055.cpp!!!	set_dir(in argc : int, in argv : str) : void
+  QString d;
+  bool ask;
+  bool rem;
+  bool replace_css;
+
+  if ((argc != 0) && !strcmp(argv[0], "-flat")) {
+    flat = TRUE;
+    argc -= 1;
+    argv += 1;
+  }
+  else
+    flat = FALSE;
+
+  if ((argc != 0) && !strcmp(argv[0], "-svg")) {
+    svg = TRUE;
+    argc -= 1;
+    argv += 1;
+  }
+  else
+    svg = FALSE;
+
+  if (argc == 0) {
+    if (!UmlBasePackage::getProject()->propertyValue("html dir", directory))
+      directory = "/tmp/" + name() + "_html";
+
+    d = directory;
+    d = QFileDialog::getExistingDirectory(d, 0, "","Directory where the files will be produced", TRUE);
+  
+    if (d.isEmpty())
+      throw 0;
+    
+#ifdef WIN32
+    QDir dir(d);
+    
+    if (! dir.exists()) {
+      int index = d.length() - 1;
+      
+      if (d.at(index) == QChar('/'))
+	index -= 1;
+      
+      QString d2 = d;
+	
+      d2.remove(index, 1);
+	
+      QDir dir2(d2);
+	
+      if (dir2.exists())
+	d = d2;
+    }
+#endif
+    
+    ask = TRUE;
+    rem = FALSE;
+    replace_css = TRUE;
+  }
+  else {
+    d = argv[0];    
+    ask = FALSE;
+    
+    if ((argc == 2) && !strcmp(argv[1], "-del_html")) {
+      rem = TRUE;
+      argc -= 1;
+      argv += 1;
+    }
+    else
+      rem = FALSE;
+    
+    replace_css = ((argc == 2) && !strcmp(argv[1], "-del_css"));
+  }
+    
+  if ((d.at(d.length() - 1) != '/') && (d.at(d.length() - 1) != '\\'))
+    d += '/';
+    
+  directory = (const char *) d;
+  
+  QDir dir(d);
+  unsigned i;
+  
+  if (dir.exists()) {
+    if (ask) {
+      // remove old html files ?
+      for (i = 0; i != dir.count(); i += 1) {
+	if (dir[i].right(5).lower() == ".html") {
+	  if (!rem &&
+	      (QMessageBox::critical(0, "Html generator", 
+				     "Delete already existing html files ?",
+				     "Yes", "No", QString::null, 
+				     1, 1) != 0))
+	    break;
+	  rem = TRUE;
+	  dir.remove(dir[i]);
+	}
+      }
+      
+      // remove old css file ?
+      for (i = 0; i != dir.count(); i += 1) {
+	if (dir[i] == "style.css") {
+	  if (QMessageBox::critical(0, "Html generator", 
+				    "Replace already existing style.css ?",
+				    "Yes", "No", QString::null, 
+				    1, 1) != 0)
+	    replace_css = FALSE;
+	  break;
+	}
+      }
+      
+    }
+    else {
+      if (rem) {
+	for (i = 0; i != dir.count(); i += 1) {
+	  if (dir[i].right(5).lower() == ".html")
+	    dir.remove(dir[i]);
+	}
+      }
+      
+      if (!replace_css) {
+	replace_css = TRUE;	// to create it
+
+	for (i = 0; i != dir.count(); i += 1) {
+	  if (dir[i] == "style.css") {
+	    // already exist, don't replace
+	    replace_css = FALSE;
+	    break;
+	  }
+	}
+      }
+    }
+  }
+  else if (! dir.mkdir(d)) {
+    UmlCom::trace("Cannot create directory " + directory);
+    throw 0;
+  }
+  else
+    replace_css = TRUE;	// to create it
+
+  if (ask)
+    UmlBasePackage::getProject()->set_PropertyValue("html dir", directory);
+
+  if (replace_css) {
+    // write css file
+    FileWriter fw;
+    
+    if (fw.open(directory + "style.css")) {
+      fw.write("\
+div.title { font-size: 150%; background: #87ceff; text-align: center; font-weight: bold; }\n\
+\n\
+div.sub { margin-left : 20px; }\n\
+div.element { background: #d3d3d3; }\n\
+\n\
+h1.package { background: #ffe4c4; }\n\
+h1.view { background: #98fb98; }\n\
+\n\
+h2.package { background: #ffe4c4; }\n\
+h2.view { background: #98fb98; }\n\
+h2.class { background: #87ceff; }\n\
+h2.usecase { background: #87ceff; }\n\
+h2.state { background: #87ceff; }\n\
+h2.activity { background: #87ceff; }\n\
+\n\
+h3.package { background: #ffe4c4; }\n\
+h3.view { background: #98fb98; }\n\
+h3.class { background: #87ceff; }\n\
+h3.usecase { background: #87ceff; }\n\
+h3.state { background: #87ceff; }\n\
+h3.stateregion { background: #87ceff; }\n\
+h3.activity { background: #87ceff; }\n\
+\n\
+h4.package { background: #ffe4c4; }\n\
+h4.view { background: #98fb98; }\n\
+h4.class { background: #87ceff; }\n\
+h4.usecase { background: #87ceff; }\n\
+h4.state { background: #87ceff; }\n\
+h4.stateregion { background: #87ceff; }\n\
+h4.activity { background: #87ceff; }\n");
+      fw.close();
+    }
+  }
+!!!128055.java!!!	set_dir(in argc : int, in argv : str) : void
+  boolean ask;
+  boolean rem;
+  boolean replace_css;
+  int index0;
+  
+  if ((argc != 0) && argv[0].equals("-flat")) {
+    flat = true;
+    index0 = 1;
+    argc -= 1;
+  }
+  else{
+    flat = false;
+    index0 = 0;
+  }
+
+  if ((argc != 0) && argv[0].equals("-svg")) {
+    svg = true;
+    index0 = 1;
+    argc -= 1;
+  }
+  else{
+    svg = false;
+    index0 = 0;
+  }
+
+  if (argc == 0) {
+    directory = UmlBasePackage.getProject().propertyValue("html dir");
+    if (directory == null)
+      directory = new String("/tmp/") + name() + "_html";
+    
+    // in java it is very complicated to select
+    // a directory through a dialog, and the dialog
+    // is very slow and ugly
+    JFrame frame = new JFrame();
+    JFileChooser fc = new JFileChooser(directory);
+    
+    fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+    fc.setDialogTitle("Directory where the files will be produced");
+    
+    if (fc.showOpenDialog(frame) != JFileChooser.APPROVE_OPTION)
+      throw new RuntimeException("abort");
+    
+    directory = fc.getSelectedFile().getAbsolutePath();	// !
+    
+    ask = true;
+    rem = false;
+    replace_css = true;
+  }
+  else {
+    directory = argv[index0];
+    ask = false;
+    
+    if ((argc >= 2) && (argv[index0 + 1].equals("-del_html"))) {
+      rem = true;
+      replace_css = ((argc == 3) && argv[index0 + 2].equals("-del_css"));
+    }
+    else {
+      rem = false;
+      replace_css = ((argc == 2) && argv[index0 + 1].equals("-del_css"));
+    }
+  }
+  
+  File dir = new File(directory);
+  int i;
+  
+  if (dir.exists()) {
+    if (dir.isDirectory()) {
+      File[] files = dir.listFiles();
+	
+      if (ask) {
+	// remove html old files ?
+	for (i = 0; i != files.length; i += 1) {
+	  if (files[i].isFile() &&
+	      (files[i].getName().toLowerCase().endsWith(".html"))) {
+	    if (!rem) {
+	      ConfirmBox msg = new ConfirmBox("Delete already existing html files ?");
+	      
+	      if (!msg.ok())
+		break;
+	      rem = true;
+	    }
+	    files[i].delete();
+	  }
+	}
+
+	// remove old css file ?
+	for (i = 0; i != files.length; i += 1) {
+	  if (files[i].isFile() &&
+	      (files[i].getName().equals("style.css"))) {
+	    ConfirmBox msg = new ConfirmBox("Delete already existing style.css ?");
+	    
+	    replace_css = msg.ok();
+	    break;
+	  }
+	}
+      }
+      else {
+	if (rem) {
+	  for (i = 0; i != files.length; i += 1) {
+	    if (files[i].isFile() &&
+		(files[i].getName().toLowerCase().endsWith(".html"))) {
+	      files[i].delete();
+	    }
+	  }
+	}
+	
+	if (!replace_css) {
+	  replace_css = true;	// to create it
+	  
+	  for (i = 0; i != files.length; i += 1) {
+	    if (files[i].isFile() &&
+		(files[i].getName().equals("style.css"))) {
+	      // already exist, don't replace
+	      replace_css = false;
+	      break;
+	    }
+	  }
+	}
+      }
+    }
+  }
+  else {
+    dir.mkdir();
+    replace_css = true;	// to create it
+  }
+
+  if (ask) {
+    try {
+      UmlBasePackage.getProject().set_PropertyValue("html dir", directory);
+    }
+    catch (RuntimeException e) {
+    }
+  }
+
+  if (replace_css) {
+    try {
+      // write css file
+      FileWriter fw = new FileWriter(directory + "/style.css");
+      
+      fw.write("div.title { font-size: 150%; background: #87ceff; text-align: center; font-weight: bold; }\n");
+      fw.write("\n");
+      fw.write("div.sub { margin-left : 20px; }\n");
+      fw.write("div.element { background: #d3d3d3; }\n");
+      fw.write("\n");
+      fw.write("h1.package { background: #ffe4c4; }\n");
+      fw.write("h1.view { background: #98fb98; }\n");
+      fw.write("\n");
+      fw.write("h2.package { background: #ffe4c4; }\n");
+      fw.write("h2.view { background: #98fb98; }\n");
+      fw.write("h2.class { background: #87ceff; }\n");
+      fw.write("h2.usecase { background: #87ceff; }\n");
+      fw.write("h2.state { background: #87ceff; }\n");
+      fw.write("h2.activity { background: #87ceff; }\n");
+      fw.write("\n");
+      fw.write("h3.package { background: #ffe4c4; }\n");
+      fw.write("h3.view { background: #98fb98; }\n");
+      fw.write("h3.class { background: #87ceff; }\n");
+      fw.write("h3.usecase { background: #87ceff; }\n");
+      fw.write("h3.state { background: #87ceff; }\n");
+      fw.write("h3.stateregion { background: #87ceff; }\n");
+      fw.write("h3.activity { background: #87ceff; }\n");
+      fw.write("\n");
+      fw.write("h4.package { background: #ffe4c4; }\n");
+      fw.write("h4.view { background: #98fb98; }\n");
+      fw.write("h4.class { background: #87ceff; }\n");
+      fw.write("h4.usecase { background: #87ceff; }\n");
+      fw.write("h4.state { background: #87ceff; }\n");
+      fw.write("h4.stateregion { background: #87ceff; }\n");
+      fw.write("h4.activity { background: #87ceff; }\n");
+      fw.close();
+    }
+    catch (java.io.IOException e) {
+    }
+  }
+!!!128212.cpp!!!	memo_ref() : void
+  all.addElement(this);
+  known = TRUE;
+  
+  const QVector<UmlItem> ch = children();
+  
+  for (unsigned i = 0; i != ch.size(); i += 1)
+    ch[i]->memo_ref();
+!!!128212.java!!!	memo_ref() : void
+  all.addElement(this);
+  known = true;
+  
+  UmlItem[] ch = children();
+  
+  for (int i = 0; i != ch.length; i += 1)
+    ch[i].memo_ref();
+!!!129060.cpp!!!	define() : void
+  fw.write("<a name=\"ref");
+  fw.write((unsigned) kind());
+  fw.write('_');
+  fw.write((unsigned) getIdentifier());
+  fw.write("\"></a>\n");
+!!!129060.java!!!	define() : void
+  fw.write("<a name=\"ref");
+  fw.write(String.valueOf(kind().value()));
+  fw.write('_');
+  fw.write(String.valueOf(getIdentifier()));
+  fw.write("\"></a>\n");
+!!!128468.cpp!!!	start_file(in f : string, in s : string, in withrefs : bool) : void
+  QCString filename = directory + f;
+  bool is_frame = (f == "index-withframe");
+  
+  if (! fw.open(filename + ".html"))
+    throw 0;
+  
+  fw.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+  fw.write("<!-- Documentation produced by the Html generator of Bouml (http://bouml.free.fr) -->\n");
+  fw.write((is_frame)
+	   ? "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Frameset//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd\">\n"
+	   : "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n");
+  fw.write((svg) ? "<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:svg=\"http://www.w3.org/2000/svg\">\n"
+		 : "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n");
+  fw.write("\n");
+  fw.write("<head>\n");
+  
+  if (s.isEmpty()) {
+    fw.write("<title>" + filename + "</title>\n");
+    fw.write("<link rel=\"stylesheet\" href=\"style.css\" type=\"text/css\" />\n");
+    fw.write("</head>\n");
+    if (withrefs) {
+      if (! is_frame)
+	fw.write("<body bgcolor=\"#ffffff\">\n");
+      ref_indexes();
+    }
+  }
+  else {
+    fw.write("<title>"); fw.write(s); fw.write("</title>\n");
+    fw.write("<link rel=\"stylesheet\" href=\"style.css\" type=\"text/css\" />\n");
+    fw.write("</head>\n");
+    fw.write("\n");
+    if (! is_frame)
+      fw.write("<body bgcolor=\"#ffffff\">\n");
+    fw.write("\n");
+    fw.write("<div class = \"title\">"); writeq(s); fw.write("</div>\n");
+    fw.write("<p></p>\n");
+    fw.write("\n");
+    fw.write("<!-- ============================================================= -->\n");
+    fw.write("\n");
+  }
+!!!128468.java!!!	start_file(in f : string, in s : string, in withrefs : bool) : void
+  String filename = directory + "/" + f;
+  boolean is_frame = (f == "index-withframe");
+  
+  fw = new FileWriter(filename + ".html");
+  
+  fw.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+  fw.write("<!-- Documentation produced by the Html generator of Bouml (http://bouml.free.fr) -->\n");
+  fw.write((is_frame)
+	   ? "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Frameset//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd\">\n"
+	   : "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n");
+  fw.write((svg) ? "<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:svg=\"http://www.w3.org/2000/svg\">\n"
+		 : "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n");
+  fw.write("\n");
+  fw.write("<head>\n");
+  
+  if (s == null) {
+    fw.write("<title>" + filename + "</title>\n");
+    fw.write("<link rel=\"stylesheet\" href=\"style.css\" type=\"text/css\" />\n");
+    fw.write("</head>\n");
+    if (withrefs) {
+      if (! is_frame)
+	fw.write("<body bgcolor=\"#ffffff\">\n");
+      ref_indexes();
+    }
+  }
+  else {
+    fw.write("<title>"); fw.write(s); fw.write("</title>\n");
+    fw.write("<link rel=\"stylesheet\" href=\"style.css\" type=\"text/css\" />\n");
+    fw.write("</head>\n");
+    fw.write("\n");
+    if (! is_frame)
+      fw.write("<body bgcolor=\"#ffffff\">\n");
+    fw.write("\n");
+    fw.write("<div class = \"title\">"); writeq(s); fw.write("</div>\n");
+    fw.write("<p></p>\n");
+    fw.write("\n");
+    fw.write("<!-- ============================================================= -->\n");
+    fw.write("\n");
+  }
+
+!!!128724.cpp!!!	end_file() : void
+  fw.write("</body>\n");
+  fw.write("</html>\n");
+    
+  fw.close();
+
+!!!128724.java!!!	end_file() : void
+  fw.write("</body>\n");
+  fw.write("</html>\n");
+    
+  fw.close();
+
+!!!129392.cpp!!!	ref_indexes() : void
+  fw.write("<hr />\n<p><a href=\"index.html\" target = \"projectFrame\"><b> -Top- </b></a>");
+  
+  UmlClass::ref_index();
+  UmlOperation::ref_index();
+  UmlAttribute::ref_index();
+  UmlPackage::ref_index();
+  UmlUseCase::ref_index();
+  UmlActivity::ref_index();
+  UmlState::ref_index();
+  UmlClassDiagram::ref_index();
+  UmlObjectDiagram::ref_index();
+  UmlActivityDiagram::ref_index();
+  UmlStateDiagram::ref_index();
+  UmlUseCaseDiagram::ref_index();
+  UmlSequenceDiagram::ref_index();
+  UmlCollaborationDiagram::ref_index();
+  UmlComponentDiagram::ref_index();
+  UmlDeploymentDiagram::ref_index();
+  fw.write("</p>\n<p>\n</p>\n<p>");
+  
+  for (unsigned i = 0; i != letters.length(); i += 1) {
+    fw.write("<a href=\"index_");
+    fw.write(letters.at(i) & 255u);
+    fw.write(".html\" target = \"projectFrame\"><b> ");
+    writeq(letters.at(i));
+    fw.write(" </b></a>");
+  }
+  
+  fw.write("</p>\n");
+!!!129392.java!!!	ref_indexes() : void
+  fw.write("<hr />\n<p><a href=\"index.html\" target = \"projectFrame\"><b> -Top- </b></a>");
+  
+  UmlClass.ref_index();
+  UmlOperation.ref_index();
+  UmlAttribute.ref_index();
+  UmlPackage.ref_index();
+  UmlUseCase.ref_index();
+  UmlActivity.ref_index();
+  UmlState.ref_index();
+  UmlClassDiagram.ref_index();
+  UmlObjectDiagram.ref_index();
+  UmlActivityDiagram.ref_index();
+  UmlStateDiagram.ref_index();
+  UmlUseCaseDiagram.ref_index();
+  UmlSequenceDiagram.ref_index();
+  UmlCollaborationDiagram.ref_index();
+  UmlComponentDiagram.ref_index();
+  UmlDeploymentDiagram.ref_index();
+  fw.write("</p>\n<p>\n</p>\n<p>");
+  
+  for (int i = 0; i != letters.length(); i += 1) {
+    fw.write("<a href=\"index_");
+    fw.write(new Integer(letters.charAt(i) & 255).toString());
+    fw.write(".html\" target = \"projectFrame\"><b> ");
+    writeq(letters.charAt(i));
+    fw.write(" </b></a>");
+  }
+
+  fw.write("</p>\n");
+!!!129520.cpp!!!	generate_indexes() : void
+  UmlClass::generate_index();
+  UmlOperation::generate_index();
+  UmlAttribute::generate_index();
+  UmlPackage::generate_index();
+  UmlUseCase::generate_index();
+  UmlActivity::generate_index();
+  UmlState::generate_index();
+  UmlClassDiagram::generate_index();
+  UmlObjectDiagram::generate_index();
+  UmlActivityDiagram::generate_index();
+  UmlStateDiagram::generate_index();
+  UmlUseCaseDiagram::generate_index();
+  UmlSequenceDiagram::generate_index();
+  UmlCollaborationDiagram::generate_index();
+  UmlComponentDiagram::generate_index();
+  UmlDeploymentDiagram::generate_index();
+
+  int n = all.size();
+  int i;
+  char previous;
+  
+  sort(all);
+  
+  previous = 0;
+  for (i = 0; i != n; i += 1) {
+    UmlItem * x = all.elementAt(i);
+    QCString s = x->pretty_name();
+    
+    if (! s.isEmpty()) {
+      char c = *((const char *) s);
+      
+      if ((c >= 'a') && (c <= 'z'))
+	c += 'A' - 'a';
+      
+      if (c != previous) {
+	previous = c;
+	letters += c;
+      }
+    }
+  }
+
+  previous = 0;
+  for (i = 0; i != n; i += 1) {
+    UmlItem * x = all.elementAt(i);
+    QCString s = x->pretty_name();
+    
+    if (! s.isEmpty()) {
+      char c = *((const char *) s);
+      
+      if ((c >= 'a') && (c <= 'z'))
+	c += 'A' - 'a';
+      
+      if (c != previous) {
+	if (previous != 0) {
+	  fw.write("</table>\n");
+	  end_file();
+	}
+	
+	previous = c;
+	
+	QCString sn;
+	
+	sn.setNum((int) (c & 255));
+	
+	start_file(QCString("index_") + sn, QCString("") + c, TRUE);
+	
+	fw.write("<table>\n");
+	fw.write("<tr bgcolor=\"#f0f0f0\"><td align=\"center\"><b>Name</b></td><td align=\"center\"><b>Kind</b></td><td align=\"center\"><b>Description</b></td></tr>\n");
+      }
+      
+      fw.write("<tr bgcolor=\"#f0f0f0\"><td>");
+      x->write("projectFrame");
+      fw.write("</td><td>");
+      fw.write(x->sKind());
+      fw.write("</td><td>");
+      writeq(x->description());
+      fw.write("</td></tr>\n");
+    }
+  }
+
+  if (previous != 0) {
+    fw.write("</table>\n");
+    end_file();
+  }
+!!!129520.java!!!	generate_indexes() : void
+  UmlClass.generate_index();
+  UmlOperation.generate_index();
+  UmlAttribute.generate_index();
+  UmlPackage.generate_index();
+  UmlUseCase.generate_index();
+  UmlActivity.generate_index();
+  UmlState.generate_index();
+  UmlClassDiagram.generate_index();
+  UmlObjectDiagram.generate_index();
+  UmlActivityDiagram.generate_index();
+  UmlStateDiagram.generate_index();
+  UmlUseCaseDiagram.generate_index();
+  UmlSequenceDiagram.generate_index();
+  UmlCollaborationDiagram.generate_index();
+  UmlComponentDiagram.generate_index();
+  UmlDeploymentDiagram.generate_index();
+
+  int n = all.size();
+  char previous;
+  
+  sort(all);
+  
+  previous = 0;
+  for (int i = 0; i != n; i += 1) {
+    UmlItem x = (UmlItem) all.elementAt(i);
+    String s = x.pretty_name();
+    
+    if (s.length() != 0) {
+      char c = x.pretty_name().charAt(0);
+      
+      if ((c >= 'a') && (c <= 'z'))
+	c += 'A' - 'a';
+      
+      if (c != previous) {
+	previous = c;
+	letters += c;
+      }
+    }
+  }
+
+  previous = 0;
+  for (int i = 0; i != n; i += 1) {
+    UmlItem x = (UmlItem) all.elementAt(i);
+    String s = x.pretty_name();
+    
+    if (s.length() != 0) {
+      char c = x.pretty_name().charAt(0);
+      
+      if ((c >= 'a') && (c <= 'z'))
+	c += 'A' - 'a';
+      
+      if (c != previous) {
+	if (previous != 0) {
+	  fw.write("</table>\n");
+	  end_file();
+	}
+	
+	previous = c;
+	
+	String sn = new Integer(c & 255).toString();
+	
+	start_file(new String("index_") + sn, new String("") + c, true);
+	
+	fw.write("<table>\n");
+	fw.write("<tr bgcolor=\"#f0f0f0\"><td align=\"center\"><b>Name</b></td><td align=\"center\"><b>Kind</b></td><td align=\"center\"><b>Description</b></td></tr>\n");
+      }
+      
+      fw.write("<tr bgcolor=\"#f0f0f0\"><td>");
+      x.write("projectFrame");
+      fw.write("</td><td>");
+      fw.write(x.sKind());
+      fw.write("</td><td>");
+      writeq(x.description());
+      fw.write("</td></tr>\n");
+    }
+  }
+
+  if (previous != 0) {
+    fw.write("</table>\n");
+    end_file();
+  }
+
+!!!128183.cpp!!!	frame() : void
+  start_file("index-withframe", "", FALSE);
+
+  fw.write("<frameset cols=\"20%,80%\">\n");
+  fw.write("  <noframes>\n");
+  fw.write("    <body>\n");
+  fw.write("      <h2>Frame Alert</h2>\n");
+  fw.write("      <p>This document is designed to be viewed using the frames feature. If you see this message, you are using a non-frame-capable web client.</p>\n");
+  fw.write("      <p>Link to <a href=\"index.html\">Non-frame version.</a></p>\n");
+  fw.write("    </body>\n");
+  fw.write("  </noframes>\n");
+  fw.write("  <frame src=\"classes_list.html\" name=\"classesListFrame\" />\n");
+  fw.write("  <frameset rows=\"150,*\">\n");
+  fw.write("    <frame src=\"navig.html\" name=\"navigFrame\" />\n");
+  fw.write("    <frame src=\"index.html\" name=\"projectFrame\" />\n");
+  fw.write("  </frameset>\n");
+  fw.write("</frameset>\n");
+ 
+  fw.write("</html>");
+  fw.close();
+
+  UmlCom::trace("document with frame produced in <i>"
+		+ directory + "index-withframe.html");
+
+  UmlCom::trace("document without frame produced in <i>"
+		+ directory + "index.html");
+!!!128183.java!!!	frame() : void
+  start_file("index-withframe", null, false);
+
+  fw.write("<frameset cols=\"20%,80%\">\n");
+  fw.write("  <noframes>\n");
+  fw.write("    <body>\n");
+  fw.write("      <h2>Frame Alert</h2>\n");
+  fw.write("      <p>This document is designed to be viewed using the frames feature. If you see this message, you are using a non-frame-capable web client.</p>\n");
+  fw.write("      <p>Link to <a href=\"index.html\">Non-frame version.</a></p>\n");
+  fw.write("    </body>\n");
+  fw.write("  </noframes>\n");
+  fw.write("  <frame src=\"classes_list.html\" name=\"classesListFrame\" />\n");
+  fw.write("  <frameset rows=\"150,*\">\n");
+  fw.write("    <frame src=\"navig.html\" name=\"navigFrame\" />\n");
+  fw.write("    <frame src=\"index.html\" name=\"projectFrame\" />\n");
+  fw.write("  </frameset>\n");
+  fw.write("</frameset>\n");
+ 
+  fw.write("</html>");
+  fw.close();
+
+  UmlCom.trace("document with frame produced in <i>"
+	       + directory + "/index-withframe.html");
+
+  UmlCom.trace("document without frame produced in <i>"
+	       + directory + "/index.html");
+!!!148738.cpp!!!	chapterp() : bool
+  return FALSE;
+!!!148738.java!!!	chapterp() : bool
+  return false;
+!!!129651.cpp!!!	html(in pfix : string, in rank : uint, in what : string, in level : uint, in kind : string) : void
+  define();
+ 
+  chapter(what, pfix, rank, kind, level);
+
+  if (! description().isEmpty()) {
+    fw.write("<p>");
+    writeq(description());
+    fw.write("<br /></p>\n");
+  }
+
+  write_properties();
+  
+  const QVector<UmlItem> ch = children();
+  unsigned n = ch.size();
+  
+  if (n != 0) {
+    QCString spfix;
+    
+    if (rank != 0) {
+      spfix.setNum(rank);
+      spfix = pfix + spfix + ".";
+    }
+    
+    level += 1;
+    rank = 1;
+    fw.write("<div class=\"sub\">\n");
+    for (unsigned i = 0; i != n; i += 1) {
+      ch[i]->html(spfix, rank, level);
+      if (ch[i]->chapterp())
+	rank += 1;
+    }
+    fw.write("</div>\n");
+  }
+!!!129651.java!!!	html(in pfix : string, in rank : uint, in what : string, in level : uint, in kind : string) : void
+  define();
+ 
+  chapter(what, pfix, rank, kind, level);
+
+  if (description().length() != 0) {
+    fw.write("<p>");
+    writeq(description());
+    fw.write("<br /></p>\n");
+  }
+
+  write_properties();
+  
+  UmlItem[] ch = children();
+  
+  if (ch.length != 0) {
+    String spfix = (rank == 0)
+      ? ""
+      : (pfix + String.valueOf(rank) + ".");
+    
+    level += 1;
+    rank = 1;
+    fw.write("<div class=\"sub\">\n");    
+    for (int i = 0; i != ch.length; i += 1) {
+      ch[i].html(spfix, rank, level);
+      if (ch[i].chapterp())
+	rank += 1;
+    }
+    fw.write("</div>\n");
+  }
+!!!128341.cpp!!!	html(in what : str, in diagram : UmlDiagram) : void
+  define();
+
+  fw.write("<table><tr><td><div class=\"element\">");
+  fw.write(what);
+  fw.write(" <b>");
+  writeq(name());
+  fw.write("</b></div></td></tr></table>\n");
+  
+  QCString d = description();
+  
+  if (!d.isEmpty()) {
+    fw.write("<p>");
+    writeq(d);
+    fw.write("<br /></p>\n");
+  }
+  
+  write_dependencies();
+
+  if (diagram != 0) {
+    fw.write("<p>Diagram : ");
+    diagram->write();
+    fw.write("</p>\n");
+  }
+
+  write_properties();
+!!!128341.java!!!	html(in what : str, in diagram : UmlDiagram) : void
+  define();
+
+  fw.write("<table><tr><td><div class=\"element\">");
+  fw.write(what);
+  fw.write(" <b>");
+  writeq(name());
+  fw.write("</b></div></td></tr></table>\n");
+  
+  String d = description();
+  
+  if (d.length() != 0) {
+    fw.write("<p>");
+    writeq(d);
+    fw.write("<br /></p>\n");
+  }
+  
+  write_dependencies();
+
+  if (diagram != null) {
+    fw.write("<p>Diagram : ");
+    diagram.write();
+    fw.write("</p>\n");
+  }
+
+  write_properties();
+!!!150018.cpp!!!	write_children(in pfix : string, in rank : uint, in level : uint) : void
+  const QVector<UmlItem> ch = children();
+  unsigned n = ch.size();
+  
+  if (n != 0) {
+    QCString spfix;
+    unsigned srank = 1;
+    
+    if (rank != 0) {
+      spfix.setNum(rank);
+      spfix = pfix + spfix + ".";
+      fw.write("<div class=\"sub\">\n");
+    }
+
+    level += 1;
+    
+    for (unsigned i = 0; i != n; i += 1) {
+      ch[i]->html(spfix, srank, level);
+      if (ch[i]->chapterp())
+	srank += 1;
+    }
+    
+    if (rank != 0)
+      fw.write("</div>\n");
+  }
+!!!150018.java!!!	write_children(in pfix : string, in rank : uint, in level : uint) : void
+  UmlItem[] ch = children();
+    
+  if (ch.length != 0) {
+    String spfix;
+    int srank = 1;
+    
+    if (rank == 0)
+      spfix = "";
+    else {
+      spfix = pfix + String.valueOf(rank) + ".";
+      fw.write("<div class=\"sub\">\n");
+    }
+    
+    level += 1; 
+    
+    for (int i = 0; i != ch.length; i += 1) {
+      ch[i].html(spfix, srank, level);
+      if (ch[i].chapterp())
+	srank += 1;
+    }
+    
+    if (rank != 0)
+      fw.write("</div>\n");
+  }
+!!!152578.cpp!!!	write_dependencies() : void
+  const QVector<UmlItem> ch = children();
+  unsigned n = ch.size();
+  
+  for (unsigned i = 0; i != n; i += 1) {
+    if ((ch[i]->kind() == aNcRelation) &&
+	(((UmlNcRelation *) ch[i])->relationKind() == aDependency)) {
+      fw.write("<p>Depends on ");
+      ((UmlNcRelation *) ch[i])->target()->write();
+      fw.write("</p>");
+    }
+  }
+!!!152578.java!!!	write_dependencies() : void
+  UmlItem[] ch = children();
+  
+  for (int i = 0; i != ch.length; i += 1) {
+    if ((ch[i].kind() == anItemKind.aNcRelation) &&
+	(((UmlNcRelation) ch[i]).relationKind() == aRelationKind.aDependency)) {
+      fw.write("<p>Depends on ");
+      ((UmlNcRelation) ch[i]).target().write();
+      fw.write("</p>");
+    }
+  }
+!!!212866.cpp!!!	write_properties() : void
+  if (! stereotype().isEmpty()) {
+    fw.write("<p>Stereotype: ");
+    writeq(stereotype());
+    fw.write("</p>\n");
+  }
+    
+  const QDict<QCString> d = properties();
+  
+  if (! d.isEmpty()) {
+    fw.write("<p>Properties:</p><ul>\n");
+    
+    QDictIterator<QCString> it(d);
+    
+    while (it.current()) {
+      fw.write("<li>");
+      writeq(it.currentKey().latin1());
+      fw.write(":<br /><div class=\"sub\">");
+      writeq(*(it.current()));
+      fw.write("</div></li>\n");
+      ++it;
+    }
+    
+    fw.write("</ul>\n");
+  }
+!!!212866.java!!!	write_properties() : void
+  if (stereotype() != "") {
+    fw.write("<p>Stereotype: ");
+    writeq(stereotype());
+    fw.write("</p>\n");
+  }
+    
+  Hashtable d = properties();
+  
+  if (! d.isEmpty()) {
+    fw.write("<p>Properties:</p><ul>\n");
+    
+    Set set = d.entrySet();
+    Iterator i = set.iterator();
+    
+    while(i.hasNext()){
+      Map.Entry e = (Map.Entry) i.next();
+
+      fw.write("<li>");
+      writeq((String) e.getKey());
+      fw.write(":<br /><div class=\"sub\">");
+      writeq((String) e.getValue());
+      fw.write("</div></li>\n");
+    }
+    
+    fw.write("</ul>\n");
+  }
+!!!128596.cpp!!!	chapter(in k : string, in pfix : string, in rank : uint, in kind : string, in level : uint) : void
+  if (rank != 0) {
+    if (level > 4)
+      level = 4;
+    
+    fw.write("<h");
+    fw.write(level);
+    if (!kind.isEmpty()) {
+      fw.write(" class =\"");
+      fw.write(kind);
+      fw.write("\">");
+    }
+    else
+      fw.write(">");
+
+    fw.write(pfix);
+    fw.write(rank);
+    fw.write(' ');
+    fw.write(k);
+    fw.write(' ');
+    writeq(name());
+    fw.write("</h");
+    fw.write(level);
+    fw.write(">\n");
+  }
+!!!128596.java!!!	chapter(in k : string, in pfix : string, in rank : uint, in kind : string, in level : uint) : void
+  if (rank != 0) {
+    if (level > 4)
+      level = 4;
+    
+    fw.write("<h");
+    fw.write(String.valueOf(level));
+    if (kind != "") {
+      fw.write(" class =\"");
+      fw.write(kind);
+      fw.write("\">");
+    }
+    else
+      fw.write(">");
+
+    fw.write(pfix);
+    fw.write(String.valueOf(rank));
+    fw.write(' ');
+    fw.write(k);
+    fw.write(' ');
+    writeq(name());
+    fw.write("</h");
+    fw.write(String.valueOf(level));
+    fw.write(">\n");
+  }
+!!!128261.cpp!!!	bypass_comment(in s : str)
+  while (*s) {
+    if (*s <= ' ')
+      s += 1;
+    else if ((*s == '/') && (s[1] != 0)) {
+      if (s[1] == '/') {
+	do 
+	  s += 1;
+	while ((*s != 0) &&
+	       (*s != '\n') && (*s != '\r'));
+      }
+      else if (s[1] == '*') {
+	const char * s2 = strstr(s + 2, "*/");
+	
+	if (s2 != 0)
+	  s = s2 + 2;
+	else
+	  return s;
+      }
+      else
+	return s;
+    }
+    else if (*s == '#') {
+      do {
+	if ((*++s == 0) ||
+	    ((*s == '\\') && (*++s == 0)))
+	  return s;
+      } while ((*s != '\n') && (*s != '\r'));
+    }
+    else
+      return s;
+  }
+
+  return s;
+!!!128261.java!!!	bypass_comment(in s : str)
+  int index = 0;
+  int n = s.length();
+  
+  while (index != n) {
+    if (Character.isWhitespace(s.charAt(index)))
+      index += 1;
+    else if ((s.charAt(index) == '/') && ((index + 1) != n)) {
+      if (s.charAt(index + 1) == '/') {
+	do 
+	  index += 1;
+	while ((index != n) &&
+	       (s.charAt(index) != '\n') && (s.charAt(index) != '\r'));
+      }
+      else if (s.charAt(index + 1) == '*') {
+	int index2 = s.indexOf("*/", index + 2);
+	
+	if (index2 != -1)
+	  index = index2 + 2;
+	else
+	  return index;
+      }
+      else
+	return index;
+    }
+    else if (s.charAt(index) == '#') {
+      do {
+	if ((++index == n) ||
+	    ((s.charAt(index) == '\\') && (++index == n)))
+	  return index;
+      } while ((s.charAt(index) != '\n') && (s.charAt(index) != '\r'));
+    }
+    else
+      return index;
+  }
+
+  return index;
+
+!!!147842.cpp!!!	manage_alias()
+  // p starts by '@'
+  const char * pclosed;
+  
+  if ((p[1] == '{') && ((pclosed = strchr(p + 2, '}')) != 0)) {
+    QCString key(p + 2, pclosed - p - 1);
+    QCString value;
+    UmlItem * node = this;
+
+    do {
+      if (node->propertyValue(key, value))
+	break;
+      node = node->parent();
+    } while (node != 0);
+    
+    if (node != 0)
+      // find, insert the value
+      writeq(value);
+    else {
+      // not find, insert the key
+      fw.write("@{");
+      writeq(key);
+      fw.write("}");
+    }
+
+    // bypass the key
+    p += strlen(key) + 3;
+  }
+  else {
+    // bypass '@'
+    fw.write("@");
+    p += 1;
+  }
+!!!147842.java!!!	manage_alias()
+  // s[index] is '@'
+  int index2;
+  
+  if ((s.charAt(index + 1) == '{') && ((index2 = s.indexOf('}', index + 2)) != -1)) {
+    String key = s.substring(index + 2, index2);
+    String value;
+    UmlItem node = this;
+
+    do {
+      if ((value = node.propertyValue(key)) != null)
+	break;
+      node = node.parent();
+    } while (node != null);
+    
+    if (node != null)
+      // find, insert the value
+      writeq(value);
+    else {
+      // not find, insert the key
+      fw.write("@{");
+      writeq(key);
+      fw.write("}");
+    }
+
+    // bypass the key
+    return index2 + 1;
+  }
+  else
+    // bypass '@'
+    return index + 1;
+!!!128883.cpp!!!	write() : void
+  if (known) {
+    fw.write("<a href=\"");
+    if (!flat && (parent() != 0) && (parent()->kind() == aClass)){
+      fw.write("class");
+      fw.write((unsigned) parent()->getIdentifier());
+    }
+    else
+      fw.write("index");
+    fw.write(".html#ref");
+    fw.write((unsigned) kind());
+    fw.write('_');
+    fw.write((unsigned) getIdentifier());
+    fw.write("\"><b>");
+    writeq(pretty_name());
+    fw.write("</b></a>");
+  }
+  else
+    writeq(name());
+!!!128883.java!!!	write() : void
+  if (known) {
+    fw.write("<a href=\"");
+    if (!flat && (parent() != null) && (parent().kind() == anItemKind.aClass)){
+      fw.write("class");
+      fw.write(String.valueOf(parent().getIdentifier()));
+    }
+    else
+      fw.write("index");
+    fw.write(".html#ref");
+    fw.write(String.valueOf(kind().value()));
+    fw.write('_');
+    fw.write(String.valueOf(getIdentifier()));
+    fw.write("\"><b>");
+    writeq(pretty_name());
+    fw.write("</b></a>");
+  }
+  else
+    writeq(pretty_name());
+!!!128311.cpp!!!	write(in target : string) : void
+  if (known) {
+    fw.write("<a href=\"index.html#ref");
+    fw.write((unsigned) kind());
+    fw.write('_');
+    fw.write((unsigned) getIdentifier());
+    fw.write("\" target = \"");
+    fw.write(target);
+    fw.write("\"><b>");
+    writeq(pretty_name());
+    fw.write("</b></a>");
+  }
+  else
+    writeq(name());
+!!!128311.java!!!	write(in target : string) : void
+  if (known) {
+    fw.write("<a href=\"index.html#ref");
+    fw.write(String.valueOf(kind().value()));
+    fw.write('_');
+    fw.write(String.valueOf(getIdentifier()));
+    fw.write("\" target = \"");
+    fw.write(target);
+    fw.write("\"><b>");
+    writeq(pretty_name());
+    fw.write("</b></a>");
+  }
+  else
+    writeq(name());
+!!!128340.cpp!!!	writeq(in s : string) : void
+  const char * p = s;
+  
+  while (*p)
+    writeq(*p++);
+!!!128340.java!!!	writeq(in s : string) : void
+  int n = s.length();
+
+  for (int index = 0; index != n; index += 1)
+    writeq(s.charAt(index));
+!!!147970.cpp!!!	writeq(in c : char) : void
+ switch (c) {
+ case '<':
+   fw.write("&lt;");
+   break;
+ case '>':
+   fw.write("&gt;");
+   break;
+ case '&':
+   fw.write("&amp;");
+   break;
+ case '@':
+   fw.write("&#64;");
+   break;
+ case '\n':
+   fw.write("<br />");
+   break;
+ case '\r':
+   break;
+ default:
+   fw.write(c);
+   break;
+ }
+!!!147970.java!!!	writeq(in c : char) : void
+  switch (c) {
+  case '<':
+    fw.write("&lt;");
+    break;
+  case '>':
+    fw.write("&gt;");
+    break;
+  case '&':
+    fw.write("&amp;");
+    break;
+ case '@':
+   fw.write("&#64;");
+   break;
+  case '\r':
+    break;
+  case '\n':
+    fw.write("<br />");
+    break;
+  default:
+    fw.write(c);
+    break;
+  }
+!!!128115.cpp!!!	write(in t : UmlTypeSpec, in lang : aLanguage) : void
+  if (t.type != 0)
+    t.type->write();
+  else
+    switch (lang) {
+    case cppLanguage:
+      writeq(CppSettings::type(t.toString()));
+      break;
+    case javaLanguage:
+      writeq(JavaSettings::type(t.toString()));
+      break;
+    default:
+      writeq(t.toString());
+  }
+!!!128115.java!!!	write(in t : UmlTypeSpec, in lang : aLanguage) : void
+  if (t.type != null)
+    t.type.write();
+  else if (lang == aLanguage.cppLanguage)
+    writeq(CppSettings.type(t.toString()));
+  else if (lang == aLanguage.javaLanguage)
+    writeq(JavaSettings.type(t.toString()));
+  else
+    writeq(t.toString());
+
+!!!203778.cpp!!!	write(in t : UmlTypeSpec) : void
+  if (t.type != 0)
+    t.type->write();
+  else
+    writeq(t.toString());
+!!!203778.java!!!	write(in t : UmlTypeSpec) : void
+  if (t.type != null)
+    t.type.write();
+  else
+    writeq(t.toString());
+!!!128243.cpp!!!	write(in v : aVisibility, in lang : aLanguage) : void
+  switch (v) {
+  case PublicVisibility:
+    fw.write("public");
+    break;
+  case ProtectedVisibility:
+    fw.write("protected");
+    break;
+  case PrivateVisibility:
+    fw.write("private");
+    break;
+  case PackageVisibility:
+    switch (lang) {
+    case cppLanguage:
+      fw.write("public");
+      break;
+    case javaLanguage:
+      fw.write("package");
+    default:
+      break;
+    }
+    break;
+  default:
+    fw.write("???");
+  }
+!!!128243.java!!!	write(in v : aVisibility, in lang : aLanguage) : void
+  switch (v.value()) {
+  case aVisibility._PublicVisibility:
+    fw.write("public");
+    break;
+  case aVisibility._ProtectedVisibility:
+    fw.write("protected");
+    break;
+  case aVisibility._PrivateVisibility:
+    fw.write("private");
+    break;
+  case aVisibility._PackageVisibility:
+    if (lang == aLanguage.cppLanguage)
+      fw.write("public");
+    else if (lang == aLanguage.javaLanguage)
+      fw.write("package");
+    break;
+  default:
+    fw.write("???");
+  }
+!!!203650.cpp!!!	write(in v : aVisibility) : void
+  switch (v) {
+  case PublicVisibility:
+    fw.write("+ ");
+    break;
+  case ProtectedVisibility:
+    fw.write("# ");
+    break;
+  case PrivateVisibility:
+    fw.write("- ");
+    break;
+  default:
+    // PackageVisibility:
+    fw.write("~ ");
+  }
+!!!203650.java!!!	write(in v : aVisibility) : void
+  switch (v.value()) {
+  case aVisibility._PublicVisibility:
+    fw.write("+ ");
+    break;
+  case aVisibility._ProtectedVisibility:
+    fw.write("# ");
+    break;
+  case aVisibility._PrivateVisibility:
+    fw.write("- ");
+    break;
+  default:
+    // aVisibility._PackageVisibility:
+    fw.write("~ ");
+  }
+!!!197762.cpp!!!	write(in d : aDirection) : void
+  switch (d) {
+  case InputOutputDirection:
+    fw.write("input output");
+    break;
+  case InputDirection:
+    fw.write("input");
+    break;
+  case OutputDirection:
+    fw.write("output");
+    break;
+  case ReturnDirection:
+    fw.write("return");
+    break;
+  default:
+    fw.write("???");
+  }
+!!!197762.java!!!	write(in d : aDirection) : void
+  switch (d.value()) {
+  case aDirection._InputOutputDirection:
+    fw.write("input output");
+    break;
+  case aDirection._InputDirection:
+    fw.write("input");
+    break;
+  case aDirection._OutputDirection:
+    fw.write("output");
+    break;
+  case aDirection._ReturnDirection:
+    fw.write("return");
+    break;
+  default:
+    fw.write("???");
+  }
+!!!197890.cpp!!!	write(in d : aParameterEffectKind) : void
+  switch (d) {
+  case noEffect:
+    fw.write("none");
+    break;
+  case createEffect:
+    fw.write("create");
+    break;
+  case readEffect:
+    fw.write("read");
+    break;
+  case updateEffect:
+    fw.write("update");
+    break;
+  case deleteEffect:
+    fw.write("delete");
+    break;
+  default:
+    fw.write("???");
+  }
+!!!197890.java!!!	write(in d : aParameterEffectKind) : void
+  switch (d.value()) {
+  case aParameterEffectKind._noEffect:
+    fw.write("none");
+    break;
+  case aParameterEffectKind._createEffect:
+    fw.write("create");
+    break;
+  case aParameterEffectKind._readEffect:
+    fw.write("read");
+    break;
+  case aParameterEffectKind._updateEffect:
+    fw.write("update");
+    break;
+  case aParameterEffectKind._deleteEffect:
+    fw.write("delete");
+    break;
+  default:
+    fw.write("???");
+  }
+!!!198018.cpp!!!	write(in d : anOrdering) : void
+  switch (d) {
+  case unordered:
+    fw.write("unordered");
+    break;
+  case ordered:
+    fw.write("ordered");
+    break;
+  case lifo:
+    fw.write("lifo");
+    break;
+  case fifo:
+    fw.write("fifo");
+    break;
+  default:
+    fw.write("???");
+  }
+!!!198018.java!!!	write(in d : anOrdering) : void
+  switch (d.value()) {
+  case anOrdering._unordered:
+    fw.write("unordered");
+    break;
+  case anOrdering._ordered:
+    fw.write("ordered");
+    break;
+  case anOrdering._lifo:
+    fw.write("lifo");
+    break;
+  case anOrdering._fifo:
+    fw.write("fifo");
+    break;
+  default:
+    fw.write("???");
+  }
+!!!128001.cpp!!!	generate_index(inout v : Vector, in k : string, in r : string) : void
+  int n = v.size();
+  
+  if (n != 0) {
+    sort(v);
+    
+    start_file(r, k + " Index", TRUE);
+    
+    fw.write("<table>\n");
+    
+    for (int i = 0; i != n; i += 1) {
+      UmlItem * x = v.elementAt(i);
+      
+      fw.write("<tr bgcolor=\"#f0f0f0\"><td>");
+      x->write("projectFrame");
+      fw.write("</td><td>");
+      writeq(x->stereotype());
+      fw.write("</td><td>");
+      writeq(x->description());
+      fw.write("</td></tr>\n");
+    }
+    fw.write("</table>\n");
+    
+    end_file();
+  }
+!!!128001.java!!!	generate_index(inout v : Vector, in k : string, in r : string) : void
+  int n = v.size();
+  
+  if (n != 0) {
+    sort(v);
+    
+    start_file(r, k + " Index", true);
+    
+    fw.write("<table>\n");
+    
+    for (int i = 0; i != n; i += 1) {
+      UmlItem x = (UmlItem) v.elementAt(i);
+      
+      fw.write("<tr bgcolor=\"#f0f0f0\"><td>");
+      x.write("projectFrame");
+      fw.write("</td><td>");
+      writeq(x.stereotype());
+      fw.write("</td><td>");
+      writeq(x.description());
+      fw.write("</td></tr>\n");
+    }
+    fw.write("</table>\n");
+    
+    end_file();
+  }
+!!!128065.cpp!!!	sort(inout v : Vector) : void
+  sort(v, 0, v.size() - 1);
+!!!128065.java!!!	sort(inout v : Vector) : void
+  sort(v, 0, v.size() - 1);
+!!!128193.cpp!!!	sort(inout v : Vector, in low : int, in high : int) : void
+  if (low < high) {
+    int lo = low;
+    int hi = high + 1;
+    UmlItem * e = v.elementAt(low);
+    
+    for (;;) {
+      while ((++lo < hi) && !v.elementAt(lo)->gt(e))
+	;
+      while (v.elementAt(--hi)->gt(e));
+	;
+      
+      if (lo < hi) {
+	UmlItem * x = v.elementAt(lo);
+	
+	v.setElementAt(v.elementAt(hi), lo);
+	v.setElementAt(x, hi);
+      }
+      else
+	break;
+    }
+    
+    UmlItem * x = v.elementAt(low);
+	
+    v.setElementAt(v.elementAt(hi), low);
+    v.setElementAt(x, hi);
+    
+    sort(v, low, hi - 1);
+    sort(v, hi + 1, high);
+  }
+!!!128193.java!!!	sort(inout v : Vector, in low : int, in high : int) : void
+  if (low < high) {
+    int lo = low;
+    int hi = high + 1;
+    UmlItem e = (UmlItem) v.elementAt(low);
+    
+    for (;;) {
+      while ((++lo < hi) && !((UmlItem) v.elementAt(lo)).gt(e))
+	;
+      while (((UmlItem) v.elementAt(--hi)).gt(e));
+	;
+      
+      if (lo < hi) {
+	Object x = v.elementAt(lo);
+	
+	v.setElementAt(v.elementAt(hi), lo);
+	v.setElementAt(x, hi);
+      }
+      else
+	break;
+    }
+    
+    Object x = v.elementAt(low);
+	
+    v.setElementAt(v.elementAt(hi), low);
+    v.setElementAt(x, hi);
+    
+    sort(v, low, hi - 1);
+    sort(v, hi + 1, high);
+  }
+!!!128112.cpp!!!	gt(in other : UmlItem) : bool
+ QCString s1 = pretty_name();
+ QCString s2 = other->pretty_name();
+ int i = qstricmp((const char *) s1, (const char *) s2);
+ 
+ if ((i == 0) && (parent() != 0) && (other->parent() != 0)) {
+   s1 = parent()->pretty_name();
+   s2 = other->parent()->pretty_name();
+   
+   return (qstricmp((const char *) s1, (const char *) s2) > 0);
+ }
+ else
+  return (i > 0);
+!!!128112.java!!!	gt(in other : UmlItem) : bool
+ String s1 = pretty_name();
+ String s2 = other.pretty_name();
+ int i = s1.compareToIgnoreCase(s2);
+ 
+ return ((((i == 0) && (parent() != null) && (other.parent() != null))
+	  ? parent().pretty_name().compareToIgnoreCase(other.parent().pretty_name())
+	  : i)
+	 > 0);
+!!!128139.cpp!!!	pretty_name() : string
+  return name().isEmpty() ? sKind() : name();
+!!!128139.java!!!	pretty_name() : string
+  return name().length() == 0 ? sKind() : name();

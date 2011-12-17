@@ -1,0 +1,23 @@
+/* XPM */
+static const char*signalinmarked_xpm[]={
+"16 16 3 1",
+"# c #000000",
+". c #ffffff",
+"r c #ff0000",
+"................",
+"................",
+"rrrrrrrrrrrrrrrr",
+"################",
+"#rrrrrrrrrrrrr#r",
+"#rrrrrrrrrrrr#rr",
+"#rrrrrrrrrrr#rrr",
+"#rrrrrrrrrr#rrrr",
+"#rrrrrrrrr#rrrrr",
+"#rrrrrrrrrr#rrrr",
+"#rrrrrrrrrrr#rrr",
+"#rrrrrrrrrrrr#rr",
+"#rrrrrrrrrrrrr#r",
+"################",
+"rrrrrrrrrrrrrrrr",
+"................"};
+

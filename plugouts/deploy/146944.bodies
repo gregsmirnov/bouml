@@ -1,0 +1,17 @@
+class UmlBaseSequenceMessage
+!!!211840.cpp!!!	read_(in instances : UmlClassInstanceReference, in fragments : UmlFragment) : void
+  UmlBaseMessage::read_(instances);
+  _kind = (aMessageKind) UmlCom::read_char();
+  _args = UmlCom::read_string();
+  _x = (int) UmlCom::read_unsigned();
+  _send_at = (int) UmlCom::read_unsigned();
+  _received_at = (int) UmlCom::read_unsigned();
+  _fragment = UmlBaseFragment::get_container_(_x, _send_at, 1, 1, fragments);
+!!!211840.java!!!	read_(in instances : UmlClassInstanceReference, in fragments : UmlFragment) : void
+  super.read_(instances);
+  _kind = aMessageKind.fromInt((int) UmlCom.read_char());
+  _args = UmlCom.read_string();
+  _x = UmlCom.read_unsigned();
+  _send_at = UmlCom.read_unsigned();
+  _received_at = UmlCom.read_unsigned();
+  _fragment = UmlBaseFragment.get_container_(_x, _send_at, 1, 1, fragments);

@@ -1,0 +1,191 @@
+class UmlBaseActivityObject
+!!!185728.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlActivityObject
+  return (UmlActivityObject *) parent->create_(anActivityObject, s);
+!!!185728.java!!!	create(inout parent : UmlItem, inout s : str) : UmlActivityObject
+  return (UmlActivityObject) parent.create_(anItemKind.anActivityObject, s);
+!!!185856.cpp!!!	kind() : anItemKind
+  return anActivityObject;
+!!!185856.java!!!	kind() : anItemKind
+  return anItemKind.anActivityObject;
+!!!186240.cpp!!!	type() : UmlTypeSpec
+  read_if_needed_();
+  return _type;
+!!!186240.java!!!	type() : UmlTypeSpec
+  read_if_needed_();
+  return _type;
+!!!186368.cpp!!!	set_Type(in v : UmlTypeSpec) : bool
+  return set_it_(_type, v, setTypeCmd);
+!!!186368.java!!!	set_Type(in v : UmlTypeSpec) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setTypeCmd, v);
+  UmlCom.check();
+
+  _type = v;
+!!!186496.cpp!!!	multiplicity() : string
+  read_if_needed_();
+  return _multiplicity;
+!!!186496.java!!!	multiplicity() : string
+  read_if_needed_();
+  return _multiplicity;
+!!!186624.cpp!!!	set_Multiplicity(in v : str) : bool
+  return set_it_(_multiplicity, v, setMultiplicityCmd);
+!!!186624.java!!!	set_Multiplicity(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setMultiplicityCmd, v);
+  UmlCom.check();
+
+  _multiplicity = v;
+!!!186752.cpp!!!	inState() : string
+  read_if_needed_();
+  return _in_state;
+!!!186752.java!!!	inState() : string
+  read_if_needed_();
+  return _in_state;
+!!!186880.cpp!!!	set_InState(in v : str) : bool
+  return set_it_(_in_state, v, setInStateCmd);
+!!!186880.java!!!	set_InState(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setInStateCmd, v);
+  UmlCom.check();
+
+  _in_state = v;
+!!!187008.cpp!!!	selection() : string
+  read_if_needed_();
+  return _selection;
+!!!187008.java!!!	selection() : string
+  read_if_needed_();
+  return _selection;
+!!!187136.cpp!!!	set_Selection(in v : str) : bool
+  return set_it_(_selection, v, setUmlActivityCmd);
+!!!187136.java!!!	set_Selection(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setUmlActivityCmd, v);
+  UmlCom.check();
+
+  _selection = v;
+!!!187264.cpp!!!	cppSelection() : string
+  read_if_needed_();
+  return _cpp_selection;
+!!!187264.java!!!	cppSelection() : string
+  read_if_needed_();
+  return _cpp_selection;
+!!!187392.cpp!!!	set_CppSelection(in v : str) : bool
+  return set_it_(_cpp_selection, v, setCppActivityCmd);
+!!!187392.java!!!	set_CppSelection(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setCppActivityCmd, v);
+  UmlCom.check();
+
+  _cpp_selection = v;
+!!!187520.cpp!!!	javaSelection() : string
+  read_if_needed_();
+  return _java_selection;
+!!!187520.java!!!	javaSelection() : string
+  read_if_needed_();
+  return _java_selection;
+!!!187648.cpp!!!	set_JavaSelection(in v : str) : bool
+  return set_it_(_java_selection, v, setJavaActivityCmd);
+!!!187648.java!!!	set_JavaSelection(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setJavaActivityCmd, v);
+  UmlCom.check();
+
+  _java_selection = v;
+!!!187776.cpp!!!	ordering() : anOrdering
+  read_if_needed_();
+  return _ordering;
+!!!187776.java!!!	ordering() : anOrdering
+  read_if_needed_();
+  return _ordering;
+!!!187904.cpp!!!	set_Ordering(in v : anOrdering) : bool
+  UmlCom::send_cmd(_identifier, setOrderingCmd, (char) v);   if (UmlCom::read_bool()) {     _ordering = v;     return TRUE;   }   else     return FALSE;
+!!!187904.java!!!	set_Ordering(in v : anOrdering) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setOrderingCmd, (byte) v.value());
+  UmlCom.check();
+
+  _ordering = v;
+!!!188032.cpp!!!	isControlType() : bool
+  read_if_needed_();
+  return _is_control;
+!!!188032.java!!!	isControlType() : bool
+  read_if_needed_();
+  return _is_control;
+!!!188160.cpp!!!	set_IsControlType(in v : bool) : bool
+  bool vv;
+
+  if (set_it_(vv, v, setFlagCmd)) {
+    _is_control = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!188160.java!!!	set_IsControlType(in v : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setFlagCmd, (v) ? 1 : 0);
+  UmlCom.check();
+
+  _is_control = v;
+!!!188288.cpp!!!	associatedDiagram() : UmlActivityDiagram
+  read_if_needed_();
+
+  return _assoc_diagram;
+!!!188288.java!!!	associatedDiagram() : UmlActivityDiagram
+  read_if_needed_();
+
+  return _assoc_diagram;
+!!!188416.cpp!!!	set_AssociatedDiagram(in d : UmlActivityDiagram) : bool
+  UmlCom::send_cmd(_identifier, setAssocDiagramCmd, (d == 0) ? (void *) 0 : ((UmlBaseItem *) d)->_identifier);
+  if (UmlCom::read_bool()) {
+    _assoc_diagram = d;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!188416.java!!!	set_AssociatedDiagram(in d : UmlActivityDiagram) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setAssocDiagramCmd, (d == null) ? (long) 0 : d.identifier_());
+  UmlCom.check();
+  _assoc_diagram = d;
+!!!188544.cpp!!!	unload(in rec : bool, in del : bool) : void
+  _type.explicit_type = 0;
+  _multiplicity = 0;
+  _in_state = 0;
+  _selection = 0;
+#ifdef WINCPP
+  _cpp_selection = 0;
+#endif
+#ifdef WITHJAVA
+  _java_selection = 0;
+#endif
+  UmlBaseActivityNode::unload(rec, del);
+!!!188544.java!!!	unload(in rec : bool, in del : bool) : void
+  _type = null;
+  _multiplicity = null;
+  _in_state = null;
+  _selection = null;
+  _cpp_selection = null;
+  _java_selection = null;
+  super.unload(rec, del);
+!!!188672.cpp!!!	read_uml_() : void
+  _assoc_diagram = (kind() == anActivityObject) ? (UmlActivityDiagram *) UmlBaseItem::read_() : (UmlActivityDiagram *) 0;
+  UmlBaseActivityNode::read_uml_();
+  _type.type = (UmlClass *) UmlBaseItem::read_();
+  if (_type.type == 0)
+    _type.explicit_type = UmlCom::read_string();
+  _multiplicity = UmlCom::read_string();
+  _in_state = UmlCom::read_string();
+  _selection = UmlCom::read_string();
+  _ordering = (anOrdering) UmlCom::read_char();
+  _is_control = UmlCom::read_bool();
+!!!188672.java!!!	read_uml_() : void
+  _assoc_diagram = (kind() == anItemKind.anActivityObject) ? (UmlActivityDiagram) UmlBaseItem.read_() : null;
+  super.read_uml_();
+  _type = new UmlTypeSpec();
+  _type.type = (UmlClass) UmlBaseItem.read_();
+  if (_type.type == null)
+    _type.explicit_type = UmlCom.read_string();
+  _multiplicity = UmlCom.read_string();
+  _in_state = UmlCom.read_string();
+  _selection = UmlCom.read_string();
+  _ordering = anOrdering.fromInt(UmlCom.read_char());
+  _is_control = UmlCom.read_bool();
+!!!188800.cpp!!!	read_cpp_() : void
+  _cpp_selection = UmlCom::read_string();
+!!!188800.java!!!	read_cpp_() : void
+  _cpp_selection  = UmlCom.read_string();
+!!!188928.cpp!!!	read_java_() : void
+  _java_selection = UmlCom::read_string();
+!!!188928.java!!!	read_java_() : void
+  _java_selection = UmlCom.read_string();

@@ -1,0 +1,3 @@
+class UmlChoicePseudoState
+!!!207618.cpp!!!	sKind() : str
+  return "choice";

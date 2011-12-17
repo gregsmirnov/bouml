@@ -1,0 +1,7 @@
+class SmallPushButton
+!!!129434.cpp!!!	sizeHint() : QSize
+  QFontMetrics fm = fontMetrics();
+  QSize sz = fm.size(ShowPrefix, text());
+  
+  return QSize(sz.width() + sz.width()/8 + 4,
+	       sz.height() + sz.height()/8 + 4);

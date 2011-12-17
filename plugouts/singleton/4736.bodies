@@ -1,0 +1,9 @@
+class UmlBaseSequenceDiagram
+!!!64768.cpp!!!	create(inout parent : UmlItem, in s : str) : UmlSequenceDiagram
+  return (UmlSequenceDiagram *) parent->create_(aSequenceDiagram, s);
+!!!64768.java!!!	create(inout parent : UmlItem, in s : str) : UmlSequenceDiagram
+  return (UmlSequenceDiagram) parent.create_(anItemKind.aSequenceDiagram, s);
+!!!64896.cpp!!!	kind() : anItemKind
+  return aSequenceDiagram;
+!!!64896.java!!!	kind() : anItemKind
+  return anItemKind.aSequenceDiagram;

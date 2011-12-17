@@ -1,0 +1,4 @@
+// 'tool' "the executable" "displayed string" {target}+
+tool "generate .pro" "gpro" Artifact
+tool "html (java version)" "java -cp /tmp/html/java Main" Project Package UseCaseView ClassView ComponentView DeploymentView Class Component
+tool "html (C++ version)" "ghtml" Project Package UseCaseView ClassView ComponentView DeploymentView Class

@@ -1,0 +1,35 @@
+class UmlRemoveVariableValueAction
+!!!199554.cpp!!!	sKind() : string
+  return "remove variable value activity action";
+!!!199554.java!!!	sKind() : string
+  return "remove variable value activity action";
+!!!203266.cpp!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  UmlActivityAction::html();
+
+  if (isRemoveDuplicates())
+    fw.write("<p>Remove duplicates</p>");
+    
+  if (variable() != 0){
+    fw.write("<p>Variable : ");
+    variable()->write();
+    fw.write("</p>");
+  }
+
+  write_children(pfix, rank, level);
+
+  unload(FALSE, FALSE);
+!!!203266.java!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  html();
+
+  if (isRemoveDuplicates())
+    fw.write("<p>Remove duplicates</p><ul>");
+    
+  if (variable() != null){
+    fw.write("<p>Variable : ");
+    variable().write();
+    fw.write("</p><ul>");
+  }
+
+  write_children(pfix, rank, level);
+
+  unload(false, false);

@@ -1,0 +1,5 @@
+class UmlChoicePseudoState
+!!!146946.cpp!!!	sKind() : string
+  return "choice pseudo state";
+!!!146946.java!!!	sKind() : string
+  return "choice pseudo state";

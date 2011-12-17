@@ -1,0 +1,5 @@
+class UmlInitialActivityNode
+!!!194562.cpp!!!	sKind() : string
+  return "initial activity node";
+!!!194562.java!!!	sKind() : string
+  return "initial activity node";

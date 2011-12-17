@@ -1,0 +1,5 @@
+class UmlArtifact
+!!!147714.cpp!!!	orderWeight() : int
+return 10;
+!!!147714.java!!!	orderWeight() : int
+return 10;

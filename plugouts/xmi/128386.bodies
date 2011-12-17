@@ -1,0 +1,3 @@
+class UmlState
+!!!131332.cpp!!!	write_if_needed(inout out : FileOut) : bool
+  return FALSE; // not yet implemented

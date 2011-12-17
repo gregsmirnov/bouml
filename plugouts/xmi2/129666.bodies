@@ -1,0 +1,18 @@
+class UmlStateAction
+!!!199042.cpp!!!	memo_incoming_trans() : void
+  const QVector<UmlItem> ch = children(); 
+  unsigned n = ch.size();
+  unsigned i;
+     
+  for (i = 0; i != n; i += 1) {
+    UmlStateItem * x = dynamic_cast<UmlStateItem *>(ch[i]);
+
+    if (x != 0)
+      x->memo_incoming_trans();
+  }
+!!!199426.cpp!!!	write(inout out : FileOut) : void
+  out.indent(); 
+  out << "<!-- how to export a state action ? -->\n"; 
+
+  _incoming_trans.clear(); // !
+  unload(); 

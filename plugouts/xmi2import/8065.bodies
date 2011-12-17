@@ -1,0 +1,8 @@
+class UmlComponentView
+!!!193794.cpp!!!	container(in kind : anItemKind, in token : Token, inout in : FileIn) : UmlItem
+  switch (kind) {
+  case aComponent:
+    return this;
+  default:
+    return parent()->container(kind, token, in);
+  }

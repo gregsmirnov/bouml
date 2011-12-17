@@ -1,0 +1,50 @@
+class UmlBaseCollaborationDiagramDefinition
+!!!230656.cpp!!!	read_() : void
+  QPtrDict<UmlClassInstanceReference> instances;
+  unsigned n;
+  unsigned rank;
+
+  n = UmlCom::read_unsigned();
+  _instances.resize(n);
+  for (rank = 0; rank != n; rank += 1) {
+    UmlClassInstanceReference * i = new UmlClassInstanceReference();
+
+    _instances.insert(rank, i);
+    instances.insert((void *) UmlCom::read_unsigned(), i);
+    i->read_();
+  }
+  _instances.setAutoDelete(TRUE);
+
+  n = UmlCom::read_unsigned();
+  _messages.resize(n);
+  for (rank = 0; rank != n; rank += 1) {
+    UmlCollaborationMessage * m = new UmlCollaborationMessage();
+
+    _messages.insert(rank, m);
+    m->read_(instances);
+  }
+  _messages.setAutoDelete(TRUE);
+!!!230656.java!!!	read_() : void
+  Hashtable instances;
+  int n;
+  int rank;
+
+  n = UmlCom.read_unsigned();
+  _instances = new UmlClassInstanceReference[n];
+  instances = new Hashtable((n == 0) ? 1 : n);
+  for (rank = 0; rank != n; rank += 1) {
+    UmlClassInstanceReference i = new UmlClassInstanceReference();
+
+    _instances[rank] = i;
+    instances.put(new Integer(UmlCom.read_unsigned()), i);
+    i.read_();
+  }
+
+  n = UmlCom.read_unsigned();
+  _messages = new UmlCollaborationMessage[n];
+  for (rank = 0; rank != n; rank += 1) {
+    UmlCollaborationMessage m = new UmlCollaborationMessage();
+
+    _messages[rank] = m;
+    m.read_(instances);
+  }

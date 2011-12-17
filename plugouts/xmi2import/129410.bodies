@@ -1,0 +1,46 @@
+class UmlRegion
+!!!197378.cpp!!!	container(in kind : anItemKind, in token : Token, inout in : FileIn) : UmlItem
+  switch (kind) {
+  case aState:
+  case aRegion:
+  case anInitialPseudoState:
+  case anEntryPointPseudoState:
+  case aFinalState:
+  case aTerminatePseudoState:
+  case anExitPointPseudoState:
+  case aDeepHistoryPseudoState:
+  case aShallowHistoryPseudoState:
+  case aJunctionPseudoState:
+  case aChoicePseudoState:
+  case aForkPseudoState:
+  case aJoinPseudoState:
+    return this;
+  default:
+    return parent()->container(kind, token, in);
+  }
+
+!!!197122.cpp!!!	init() : void
+  declareFct("region", "uml:Region", &importIt);
+  declareFct("region", "", &importIt);	// sometimes with Visual Paradigm
+!!!196994.cpp!!!	importIt(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  where = where->container(aRegion, token, in);
+    
+  if (where != 0) {
+    QCString s = token.valueOf("name");
+    
+    UmlRegion * st = create((UmlState *) where, s);
+    
+    if (st == 0)
+      in.error("cannot create region '" + s +
+	       "' in '" + where->name() + "'");
+    
+    st->addItem(token.xmiId(), in);
+    
+    if (! token.closed()) {
+      QCString k = token.what();
+      const char * kstr = k;
+      
+      while (in.read(), !token.close(kstr))
+	st->UmlItem::import(in, token);
+    }
+  }

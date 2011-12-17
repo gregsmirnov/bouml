@@ -1,0 +1,9 @@
+class UmlBaseBroadcastSignalAction
+!!!171008.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlBroadcastSignalAction
+  return (UmlBroadcastSignalAction *) parent->create_(aBroadcastSignalAction, s);
+!!!171008.java!!!	create(inout parent : UmlItem, inout s : str) : UmlBroadcastSignalAction
+  return (UmlBroadcastSignalAction) parent.create_(anItemKind.aBroadcastSignalAction, s);
+!!!171136.cpp!!!	kind() : anItemKind
+  return aBroadcastSignalAction;
+!!!171136.java!!!	kind() : anItemKind
+  return anItemKind.aBroadcastSignalAction;

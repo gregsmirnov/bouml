@@ -1,0 +1,12 @@
+format 5
+
+classcanvas 139538312 class_ref 7553 // UmlItem
+  draw_all_relations default hide_attributs default hide_operations default show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default
+  xyz 83 119 2000
+relationcanvas 139544176 relation_ref 128001 // <unidirectional association>
+  from ref 139538312 z 1000 stereotype "<<asciidict>>" xyz 149 85 3000 to point 200 119
+  line 139546672 z 1000 to point 200 149
+  line 139547600 z 1000 to ref 139538312
+  role_a_pos 180 137 3000 no_role_b
+  multiplicity_a_pos 180 170 3000 no_multiplicity_b
+end

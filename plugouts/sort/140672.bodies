@@ -1,0 +1,9 @@
+class UmlBaseActivityFinalActivityNode
+!!!180608.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlActivityFinalActivityNode
+  return (UmlActivityFinalActivityNode *) parent->create_(anActivityFinalActivityNode, s);
+!!!180608.java!!!	create(inout parent : UmlItem, inout s : str) : UmlActivityFinalActivityNode
+  return (UmlActivityFinalActivityNode) parent.create_(anItemKind.anActivityFinalActivityNode, s);
+!!!180736.cpp!!!	kind() : anItemKind
+  return anActivityFinalActivityNode;
+!!!180736.java!!!	kind() : anItemKind
+  return anItemKind.anActivityFinalActivityNode;

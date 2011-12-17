@@ -1,0 +1,54 @@
+class UmlClassInstanceReference
+!!!136580.cpp!!!	connector(in other : UmlClassInstanceReference) : str
+  static char s[32];
+  
+  if (other->rank < rank)
+    sprintf(s, "CONNECTOR%d_%d_", other->rank, rank);
+  else
+    sprintf(s, "CONNECTOR%d_%d_", rank, other->rank);
+  
+  return s;
+!!!139012.cpp!!!	attribute() : str
+  static char s[32];
+  
+  sprintf(s, "COLLATTR%d_", rank);
+  
+  return s;
+!!!140548.cpp!!!	lifeline() : str
+  static char s[32];
+  
+  sprintf(s, "LIFELINE%d_", rank);
+  
+  return s;
+!!!140420.cpp!!!	write_lifelines(inout out : FileOut, in diagram : UmlItem, in insts : UmlClassInstanceReference) : void
+  unsigned sup = insts.size();
+  unsigned index;
+  
+  for (index = 0; index != sup; index += 1) {
+    UmlClassInstanceReference * ci = insts.at(index);
+    
+    out.indent();
+    out << "<lifeline xmi:type=\"uml:Lifeline\"";
+    out.id_prefix(diagram, ci->lifeline());
+    out << " name=\"";
+    out.quote(ci->name());
+    out << '"';
+    out.ref(diagram, "represents", ci->attribute());
+    out << "/>\n";
+  }
+!!!138884.cpp!!!	write_attributes(inout out : FileOut, in diagram : UmlItem, in insts : UmlClassInstanceReference) : void
+  unsigned sup = insts.size();
+  unsigned index;
+  
+  for (index = 0; index != sup; index += 1) {
+    UmlClassInstanceReference * ci = insts.at(index);
+    
+    out.indent();
+    out << "<ownedAttribute xmi:type=\"uml:Property\"";
+    out.id_prefix(diagram, ci->attribute());
+    out << " name=\"";
+    out.quote(ci->name());
+    out << '"';
+    out.ref(ci->type(), "type");
+    out << "/>\n";
+  }

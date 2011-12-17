@@ -1,0 +1,56 @@
+class UmlForkActivityNode
+!!!208770.cpp!!!	sKind() : str
+  return "ForkNode";
+!!!292483.cpp!!!	solve_output_flows() : void
+  // input and outputs flows must be control/data
+
+  UmlFlow * f;
+  ControlOrData k;
+  const QVector<UmlItem> ch = children();
+  unsigned n = ch.size();
+
+  if (!_incoming_flows.isEmpty()) {
+    f = _incoming_flows.getFirst();
+    k = f->control_or_data();
+  }
+  else {
+    f = 0;
+    k = Unset;
+  }
+
+  if (k == Unset) {
+    // look at output flows
+    for (unsigned i = 0; i != n; i += 1) {
+      UmlFlow * f = dynamic_cast<UmlFlow *>(ch[i]);
+
+      if ((f != 0) && ((k = f->control_or_data()) != Unset))
+	break;
+    }
+
+    if (f != 0) {
+      // f is unset
+      if (k != Unset) {
+	if (f->control_or_data() == Unset)
+	  // propagate on input
+	  f->set_control_or_data(k);
+      }
+      else {
+	// solve input flow
+	((UmlActivityNode *) f->parent())->solve_output_flows();
+	k = f->control_or_data();
+	if (k == Unset)
+	  // not possible to know, force control
+	  k = IsControl;
+	// propagate on input
+	f->set_control_or_data(k);
+      }
+    }
+  }
+
+  // propagate on output
+  for (unsigned i = 0; i != n; i += 1) {
+    UmlFlow * f = dynamic_cast<UmlFlow *>(ch[i]);
+
+    if ((f != 0) && (f->control_or_data() == Unset))
+      f->set_control_or_data(k);
+  }

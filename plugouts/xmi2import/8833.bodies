@@ -1,0 +1,493 @@
+class UmlItem
+!!!188546.cpp!!!	import(in path : QString) : void
+  UmlCom::trace("Error : must be applied on a package<br>");
+!!!191362.cpp!!!	addItem(in id : string, inout in : FileIn) : void
+  QMap<QCString, UmlItem *>::ConstIterator iter = All.find(id);
+  
+  if (iter != All.end())
+    in.error("xmi:id '" + id + "' used twice");
+    
+  All.insert(id, this);
+  _xmi_id = id;
+!!!191490.cpp!!!	import(inout in : FileIn, inout tk : Token) : void
+  QCString key = tk.what() + " " + tk.xmiType();
+    
+  PFunc pf = Functions[key];
+  
+  if (pf != 0)
+    pf(in, tk, this);
+  else
+    in.bypass(tk);
+
+!!!192770.cpp!!!	container(in kind : anItemKind, in token : Token, inout in : FileIn) : UmlItem
+  return parent()->container(kind, token, in);
+!!!214530.cpp!!!	generalizeDependRealize(inout target : UmlItem, inout in : FileIn, in context : int, in label : string, in constraint : string) : void
+  static const struct {
+    aRelationKind rk;
+    const char * err;
+  } r[] = {
+    { aGeneralisation, "cannot create generalization from '" },
+    { aDependency, "cannot create dependency from '" },
+    { aRealization, "cannot create realization from '" },
+    { aDependency, "cannot create usage from '" },
+    { aDependency, "cannot create import from '" }
+  };
+  UmlItem * rel = UmlNcRelation::create(r[context].rk, this, target);
+  
+  if (rel == 0)
+    in.warning(r[context].err + name() + "' to '" + target->name() + "'");
+  else if (!label.isEmpty())
+    rel->set_Name(label);
+
+!!!213250.cpp!!!	solveGeneralizationDependencyRealization(in context : int, in idref : string, in label : string, in constraint : string) : void
+  QMap<QCString, UmlItem *>::Iterator it = All.find(idref);
+  
+  if (it != All.end()) {
+    static const struct {
+      aRelationKind rk;
+      const char * err;
+    } r[] = {
+      { aGeneralisation, "cannot create generalization from '" },
+      { aDependency, "cannot create dependency from '" },
+      { aRealization, "cannot create realization from '" },
+      { aDependency, "cannot create usage from '" },
+      { aDependency, "cannot create import from '" }
+    };
+    UmlItem * target = *it;
+    UmlItem * rel = UmlNcRelation::create(r[context].rk, this, target);
+    
+    if (rel == 0)
+      UmlCom::trace(r[context].err + name() + "' to '" + target->name() + "'<br>");
+    else {
+      if (! label.isEmpty())
+	rel->set_Name(label);
+      switch (context) {
+      case 3:
+	rel->set_Stereotype("use");
+	break;
+      case 4:
+	rel->set_Stereotype("import");
+	break;
+      default:
+	break;
+      }
+    }
+  }
+  else if (!FileIn::isBypassedId(idref))
+    UmlCom::trace("relation : unknown target reference '" + idref + "'<br>");
+
+!!!211330.cpp!!!	setType(in idref : string, inout type : UmlTypeSpec) : bool
+  if (idref.isEmpty())
+    return FALSE;
+  else if (getType(idref, type))
+    return TRUE;
+  else {
+    Unresolved::addRef(this, idref);
+    return FALSE;
+  }
+!!!195074.cpp!!!	setType(in idref : string, in context : int, inout type : UmlTypeSpec) : bool
+  if (idref.isEmpty())
+    return FALSE;
+  else if (getType(idref, type))
+    return TRUE;
+  else {
+    UnresolvedWithContext::add(this, idref, context);
+    return FALSE;
+  }
+!!!243074.cpp!!!	setType(inout token : Token, inout type : UmlTypeSpec) : bool
+  QCString idref = token.xmiIdref();
+  
+  if (idref.isEmpty())
+    return UmlClass::isPrimitiveType(token, type);
+  else if (getType(idref, type))
+    return TRUE;
+  else {
+    Unresolved::addRef(this, idref);
+    return FALSE;
+  }
+!!!243202.cpp!!!	setType(inout token : Token, in context : int, inout type : UmlTypeSpec) : bool
+  QCString idref = token.xmiIdref();
+  
+  if (idref.isEmpty())
+    return UmlClass::isPrimitiveType(token, type);
+  else if (getType(idref, type))
+    return TRUE;
+  else {
+    UnresolvedWithContext::add(this, idref, context);
+    return FALSE;
+  }
+!!!263554.cpp!!!	loadFromProfile() : void
+  QCString id;
+    
+  if (propertyValue("xmiId", id) && (All.find(id) == All.end()))
+    All.insert(id, this);
+  
+  const QVector<UmlItem> ch = children();
+  unsigned n = ch.size();
+  
+  for (unsigned u = 0; u != n; u += 1)
+    ch[u]->loadFromProfile();
+!!!209794.cpp!!!	getType(in idref : string, inout type : UmlTypeSpec) : bool
+  QMap<QCString, UmlItem *>::Iterator it = All.find(idref);
+  
+  type.type = 0;
+  type.explicit_type = "";
+  
+  if (it != All.end()) {
+    if ((*it)->kind() == aClass) {
+      type.type = (UmlClass *) *it;
+      return TRUE;
+    }
+    else
+      return FALSE;
+  }
+  else {
+    QMap<QCString, UmlTypeSpec>::Iterator itp = PrimitiveTypes.find(idref);
+    
+    if (itp != PrimitiveTypes.end()) {
+      type = *itp;
+      return TRUE;
+    }
+    else
+      return FALSE;
+  }
+!!!191618.cpp!!!	declareFct(in what : string, in type : string, inout fct : PFunc) : void
+  Functions[what + " " + type] = fct;
+!!!253314.cpp!!!	getFct(in tk : Token) : PFunc
+  QCString key = tk.what() + " " + tk.xmiType();
+    
+  return Functions[key];
+!!!259586.cpp!!!	readComment(inout in : FileIn, inout token : Token) : QCString
+  in.bypassedId(token);
+
+  QCString doc = token.valueOf("body");
+
+  if (! token.closed()) {
+    QCString k = token.what();
+    const char * kstr = k;
+    
+    while (in.read(), !token.close(kstr)) {
+      if (token.what() == "body") {
+	if (! doc.isEmpty())
+	  doc += "\n";
+	doc += in.body("body");
+      }
+      else if (! token.closed())
+	in.finish(token.what());
+    }
+  }
+
+  return doc;
+
+!!!195458.cpp!!!	init() : void
+  declareFct("xmi:documentation", "", &importDocumentation);
+
+  declareFct("ownedcomment", "uml:Comment", &importComment);
+  declareFct("ownedcomment", "", &importComment); // andromda emf
+  
+  declareFct("xmi:extension", "", &importExtension);
+
+  declareFct("incoming", "", &incoming);
+  declareFct("outgoing", "", &outgoing);
+  
+  declareFct("ownedbehavior", "uml:OpaqueBehavior", &importOpaqueDef);
+  declareFct("ownedmember", "uml:OpaqueExpression", &importOpaqueDef);
+  declareFct("packagedelement", "uml:OpaqueExpression", &importOpaqueDef);
+
+  declareFct("generalization", "uml:Generalization", &importGeneralization);
+  declareFct("generalization", "", &importGeneralization);	// eclipse
+  
+  declareFct("ownedelement", "uml:Dependency", &importDependency);
+  declareFct("ownedmember", "uml:Dependency", &importDependency);
+  declareFct("packagedelement", "uml:Dependency", &importDependency);
+  
+  declareFct("ownedelement", "uml:Usage", &importDependency);
+  declareFct("ownedmember", "uml:Usage", &importDependency);
+  declareFct("packagedelement", "uml:Usage", &importDependency);
+  
+  declareFct("ownedelement", "uml:Realization", &importRealization);
+  declareFct("ownedmember", "uml:Realization", &importRealization);
+  declareFct("packagedelement", "uml:Realization", &importRealization);
+  declareFct("interfacerealization", "uml:InterfaceRealization", &importRealization);
+
+!!!234242.cpp!!!	importDocumentation(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  QCString who = token.valueOf("exporter");
+
+  if (who.isNull())
+    who = token.valueOf("xmi:exporter");
+    
+    if (! who.isNull()) {
+      UmlCom::trace("xmi file produced by <b>" + who + "</b><br><br>");
+      FromBouml = (who == "Bouml");
+    }
+
+  if (! token.closed())
+    in.finish(token.what());
+!!!195586.cpp!!!	importComment(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  QCString doc = readComment(in, token);
+
+  if (! doc.isEmpty())
+    where->set_Description(doc);
+!!!208514.cpp!!!	importExtension(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  if (! token.closed()) {
+    QCString s = token.valueOf("extender");
+    
+    if (s.isNull())
+      s = token.valueOf("xmi:extender");
+    
+    if (s == "Bouml") {
+      QCString k = token.what();
+      const char * kstr = k;
+      
+      while (in.read(), !token.close(kstr)) {
+	s = token.what();
+	
+	if (s == "taggedvalue")
+	  // is closed
+	  where->set_PropertyValue(token.valueOf("tag"), token.valueOf("value"));
+	else if (s == "stereotype")
+	  where->set_Stereotype(token.valueOf("name"));
+
+	if (! token.closed())
+	  in.finish(token.what());
+      }
+    }
+    else if (s == "Visual Paradigm for UML") {
+      QCString k = token.what();
+      const char * kstr = k;
+      
+      while (in.read(), !token.close(kstr)) {
+	s = token.what();
+	
+	if (s == "appliedstereotype") {
+	  s = token.valueOf("xmi:value");
+	  
+	  if (s.right(3) == "_id") {
+	    s = s.mid(s.find("_") + 1);
+	    s = s.left(s.length() - 3).lower();
+	  }
+	  where->set_Stereotype(s);
+	}
+
+	if (! token.closed())
+	  in.finish(token.what());
+      }
+    }
+    else
+      in.finish(token.what());
+  }
+!!!212226.cpp!!!	importOpaqueDef(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  QCString id = token.xmiId();
+  QMap<QCString, QCString>::ConstIterator iter = OpaqueDefs.find(id);
+  
+  if (iter != OpaqueDefs.end())
+    in.error("xmi:id '" + id + "' used twice");
+    
+  QCString s = token.valueOf("body");
+  
+  if (!s.isNull()) {
+    OpaqueDefs.insert(id, s);
+    
+    if (! token.closed())
+      in.finish(token.what());
+  }
+  else if (! token.closed()) {
+    QCString k = token.what();
+    const char * kstr = k;
+    
+    while (in.read(), !token.close(kstr)) {
+      s = token.what();
+      
+      if (s == "body")
+	OpaqueDefs.insert(id, in.body("body"));
+      else if (! token.closed())
+	in.finish(s);
+    }
+  }
+!!!213122.cpp!!!	importGeneralization(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  QCString id = token.valueOf("general");
+  QCString constraint;
+  
+  if (! token.closed()) {
+    QCString k = token.what();
+    const char * kstr = k;
+    
+    while (in.read(), !token.close(kstr)) {
+      QCString s = token.what();
+      
+      if (s == "general") {
+	id = token.xmiIdref();
+	
+	if (id.isEmpty() && !(id = token.valueOf("href")).isEmpty()) {
+	  int index = id.find('#');
+	  
+	  if (index != -1)
+	    id = id.mid(index + 1);
+	}
+      }
+      else if (s == "ownedrule") {
+	constraint = UmlItem::readConstraint(in, token);
+	continue;
+      }
+      
+      if (! token.closed())
+	in.finish(s);
+    }
+  }
+
+  if (!id.isEmpty()) {
+    QMap<QCString, UmlItem *>::ConstIterator iter = All.find(id);
+  
+    if (iter != All.end())
+      where->generalizeDependRealize(*iter, in, 0, "", constraint);
+    else
+      Unresolved::addGeneralization(where, id, constraint);
+  }
+  else
+    in.warning("'general' is missing");
+!!!213890.cpp!!!	importDependency(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  QCString client = token.valueOf("client");
+  QCString supplier = token.valueOf("supplier");
+  QCString label = token.valueOf("name");
+  QCString constraint;
+  int kind = (token.xmiType() == "uml:Usage") ? 3 : 1;
+  
+  if (! token.closed()) {
+    QCString k = token.what();
+    const char * kstr = k;
+    
+    while (in.read(), !token.close(kstr)) {
+      QCString s = token.what();
+      
+      if (s == "client")
+	client = token.xmiIdref();
+      else if (s == "supplier")
+	supplier = token.xmiIdref();
+      else if (s == "ownedrule") {
+	constraint = UmlItem::readConstraint(in, token);
+	continue;
+      }
+      
+      if (! token.closed())
+	in.finish(s);
+    }
+  }
+
+  if (client.isEmpty())
+    in.warning("'client' is missing");
+  else {
+    if (supplier.isEmpty())
+      // Borland Together 2006 for Eclipse
+      supplier = where->id();
+
+    QMap<QCString, UmlItem *>::ConstIterator from = All.find(client);
+    QMap<QCString, UmlItem *>::ConstIterator to = All.find(supplier);
+  
+    if ((from != All.end()) && (to != All.end()))
+      (*from)->generalizeDependRealize(*to, in, kind, label, constraint);
+    else
+      UnresolvedRelation::add(kind, client, supplier, label, constraint);
+  }
+!!!214786.cpp!!!	importRealization(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  QCString client = token.valueOf("client");
+  QCString supplier = token.valueOf("supplier");
+  QCString label = token.valueOf("name");
+  QCString constraint;
+  
+  if (! token.closed()) {
+    QCString k = token.what();
+    const char * kstr = k;
+    
+    while (in.read(), !token.close(kstr)) {
+      QCString s = token.what();
+      
+      if (s == "client")
+	client = token.xmiIdref();
+      else if (s == "supplier")
+	supplier = token.xmiIdref();
+      else if (s == "ownedrule") {
+	constraint = UmlItem::readConstraint(in, token);
+	continue;
+      }
+      
+      if (! token.closed())
+	in.finish(s);
+    }
+  }
+
+  if (client.isEmpty())
+    in.warning("'client' is missing");
+  else {
+    if (supplier.isEmpty())
+      // Borland Together 2006 for Eclipse
+      supplier = where->id();
+
+    QMap<QCString, UmlItem *>::ConstIterator from = All.find(client);
+    QMap<QCString, UmlItem *>::ConstIterator to = All.find(supplier);
+  
+    if ((from != All.end()) && (to != All.end()))
+      (*from)->generalizeDependRealize(*to, in, 2, label, constraint);
+    else
+      UnresolvedRelation::add(2, client, supplier, label, constraint);
+  }
+!!!209026.cpp!!!	incoming(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  Incomings.insert(token.xmiIdref(), where);
+  
+  if (! token.closed())
+    in.finish(token.what());
+!!!218242.cpp!!!	outgoing(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  while (where->kind() == aRegion)
+    // up to the state
+    where = where->parent();
+
+  Outgoings.insert(token.xmiIdref(), where);
+  
+  if (! token.closed())
+    in.finish(token.what());
+!!!240770.cpp!!!	legalName(in s : string) : string
+  unsigned index;
+  unsigned n = s.length();
+  
+  for (index = 0; index != n; index += 1) {
+    char c = s.at(index);
+    
+    if (!(((c >= 'a') && (c <= 'z')) ||
+	  ((c >= 'A') && (c <= 'Z')) ||
+	  ((c >= '0') && (c <= '9')) ||
+	  (c == '_')))
+      s.replace(index, 1, "_");
+  }
+  
+  return s;
+!!!247042.cpp!!!	fromEclipse() : bool
+  return FromEclipse;
+!!!260866.cpp!!!	readConstraint(inout in : FileIn, inout token : Token) : QCString
+  QCString constraint;
+  
+  if (! token.closed()) {
+    QCString k = token.what();
+    const char * kstr = k;
+    
+    while (in.read(), !token.close(kstr)) {
+      QCString s = token.what();
+      
+      if ((s == "specification") && (token.xmiType() == "uml:OpaqueExpression")) {
+	constraint = token.valueOf("body");
+	
+	if (! token.closed()) {
+	  while (in.read(), !token.close("specification")) {
+	    s = token.what();
+	    
+	    if (s == "body")
+	      constraint = in.body("body");
+	    else if (! token.closed())
+	      in.finish(s);
+	  }
+	}
+      }
+      else
+	in.bypass(token);
+    }
+  }
+
+  return constraint;

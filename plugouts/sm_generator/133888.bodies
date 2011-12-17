@@ -1,0 +1,218 @@
+class UmlBaseFlow
+!!!157440.cpp!!!	kind() : anItemKind
+  return aFlow;
+!!!157440.java!!!	kind() : anItemKind
+  return anItemKind.aFlow;
+!!!157568.cpp!!!	create(inout start : UmlActivityNode, inout end : UmlActivityNode) : UmlFlow
+  UmlCom::send_cmd(start->_identifier, createCmd, aFlow,
+		   end->_identifier);
+  UmlFlow * result = (UmlFlow *) UmlBaseItem::read_();
+
+  if (result != 0)
+    start->reread_children_if_needed_();
+  return result;
+!!!157568.java!!!	create(inout start : UmlActivityNode, inout end : UmlActivityNode) : UmlFlow
+  UmlCom.send_cmd(start.identifier_(), OnInstanceCmd.createCmd, anItemKind.aFlow,
+		   end.identifier_());
+  UmlFlow result = (UmlFlow) UmlBaseItem.read_();
+  
+  if (result != null)
+    start.reread_children_if_needed_();
+  else
+    throw new RuntimeException("Cannot create the flow");
+  return result;
+!!!157696.cpp!!!	target() : UmlActivityNode
+  read_if_needed_();
+  return _target;
+!!!157696.java!!!	target() : UmlActivityNode
+  read_if_needed_();
+  return _target;
+!!!157824.cpp!!!	weight() : string
+  read_if_needed_();
+  return _uml.weight;
+!!!157824.java!!!	weight() : string
+  read_if_needed_();
+  return _uml.weight;
+!!!157952.cpp!!!	set_Weight(in v : str) : bool
+  return set_it_(_uml.weight, v, setUmlActivityCmd);
+!!!157952.java!!!	set_Weight(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setUmlActivityCmd, v);
+  UmlCom.check();
+
+  _uml.weight = v;
+!!!158080.cpp!!!	guard() : string
+  read_if_needed_();
+  return _uml.guard;
+!!!158080.java!!!	guard() : string
+  read_if_needed_();
+  return _uml.guard;
+!!!158208.cpp!!!	set_Guard(in v : str) : bool
+  return set_it_(_uml.guard, v, setUmlGuardCmd);
+!!!158208.java!!!	set_Guard(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setUmlGuardCmd, v);
+  UmlCom.check();
+
+  _uml.guard = v;
+!!!158336.cpp!!!	selection() : string
+  read_if_needed_();
+  return _uml.selection;
+!!!158336.java!!!	selection() : string
+  read_if_needed_();
+  return _uml.selection;
+!!!158464.cpp!!!	set_Selection(in v : str) : bool
+  return set_it_(_uml.selection, v, setUmlEntryBehaviorCmd);
+!!!158464.java!!!	set_Selection(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setUmlEntryBehaviorCmd, v);
+  UmlCom.check();
+
+  _uml.selection = v;
+!!!158592.cpp!!!	transformation() : string
+  read_if_needed_();
+  return _uml.transformation;
+!!!158592.java!!!	transformation() : string
+  read_if_needed_();
+  return _uml.transformation;
+!!!158720.cpp!!!	set_Transformation(in v : str) : bool
+  return set_it_(_uml.transformation, v, setUmlExitBehaviorCmd);
+!!!158720.java!!!	set_Transformation(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setUmlExitBehaviorCmd, v);
+  UmlCom.check();
+
+  _uml.transformation = v;
+!!!158848.cpp!!!	cppWeight() : string
+  read_if_needed_();
+  return _cpp.weight;
+!!!158848.java!!!	cppWeight() : string
+  read_if_needed_();
+  return _cpp.weight;
+!!!158976.cpp!!!	set_CppWeight(in v : str) : bool
+  return set_it_(_cpp.weight, v, setCppActivityCmd);
+!!!158976.java!!!	set_CppWeight(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setCppActivityCmd, v);
+  UmlCom.check();
+
+  _cpp.weight = v;
+!!!159104.cpp!!!	cppGuard() : string
+  read_if_needed_();
+  return _cpp.guard;
+!!!159104.java!!!	cppGuard() : string
+  read_if_needed_();
+  return _cpp.guard;
+!!!159232.cpp!!!	set_CppGuard(in v : str) : bool
+  return set_it_(_cpp.guard, v, setCppGuardCmd);
+!!!159232.java!!!	set_CppGuard(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setCppGuardCmd, v);
+  UmlCom.check();
+
+  _cpp.guard = v;
+!!!159360.cpp!!!	cppSelection() : string
+  read_if_needed_();
+  return _cpp.selection;
+!!!159360.java!!!	cppSelection() : string
+  read_if_needed_();
+  return _cpp.selection;
+!!!159488.cpp!!!	set_CppSelection(in v : str) : bool
+  return set_it_(_cpp.selection, v, setCppEntryBehaviorCmd);
+!!!159488.java!!!	set_CppSelection(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setCppEntryBehaviorCmd, v);
+  UmlCom.check();
+
+  _cpp.selection = v;
+!!!159616.cpp!!!	cppTransformation() : string
+  read_if_needed_();
+  return _cpp.transformation;
+!!!159616.java!!!	cppTransformation() : string
+  read_if_needed_();
+  return _cpp.transformation;
+!!!159744.cpp!!!	set_CppTransformation(in v : str) : bool
+  return set_it_(_cpp.transformation, v, setCppExitBehaviorCmd);
+!!!159744.java!!!	set_CppTransformation(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setCppExitBehaviorCmd, v);
+  UmlCom.check();
+
+  _cpp.transformation = v;
+!!!159872.cpp!!!	javaWeight() : string
+  read_if_needed_();
+  return _java.weight;
+!!!159872.java!!!	javaWeight() : string
+  read_if_needed_();
+  return _java.weight;
+!!!160000.cpp!!!	set_JavaWeight(in v : str) : bool
+  return set_it_(_java.weight, v, setJavaActivityCmd);
+!!!160000.java!!!	set_JavaWeight(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setJavaActivityCmd, v);
+  UmlCom.check();
+
+  _java.weight = v;
+!!!160128.cpp!!!	javaGuard() : string
+  read_if_needed_();
+  return _java.guard;
+!!!160128.java!!!	javaGuard() : string
+  read_if_needed_();
+  return _java.guard;
+!!!160256.cpp!!!	set_JavaGuard(in v : str) : bool
+  return set_it_(_java.guard, v, setJavaGuardCmd);
+!!!160256.java!!!	set_JavaGuard(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setJavaGuardCmd, v);
+  UmlCom.check();
+
+  _java.guard = v;
+!!!160384.cpp!!!	javaSelection() : string
+  read_if_needed_();
+  return _java.selection;
+!!!160384.java!!!	javaSelection() : string
+  read_if_needed_();
+  return _java.selection;
+!!!160512.cpp!!!	set_JavaSelection(in v : str) : bool
+  return set_it_(_java.selection, v, setJavaEntryBehaviorCmd);
+!!!160512.java!!!	set_JavaSelection(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setJavaEntryBehaviorCmd, v);
+  UmlCom.check();
+
+  _java.selection = v;
+!!!160640.cpp!!!	javaTransformation() : string
+  read_if_needed_();
+  return _java.transformation;
+!!!160640.java!!!	javaTransformation() : string
+  read_if_needed_();
+  return _java.transformation;
+!!!160768.cpp!!!	set_JavaTransformation(in v : str) : bool
+  return set_it_(_java.transformation, v, setJavaExitBehaviorCmd);
+!!!160768.java!!!	set_JavaTransformation(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setJavaExitBehaviorCmd, v);
+  UmlCom.check();
+
+  _java.transformation = v;
+!!!160896.cpp!!!	unload(in rec : bool, in del : bool) : void
+  _uml.unload();
+#ifdef WITHCPP
+  _cpp.unload();
+#endif
+#ifdef WITHJAVA
+  _java.unload();
+#endif
+  UmlBaseItem::unload(rec, del);
+!!!160896.java!!!	unload(in rec : bool, in del : bool) : void
+  _uml = null;
+  _cpp = null;
+  _java = null;
+  super.unload(rec, del);
+!!!161280.cpp!!!	read_uml_() : void
+  UmlBaseItem::read_uml_();
+  _target = (UmlActivityNode *) UmlBaseItem::read_();
+  _uml.read();
+!!!161280.java!!!	read_uml_() : void
+  super.read_uml_();
+  _target = (UmlActivityNode) UmlBaseItem.read_();
+  _uml = new FlowBehavior();
+  _uml.read();
+!!!161408.cpp!!!	read_cpp_() : void
+  _cpp.read();
+!!!161408.java!!!	read_cpp_() : void
+  _cpp = new FlowBehavior();
+  _cpp.read();
+!!!161536.cpp!!!	read_java_() : void
+  _java.read();
+!!!161536.java!!!	read_java_() : void
+  _java = new FlowBehavior();
+  _java.read();

@@ -1,0 +1,5 @@
+class UmlItem
+!!!128111.cpp!!!	singleton() : void
+  UmlCom::trace("<font face=helvetica><b>Singleton must be applied on a <i>class</i></b></font><br><hr><br>");
+!!!128111.java!!!	singleton() : void
+  UmlCom.trace("<font face=helvetica><b>Singleton must be applied on a <i>class</i></b></font><br><hr><br>");

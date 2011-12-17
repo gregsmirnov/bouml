@@ -1,0 +1,13 @@
+class TransitionBehavior
+!!!135168.cpp!!!	read() : void
+  trigger = UmlCom::read_string();
+  guard = UmlCom::read_string();
+  activity = UmlCom::read_string();
+!!!135168.java!!!	read() : void
+  trigger = UmlCom.read_string();
+  guard = UmlCom.read_string();
+  activity = UmlCom.read_string();
+!!!135296.cpp!!!	unload() : void
+  trigger = 0;
+  guard = 0;
+  activity = 0;

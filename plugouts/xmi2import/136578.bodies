@@ -1,0 +1,18 @@
+class UmlBroadcastSignalAction
+!!!200578.cpp!!!	init() : void
+  declareFct("node", "uml:BroadcastSignalAction", &importIt);
+  declareFct("containednode", "uml:BroadcastSignalAction", &importIt);
+!!!204802.cpp!!!	importIt(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  where = where->container(aBroadcastSignalAction, token, in);
+    
+  if (where != 0) {
+    QCString s = token.valueOf("name");
+    UmlBroadcastSignalAction * a = create(where, s);
+    
+    if (a == 0)
+      in.error("cannot create broadcast signal action '"
+	       + s + "' in '" + where->name() + "'");
+    
+    a->addItem(token.xmiId(), in);
+    a->import_it(in, token);
+  }

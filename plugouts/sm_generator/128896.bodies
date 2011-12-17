@@ -1,0 +1,194 @@
+class UmlBaseTransition
+!!!132352.cpp!!!	kind() : anItemKind
+  return aTransition;
+!!!132352.java!!!	kind() : anItemKind
+  return anItemKind.aTransition;
+!!!132480.cpp!!!	create(inout start : UmlItem, inout end : UmlItem) : UmlTransition
+  UmlCom::send_cmd(start->_identifier, createCmd, aTransition,
+		   end->_identifier);
+  UmlTransition * result = (UmlTransition *) UmlBaseItem::read_();
+
+  if (result != 0)
+    start->reread_children_if_needed_();
+  return result;
+!!!132480.java!!!	create(inout start : UmlItem, inout end : UmlItem) : UmlTransition
+  UmlCom.send_cmd(start.identifier_(), OnInstanceCmd.createCmd, anItemKind.aTransition,
+		   end.identifier_());
+  UmlTransition result = (UmlTransition) UmlBaseItem.read_();
+  
+  if (result != null)
+    start.reread_children_if_needed_();
+  else
+    throw new RuntimeException("Cannot create the Transition");
+  return result;
+!!!132608.cpp!!!	target() : UmlItem
+  read_if_needed_();
+  return _target;
+!!!132608.java!!!	target() : UmlItem
+  read_if_needed_();
+  return _target;
+!!!201344.cpp!!!	isExternal() : bool
+  read_if_needed_();
+  return _is_external;
+!!!201344.java!!!	isExternal() : bool
+  read_if_needed_();
+  return _is_external;
+!!!201472.cpp!!!	set_IsExternal(in v : bool) : bool
+  return set_it_(_is_external, v, setIsCppExternalCmd);
+!!!201472.java!!!	set_IsExternal(in v : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setIsCppExternalCmd, (v) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _is_external = v;
+!!!132736.cpp!!!	trigger() : string
+  read_if_needed_();
+  return _uml.trigger;
+!!!132736.java!!!	trigger() : string
+  read_if_needed_();
+  return _uml.trigger;
+!!!132864.cpp!!!	set_Trigger(in s : str) : bool
+  return set_it_(_uml.trigger, s, setUmlTriggerCmd);
+!!!132864.java!!!	set_Trigger(in s : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setUmlTriggerCmd, s);
+  UmlCom.check();
+
+  _uml.trigger = s;
+!!!132992.cpp!!!	guard() : string
+  read_if_needed_();
+  return _uml.guard;
+!!!132992.java!!!	guard() : string
+  read_if_needed_();
+  return _uml.guard;
+!!!133120.cpp!!!	set_Guard(in s : str) : bool
+  return set_it_(_uml.guard, s, setUmlGuardCmd);
+!!!133120.java!!!	set_Guard(in s : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setUmlGuardCmd, s);
+  UmlCom.check();
+
+  _uml.guard = s;
+!!!133248.cpp!!!	activity() : string
+  read_if_needed_();
+  return _uml.activity;
+!!!133248.java!!!	activity() : string
+  read_if_needed_();
+  return _uml.activity;
+!!!133376.cpp!!!	set_Activity(in s : str) : bool
+  return set_it_(_uml.activity, s, setUmlActivityCmd);
+!!!133376.java!!!	set_Activity(in s : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setUmlActivityCmd, s);
+  UmlCom.check();
+
+  _uml.activity = s;
+!!!133504.cpp!!!	cppTrigger() : string
+  read_if_needed_();
+  return _cpp.trigger;
+!!!133504.java!!!	cppTrigger() : string
+  read_if_needed_();
+  return _cpp.trigger;
+!!!133632.cpp!!!	set_CppTrigger(in s : str) : bool
+  return set_it_(_cpp.trigger, s, setCppTriggerCmd);
+!!!133632.java!!!	set_CppTrigger(in s : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setCppTriggerCmd, s);
+  UmlCom.check();
+
+  _cpp.trigger = s;
+!!!133760.cpp!!!	cppGuard() : string
+  read_if_needed_();
+  return _cpp.guard;
+!!!133760.java!!!	cppGuard() : string
+  read_if_needed_();
+  return _cpp.guard;
+!!!133888.cpp!!!	set_CppGuard(in s : str) : bool
+  return set_it_(_cpp.guard, s, setCppGuardCmd);
+!!!133888.java!!!	set_CppGuard(in s : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setCppGuardCmd, s);
+  UmlCom.check();
+
+  _cpp.guard = s;
+!!!134016.cpp!!!	cppActivity() : string
+  read_if_needed_();
+  return _cpp.activity;
+!!!134016.java!!!	cppActivity() : string
+  read_if_needed_();
+  return _cpp.activity;
+!!!134144.cpp!!!	set_CppActivity(in s : str) : bool
+  return set_it_(_cpp.activity, s, setCppActivityCmd);
+!!!134144.java!!!	set_CppActivity(in s : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setCppActivityCmd, s);
+  UmlCom.check();
+
+  _cpp.activity = s;
+!!!134272.cpp!!!	javaTrigger() : string
+  read_if_needed_();
+  return _java.trigger;
+!!!134272.java!!!	javaTrigger() : string
+  read_if_needed_();
+  return _java.trigger;
+!!!134400.cpp!!!	set_JavaTrigger(in s : str) : bool
+  return set_it_(_java.trigger, s, setJavaTriggerCmd);
+!!!134400.java!!!	set_JavaTrigger(in s : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setJavaTriggerCmd, s);
+  UmlCom.check();
+
+  _java.trigger = s;
+!!!134528.cpp!!!	javaGuard() : string
+  read_if_needed_();
+  return _java.guard;
+!!!134528.java!!!	javaGuard() : string
+  read_if_needed_();
+  return _java.guard;
+!!!134656.cpp!!!	set_JavaGuard(in s : str) : bool
+  return set_it_(_java.guard, s, setJavaGuardCmd);
+!!!134656.java!!!	set_JavaGuard(in s : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setJavaGuardCmd, s);
+  UmlCom.check();
+
+  _java.guard = s;
+!!!134784.cpp!!!	javaActivity() : string
+  read_if_needed_();
+  return _java.activity;
+!!!134784.java!!!	javaActivity() : string
+  read_if_needed_();
+  return _java.activity;
+!!!134912.cpp!!!	set_JavaActivity(in s : str) : bool
+  return set_it_(_java.activity, s, setJavaActivityCmd);
+!!!134912.java!!!	set_JavaActivity(in s : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setJavaActivityCmd, s);
+  UmlCom.check();
+
+  _java.activity = s;
+!!!135040.cpp!!!	unload(in rec : bool, in del : bool) : void
+  _uml.unload();
+#ifdef WITHCPP
+  _cpp.unload();
+#endif
+#ifdef WITHJAVA
+  _java.unload();
+#endif
+  UmlBaseItem::unload(rec, del);
+!!!135040.java!!!	unload(in rec : bool, in del : bool) : void
+  _uml = null;
+  _cpp = null;
+  _java = null;
+  super.unload(rec, del);
+!!!135424.cpp!!!	read_uml_() : void
+  UmlBaseItem::read_uml_();
+  _target = UmlBaseItem::read_();
+  _uml.read();
+  _is_external = !UmlCom::read_bool();
+!!!135424.java!!!	read_uml_() : void
+  super.read_uml_();
+  _target = UmlBaseItem.read_();
+  _uml = new TransitionBehavior();
+  _uml.read();
+  _is_external = !UmlCom.read_bool();
+!!!135552.cpp!!!	read_cpp_() : void
+  _cpp.read();
+!!!135552.java!!!	read_cpp_() : void
+  _cpp = new TransitionBehavior();
+  _cpp.read();
+!!!135680.cpp!!!	read_java_() : void
+  _java.read();
+!!!135680.java!!!	read_java_() : void
+  _java = new TransitionBehavior();
+  _java.read();

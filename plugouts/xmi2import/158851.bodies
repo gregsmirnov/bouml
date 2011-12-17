@@ -1,0 +1,67 @@
+class UmlReduceAction
+!!!305667.cpp!!!	init() : void
+  declareFct("node", "uml:ReduceAction", &importIt);
+  declareFct("containednode", "uml:ReduceAction", &importIt);
+!!!305539.cpp!!!	importIt(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  where = where->container(aReduceAction, token, in);
+    
+  if (where != 0) {
+    QCString s = token.valueOf("name");
+    UmlReduceAction * a = create(where, s);
+    
+    if (a == 0)
+      in.error("cannot create reduce action '"
+	       + s + "' in '" + where->name() + "'");
+    
+    a->addItem(token.xmiId(), in);
+    
+    if (token.valueOf("isordered") == "true")
+      a->set_isOrdered(TRUE);
+    
+    s = token.valueOf("reducer");
+        
+    if (! token.closed()) {
+      QCString k = token.what();
+      const char * kstr = k;
+      
+      while (in.read(), !token.close(kstr)) {
+	if (token.what() == "reducer") {
+	  s = token.xmiIdref();
+	  if (! token.closed())
+	    in.finish(token.what());
+	}
+	else
+	  a->import(in, token);
+      }
+    }
+    
+    if (!s.isEmpty()) {
+      QMap<QCString, UmlItem *>::Iterator it = All.find(s);
+      
+      if (it == All.end())
+	Unresolved::addRef(a, s);
+      else {
+	switch ((*it)->kind()) {
+	case anActivity:
+	case aState:
+	  a->set_Reducer(*it);
+	  break;
+	default:
+	  break;
+	}
+      }
+    }
+  }
+!!!305411.cpp!!!	solve(in idref : string) : void
+  QMap<QCString, UmlItem *>::Iterator it = All.find(idref);
+      
+  if (it != All.end()) {
+    switch ((*it)->kind()) {
+    case anActivity:
+    case aState:
+      set_Reducer(*it);
+      break;
+    default:
+      break;
+    }
+  }

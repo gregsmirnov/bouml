@@ -1,0 +1,35 @@
+class UmlAcceptEventAction
+!!!204546.cpp!!!	write(inout out : FileOut) : void
+  write_begin(out, "AcceptEventAction");
+  
+  if (isUnmarshall())
+    out << " isUnmarshall=\"true\"";
+  
+  QCString trig;
+  
+  switch (_lang) {
+  case Uml:
+    trig = trigger();
+    break;
+  case Cpp:
+    trig = cppTrigger();
+    break;
+  default:
+    // java
+    trig = javaTrigger();
+  }
+
+  if (! trig.isEmpty()) {
+    out.ref(this, "trigger", "TRIGGER_");
+    write_end(out);
+    
+    out.indent();
+    out << "<trigger xmi:type=\"uml:Trigger\"";
+    out.id_prefix(this, "TRIGGER_");
+    out << " name=\"";
+    out.quote(trig);
+    out << "\"/>\n";
+  }
+  else
+    write_end(out);
+

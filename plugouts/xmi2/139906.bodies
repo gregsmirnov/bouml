@@ -1,0 +1,8 @@
+class UmlRemoveVariableValueAction
+!!!205442.cpp!!!	write(inout out : FileOut) : void
+  write_begin(out, "RemoveVariableValueAction");
+
+  if (isRemoveDuplicates())
+    out << " isRemoveDuplicates=\"true\"";
+
+  write_var_end(out);

@@ -1,0 +1,3 @@
+class UmlItem
+!!!128026.cpp!!!	genpro() : void
+  UmlCom::trace("must be applied on a component");

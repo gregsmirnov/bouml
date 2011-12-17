@@ -1,0 +1,6219 @@
+format 62
+"API USER" // API USER
+  revision 5
+  modified_by 3 "bruno"
+  // class settings
+  //class diagram settings
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+  show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+  show_infonote default drawing_language default show_stereotype_properties default
+  
+  comment " 'your' API classes and components, modify them !"
+  classview 641 "Diagrams"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default show_stereotype_properties default
+    comment "Some diagrams describing the API classes organisation
+"
+    classdiagram 129 "Package and Views classes inheritance diagram"
+      draw_all_relations no hide_attributes yes hide_operations yes show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+      size A4
+    end
+
+    classdiagram 257 "Class and class members classes inheritance diagram"
+      draw_all_relations no hide_attributes yes hide_operations yes show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+      size A4
+    end
+
+    classdiagram 128002 "State (1)"
+      draw_all_relations no hide_attributes yes hide_operations yes show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+      size A4
+    end
+
+    classdiagram 128130 "State (2)"
+      draw_all_relations no hide_attributes yes hide_operations yes show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+      size A4
+    end
+
+    classdiagram 128258 "State (3)"
+      draw_all_relations no hide_attributes yes hide_operations yes show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+      size A4
+    end
+
+    classdiagram 385 "Diagrams classes inheritance diagram"
+      draw_all_relations no hide_attributes yes hide_operations yes show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+      size A4
+    end
+
+    sequencediagram 513 "Typical Execution"
+      show_full_operations_definition no write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+      size A4
+    end
+
+    class 6529 "bouml"
+      visibility package stereotype "actor"
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+    end
+
+    class 6657 "plug_out"
+      visibility package stereotype "actor"
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+    end
+  end
+
+  classview 769 "API USER class view"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default show_stereotype_properties default
+    associated_deployment_view deploymentview_ref 641 // API USER Deployment view
+    comment "'your' API classes, modify them !"
+    class 144259 "UmlTypeSpec"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}};
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " this class memorize a type specification, which may be
+
+ - a class reference
+
+ - an explicit type"
+      classrelation 156419 // <generalisation>
+	relation 156419 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 156419 // <generalisation>
+	  b parent class_ref 144128 // UmlBaseTypeSpec
+      end
+    end
+
+    class 6785 "UmlActualParameter"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}};
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class manages 'actual parameters' of a template class. For instance T in
+
+	class Cl1 : public Cl2<T> ...
+
+ You can modify it as you want (except the constructor)"
+      classrelation 14593 // <generalisation>
+	relation 14593 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 14593 // <generalisation>
+	  b parent class_ref 896 // UmlBaseActualParameter
+      end
+
+      operation 76801 "UmlActualParameter"
+	cpp_inline public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${name}${(}${)} {};
+"
+	java_def "  ${comment}${visibility}${final}${name}${(}${)}${throws}{
+${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 6913 "UmlFormalParameter"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}};
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class manages 'formal parameters' of a template class. For instance 'T' in 
+
+	template class Cl<class T> ...
+
+ You can modify it as you want (except the constructor)"
+      classrelation 14721 // <generalisation>
+	relation 14721 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 14721 // <generalisation>
+	  b parent class_ref 1024 // UmlBaseFormalParameter
+      end
+
+      operation 76929 "UmlFormalParameter"
+	cpp_inline public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${name}${(}${)} {};
+"
+	java_def "  ${comment}${visibility}${final}${name}${(}${)}${throws}{
+${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 7041 "UmlAttribute"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}};
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class manages 'attribute', notes that the class 'UmlClassItem'
+ is a mother class of the class's children.
+
+ You can modify it as you want (except the constructor)"
+      classrelation 14849 // <generalisation>
+	relation 14849 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 14849 // <generalisation>
+	  b parent class_ref 1280 // UmlBaseAttribute
+      end
+
+      operation 77057 "UmlAttribute"
+	cpp_inline public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "n" explicit_type "string"
+	cpp_decl "    ${comment}${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} :  UmlBaseAttribute(id, n) {};
+"
+	java_def "  ${comment}${visibility}${final}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}{ super(id, n); }
+"
+	
+	
+	
+      end
+    end
+
+    class 7169 "UmlClass"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}};
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class manages 'classes', notes that the class 'ClassItem'
+ is a mother class of the class's children.
+
+ You can modify it as you want (except the constructor)"
+      classrelation 14977 // <generalisation>
+	relation 14977 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 14977 // <generalisation>
+	  b parent class_ref 1408 // UmlBaseClass
+      end
+
+      operation 77185 "UmlClass"
+	cpp_inline public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "n" explicit_type "string"
+	cpp_decl "    ${comment}${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseClass(id, n) {};
+"
+	java_def "  ${comment}${visibility}${final}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}{ super(id, n); }
+"
+	
+	
+	
+      end
+
+      operation 144642 "deploy"
+	cpp_virtual public explicit_return_type "void"
+	nparams 1
+	  param inout name "view" type class_ref 8449 // UmlDeploymentView
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} * ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} * ${p0}${)}${const}${volatile}${staticnl}{
+  ${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 128131 "deployable"
+	cpp_virtual public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+  ${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 7297 "UmlClassDiagram"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}};
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class manages 'class diagrams', notes that the class 'UmlDiagram'
+ is a mother class of all the diagrams, allowing to generalize their
+ management
+
+ You can modify it as you want (except the constructor)"
+      classrelation 15105 // <generalisation>
+	relation 15105 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 15105 // <generalisation>
+	  b parent class_ref 1664 // UmlBaseClassDiagram
+      end
+
+      operation 77313 "UmlClassDiagram"
+	cpp_inline public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "n" explicit_type "string"
+	cpp_decl "    ${comment}${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseClassDiagram(id, n) {};
+"
+	java_def "  ${comment}${visibility}${final}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}{ super(id, n); }"
+	
+	
+	
+      end
+    end
+
+    class 132739 "UmlObjectDiagram"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class manages 'object diagrams', notes that the class 'UmlDiagram'
+ is a mother class of all the diagrams, allowing to generalize their
+ management
+
+ You can modify it as you want (except the constructor)"
+      classrelation 137091 // <generalisation>
+	relation 137091 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 137091 // <generalisation>
+	  b parent class_ref 132608 // UmlBaseObjectDiagram
+      end
+
+      operation 148099 "UmlObjectDiagram"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseObjectDiagram(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 7425 "UmlClassItem"
+      abstract visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}};
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class globaly manages class's children including UmlClassExtraMember
+
+ You can modify it as you want (except the constructor)"
+      classrelation 15233 // <generalisation>
+	relation 15233 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 15233 // <generalisation>
+	  b parent class_ref 1536 // UmlBaseClassItem
+      end
+
+      operation 77441 "UmlClassItem"
+	cpp_inline public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "n" explicit_type "string"
+	cpp_decl "    ${comment}${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseClassItem(id, n) {};
+"
+	java_def "  ${comment}${visibility}${final}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}{ super(id, n); }
+"
+	
+	
+	
+      end
+    end
+
+    class 7553 "UmlClassMember"
+      abstract visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class globaly manages class's relations, attributes, operations 
+ and sub-classes
+
+ You can modify it as you want (except the constructor)"
+      operation 77569 "UmlClassMember"
+	cpp_inline public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "n" explicit_type "string"
+	cpp_decl "    ${comment}${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseClassMember(id, n) {};
+"
+	java_def "  ${comment}${visibility}${final}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}{ super(id, n); }
+"
+	
+	
+	
+      end
+
+      classrelation 15361 // <generalisation>
+	relation 15361 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 15361 // <generalisation>
+	  b parent class_ref 1792 // UmlBaseClassMember
+      end
+    end
+
+    class 7681 "UmlClassView"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}};
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class manages 'class view'
+
+ You can modify it as you want (except the constructor)"
+      classrelation 15489 // <generalisation>
+	relation 15489 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 15489 // <generalisation>
+	  b parent class_ref 1920 // UmlBaseClassView
+      end
+
+      operation 77697 "UmlClassView"
+	cpp_inline public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "n" explicit_type "string"
+	cpp_decl "    ${comment}${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseClassView(id, n) {};
+"
+	java_def "  ${comment}${visibility}${final}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}{ super(id, n); }
+"
+	
+	
+	
+      end
+
+      operation 144258 "deploy"
+	cpp_virtual public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+  ${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 7809 "UmlCollaborationDiagram"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}};
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class manages 'collaboration diagrams', notes that the class 'UmlDiagram'
+ is a mother class of all the diagrams, allowing to generalize their
+ management
+
+ You can modify it as you want (except the constructor)"
+      classrelation 15617 // <generalisation>
+	relation 15617 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 15617 // <generalisation>
+	  b parent class_ref 2176 // UmlBaseCollaborationDiagram
+      end
+
+      operation 77825 "UmlCollaborationDiagram"
+	cpp_inline public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "n" explicit_type "string"
+	cpp_decl "    ${comment}${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseCollaborationDiagram(id, n) {};
+"
+	java_def "  ${comment}${visibility}${final}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}{ super(id, n); }
+"
+	
+	
+	
+      end
+    end
+
+    class 7937 "UmlComponentDiagram"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}};
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class manages 'ccomponent diagrams', notes that the class 'UmlDiagram'
+ is a mother class of all the diagrams, allowing to generalize their
+ management
+
+ You can modify it as you want (except the constructor)"
+      classrelation 15745 // <generalisation>
+	relation 15745 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 15745 // <generalisation>
+	  b parent class_ref 2304 // UmlBaseComponentDiagram
+      end
+
+      operation 77953 "UmlComponentDiagram"
+	cpp_inline public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "n" explicit_type "string"
+	cpp_decl "    ${comment}${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseComponentDiagram(id, n) {};
+"
+	java_def "  ${comment}${visibility}${final}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}{ super(id, n); }
+"
+	
+	
+	
+      end
+    end
+
+    class 8065 "UmlComponentView"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}};
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class manages 'component view'
+
+ You can modify it as you want (except the constructor)"
+      classrelation 15873 // <generalisation>
+	relation 15873 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 15873 // <generalisation>
+	  b parent class_ref 2432 // UmlBaseComponentView
+      end
+
+      operation 78081 "UmlComponentView"
+	cpp_inline public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "n" explicit_type "string"
+	cpp_decl "    ${comment}${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseComponentView(id, n) {};
+"
+	java_def "  ${comment}${visibility}${final}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}{ super(id, n); }
+"
+	
+	
+	
+      end
+    end
+
+    class 8193 "UmlArtifact"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}};
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class manages 'artifacts'
+
+ You can modify it as you want (except the constructor)"
+      classrelation 16001 // <generalisation>
+	relation 16001 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 16001 // <generalisation>
+	  b parent class_ref 2048 // UmlBaseArtifact
+      end
+
+      operation 78209 "UmlArtifact"
+	cpp_inline public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "n" explicit_type "string"
+	cpp_decl "    ${comment}${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseArtifact(id, n) {};
+"
+	java_def "  ${comment}${visibility}${final}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}{ super(id, n); }
+"
+	
+	
+	
+      end
+    end
+
+    class 128002 "UmlComponent"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}};
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class manages 'components'
+
+ You can modify it as you want (except the constructor)"
+      classrelation 128130 // <generalisation>
+	relation 128130 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 128130 // <generalisation>
+	  b parent class_ref 6528 // UmlBaseComponent
+      end
+
+      operation 128002 "UmlComponent"
+	cpp_inline public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "n" explicit_type "string"
+	cpp_decl "    ${comment}${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseComponent(id, n) {};
+"
+	java_def "  ${comment}${visibility}${final}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}{ super(id, n); }
+"
+	
+	
+	
+      end
+    end
+
+    class 8321 "UmlDeploymentDiagram"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}};
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class manages 'deployment diagrams', notes that the class 'UmlDiagram'
+ is a mother class of all the diagrams, allowing to generalize their
+ management
+
+ You can modify it as you want (except the constructor)"
+      classrelation 16129 // <generalisation>
+	relation 16129 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 16129 // <generalisation>
+	  b parent class_ref 2560 // UmlBaseDeploymentDiagram
+      end
+
+      operation 78337 "UmlDeploymentDiagram"
+	cpp_inline public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "n" explicit_type "string"
+	cpp_decl "    ${comment}${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseDeploymentDiagram(id, n) {};
+"
+	java_def "  ${comment}${visibility}${final}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}{ super(id, n); }
+"
+	
+	
+	
+      end
+    end
+
+    class 8449 "UmlDeploymentView"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}};
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class manages 'deployment view'
+
+ You can modify it as you want (except the constructor)"
+      classrelation 16257 // <generalisation>
+	relation 16257 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 16257 // <generalisation>
+	  b parent class_ref 2688 // UmlBaseDeploymentView
+      end
+
+      operation 78465 "UmlDeploymentView"
+	cpp_inline public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "n" explicit_type "string"
+	cpp_decl "    ${comment}${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseDeploymentView(id, n) {};
+"
+	java_def "  ${comment}${visibility}${final}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}{ super(id, n); }
+"
+	
+	
+	
+      end
+    end
+
+    class 8577 "UmlDiagram"
+      abstract visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}};
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class allows to manage extra class member, mainly defined fot C++
+ it allows to insert C++ pre-processor directive (even they may be placed
+ in the other member definition/declaration), to declare friend
+ operation/function etc...
+
+ You can modify it as you want (except the constructor)"
+      classrelation 16385 // <generalisation>
+	relation 16385 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 16385 // <generalisation>
+	  b parent class_ref 2944 // UmlBaseDiagram
+      end
+
+      operation 78593 "UmlDiagram"
+	cpp_inline public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "n" explicit_type "string"
+	cpp_decl "    ${comment}${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseDiagram(id, n) {};
+"
+	java_def "  ${comment}${visibility}${final}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}{ super(id, n); }
+"
+	
+	
+	
+      end
+    end
+
+    class 8705 "UmlExtraClassMember"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class allows to manage extra class member, It allows to insert
+ C++ pre-processor directive (even they may be placed in the other member
+ definition/declaration), etc ...
+
+ You can modify it as you want (except the constructor)
+"
+      classrelation 16513 // <generalisation>
+	relation 16513 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 16513 // <generalisation>
+	  b parent class_ref 3072 // UmlBaseExtraClassMember
+      end
+
+      operation 78721 "UmlExtraClassMember"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "n" explicit_type "string"
+	cpp_decl "    ${comment}${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseExtraClassMember(${p0}, ${p1}) {};
+"
+	java_def "  ${comment}${visibility}${final}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws} { super(id, n); }
+"
+	
+	
+	
+      end
+    end
+
+    class 8833 "UmlItem"
+      abstract visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}};
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class is a mother class for all the other Uml* classes, this
+ allows to generalize their management, declare virtual operations etc ...
+
+ You can modify it as you want (except the constructor)"
+      classrelation 16641 // <generalisation>
+	relation 16641 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 16641 // <generalisation>
+	  b parent class_ref 3200 // UmlBaseItem
+      end
+
+      operation 78849 "UmlItem"
+	cpp_inline public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "n" explicit_type "string"
+	cpp_decl "    ${comment}${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseItem(id, n) {};
+"
+	java_def "  ${comment}${visibility}${final}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}{ super(id, n); }
+"
+	
+	
+	
+      end
+
+      operation 78977 "~UmlItem"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${virtual}${name}${(}${)};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 144130 "deploy"
+	cpp_virtual public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+      end
+
+      operation 144386 "deploy"
+	cpp_virtual public explicit_return_type "void"
+	nparams 1
+	  param inout name "view" type class_ref 8449 // UmlDeploymentView
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} * ${p0}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${t0} *${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+      end
+
+      operation 128003 "deployable"
+	cpp_virtual public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${)}${const}${volatile}${abstract};
+"
+	cpp_def "${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${staticnl}{
+${body}}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 8961 "UmlNode"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}};
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class manages 'nodes'
+
+ You can modify it as you want (except the constructor)"
+      classrelation 16769 // <generalisation>
+	relation 16769 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 16769 // <generalisation>
+	  b parent class_ref 3328 // UmlBaseNode
+      end
+
+      operation 79105 "UmlNode"
+	cpp_inline public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "n" explicit_type "string"
+	cpp_decl "    ${comment}${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseNode(id, n) {};
+"
+	java_def "  ${comment}${visibility}${final}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}{ super(id, n); }
+"
+	
+	
+	
+      end
+    end
+
+    class 9089 "UmlOperation"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}};
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class manages 'operations', notes that the class 'UmlClassItem'
+ is a mother class of all the class's children.
+
+ You can modify it as you want (except the constructor)"
+      classrelation 16897 // <generalisation>
+	relation 16897 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 16897 // <generalisation>
+	  b parent class_ref 3456 // UmlBaseOperation
+      end
+
+      operation 79233 "UmlOperation"
+	cpp_inline public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "n" explicit_type "string"
+	cpp_decl "    ${comment}${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseOperation(id, n) {};
+"
+	java_def "  ${comment}${visibility}${final}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}{ super(id, n); }
+"
+	
+	
+	
+      end
+    end
+
+    class 144003 "UmlParameter"
+      visibility package stereotype "struct"
+      cpp_decl "${comment}${template}struct ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      final java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}};
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "  Represent an operation's parameter
+"
+      classrelation 156163 // <generalisation>
+	relation 156163 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 156163 // <generalisation>
+	  b parent class_ref 143872 // UmlBaseParameter
+      end
+    end
+
+    class 9217 "UmlPackage"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}};
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class manages a 'package', notes that the project itself is a package
+
+ You can modify it as you want (except the constructor)"
+      classrelation 17025 // <generalisation>
+	relation 17025 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 17025 // <generalisation>
+	  b parent class_ref 3584 // UmlBasePackage
+      end
+
+      operation 79361 "UmlPackage"
+	cpp_inline public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "n" explicit_type "string"
+	cpp_decl "    ${comment}${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBasePackage(id, n) {};
+"
+	java_def "  ${comment}${visibility}${final}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}{ super(id, n); }
+"
+	
+	
+	
+      end
+    end
+
+    class 9345 "UmlRelation"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}};
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class manages 'relations' between classes, notes that the class 'UmlClassItem'
+ is a mother class of all the class's children.
+
+ You can modify it as you want (except the constructor)"
+      classrelation 17153 // <generalisation>
+	relation 17153 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 17153 // <generalisation>
+	  b parent class_ref 3712 // UmlBaseRelation
+      end
+
+      operation 79489 "UmlRelation"
+	cpp_inline public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "n" explicit_type "string"
+	cpp_decl "    ${comment}${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseRelation(id, n) {};
+"
+	java_def "  ${comment}${visibility}${final}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}{ super(id, n); }
+"
+	
+	
+	
+      end
+    end
+
+    class 9473 "UmlNcRelation"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}};
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "This class manages 'relations' between non class objects
+
+ You can modify it as you want (except the constructor)"
+      classrelation 17281 // <generalisation>
+	relation 17281 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 17281 // <generalisation>
+	  b parent class_ref 3840 // UmlBaseNcRelation
+      end
+
+      operation 79617 "UmlNcRelation"
+	cpp_inline public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "n" explicit_type "string"
+	cpp_decl "    ${comment}${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseNcRelation(id, n) {};
+"
+	java_def "  ${comment}${visibility}${final}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}{ super(id, n); }
+"
+	
+	
+	
+      end
+    end
+
+    class 9601 "UmlSequenceDiagram"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}};
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class manages 'sequence diagrams', notes that the class 'UmlDiagram'
+ is a mother class of all the diagrams, allowing to generalize their
+ management
+
+ You can modify it as you want (except the constructor)"
+      classrelation 17409 // <generalisation>
+	relation 17409 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 17409 // <generalisation>
+	  b parent class_ref 3968 // UmlBaseSequenceDiagram
+      end
+
+      operation 79745 "UmlSequenceDiagram"
+	cpp_inline public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "n" explicit_type "string"
+	cpp_decl "    ${comment}${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseSequenceDiagram(id, n) {};
+"
+	java_def "  ${comment}${visibility}${final}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}{ super(id, n); }"
+	
+	
+	
+      end
+    end
+
+    class 9729 "UmlUseCase"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}};
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class manages 'use case'
+
+ You can modify it as you want (except the constructor)"
+      classrelation 17537 // <generalisation>
+	relation 17537 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 17537 // <generalisation>
+	  b parent class_ref 4096 // UmlBaseUseCase
+      end
+
+      operation 79873 "UmlUseCase"
+	cpp_inline public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "n" explicit_type "string"
+	cpp_decl "    ${comment}${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseUseCase(id, n) {};
+"
+	java_def "  ${comment}${visibility}${final}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}{ super(id, n); }
+"
+	
+	
+	
+      end
+    end
+
+    class 9857 "UmlUseCaseDiagram"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}};
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class manages 'use case diagrams', notes that the class 'UmlDiagram'
+ is a mother class of all the diagrams, allowing to generalize their
+ management
+
+ You can modify it as you want (except the constructor)"
+      classrelation 17665 // <generalisation>
+	relation 17665 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 17665 // <generalisation>
+	  b parent class_ref 4224 // UmlBaseUseCaseDiagram
+      end
+
+      operation 80001 "UmlUseCaseDiagram"
+	cpp_inline public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "n" explicit_type "string"
+	cpp_decl "    ${comment}${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseUseCaseDiagram(id, n) {};
+"
+	java_def "  ${comment}${visibility}${final}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}{ super(id, n); }
+"
+	
+	
+	
+      end
+    end
+
+    class 9985 "UmlUseCaseView"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}};
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class manages 'use case view'
+
+ You can modify it as you want (except the constructor)"
+      classrelation 17793 // <generalisation>
+	relation 17793 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 17793 // <generalisation>
+	  b parent class_ref 4352 // UmlBaseUseCaseView
+      end
+
+      operation 80129 "UmlUseCaseView"
+	cpp_inline public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "n" explicit_type "string"
+	cpp_decl "    ${comment}${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseUseCaseView(id, n) {};
+"
+	java_def "  ${comment}${visibility}${final}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}{ super(id, n); }
+"
+	
+	
+	
+      end
+    end
+
+    class 128130 "UmlStateItem"
+      visibility package stereotype "interface"
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}interface ${name}${extends} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+    end
+
+    class 128386 "UmlState"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128514 // <generalisation>
+	relation 128514 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 128514 // <generalisation>
+	  b parent class_ref 128256 // UmlBaseState
+      end
+
+      classrelation 128642 // <generalisation>
+	relation 128642 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 128642 // <generalisation>
+	  b parent class_ref 128130 // UmlStateItem
+      end
+
+      operation 128514 "UmlState"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseState(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 128642 "UmlStateDiagram"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 129026 // <generalisation>
+	relation 129026 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 129026 // <generalisation>
+	  b parent class_ref 128512 // UmlBaseStateDiagram
+      end
+
+      classrelation 129154 // <generalisation>
+	relation 129154 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 129154 // <generalisation>
+	  b parent class_ref 128130 // UmlStateItem
+      end
+
+      operation 129026 "UmlStateDiagram"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseStateDiagram(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 133379 "UmlActivityDiagram"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " This class manages 'activity diagrams', notes that the class 'UmlDiagram'
+ is a mother class of all the diagrams, allowing to generalize their
+ management
+
+ You can modify it as you want (except the constructor)"
+      classrelation 137859 // <generalisation>
+	relation 137859 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 137859 // <generalisation>
+	  b parent class_ref 133248 // UmlBaseActivityDiagram
+      end
+
+      classrelation 137987 // <generalisation>
+	relation 137987 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 137987 // <generalisation>
+	  b parent class_ref 132867 // UmlActivityItem
+      end
+
+      operation 151171 "UmlActivityDiagram"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseActivityDiagram(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 129026 "UmlTransition"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 130050 // <generalisation>
+	relation 130050 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 130050 // <generalisation>
+	  b parent class_ref 128896 // UmlBaseTransition
+      end
+
+      classrelation 130178 // <generalisation>
+	relation 130178 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 130178 // <generalisation>
+	  b parent class_ref 128130 // UmlStateItem
+      end
+
+      operation 135938 "UmlTransition"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "n" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseTransition(id, n) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, n);
+}
+"
+	
+	
+	
+      end
+    end
+
+    class 129410 "UmlRegion"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 131074 // <generalisation>
+	relation 131074 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 131074 // <generalisation>
+	  b parent class_ref 129280 // UmlBaseRegion
+      end
+
+      classrelation 131202 // <generalisation>
+	relation 131202 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 131202 // <generalisation>
+	  b parent class_ref 128130 // UmlStateItem
+      end
+
+      operation 136450 "UmlRegion"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseRegion(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 129666 "UmlStateAction"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 131586 // <generalisation>
+	relation 131586 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 131586 // <generalisation>
+	  b parent class_ref 129536 // UmlBaseStateAction
+      end
+
+      classrelation 131714 // <generalisation>
+	relation 131714 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 131714 // <generalisation>
+	  b parent class_ref 128130 // UmlStateItem
+      end
+
+      operation 136578 "UmlStateAction"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type "item_id"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}${)} : UmlBaseStateAction(id, \"\") {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  super(id, \"\");
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 129794 "UmlPseudoState"
+      abstract visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 138370 "UmlPseudoState"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlItem(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+
+      classrelation 131842 // <generalisation>
+	relation 131842 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 131842 // <generalisation>
+	  b parent class_ref 128130 // UmlStateItem
+      end
+
+      classrelation 131970 // <generalisation>
+	relation 131970 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 131970 // <generalisation>
+	  b parent class_ref 8833 // UmlItem
+      end
+    end
+
+    class 130050 "UmlInitialPseudoState"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 132354 // <generalisation>
+	relation 132354 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 132354 // <generalisation>
+	  b parent class_ref 129920 // UmlBaseInitialPseudoState
+      end
+
+      operation 138882 "UmlInitialPseudoState"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type "item_id"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}${)} : UmlBaseInitialPseudoState(id, \"\") {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  super(id, \"\");
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 130306 "UmlEntryPointPseudoState"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 132738 // <generalisation>
+	relation 132738 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 132738 // <generalisation>
+	  b parent class_ref 130176 // UmlBaseEntryPointPseudoState
+      end
+
+      operation 139394 "UmlEntryPointPseudoState"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseEntryPointPseudoState(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 130562 "UmlFinalState"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 133122 // <generalisation>
+	relation 133122 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 133122 // <generalisation>
+	  b parent class_ref 130432 // UmlBaseFinalState
+      end
+
+      operation 139906 "UmlFinalState"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type "item_id"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}${)} : UmlBaseFinalState(id, \"\") {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  super(id, \"\");
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 130818 "UmlTerminatePseudoState"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 133506 // <generalisation>
+	relation 133506 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 133506 // <generalisation>
+	  b parent class_ref 130688 // UmlBaseTerminatePseudoState
+      end
+
+      operation 140418 "UmlTerminatePseudoState"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type "item_id"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}${)} : UmlBaseTerminatePseudoState(id, \"\") {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  super(id, \"\");
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 131074 "UmlExitPointPseudoState"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 133890 // <generalisation>
+	relation 133890 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 133890 // <generalisation>
+	  b parent class_ref 130944 // UmlBaseExitPointPseudoState
+      end
+
+      operation 140930 "UmlExitPointPseudoState"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseExitPointPseudoState(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 131330 "UmlDeepHistoryPseudoState"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 134274 // <generalisation>
+	relation 134274 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 134274 // <generalisation>
+	  b parent class_ref 131200 // UmlBaseDeepHistoryPseudoState
+      end
+
+      operation 141442 "UmlDeepHistoryPseudoState"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type "item_id"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}${)} : UmlBaseDeepHistoryPseudoState(id, \"\") {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  super(id, \"\");
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 131586 "UmlShallowHistoryPseudoState"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 134658 // <generalisation>
+	relation 134658 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 134658 // <generalisation>
+	  b parent class_ref 131456 // UmlBaseShallowHistoryPseudoState
+      end
+
+      operation 141954 "UmlShallowHistoryPseudoState"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type "item_id"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}${)} : UmlBaseShallowHistoryPseudoState(id, \"\") {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  super(id, \"\");
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 131842 "UmlJunctionPseudoState"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 135042 // <generalisation>
+	relation 135042 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 135042 // <generalisation>
+	  b parent class_ref 131712 // UmlBaseJunctionPseudoState
+      end
+
+      operation 142466 "UmlJunctionPseudoState"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type "item_id"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}${)} : UmlBaseJunctionPseudoState(id, \"\") {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  super(id, \"\");
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 132098 "UmlChoicePseudoState"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 135426 // <generalisation>
+	relation 135426 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 135426 // <generalisation>
+	  b parent class_ref 131968 // UmlBaseChoicePseudoState
+      end
+
+      operation 142978 "UmlChoicePseudoState"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type "item_id"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}${)} : UmlBaseChoicePseudoState(id, \"\") {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  super(id, \"\");
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 132354 "UmlForkPseudoState"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 135810 // <generalisation>
+	relation 135810 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 135810 // <generalisation>
+	  b parent class_ref 132224 // UmlBaseForkPseudoState
+      end
+
+      operation 143490 "UmlForkPseudoState"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type "item_id"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}${)} : UmlBaseForkPseudoState(id, \"\") {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  super(id, \"\");
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 132610 "UmlJoinPseudoState"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 136194 // <generalisation>
+	relation 136194 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 136194 // <generalisation>
+	  b parent class_ref 132480 // UmlBaseJoinPseudoState
+      end
+
+      operation 144002 "UmlJoinPseudoState"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type "item_id"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}${)} : UmlBaseJoinPseudoState(id, \"\") {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  super(id, \"\");
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 132867 "UmlActivityItem"
+      visibility package stereotype "interface"
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}interface ${name}${extends} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+    end
+
+    class 133123 "UmlActivity"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 137475 // <generalisation>
+	relation 137475 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 137475 // <generalisation>
+	  b parent class_ref 132992 // UmlBaseActivity
+      end
+
+      operation 148611 "UmlActivity"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseActivity(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 133635 "UmlActivityNode"
+      abstract visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 138499 // <generalisation>
+	relation 138499 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 138499 // <generalisation>
+	  b parent class_ref 133504 // UmlBaseActivityNode
+      end
+
+      classrelation 138627 // <generalisation>
+	relation 138627 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 138627 // <generalisation>
+	  b parent class_ref 132867 // UmlActivityItem
+      end
+
+      operation 152195 "UmlActivityNode"
+	protected explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseActivityNode(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 133891 "UmlFlow"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 139011 // <generalisation>
+	relation 139011 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 139011 // <generalisation>
+	  b parent class_ref 133760 // UmlBaseFlow
+      end
+
+      classrelation 139139 // <generalisation>
+	relation 139139 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 139139 // <generalisation>
+	  b parent class_ref 132867 // UmlActivityItem
+      end
+
+      operation 156675 "UmlFlow"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "n" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseFlow(id, n) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, n);
+}
+"
+	
+	
+	
+      end
+    end
+
+    class 134275 "UmlActivityRegion"
+      abstract visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 140035 // <generalisation>
+	relation 140035 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 140035 // <generalisation>
+	  b parent class_ref 134144 // UmlBaseActivityRegion
+      end
+
+      classrelation 140163 // <generalisation>
+	relation 140163 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 140163 // <generalisation>
+	  b parent class_ref 132867 // UmlActivityItem
+      end
+
+      operation 156931 "UmlActivityRegion"
+	protected explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseActivityRegion(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 134531 "UmlExpansionRegion"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 140675 // <generalisation>
+	relation 140675 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 140675 // <generalisation>
+	  b parent class_ref 134400 // UmlBaseExpansionRegion
+      end
+
+      operation 157827 "UmlExpansionRegion"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseExpansionRegion(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 134915 "UmlInterruptibleActivityRegion"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 141187 // <generalisation>
+	relation 141187 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 141187 // <generalisation>
+	  b parent class_ref 134784 // UmlBaseInterruptibleActivityRegion
+      end
+
+      operation 158979 "UmlInterruptibleActivityRegion"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseInterruptibleActivityRegion(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 135171 "UmlActivityAction"
+      abstract visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 141571 // <generalisation>
+	relation 141571 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 141571 // <generalisation>
+	  b parent class_ref 135040 // UmlBaseActivityAction
+      end
+
+      operation 159235 "UmlActivityAction"
+	protected explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseActivityAction(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 135427 "UmlSendObjectAction"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 142083 // <generalisation>
+	relation 142083 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 142083 // <generalisation>
+	  b parent class_ref 135296 // UmlBaseSendObjectAction
+      end
+
+      operation 162051 "UmlSendObjectAction"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseSendObjectAction(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 135683 "UmlUnmarshallAction"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 142467 // <generalisation>
+	relation 142467 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 142467 // <generalisation>
+	  b parent class_ref 135552 // UmlBaseUnmarshallAction
+      end
+
+      operation 162563 "UmlUnmarshallAction"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseUnmarshallAction(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 135939 "UmlOnSignalAction"
+      abstract visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 142851 // <generalisation>
+	relation 142851 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 142851 // <generalisation>
+	  b parent class_ref 135808 // UmlBaseOnSignalAction
+      end
+
+      operation 162819 "UmlOnSignalAction"
+	protected explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseOnSignalAction(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 136195 "UmlSendSignalAction"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 143235 // <generalisation>
+	relation 143235 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 143235 // <generalisation>
+	  b parent class_ref 136064 // UmlBaseSendSignalAction
+      end
+
+      operation 164611 "UmlSendSignalAction"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseSendSignalAction(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 136451 "UmlBroadcastSignalAction"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 143619 // <generalisation>
+	relation 143619 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 143619 // <generalisation>
+	  b parent class_ref 136320 // UmlBaseBroadcastSignalAction
+      end
+
+      operation 165123 "UmlBroadcastSignalAction"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseBroadcastSignalAction(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 136707 "UmlValueSpecificationAction"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 144003 // <generalisation>
+	relation 144003 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 144003 // <generalisation>
+	  b parent class_ref 136576 // UmlBaseValueSpecificationAction
+      end
+
+      operation 165635 "UmlValueSpecificationAction"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseValueSpecificationAction(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 136963 "UmlOpaqueAction"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 144387 // <generalisation>
+	relation 144387 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 144387 // <generalisation>
+	  b parent class_ref 136832 // UmlBaseOpaqueAction
+      end
+
+      operation 167427 "UmlOpaqueAction"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseOpaqueAction(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 137219 "UmlAcceptEventAction"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 144771 // <generalisation>
+	relation 144771 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 144771 // <generalisation>
+	  b parent class_ref 137088 // UmlBaseAcceptEventAction
+      end
+
+      operation 169219 "UmlAcceptEventAction"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseAcceptEventAction(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 137475 "UmlCallOperationAction"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 145155 // <generalisation>
+	relation 145155 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 145155 // <generalisation>
+	  b parent class_ref 137344 // UmlBaseCallOperationAction
+      end
+
+      operation 171523 "UmlCallOperationAction"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseCallOperationAction(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 137731 "UmlCallBehaviorAction"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 145667 // <generalisation>
+	relation 145667 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 145667 // <generalisation>
+	  b parent class_ref 137600 // UmlBaseCallBehaviorAction
+      end
+
+      operation 172675 "UmlCallBehaviorAction"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseCallBehaviorAction(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 137987 "UmlAccessVariableValueAction"
+      abstract visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 146179 // <generalisation>
+	relation 146179 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 146179 // <generalisation>
+	  b parent class_ref 137856 // UmlBaseAccessVariableValueAction
+      end
+
+      operation 173571 "UmlAccessVariableValueAction"
+	protected explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseAccessVariableValueAction(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 138243 "UmlClearVariableValueAction"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 146691 // <generalisation>
+	relation 146691 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 146691 // <generalisation>
+	  b parent class_ref 138112 // UmlBaseClearVariableValueAction
+      end
+
+      operation 174467 "UmlClearVariableValueAction"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseClearVariableValueAction(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 138499 "UmlReadVariableValueAction"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 147075 // <generalisation>
+	relation 147075 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 147075 // <generalisation>
+	  b parent class_ref 138368 // UmlBaseReadVariableValueAction
+      end
+
+      operation 174979 "UmlReadVariableValueAction"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseReadVariableValueAction(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 138755 "UmlWriteVariableValueAction"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 147459 // <generalisation>
+	relation 147459 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 147459 // <generalisation>
+	  b parent class_ref 138624 // UmlBaseWriteVariableValueAction
+      end
+
+      operation 175491 "UmlWriteVariableValueAction"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseWriteVariableValueAction(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 139011 "UmlAddVariableValueAction"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 147843 // <generalisation>
+	relation 147843 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 147843 // <generalisation>
+	  b parent class_ref 138880 // UmlBaseAddVariableValueAction
+      end
+
+      operation 176003 "UmlAddVariableValueAction"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseAddVariableValueAction(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 139267 "UmlRemoveVariableValueAction"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 148227 // <generalisation>
+	relation 148227 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 148227 // <generalisation>
+	  b parent class_ref 139136 // UmlBaseRemoveVariableValueAction
+      end
+
+      operation 176899 "UmlRemoveVariableValueAction"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseRemoveVariableValueAction(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 139523 "UmlActivityControlNode"
+      abstract visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 148611 // <generalisation>
+	relation 148611 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 148611 // <generalisation>
+	  b parent class_ref 139392 // UmlBaseActivityControlNode
+      end
+
+      operation 177539 "UmlActivityControlNode"
+	protected explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseActivityControlNode(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 139779 "UmlInitialActivityNode"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 148995 // <generalisation>
+	relation 148995 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 148995 // <generalisation>
+	  b parent class_ref 139648 // UmlBaseInitialActivityNode
+      end
+
+      operation 178051 "UmlInitialActivityNode"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseInitialActivityNode(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 140035 "UmlFlowFinalActivityNode"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 149379 // <generalisation>
+	relation 149379 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 149379 // <generalisation>
+	  b parent class_ref 139904 // UmlBaseFlowFinalActivityNode
+      end
+
+      operation 178563 "UmlFlowFinalActivityNode"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseFlowFinalActivityNode(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 140291 "UmlActivityFinalActivityNode"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 149763 // <generalisation>
+	relation 149763 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 149763 // <generalisation>
+	  b parent class_ref 140160 // UmlBaseActivityFinalActivityNode
+      end
+
+      operation 179075 "UmlActivityFinalActivityNode"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseActivityFinalActivityNode(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 140547 "UmlDecisionActivityNode"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 150147 // <generalisation>
+	relation 150147 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 150147 // <generalisation>
+	  b parent class_ref 140416 // UmlBaseDecisionActivityNode
+      end
+
+      operation 179587 "UmlDecisionActivityNode"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseDecisionActivityNode(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 140803 "UmlMergeActivityNode"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 150531 // <generalisation>
+	relation 150531 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 150531 // <generalisation>
+	  b parent class_ref 140672 // UmlBaseMergeActivityNode
+      end
+
+      operation 180099 "UmlMergeActivityNode"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseMergeActivityNode(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 141059 "UmlForkActivityNode"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 150915 // <generalisation>
+	relation 150915 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 150915 // <generalisation>
+	  b parent class_ref 140928 // UmlBaseForkActivityNode
+      end
+
+      operation 180611 "UmlForkActivityNode"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseForkActivityNode(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 141315 "UmlJoinActivityNode"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 151299 // <generalisation>
+	relation 151299 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 151299 // <generalisation>
+	  b parent class_ref 141184 // UmlBaseJoinActivityNode
+      end
+
+      operation 181123 "UmlJoinActivityNode"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseJoinActivityNode(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 141571 "UmlActivityObject"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 151683 // <generalisation>
+	relation 151683 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 151683 // <generalisation>
+	  b parent class_ref 141440 // UmlBaseActivityObject
+      end
+
+      operation 181635 "UmlActivityObject"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseActivityObject(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 141955 "UmlExpansionNode"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 152451 // <generalisation>
+	relation 152451 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 152451 // <generalisation>
+	  b parent class_ref 141824 // UmlBaseExpansionNode
+      end
+
+      operation 184963 "UmlExpansionNode"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseExpansionNode(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 142211 "UmlPinParameter"
+      abstract visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 152835 // <generalisation>
+	relation 152835 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 152835 // <generalisation>
+	  b parent class_ref 142080 // UmlBasePinParameter
+      end
+
+      operation 185219 "UmlPinParameter"
+	protected explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBasePinParameter(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 142595 "UmlActivityPin"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 153475 // <generalisation>
+	relation 153475 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 153475 // <generalisation>
+	  b parent class_ref 142464 // UmlBaseActivityPin
+      end
+
+      operation 186883 "UmlActivityPin"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseActivityPin(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 142851 "UmlActivityParameter"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 153859 // <generalisation>
+	relation 153859 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 153859 // <generalisation>
+	  b parent class_ref 142720 // UmlBaseActivityParameter
+      end
+
+      operation 187395 "UmlActivityParameter"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseActivityParameter(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 143107 "UmlParameterSet"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 154243 // <generalisation>
+	relation 154243 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 154243 // <generalisation>
+	  b parent class_ref 142976 // UmlBaseParameterSet
+      end
+
+      operation 188419 "UmlParameterSet"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseParameterSet(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+
+      classrelation 154499 // <generalisation>
+	relation 154499 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 154499 // <generalisation>
+	  b parent class_ref 132867 // UmlActivityItem
+      end
+    end
+
+    class 143491 "UmlClassInstance"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 155139 // <generalisation>
+	relation 155139 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 155139 // <generalisation>
+	  b parent class_ref 143360 // UmlBaseClassInstance
+      end
+
+      operation 193155 "UmlClassInstance"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseClassInstance(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+
+    class 144515 "UmlView"
+      abstract visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+
+${inlines}
+"
+      java_decl "${comment}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 156803 // <generalisation>
+	relation 156803 ---|>
+	  a public
+	    cpp default "${type}"
+	    java "${type}"
+	    classrelation_ref 156803 // <generalisation>
+	  b parent class_ref 144384 // UmlBaseView
+      end
+
+      operation 195715 "UmlView"
+	protected explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type "item_id"
+	  param in name "s" explicit_type "string"
+	cpp_decl "    ${comment}${static}${virtual}${type} ${name}${(}${t0} ${p0}, const ${t1} & ${p1}${)} : UmlBaseView(id, s) {
+}
+"
+	java_def "  ${comment}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  super(id, s);
+}
+"
+	
+	
+	
+	comment "  the constructor, do not call it yourself !!!!!!!!!!"
+      end
+    end
+  end
+
+  deploymentview 641 "API USER Deployment view"
+    //deployment diagram settings
+    package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+    draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+    comment "'your' API artifacts modify them !
+
+Do not forget to modify Main !"
+    artifact 139395 "UmlTypeSpec"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 144259 // UmlTypeSpec
+      end
+    end
+
+    artifact 6529 "executable"
+      stereotype "executable"
+      associated_artifacts
+	artifact_ref 134400 // UmlBaseExpansionRegion
+	artifact_ref 142592 // UmlBaseUseCaseDiagramDefinition
+	artifact_ref 139520 // UmlBaseView
+	artifact_ref 141059 // UmlUseCaseAssociation
+	artifact_ref 3968 // aDirection
+	artifact_ref 132098 // UmlChoicePseudoState
+	artifact_ref 129536 // UmlBaseStateAction
+	artifact_ref 6913 // UmlClassItem
+	artifact_ref 129666 // UmlStateAction
+	artifact_ref 9985 // UmlUseCaseView
+	artifact_ref 768 // UmlBaseAttribute
+	artifact_ref 9089 // UmlOperation
+	artifact_ref 135808 // UmlBaseAccessVariableValueAction
+	artifact_ref 135040 // UmlBaseActivityAction
+	artifact_ref 140547 // UmlSubject
+	artifact_ref 134656 // anExpansionKind
+	artifact_ref 8321 // UmlDeploymentDiagram
+	artifact_ref 4096 // aVisibility
+	artifact_ref 128386 // UmlState
+	artifact_ref 2688 // UmlBaseNode
+	artifact_ref 1536 // UmlBaseArtifact
+	artifact_ref 8961 // UmlNode
+	artifact_ref 7041 // UmlFormalParameter
+	artifact_ref 129794 // UmlPseudoState
+	artifact_ref 136576 // UmlBaseActivityObject
+	artifact_ref 138496 // UmlBaseClassInstance
+	artifact_ref 135552 // UmlBaseOnSignalAction
+	artifact_ref 140672 // UmlBaseSubject
+	artifact_ref 141571 // UmlMessage
+	artifact_ref 130176 // UmlBaseEntryPointPseudoState
+	artifact_ref 8065 // UmlComponentDiagram
+	artifact_ref 7169 // UmlAttribute
+	artifact_ref 132224 // UmlBaseForkPseudoState
+	artifact_ref 384 // UmlBaseClassItem
+	artifact_ref 129152 // TransitionBehavior
+	artifact_ref 9473 // UmlNcRelation
+	artifact_ref 2176 // UmlBaseDeploymentView
+	artifact_ref 5632 // OnInstanceCmd
+	artifact_ref 6272 // JavaSettingsCmd
+	artifact_ref 132867 // UmlActivityItem
+	artifact_ref 137600 // UmlBaseActivityPin
+	artifact_ref 137091 // UmlExpansionNode
+	artifact_ref 138243 // UmlParameterSet
+	artifact_ref 141952 // aMessageKind
+	artifact_ref 4864 // IdlSettings
+	artifact_ref 1920 // UmlBaseDeployment
+	artifact_ref 5120 // UmlSettings
+	artifact_ref 131456 // UmlBaseShallowHistoryPseudoState
+	artifact_ref 5248 // UmlCom
+	artifact_ref 139776 // PhpSettings
+	artifact_ref 138112 // UmlBaseParameterSet
+	artifact_ref 132739 // UmlObjectDiagram
+	artifact_ref 7425 // UmlClassDiagram
+	artifact_ref 128768 // StateBehavior
+	artifact_ref 3712 // UmlBaseUseCaseView
+	artifact_ref 7937 // UmlArtifact
+	artifact_ref 128642 // UmlStateDiagram
+	artifact_ref 132354 // UmlForkPseudoState
+	artifact_ref 4608 // UmlStereotype
+	artifact_ref 131586 // UmlShallowHistoryPseudoState
+	artifact_ref 5376 // CmdFamily
+	artifact_ref 132480 // UmlBaseJoinPseudoState
+	artifact_ref 3328 // UmlBaseSequenceDiagram
+	artifact_ref 133123 // UmlActivity
+	artifact_ref 141440 // UmlBaseClassInstanceReference
+	artifact_ref 142336 // UmlBaseCollaborationMessage
+	artifact_ref 133760 // UmlBaseFlow
+	artifact_ref 140288 // UmlBaseFragment
+	artifact_ref 142848 // UmlBaseSequenceDiagramDefinition
+	artifact_ref 139139 // UmlParameter
+	artifact_ref 4736 // CppSettings
+	artifact_ref 896 // UmlBaseClass
+	artifact_ref 130562 // UmlFinalState
+	artifact_ref 3584 // UmlBaseUseCaseDiagram
+	artifact_ref 131968 // UmlBaseChoicePseudoState
+	artifact_ref 132992 // UmlBaseActivity
+	artifact_ref 137856 // UmlBaseActivityParameter
+	artifact_ref 141315 // UmlClassInstanceReference
+	artifact_ref 140803 // UmlUseCaseReference
+	artifact_ref 2560 // UmlBaseItem
+	artifact_ref 8193 // UmlComponentView
+	artifact_ref 2944 // UmlBasePackage
+	artifact_ref 5760 // ClassGlobalCmd
+	artifact_ref 5504 // MiscGlobalCmd
+	artifact_ref 128002 // UmlComponent
+	artifact_ref 138752 // SlotAttribute
+	artifact_ref 133635 // UmlActivityNode
+	artifact_ref 133248 // UmlBaseActivityDiagram
+	artifact_ref 142080 // UmlBaseSequenceMessage
+	artifact_ref 3200 // UmlBaseNcRelation
+	artifact_ref 129280 // UmlBaseRegion
+	artifact_ref 128256 // UmlBaseState
+	artifact_ref 130050 // UmlInitialPseudoState
+	artifact_ref 133379 // UmlActivityDiagram
+	artifact_ref 133504 // UmlBaseActivityNode
+	artifact_ref 136960 // UmlBaseExpansionNode
+	artifact_ref 139008 // UmlBaseParameter
+	artifact_ref 138627 // UmlClassInstance
+	artifact_ref 1408 // UmlBaseCollaborationDiagram
+	artifact_ref 143232 // PythonSettings
+	artifact_ref 1024 // UmlBaseClassDiagram
+	artifact_ref 139904 // PhpSettingsCmd
+	artifact_ref 8833 // UmlItem
+	artifact_ref 132610 // UmlJoinPseudoState
+	artifact_ref 135939 // UmlAccessVariableValueAction
+	artifact_ref 136451 // UmlActivityControlNodeClasses
+	artifact_ref 142211 // UmlCollaborationMessage
+	artifact_ref 135683 // UmlOnSignalAction
+	artifact_ref 137347 // UmlPinParameter
+	artifact_ref 128512 // UmlBaseStateDiagram
+	artifact_ref 130818 // UmlTerminatePseudoState
+	artifact_ref 131842 // UmlJunctionPseudoState
+	artifact_ref 1792 // UmlBaseComponentView
+	artifact_ref 138880 // SlotRelation
+	artifact_ref 134144 // UmlBaseActivityRegion
+	artifact_ref 140163 // UmlFragmentCompartment
+	artifact_ref 142467 // UmlUseCaseDiagramDefinition
+	artifact_ref 137472 // aParameterEffectKind
+	artifact_ref 143360 // PythonSettingsCmd
+	artifact_ref 3456 // UmlBaseUseCase
+	artifact_ref 5888 // PackageGlobalCmd
+	artifact_ref 2816 // UmlBaseOperation
+	artifact_ref 512 // UmlBaseFormalParameter
+	artifact_ref 130432 // UmlBaseFinalState
+	artifact_ref 137731 // UmlActivityPin
+	artifact_ref 135296 // UmlBaseActivityActionClasses
+	artifact_ref 141696 // UmlBaseMessage
+	artifact_ref 139264 // UmlBaseTypeSpec
+	artifact_ref 140928 // UmlBaseUseCaseReference
+	artifact_ref 134531 // UmlExpansionRegion
+	artifact_ref 133891 // UmlFlow
+	artifact_ref 6016 // UmlSettingsCmd
+	artifact_ref 6657 // Main
+	artifact_ref 130688 // UmlBaseTerminatePseudoState
+	artifact_ref 3072 // UmlBaseRelation
+	artifact_ref 8577 // UmlDiagram
+	artifact_ref 135427 // UmlActivityActionClasses
+	artifact_ref 136320 // UmlBaseActivityControlNodeClasses
+	artifact_ref 139651 // UmlView
+	artifact_ref 2432 // UmlBaseExtraClassMember
+	artifact_ref 3840 // aRelationKind
+	artifact_ref 7553 // UmlClassMember
+	artifact_ref 4992 // JavaSettings
+	artifact_ref 6528 // UmlBaseComponent
+	artifact_ref 8705 // UmlExtraClassMember
+	artifact_ref 7681 // UmlClassView
+	artifact_ref 7297 // UmlClass
+	artifact_ref 256 // UmlBaseActualParameter
+	artifact_ref 137987 // UmlActivityParameter
+	artifact_ref 134275 // UmlActivityRegion
+	artifact_ref 140416 // UmlBaseFragmentCompartment
+	artifact_ref 142979 // UmlCollaborationDiagramDefinition
+	artifact_ref 141827 // UmlSequenceMessage
+	artifact_ref 129026 // UmlTransition
+	artifact_ref 131200 // UmlBaseDeepHistoryPseudoState
+	artifact_ref 2048 // UmlBaseDeploymentDiagram
+	artifact_ref 8449 // UmlDeploymentView
+	artifact_ref 128896 // UmlBaseTransition
+	artifact_ref 135171 // UmlActivityAction
+	artifact_ref 136195 // UmlActivityControlNode
+	artifact_ref 137216 // UmlBasePinParameter
+	artifact_ref 141184 // UmlBaseUseCaseAssociation
+	artifact_ref 140035 // UmlFragment
+	artifact_ref 142723 // UmlSequenceDiagramDefinition
+	artifact_ref 7809 // UmlCollaborationDiagram
+	artifact_ref 129410 // UmlRegion
+	artifact_ref 1664 // UmlBaseComponentDiagram
+	artifact_ref 131712 // UmlBaseJunctionPseudoState
+	artifact_ref 9857 // UmlUseCaseDiagram
+	artifact_ref 139395 // UmlTypeSpec
+	artifact_ref 129920 // UmlBaseInitialPseudoState
+	artifact_ref 9601 // UmlSequenceDiagram
+	artifact_ref 134016 // FlowBehavior
+	artifact_ref 136064 // UmlBaseActivityControlNode
+	artifact_ref 4480 // UmlBuiltin
+	artifact_ref 134915 // UmlInterruptibleActivityRegion
+	artifact_ref 6785 // UmlActualParameter
+	artifact_ref 128130 // UmlStateItem
+	artifact_ref 9345 // UmlRelation
+	artifact_ref 1280 // UmlBaseClassView
+	artifact_ref 9217 // UmlPackage
+	artifact_ref 131074 // UmlExitPointPseudoState
+	artifact_ref 130306 // UmlEntryPointPseudoState
+	artifact_ref 4224 // anItemKind
+	artifact_ref 6144 // CppSettingsCmd
+	artifact_ref 136707 // UmlActivityObject
+	artifact_ref 143104 // UmlBaseCollaborationDiagramDefinition
+	artifact_ref 134784 // UmlBaseInterruptibleActivityRegion
+	artifact_ref 132608 // UmlBaseObjectDiagram
+	artifact_ref 138368 // aLanguage
+	artifact_ref 136832 // anOrdering
+	artifact_ref 6400 // IdlSettingsCmd
+	artifact_ref 9729 // UmlUseCase
+	artifact_ref 1152 // UmlBaseClassMember
+	artifact_ref 130944 // UmlBaseExitPointPseudoState
+	artifact_ref 2304 // UmlBaseDiagram
+	artifact_ref 131330 // UmlDeepHistoryPseudoState
+      end
+      ncouples 10
+      key "genpro pro" value "/tmp/deploy/cpp/deploy.pro"
+      key "genpro path" value "/tmp/deploy/cpp/"
+      key "genpro target" value "/tmp/deploy/cpp/deplcl"
+      key "genpro tmplt" value "app"
+      key "genpro config" value "debug warn_on qt"
+      key "genpro defines" value "WITHCPP WITHJAVA WITHPHP WITHPYTHON WITHIDL"
+      key "genpro includepath" value ""
+      key "genpro dependpath" value ""
+      key "genpro objectsdir" value ""
+      key "genpro footer" value ""
+      comment "  Reference all the components used to made a C++ executable,
+  used by 'genpro' to produce a .pro file allowing to produce a Makefile
+  with 'tmake' or 'qmake'"
+    end
+
+    artifact 6657 "Main"
+      stereotype "source"
+      cpp_src "
+#include \"UmlCom.h\"
+#include \"UmlItem.h\"
+#include \"UmlComponent.h\"
+#include \"UmlClass.h\"
+
+// the program is called with the socket port number in argument
+
+int main(int argc, char ** argv)
+{
+  if (argc != 2)
+    return 0;
+  
+  if (UmlCom::connect(QString(argv[1]).toUInt())) {
+    try {
+      UmlCom::trace(\"<b>Deploy classes</b> release 1.1 (C++ version)<br>\");
+      UmlCom::targetItem()->deploy();
+      UmlCom::trace(\"Done\");
+    }
+    catch (...) {
+    }
+
+    // must be called to cleanly inform that all is done
+    UmlCom::bye();
+  }
+  
+  UmlCom::close();
+  return 0;
+}
+"
+      java_src "// the program is called with the socket port number in argument
+
+class Main {
+  public static void main(String argv[]) {
+
+    if (argv.length == 1) {
+      UmlCom.connect(Integer.valueOf(argv[0]).intValue());
+
+      try {
+        UmlCom.trace(\"<b>Deploy classes</b> release 1.1 (Java version)<br>\");
+        UmlCom.targetItem().deploy();
+        UmlCom.trace(\"Done\");
+      }
+      finally {
+        // must be called to cleanly inform that all is done
+        UmlCom.bye();
+        UmlCom.close();
+      }
+    }
+    System.exit(0);
+  }
+}
+"
+      associated_classes
+      end
+      comment "  "
+    end
+
+    artifact 6785 "UmlActualParameter"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 6785 // UmlActualParameter
+      end
+    end
+
+    artifact 6913 "UmlClassItem"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 7425 // UmlClassItem
+      end
+    end
+
+    artifact 7041 "UmlFormalParameter"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 6913 // UmlFormalParameter
+      end
+    end
+
+    artifact 7169 "UmlAttribute"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 7041 // UmlAttribute
+      end
+    end
+
+    artifact 7297 "UmlClass"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+#include \"UmlArtifact.h\"
+#include \"UmlCom.h\"
+#include \"aLanguage.h\"
+#include \"CppSettings.h\"
+#include \"JavaSettings.h\"
+#include \"IdlSettings.h\"
+#include \"PhpSettings.h\"
+#include \"PythonSettings.h\"
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 7169 // UmlClass
+      end
+    end
+
+    artifact 7425 "UmlClassDiagram"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 7297 // UmlClassDiagram
+      end
+    end
+
+    artifact 7553 "UmlClassMember"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 7553 // UmlClassMember
+      end
+    end
+
+    artifact 7681 "UmlClassView"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+#include \"UmlDeploymentView.h\"
+#include \"UmlCom.h\"
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 7681 // UmlClassView
+      end
+    end
+
+    artifact 7809 "UmlCollaborationDiagram"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 7809 // UmlCollaborationDiagram
+      end
+    end
+
+    artifact 7937 "UmlArtifact"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 8193 // UmlArtifact
+      end
+    end
+
+    artifact 128002 "UmlComponent"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 128002 // UmlComponent
+      end
+    end
+
+    artifact 8065 "UmlComponentDiagram"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 7937 // UmlComponentDiagram
+      end
+    end
+
+    artifact 8193 "UmlComponentView"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 8065 // UmlComponentView
+      end
+    end
+
+    artifact 8321 "UmlDeploymentDiagram"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 8321 // UmlDeploymentDiagram
+      end
+    end
+
+    artifact 8449 "UmlDeploymentView"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 8449 // UmlDeploymentView
+      end
+    end
+
+    artifact 8577 "UmlDiagram"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 8577 // UmlDiagram
+      end
+    end
+
+    artifact 8705 "UmlExtraClassMember"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 8705 // UmlExtraClassMember
+      end
+    end
+
+    artifact 8833 "UmlItem"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+#include \"UmlCom.h\"
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 8833 // UmlItem
+      end
+    end
+
+    artifact 8961 "UmlNode"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 8961 // UmlNode
+      end
+    end
+
+    artifact 9089 "UmlOperation"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 9089 // UmlOperation
+      end
+    end
+
+    artifact 139139 "UmlParameter"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 144003 // UmlParameter
+      end
+    end
+
+    artifact 9217 "UmlPackage"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 9217 // UmlPackage
+      end
+    end
+
+    artifact 9345 "UmlRelation"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 9345 // UmlRelation
+      end
+    end
+
+    artifact 9473 "UmlNcRelation"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 9473 // UmlNcRelation
+      end
+    end
+
+    artifact 9601 "UmlSequenceDiagram"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 9601 // UmlSequenceDiagram
+      end
+    end
+
+    artifact 9729 "UmlUseCase"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 9729 // UmlUseCase
+      end
+    end
+
+    artifact 9857 "UmlUseCaseDiagram"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 9857 // UmlUseCaseDiagram
+      end
+    end
+
+    artifact 9985 "UmlUseCaseView"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 9985 // UmlUseCaseView
+      end
+    end
+
+    artifact 128130 "UmlStateItem"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 128130 // UmlStateItem
+      end
+    end
+
+    artifact 128386 "UmlState"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 128386 // UmlState
+      end
+    end
+
+    artifact 128642 "UmlStateDiagram"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 128642 // UmlStateDiagram
+      end
+    end
+
+    artifact 129026 "UmlTransition"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 129026 // UmlTransition
+      end
+    end
+
+    artifact 129410 "UmlRegion"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 129410 // UmlRegion
+      end
+    end
+
+    artifact 129666 "UmlStateAction"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 129666 // UmlStateAction
+      end
+    end
+
+    artifact 129794 "UmlPseudoState"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 129794 // UmlPseudoState
+      end
+    end
+
+    artifact 130050 "UmlInitialPseudoState"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 130050 // UmlInitialPseudoState
+      end
+    end
+
+    artifact 130306 "UmlEntryPointPseudoState"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 130306 // UmlEntryPointPseudoState
+      end
+    end
+
+    artifact 130562 "UmlFinalState"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 130562 // UmlFinalState
+      end
+    end
+
+    artifact 130818 "UmlTerminatePseudoState"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 130818 // UmlTerminatePseudoState
+      end
+    end
+
+    artifact 131074 "UmlExitPointPseudoState"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 131074 // UmlExitPointPseudoState
+      end
+    end
+
+    artifact 131330 "UmlDeepHistoryPseudoState"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 131330 // UmlDeepHistoryPseudoState
+      end
+    end
+
+    artifact 131586 "UmlShallowHistoryPseudoState"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 131586 // UmlShallowHistoryPseudoState
+      end
+    end
+
+    artifact 131842 "UmlJunctionPseudoState"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 131842 // UmlJunctionPseudoState
+      end
+    end
+
+    artifact 132098 "UmlChoicePseudoState"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 132098 // UmlChoicePseudoState
+      end
+    end
+
+    artifact 132354 "UmlForkPseudoState"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 132354 // UmlForkPseudoState
+      end
+    end
+
+    artifact 132610 "UmlJoinPseudoState"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 132610 // UmlJoinPseudoState
+      end
+    end
+
+    artifact 132739 "UmlObjectDiagram"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 132739 // UmlObjectDiagram
+      end
+    end
+
+    artifact 132867 "UmlActivityItem"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 132867 // UmlActivityItem
+      end
+    end
+
+    artifact 133123 "UmlActivity"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 133123 // UmlActivity
+      end
+    end
+
+    artifact 133379 "UmlActivityDiagram"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 133379 // UmlActivityDiagram
+      end
+    end
+
+    artifact 133635 "UmlActivityNode"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 133635 // UmlActivityNode
+      end
+    end
+
+    artifact 133891 "UmlFlow"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 133891 // UmlFlow
+      end
+    end
+
+    artifact 134275 "UmlActivityRegion"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 134275 // UmlActivityRegion
+      end
+    end
+
+    artifact 134531 "UmlExpansionRegion"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 134531 // UmlExpansionRegion
+      end
+    end
+
+    artifact 134915 "UmlInterruptibleActivityRegion"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 134915 // UmlInterruptibleActivityRegion
+      end
+    end
+
+    artifact 135171 "UmlActivityAction"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 135171 // UmlActivityAction
+      end
+    end
+
+    artifact 135427 "UmlActivityActionClasses"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 135427 // UmlSendObjectAction
+	class_ref 135683 // UmlUnmarshallAction
+	class_ref 136195 // UmlSendSignalAction
+	class_ref 136451 // UmlBroadcastSignalAction
+	class_ref 136707 // UmlValueSpecificationAction
+	class_ref 136963 // UmlOpaqueAction
+	class_ref 137219 // UmlAcceptEventAction
+	class_ref 137475 // UmlCallOperationAction
+	class_ref 137731 // UmlCallBehaviorAction
+	class_ref 138243 // UmlClearVariableValueAction
+	class_ref 138499 // UmlReadVariableValueAction
+	class_ref 138755 // UmlWriteVariableValueAction
+	class_ref 139011 // UmlAddVariableValueAction
+	class_ref 139267 // UmlRemoveVariableValueAction
+      end
+    end
+
+    artifact 135683 "UmlOnSignalAction"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 135939 // UmlOnSignalAction
+      end
+    end
+
+    artifact 135939 "UmlAccessVariableValueAction"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 137987 // UmlAccessVariableValueAction
+      end
+    end
+
+    artifact 136195 "UmlActivityControlNode"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 139523 // UmlActivityControlNode
+      end
+    end
+
+    artifact 136451 "UmlActivityControlNodeClasses"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 139779 // UmlInitialActivityNode
+	class_ref 140035 // UmlFlowFinalActivityNode
+	class_ref 140291 // UmlActivityFinalActivityNode
+	class_ref 140547 // UmlDecisionActivityNode
+	class_ref 140803 // UmlMergeActivityNode
+	class_ref 141059 // UmlForkActivityNode
+	class_ref 141315 // UmlJoinActivityNode
+      end
+    end
+
+    artifact 136707 "UmlActivityObject"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 141571 // UmlActivityObject
+      end
+    end
+
+    artifact 137091 "UmlExpansionNode"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 141955 // UmlExpansionNode
+      end
+    end
+
+    artifact 137347 "UmlPinParameter"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 142211 // UmlPinParameter
+      end
+    end
+
+    artifact 137731 "UmlActivityPin"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 142595 // UmlActivityPin
+      end
+    end
+
+    artifact 137987 "UmlActivityParameter"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 142851 // UmlActivityParameter
+      end
+    end
+
+    artifact 138243 "UmlParameterSet"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 143107 // UmlParameterSet
+      end
+    end
+
+    artifact 138627 "UmlClassInstance"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 143491 // UmlClassInstance
+      end
+    end
+
+    artifact 139651 "UmlView"
+      stereotype "source"
+      cpp_h "#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      java_src "${comment}
+${package}
+${definition}"
+      associated_classes
+	class_ref 144515 // UmlView
+      end
+    end
+  end
+
+  package_ref 128003 // Diagram
+end

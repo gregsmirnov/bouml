@@ -1,0 +1,142 @@
+class UmlPackage
+!!!129888.cpp!!!	sKind() : string
+  return (stereotype() == "profile")
+    ? "profile" : "package";
+!!!129888.java!!!	sKind() : string
+  return (stereotype() == "profile")
+    ? "profile" : "package";
+!!!128088.cpp!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  define();
+  
+  if (stereotype() == "profile")
+    chapter("Profile", pfix, rank, "profile", level);
+  else
+    chapter("Package", pfix, rank, "package", level);
+
+  QCString s = description();
+  
+  if (!s.isEmpty()) {
+    fw.write("<p>");
+    writeq(s);
+    fw.write("<br /></p>");
+  }
+  
+  bool ul = FALSE;
+  
+  s = cppNamespace();
+  
+  if (!s.isEmpty()) {
+    fw.write("<p></p><ul>\n");
+    ul = TRUE;
+    fw.write("<li>C++ namespace : ");
+    writeq(s);
+    fw.write("</li>\n");
+  }
+
+  s = javaPackage();
+  
+  if (!s.isEmpty()) {
+    if (! ul)
+      fw.write("<p></p><ul>");
+    ul = TRUE;
+    fw.write("<li>Java package : ");
+    writeq(s);
+    fw.write("</li>\n");
+  }
+    
+  if (ul)
+    fw.write("</ul>\n");
+    
+  write_dependencies();
+    
+  UmlDiagram * d = associatedDiagram();
+  
+  if (d != 0) {
+    fw.write("<p>Diagram : ");
+    d->write();
+    fw.write("</p>\n");
+  }
+
+  write_properties();
+
+  write_children(pfix, rank, level);
+
+  unload(FALSE, FALSE);
+!!!128088.java!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  define();
+  
+  if (stereotype() == "profile")
+    chapter("Profile", pfix, rank, "profile", level);
+  else
+    chapter("Package", pfix, rank, "package", level);
+
+  String s = description();
+  
+  if (s.length() != 0) {
+    fw.write("<p>");
+    writeq(s);
+    fw.write("<br /></p>");
+  }
+    
+  boolean ul = false;
+  
+  s = cppNamespace();
+  
+  if (s.length() != 0) {
+    fw.write("<p></p><ul>\n");
+    ul = true;
+    fw.write("<li>C++ namespace : ");
+    writeq(s);
+    fw.write("</li>\n");
+  }
+
+  s = javaPackage();
+  
+  if (s.length() != 0) {
+    if (! ul)
+      fw.write("<p></p><ul>");
+    ul = true;
+    fw.write("<li>Java package : ");
+    writeq(s);
+    fw.write("</li>\n");
+  }
+    
+  if (ul)
+    fw.write("</ul>\n");
+    
+  write_dependencies();
+  
+  UmlDiagram d = associatedDiagram();
+  
+  if (d != null) {
+    fw.write("<p>Diagram : ");
+    d.write();
+    fw.write("</p>\n");
+  }
+
+  write_properties();
+
+  write_children(pfix, rank, level);
+
+  unload(false, false);
+!!!150274.cpp!!!	memo_ref() : void
+  packages.addElement(this);
+  UmlItem::memo_ref();
+!!!150274.java!!!	memo_ref() : void
+  packages.addElement(this);
+  super.memo_ref();
+
+!!!150530.cpp!!!	ref_index() : void
+  if (!packages.isEmpty())
+    fw.write("<a href=\"packages.html\" target = \"projectFrame\"><b> -Packages- </b></a>");
+!!!150530.java!!!	ref_index() : void
+  if (!packages.isEmpty())
+    fw.write("<a href=\"packages.html\" target = \"projectFrame\"><b> -Packages- </b></a>");
+!!!150402.cpp!!!	generate_index() : void
+  UmlItem::generate_index(packages, "Packages", "packages");
+!!!150402.java!!!	generate_index() : void
+  generate_index(packages, "Package", "packages");
+!!!149378.cpp!!!	chapterp() : bool
+  return TRUE;
+!!!149378.java!!!	chapterp() : bool
+  return true;

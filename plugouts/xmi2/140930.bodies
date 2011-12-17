@@ -1,0 +1,13 @@
+class UmlActivityFinalActivityNode
+!!!208386.cpp!!!	sKind() : str
+  return "FinalNode";
+!!!128392.cpp!!!	solve_output_flows() : void
+  QListIterator<UmlFlow> it(_incoming_flows);
+  
+  while (it.current() != 0) {
+    if (it.current()->control_or_data() == Unset)
+      it.current()->set_control_or_data(IsControl);
+
+    ++it;
+  }
+

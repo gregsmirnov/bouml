@@ -1,0 +1,35 @@
+class UmlReduceAction
+!!!259587.cpp!!!	sKind() : string
+  return "reduce activity action";
+!!!259587.java!!!	sKind() : string
+  return "reduce activity action";
+!!!259459.cpp!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  UmlActivityAction::html();
+
+  if (isOrdered())
+    fw.write("<p>Ordered</p>");
+
+  if (reducer() != 0){
+    fw.write("<p>Reducer : ");
+    reducer()->write();
+    fw.write("</p>");
+  }
+
+  write_children(pfix, rank, level);
+
+  unload(FALSE, FALSE);
+!!!259459.java!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  super.html();
+
+  if (isOrdered())
+    fw.write("<p>Ordered</p>");
+
+  if (reducer() != null){
+    fw.write("<p>Reducer : ");
+    reducer().write();
+    fw.write("</p>");
+  }
+
+  write_children(pfix, rank, level);
+
+  unload(false, false);

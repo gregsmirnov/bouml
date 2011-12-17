@@ -1,0 +1,19 @@
+class LineEdit
+!!!203650.cpp!!!	focusNextPrevChild() : bool
+  return FALSE;
+!!!203778.cpp!!!	keyPressEvent(inout e : QKeyEvent) : void
+  if (!e->text().length())
+    QLineEdit::keyPressEvent(e);
+  else {
+    switch (e->key()) {
+    case Key_Return:
+    case Key_Enter:
+      insert("\\n");
+      break;
+    case Key_Tab:
+      insert("\\t");
+      break;
+    default:
+      QLineEdit::keyPressEvent(e);
+    }
+  }

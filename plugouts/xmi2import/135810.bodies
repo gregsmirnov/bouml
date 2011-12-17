@@ -1,0 +1,18 @@
+class UmlUnmarshallAction
+!!!199810.cpp!!!	init() : void
+  declareFct("node", "uml:UnmarshallAction", &importIt);
+  declareFct("containednode", "uml:UnmarshallAction", &importIt);
+!!!199682.cpp!!!	importIt(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  where = where->container(anUnmarshallAction, token, in);
+    
+  if (where != 0) {
+    QCString s = token.valueOf("name");
+    UmlUnmarshallAction * a = create(where, s);
+    
+    if (a == 0)
+      in.error("cannot create unmarshall action '"
+	       + s + "' in '" + where->name() + "'");
+    
+    a->addItem(token.xmiId(), in);
+    a->import_it(in, token);
+  }

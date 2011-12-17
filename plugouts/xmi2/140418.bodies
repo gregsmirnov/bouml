@@ -1,0 +1,14 @@
+class UmlInitialActivityNode
+!!!208130.cpp!!!	sKind() : str
+  return "InitialNode";
+!!!279299.cpp!!!	solve_output_flows() : void
+  const QVector<UmlItem> ch = children();
+  unsigned n = ch.size();
+  
+  for (unsigned i = 0; i != n; i += 1) {
+    UmlFlow * f = dynamic_cast<UmlFlow *>(ch[i]);
+
+    if ((f != 0) && (f->control_or_data() == Unset))
+      f->set_control_or_data(IsControl);
+  }
+

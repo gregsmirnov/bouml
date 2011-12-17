@@ -1,0 +1,5 @@
+class UmlMergeActivityNode
+!!!195074.cpp!!!	sKind() : string
+  return "merge activity node";
+!!!195074.java!!!	sKind() : string
+  return "merge activity node";

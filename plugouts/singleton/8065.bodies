@@ -1,0 +1,15 @@
+class UmlRelation
+!!!128464.cpp!!!	check() : bool
+  if (roleName() == "the") {
+    UmlCom::trace("<font face=helvetica><b>already have relation <i>the</i>, remove it</b></font><br><hr><br>");
+    return FALSE;
+  }
+  else
+    return TRUE;
+!!!128464.java!!!	check() : bool
+  if (roleName() == "the") {
+    UmlCom.trace("<font face=helvetica><b>already have relation <i>the</i>, remove it</b></font><br><hr><br>");
+    return false;
+  }
+  else
+    return true;

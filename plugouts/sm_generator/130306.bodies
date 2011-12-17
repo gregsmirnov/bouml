@@ -1,0 +1,17 @@
+class UmlEntryPointPseudoState
+!!!151042.cpp!!!	generate(inout machine : UmlClass, inout anystate : UmlClass, inout state : UmlState, inout body : string, in indent : string) : void
+  // check transition number
+  const QVector<UmlItem> ch = children();
+  
+  switch (ch.count()) {
+  case 0:
+    return;
+  case 1:
+    break;
+  default:
+    UmlCom::trace("Error : entry point '" + name() + "' can't have several transitions<br>");
+    throw 0;
+  }
+
+  // here there is 1 transition
+  ((UmlTransition *) ch[0])->generate(machine, anystate, state, body, indent);

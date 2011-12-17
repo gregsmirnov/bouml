@@ -1,0 +1,29 @@
+class UmlCreateObjectAction
+!!!258563.cpp!!!	sKind() : string
+  return "create object activity action";
+!!!258563.java!!!	sKind() : string
+  return "create object activity action";
+!!!258435.cpp!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  UmlActivityAction::html();
+
+  if (!classifier().isEmpty()){
+    fw.write("<p>Classifier : ");
+    writeq(classifier());
+    fw.write("</p>");
+  }
+
+  write_children(pfix, rank, level);
+
+  unload(FALSE, FALSE);
+!!!258435.java!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  super.html();
+
+  if (classifier().length() != 0){
+    fw.write("<p>Classifier : ");
+    writeq(classifier());
+    fw.write("</p>");
+  }
+
+  write_children(pfix, rank, level);
+
+  unload(false, false);

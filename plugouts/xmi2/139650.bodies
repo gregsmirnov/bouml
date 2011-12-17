@@ -1,0 +1,8 @@
+class UmlAddVariableValueAction
+!!!205314.cpp!!!	write(inout out : FileOut) : void
+  write_begin(out, "AddVariableValueAction");
+  
+  if (isReplaceAll())
+    out << " isReplaceAll=\"true\"";
+  
+  write_var_end(out);

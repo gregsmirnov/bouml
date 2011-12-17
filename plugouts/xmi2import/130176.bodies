@@ -1,0 +1,34 @@
+class UmlBaseEntryPointPseudoState
+!!!139008.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlEntryPointPseudoState
+  return (UmlEntryPointPseudoState *) parent->create_(anEntryPointPseudoState, s);
+!!!139008.java!!!	create(inout parent : UmlItem, inout s : str) : UmlEntryPointPseudoState
+  return (UmlEntryPointPseudoState) parent.create_(anItemKind.anEntryPointPseudoState, s);
+!!!139136.cpp!!!	kind() : anItemKind
+  return anEntryPointPseudoState;
+!!!139136.java!!!	kind() : anItemKind
+  return anItemKind.anEntryPointPseudoState;
+!!!313728.cpp!!!	reference() : UmlEntryPointPseudoState
+  read_if_needed_();
+  return _reference;
+!!!313728.java!!!	reference() : UmlEntryPointPseudoState
+  read_if_needed_();
+  return _reference;
+!!!313856.cpp!!!	set_Reference(in v : UmlEntryPointPseudoState) : bool
+  UmlCom::send_cmd(_identifier, setDerivedCmd, (v == 0) ? (void *) v : ((UmlBaseItem *) v)->_identifier);
+  if (UmlCom::read_bool()) {
+    _reference = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!313856.java!!!	set_Reference(in v : UmlEntryPointPseudoState) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setDerivedCmd, (v == null) ? (long) 0 : v.identifier_());
+  UmlCom.check();
+
+  _reference = v;
+!!!313984.cpp!!!	read_uml_() : void
+  UmlBaseItem::read_uml_();
+  _reference = (UmlEntryPointPseudoState *) UmlBaseItem::read_();
+!!!313984.java!!!	read_uml_() : void
+  super.read_uml_();
+  _reference = (UmlEntryPointPseudoState) UmlBaseItem.read_();

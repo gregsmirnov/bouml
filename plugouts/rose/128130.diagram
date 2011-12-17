@@ -1,0 +1,13 @@
+format 20
+
+classcanvas 128002 class_ref 7937 // UmlPackage
+  draw_all_relations default hide_attributes default hide_operations default show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default
+  xyz 61 188 2000
+classcanvas 128130 class_ref 7169 // UmlDeploymentView
+  draw_all_relations default hide_attributes default hide_operations default show_full_members_definition default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default
+  xyz 409 204 2000
+relationcanvas 128258 relation_ref 128770 // <directional aggregation by value>
+  from ref 128002 z 1000 stereotype "<<list>>" xyz 286 293.5 3000 to ref 128130
+  role_a_pos 326 258 3000 no_role_b
+  multiplicity_a_pos 391 288 3000 no_multiplicity_b
+end

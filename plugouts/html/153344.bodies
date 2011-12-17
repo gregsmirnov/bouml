@@ -1,0 +1,43 @@
+class UmlBaseDestroyObjectAction
+!!!254208.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlDestroyObjectAction
+  return (UmlDestroyObjectAction *) parent->create_(aDestroyObjectAction, s);
+!!!254208.java!!!	create(inout parent : UmlItem, inout s : str) : UmlDestroyObjectAction
+  return (UmlDestroyObjectAction) parent.create_(anItemKind.aDestroyObjectAction, s);
+!!!254336.cpp!!!	kind() : anItemKind
+  return aDestroyObjectAction;
+!!!254336.java!!!	kind() : anItemKind
+  return anItemKind.aDestroyObjectAction;
+!!!254720.cpp!!!	isDestroyLinks() : bool
+  read_if_needed_();
+  return _links;
+!!!254720.java!!!	isDestroyLinks() : bool
+  read_if_needed_();
+  return _links;
+!!!254848.cpp!!!	set_isDestroyLinks(in v : bool) : bool
+  return set_it_(_links, v, setTypeCmd);
+!!!254848.java!!!	set_isDestroyLinks(in v : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setTypeCmd, (v) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _links = v;
+!!!254976.cpp!!!	isDestroyOwnedObjects() : bool
+  read_if_needed_();
+  return _owned_objects;
+!!!254976.java!!!	isDestroyOwnedObjects() : bool
+  read_if_needed_();
+  return _owned_objects;
+!!!255104.cpp!!!	set_isDestroyOwnedObjects(in v : bool) : bool
+  return set_it_(_owned_objects, v, setFlagCmd);
+!!!255104.java!!!	set_isDestroyOwnedObjects(in v : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setFlagCmd, (v) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _owned_objects = v;
+!!!255232.cpp!!!	read_uml_() : void
+  UmlBaseActivityAction::read_uml_();
+  _links = UmlCom::read_bool();
+  _owned_objects = UmlCom::read_bool();
+!!!255232.java!!!	read_uml_() : void
+  super.read_uml_();
+  _links = UmlCom.read_bool();
+  _owned_objects = UmlCom.read_bool();

@@ -1,0 +1,22 @@
+class UmlValueSpecificationAction
+!!!204290.cpp!!!	write(inout out : FileOut) : void
+  write_begin(out, "ValueSpecificationAction");
+  
+  QCString val;
+  
+  switch (_lang) {
+  case Uml:
+    val = value();
+    break;
+  case Cpp:
+    val = cppValue();
+    break;
+  default:
+    // Java
+    val = javaValue();
+  }
+  if (! val.isEmpty())
+    out.ref(activity()->add_opaque_expression(val, this),
+	    "value", "OPAQUE_EXPRESSION_");
+
+  write_end(out);

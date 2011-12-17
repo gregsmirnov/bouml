@@ -1,0 +1,9 @@
+class UmlBaseActivityPin
+!!!188416.cpp!!!	create(inout parent : UmlActivityAction, inout s : str) : UmlActivityPin
+  return (UmlActivityPin *) parent->create_(anActivityPin, s);
+!!!188416.java!!!	create(inout parent : UmlActivityAction, inout s : str) : UmlActivityPin
+  return (UmlActivityPin) parent.create_(anItemKind.anActivityPin, s);
+!!!188544.cpp!!!	kind() : anItemKind
+  return anActivityPin;
+!!!188544.java!!!	kind() : anItemKind
+  return anItemKind.anActivityPin;

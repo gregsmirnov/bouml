@@ -1,0 +1,28 @@
+class UmlOpaqueAction
+!!!204418.cpp!!!	write(inout out : FileOut) : void
+  write_begin(out, "OpaqueAction");
+  write_end(out, TRUE);
+  
+  QCString body;
+  
+  switch(_lang) {
+  case Uml:
+    body = behavior();
+    break;
+  case Cpp:
+    body = cppBehavior();
+    break;
+  default:
+    // Java
+    body = javaBehavior();
+  }
+
+  if (!body.isEmpty()) {
+    out.indent();
+    out << "<body>";
+    out.quote(body);
+    out << "</body>\n";
+  }
+
+  write_close(out);
+

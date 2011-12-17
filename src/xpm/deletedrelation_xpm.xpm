@@ -1,0 +1,23 @@
+/* XPM */
+static const char*deletedrelation_xpm[]={
+"16 16 4 1",
+"b c #000000",
+"a c #ffffc0",
+". c None",
+"# c #ff0000",
+"................",
+"................",
+"................",
+"................",
+"................",
+"#aaaaaaaaaaaaaa#",
+"##aaaaaaaaaaaa##",
+"aa##baaaaaaa##aa",
+"aaabbbaaaa##aaaa",
+"aababab###aaaaaa",
+"aaaaba####aaaaaa",
+"aaaab#aaaa##aaaa",
+"aa##aaaaaaaa##aa",
+"##aaaaaaaaaaaa##",
+"#aaaaaaaaaaaaaa#",
+"................"};

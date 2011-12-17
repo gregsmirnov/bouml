@@ -1,0 +1,26 @@
+class UmlNode
+!!!131204.cpp!!!	write(inout out : FileOut) : void
+  const char * k = (_uml_20) ? "ownedMember" : "packagedElement";
+
+  out.indent(); 
+  out << "<" << k << " xmi:type=\"" 
+    << ((stereotype() == "device\"") ? "uml:Device" : "uml:Node\"");
+  out.id(this); 
+  out << " name=\"";
+  out.quote(name());
+  out << "\">\n"; 
+  out.indent(+1); 
+  
+  write_description_properties(out); 
+ 
+  const QVector<UmlItem> ch = children(); 
+  unsigned n = ch.size(); 
+     
+  for (unsigned i = 0; i != n; i += 1) 
+    ch[i]->write(out); 
+ 
+  out.indent(-1); 
+  out.indent(); 
+  out << "</" << k << ">\n"; 
+
+  unload(); 

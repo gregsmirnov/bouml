@@ -1,0 +1,105 @@
+class UmlBaseComponent
+!!!77184.cpp!!!	create(inout parent : UmlComponentView, in s : str) : UmlComponent
+  return (UmlComponent *) parent->create_(aComponent, s);
+!!!77184.java!!!	create(inout parent : UmlComponentView, in s : str) : UmlComponent
+  return (UmlComponent) parent.create_(anItemKind.aComponent, s);
+!!!77312.cpp!!!	kind() : anItemKind
+  return aComponent;
+!!!77312.java!!!	kind() : anItemKind
+  return anItemKind.aComponent;
+!!!77440.cpp!!!	associatedDiagram() : UmlComponentDiagram
+  read_if_needed_();
+  
+  return _assoc_diagram;
+!!!77440.java!!!	associatedDiagram() : UmlComponentDiagram
+  read_if_needed_();
+  
+  return _assoc_diagram;
+!!!77568.cpp!!!	set_AssociatedDiagram(inout d : UmlComponentDiagram) : bool
+  UmlCom::send_cmd(_identifier, setAssocDiagramCmd, (d == 0) ? (void *) 0 : ((UmlBaseItem *) d)->_identifier);
+  if (UmlCom::read_bool()) {
+    _assoc_diagram = d;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!77568.java!!!	set_AssociatedDiagram(inout d : UmlComponentDiagram) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setAssocDiagramCmd, (d == null) ? (long) 0 : d.identifier_());
+  UmlCom.check();
+  
+  _assoc_diagram = d;
+
+!!!78336.cpp!!!	realizingClasses() : UmlClass
+  read_if_needed_();
+  
+  return _realizing;
+!!!78336.java!!!	realizingClasses() : UmlClass
+  read_if_needed_();
+  
+  return (UmlClass[]) _realizing.clone();
+!!!78464.cpp!!!	providedClasses() : UmlClass
+  read_if_needed_();
+  
+  return _provided;
+!!!78464.java!!!	providedClasses() : UmlClass
+  read_if_needed_();
+  
+  return (UmlClass[]) _provided.clone();
+!!!78592.cpp!!!	requiredClasses() : UmlClass
+  read_if_needed_();
+  
+  return _required;
+!!!78592.java!!!	requiredClasses() : UmlClass
+  read_if_needed_();
+  
+  return (UmlClass[]) _required.clone();
+!!!77696.cpp!!!	read_uml_() : void
+  _assoc_diagram = (UmlComponentDiagram *) UmlBaseItem::read_();
+  UmlBaseItem::read_uml_();
+  
+  unsigned n;
+  unsigned index;
+  
+  n = UmlCom::read_unsigned();
+  _realizing.resize(n);
+    
+  for (index = 0; index != n; index += 1)
+    _realizing.insert(index, (UmlClass *) UmlBaseItem::read_());
+
+  n = UmlCom::read_unsigned();
+  _provided.resize(n);
+    
+  for (index = 0; index != n; index += 1)
+    _provided.insert(index, (UmlClass *) UmlBaseItem::read_());
+
+  n = UmlCom::read_unsigned();
+  _required.resize(n);
+    
+  for (index = 0; index != n; index += 1)
+    _required.insert(index, (UmlClass *) UmlBaseItem::read_());
+!!!77696.java!!!	read_uml_() : void
+  _assoc_diagram = (UmlComponentDiagram) UmlBaseItem.read_();
+  super.read_uml_();
+  
+  int n;
+  int index;
+  
+  n = UmlCom.read_unsigned();
+  _realizing = new UmlClass[n];
+  
+  for (index = 0; index != n; index += 1)
+    _realizing[index] = (UmlClass) UmlBaseItem.read_();
+  
+  n = UmlCom.read_unsigned();
+  _provided = new UmlClass[n];
+  
+  for (index = 0; index != n; index += 1)
+    _provided[index] = (UmlClass) UmlBaseItem.read_();
+  
+  n = UmlCom.read_unsigned();
+  _required = new UmlClass[n];
+  
+  for (index = 0; index != n; index += 1)
+    _required[index] = (UmlClass) UmlBaseItem.read_();
+!!!77824.cpp!!!	UmlBaseComponent(in id : item_id, in n : string)
+  _assoc_diagram = 0;

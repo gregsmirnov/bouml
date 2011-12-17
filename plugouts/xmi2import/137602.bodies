@@ -1,0 +1,53 @@
+class UmlCallOperationAction
+!!!201602.cpp!!!	init() : void
+  declareFct("node", "uml:CallOperationAction", &importIt);
+  declareFct("containednode", "uml:CallOperationAction", &importIt);
+!!!201474.cpp!!!	importIt(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  where = where->container(aCallOperationAction, token, in);
+    
+  if (where != 0) {
+    QCString s = token.valueOf("name");
+    UmlCallOperationAction * a = create(where, s);
+    
+    if (a == 0)
+      in.error("cannot create call operation action '"
+	       + s + "' in '" + where->name() + "'");
+    
+    a->addItem(token.xmiId(), in);
+    
+    if (!(s=token.valueOf("operation")).isEmpty())
+      a->setOperation(s);
+    
+    if (! token.closed()) {
+      QCString k = token.what();
+      const char * kstr = k;
+      
+      while (in.read(), !token.close(kstr)) {
+	s = token.what();
+	
+	if (s == "operation") {
+	  a->setOperation(token.xmiIdref());
+	  if (! token.closed())
+	    in.finish("operation");
+	}
+	else
+	  a->import(in, token);
+      }
+    }
+  }
+!!!205314.cpp!!!	setOperation(in idref : string) : void
+  QMap<QCString, UmlItem *>::Iterator it = All.find(idref);
+  
+  if (it == All.end())
+    Unresolved::addRef(this, idref);
+  else if ((*it)->kind() == anOperation)
+    set_Operation((UmlOperation *) *it);
+!!!211714.cpp!!!	solve(in idref : string) : void
+  QMap<QCString, UmlItem *>::Iterator it = All.find(idref);
+  
+  if (it == All.end()) {
+    if (!FileIn::isBypassedId(idref))
+      UmlCom::trace("call operation action : unknown operation reference '" + idref + "'<br>");
+  }
+  else if ((*it)->kind() == anOperation)
+    set_Operation((UmlOperation *) *it);

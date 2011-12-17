@@ -1,0 +1,6 @@
+class UmlSendSignalAction
+!!!204034.cpp!!!	write(inout out : FileOut) : void
+  write_begin(out, "SendSignalAction");
+  write_end(out, TRUE);
+  write_signal(out);
+  write_close(out);

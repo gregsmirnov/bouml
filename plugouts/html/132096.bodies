@@ -1,0 +1,9 @@
+class UmlBaseChoicePseudoState
+!!!143232.cpp!!!	create(inout parent : UmlItem) : UmlChoicePseudoState
+  return (UmlChoicePseudoState *) parent->create_(aChoicePseudoState, "");
+!!!143232.java!!!	create(inout parent : UmlItem) : UmlChoicePseudoState
+  return (UmlChoicePseudoState) parent.create_(anItemKind.aChoicePseudoState, "");
+!!!143360.cpp!!!	kind() : anItemKind
+  return aChoicePseudoState;
+!!!143360.java!!!	kind() : anItemKind
+  return anItemKind.aChoicePseudoState;

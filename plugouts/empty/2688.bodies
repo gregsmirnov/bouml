@@ -1,0 +1,9 @@
+class UmlBaseDeploymentView
+!!!19200.cpp!!!	create(inout parent : UmlPackage, in s : str) : UmlDeploymentView
+  return (UmlDeploymentView *) parent->create_(aDeploymentView, s);
+!!!19200.java!!!	create(inout parent : UmlPackage, in s : str) : UmlDeploymentView
+  return (UmlDeploymentView) parent.create_(anItemKind.aDeploymentView, s);
+!!!19328.cpp!!!	kind() : anItemKind
+  return aDeploymentView;
+!!!19328.java!!!	kind() : anItemKind
+  return anItemKind.aDeploymentView;

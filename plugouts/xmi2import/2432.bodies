@@ -1,0 +1,9 @@
+class UmlBaseComponentView
+!!!18432.cpp!!!	create(inout parent : UmlPackage, in s : str) : UmlComponentView
+  return (UmlComponentView *) parent->create_(aComponentView, s);
+!!!18432.java!!!	create(inout parent : UmlPackage, in s : str) : UmlComponentView
+  return (UmlComponentView) parent.create_(anItemKind.aComponentView, s);
+!!!18560.cpp!!!	kind() : anItemKind
+  return aComponentView;
+!!!18560.java!!!	kind() : anItemKind
+  return anItemKind.aComponentView;

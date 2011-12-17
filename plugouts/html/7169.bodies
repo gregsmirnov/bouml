@@ -1,0 +1,17 @@
+class UmlDeploymentView
+!!!129395.cpp!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  UmlItem::html(pfix, rank, "Deployment View", level, "view");
+
+  unload(FALSE, FALSE);
+!!!129395.java!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  html(pfix, rank, "Deployment View", level, "view");
+
+  unload(false, false);
+!!!129504.cpp!!!	sKind() : string
+  return "deployment view";
+!!!129504.java!!!	sKind() : string
+  return "deployment view";
+!!!149250.cpp!!!	chapterp() : bool
+  return TRUE;
+!!!149250.java!!!	chapterp() : bool
+  return true;

@@ -1,0 +1,5 @@
+class UmlCreateObjectAction
+!!!271619.cpp!!!	write(inout out : FileOut) : void
+  write_begin(out, "CreateObjectAction");
+  write_end(out);
+

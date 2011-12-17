@@ -1,0 +1,142 @@
+class UmlBaseFragment
+!!!212096.cpp!!!	read_() : void
+  _name = UmlCom::read_string();
+  _x = (int) UmlCom::read_unsigned();
+  _y = (int) UmlCom::read_unsigned();
+  _w = (int) UmlCom::read_unsigned();
+  _h = (int) UmlCom::read_unsigned();
+
+  unsigned n = UmlCom::read_unsigned();
+
+  _compartments.resize(n);
+  for (unsigned rank = 0; rank != n; rank += 1) {
+    UmlFragmentCompartment * fc = new UmlFragmentCompartment();
+
+    _compartments.insert(rank, fc);
+    fc->read_(this, rank);
+  }
+  _compartments.setAutoDelete(TRUE);
+  _container = 0;
+  _refer = (UmlDiagram *) UmlBaseItem::read_();
+  _arguments = UmlCom::read_string();
+!!!212096.java!!!	read_() : void
+  _name = UmlCom.read_string();
+  _x = UmlCom.read_unsigned();
+  _y = UmlCom.read_unsigned();
+  _w = UmlCom.read_unsigned();
+  _h = UmlCom.read_unsigned();
+
+  int n = UmlCom.read_unsigned();
+  int rank;
+
+  _compartments = new UmlFragmentCompartment[n];
+  for (rank = 0; rank != n; rank += 1) {
+    UmlFragmentCompartment fc = new UmlFragmentCompartment();
+
+    _compartments[rank] = fc;
+    fc.read_(this, rank);
+  }
+  _refer = (UmlDiagram) UmlBaseItem.read_();
+  _arguments = UmlCom.read_string();
+!!!224896.cpp!!!	vcenter_(in rank : int) : int
+  int t = (rank == 0) ? _y : _compartments[rank - 1]->b();
+
+  return (t + _compartments[rank]->b())/2;
+!!!224896.java!!!	vcenter_(in rank : int) : int
+  int t = (rank == 0) ? _y : _compartments[rank - 1].b();
+
+  return (t + _compartments[rank].b())/2;
+!!!225024.cpp!!!	read_covered_(in instances : UmlClassInstanceReference) : void
+  unsigned n = UmlCom::read_unsigned();
+  unsigned rank;
+
+  _covered.resize(n);
+  for (rank = 0; rank != n; rank += 1)
+    _covered.insert(rank, instances[(void *) UmlCom::read_unsigned()]);
+!!!225024.java!!!	read_covered_(in instances : UmlClassInstanceReference) : void
+  int n = UmlCom.read_unsigned();
+  int rank;
+
+  _covered = new UmlClassInstanceReference[n];
+  for (rank = 0; rank != n; rank += 1)
+    _covered[rank] = (UmlClassInstanceReference) instances.get(new Integer(UmlCom.read_unsigned()));
+!!!212224.cpp!!!	get_container_(in x : int, in y : int, in w : int, in h : int, in fragments : UmlFragment) : UmlFragmentCompartment
+  UmlFragmentCompartment * r = 0;
+  int nf = fragments.count();
+  int frank;
+
+  for (frank = 0; frank != nf; frank += 1) {
+    const UmlBaseFragment * f = fragments[frank];
+
+    if ((x > f->_x) && (y > f->_y) &&
+        ((x + w) < (f->_x + f->_w)) && ((y + h) < (f->_y + f->_h))) {
+      int y0 = f->_y;
+      int nfc = f->_compartments.count();
+      int fcrank;
+
+      for (fcrank = 0; fcrank != nfc; fcrank += 1) {
+        UmlFragmentCompartment * fc = f->_compartments[fcrank];
+
+        if ((y > y0) &&
+            ((y + h) < fc->b()) &&
+            ((r == 0) || fc->smaller(r))) {
+          r = fc;
+          break;
+        }
+        y0 = fc->b();
+      }
+    }
+  }
+  return r;
+!!!212224.java!!!	get_container_(in x : int, in y : int, in w : int, in h : int, in fragments : UmlFragment) : UmlFragmentCompartment
+  UmlFragmentCompartment r = null;
+  int nf = fragments.length;
+  int frank;
+
+  for (frank = 0; frank != nf; frank += 1) {
+    UmlBaseFragment f = fragments[frank];
+
+    if ((x > f._x) && (y > f._y) &&
+        ((x + w) < (f._x + f._w)) && ((y + h) < (f._y + f._h))) {
+      int y0 = f._y;
+      int nfc = f._compartments.length;
+      int fcrank;
+
+      for (fcrank = 0; fcrank != nfc; fcrank += 1) {
+        UmlBaseFragmentCompartment fc = f._compartments[fcrank];
+
+        if ((y > y0) &&
+            ((y + h) < fc.b()) &&
+            ((r == null) || fc.smaller(r))) {
+          r = f._compartments[fcrank];
+          break;
+        }
+        y0 = fc.b();
+      }
+    }
+  }
+  return r;
+!!!212352.cpp!!!	compute_container_(in fragments : UmlFragment) : void
+  int rank = fragments.count();
+
+  while (rank-- != 0) {
+    UmlBaseFragment * f = fragments[rank];
+    UmlFragmentCompartment * fc = get_container_(f->_x, f->_y, f->_w, f->_h, fragments);
+
+    if (fc != 0) {
+      f->_container = fc;
+      fc->add_contained_((UmlFragment *) f);
+    }
+  }
+!!!212352.java!!!	compute_container_(in fragments : UmlFragment) : void
+  int rank = fragments.length;
+
+  while (rank-- != 0) {
+    UmlBaseFragment f = fragments[rank];
+    UmlFragmentCompartment fc = get_container_(f._x, f._y, f._w, f._h, fragments);
+
+    if (fc != null) {
+      f._container = fc;
+      fc.add_contained_((UmlFragment) f);
+    }
+  }

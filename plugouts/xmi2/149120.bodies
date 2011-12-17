@@ -1,0 +1,11 @@
+class UmlBaseMessage
+!!!240640.cpp!!!	read_(in instances : UmlClassInstanceReference) : void
+  _operation = (UmlOperation *) UmlBaseItem::read_();
+  if (_operation == 0) _form = UmlCom::read_string();
+  _from = instances[(void *) UmlCom::read_unsigned()];
+  _to = instances[(void *) UmlCom::read_unsigned()];
+!!!240640.java!!!	read_(in instances : UmlClassInstanceReference) : void
+  _operation = (UmlOperation) UmlBaseItem.read_();
+  if (_operation == null) _form = UmlCom.read_string();
+  _from = (UmlClassInstanceReference) instances.get(new Integer(UmlCom.read_unsigned()));
+  _to = (UmlClassInstanceReference) instances.get(new Integer(UmlCom.read_unsigned()));

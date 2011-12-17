@@ -1,0 +1,17 @@
+class UmlComponentView
+!!!129120.cpp!!!	sKind() : string
+  return "component view";
+!!!129120.java!!!	sKind() : string
+  return "component view";
+!!!129267.cpp!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  UmlItem::html(pfix, rank, "Component View", level, "view");
+
+  unload(FALSE, FALSE);
+!!!129267.java!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  html(pfix, rank, "Component View", level, "view");
+
+  unload(false, false);
+!!!149122.cpp!!!	chapterp() : bool
+  return TRUE;
+!!!149122.java!!!	chapterp() : bool
+  return true;

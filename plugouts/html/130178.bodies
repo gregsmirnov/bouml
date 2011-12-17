@@ -1,0 +1,5 @@
+class UmlInitialPseudoState
+!!!145922.cpp!!!	sKind() : string
+  return "initial pseudo state";
+!!!145922.java!!!	sKind() : string
+  return "initial pseudo state";

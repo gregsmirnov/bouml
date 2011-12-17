@@ -1,0 +1,101 @@
+class UmlBasePinParameter
+!!!190464.cpp!!!	isUnique() : bool
+  read_if_needed_();
+  return _unique;
+!!!190464.java!!!	isUnique() : bool
+  read_if_needed_();
+  return _unique;
+!!!190592.cpp!!!	set_IsUnique(in v : bool) : bool
+  bool vv;
+
+  if (set_it_(vv, v, setUniqueCmd)) {
+    _unique = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!190592.java!!!	set_IsUnique(in v : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setUniqueCmd, (v) ? 1 : 0);
+  UmlCom.check();
+
+  _unique = v;
+!!!190720.cpp!!!	isException() : bool
+  read_if_needed_();
+  return _exception;
+!!!190720.java!!!	isException() : bool
+  read_if_needed_();
+  return _exception;
+!!!190848.cpp!!!	set_IsException(in v : bool) : bool
+  bool vv;
+
+  if (set_it_(vv, v, replaceExceptionCmd)) {
+    _exception = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!190848.java!!!	set_IsException(in v : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.replaceExceptionCmd, (v) ? 1 : 0);
+  UmlCom.check();
+
+  _exception = v;
+!!!194432.cpp!!!	isStream() : bool
+  read_if_needed_();
+  return _stream;
+!!!194432.java!!!	isStream() : bool
+  read_if_needed_();
+  return _stream;
+!!!194560.cpp!!!	set_IsStream(in v : bool) : bool
+  bool vv;
+
+  if (set_it_(vv, v, setStreamCmd)) {
+    _stream = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!194560.java!!!	set_IsStream(in v : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setStreamCmd, (v) ? 1 : 0);
+  UmlCom.check();
+
+  _stream = v;
+!!!190976.cpp!!!	direction() : aDirection
+  read_if_needed_();
+  return _dir;
+!!!190976.java!!!	direction() : aDirection
+  read_if_needed_();
+  return _dir;
+!!!191104.cpp!!!	set_Direction(in v : aDirection) : bool
+  UmlCom::send_cmd(_identifier, setIdlDirCmd, (char) v);   if (UmlCom::read_bool()) {     _dir = v;     return TRUE;   }   else     return FALSE;
+!!!191104.java!!!	set_Direction(in v : aDirection) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setIdlDirCmd, (byte) v.value());
+  UmlCom.check();
+
+  _dir = v;
+!!!191232.cpp!!!	effect() : aParameterEffectKind
+  read_if_needed_();
+  return _effect;
+!!!191232.java!!!	effect() : aParameterEffectKind
+  read_if_needed_();
+  return _effect;
+!!!191360.cpp!!!	set_Effect(in v : aParameterEffectKind) : bool
+  UmlCom::send_cmd(_identifier, replaceParameterCmd, (char) v);   if (UmlCom::read_bool()) {     _effect = v;     return TRUE;   }   else     return FALSE;
+!!!191360.java!!!	set_Effect(in v : aParameterEffectKind) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.replaceParameterCmd, (byte) v.value());
+  UmlCom.check();
+
+  _effect = v;
+!!!191488.cpp!!!	read_uml_() : void
+  UmlBaseActivityObject::read_uml_();
+  _unique = UmlCom::read_bool();
+  _exception = UmlCom::read_bool();
+  _stream = UmlCom::read_bool();
+  _dir = (aDirection) UmlCom::read_char();
+  _effect = (aParameterEffectKind) UmlCom::read_char();
+!!!191488.java!!!	read_uml_() : void
+  super.read_uml_();
+  _unique = UmlCom.read_bool();
+  _exception = UmlCom.read_bool();
+  _stream = UmlCom.read_bool();
+  _dir = aDirection.fromInt(UmlCom.read_char());
+  _effect = aParameterEffectKind.fromInt(UmlCom.read_char());

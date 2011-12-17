@@ -1,0 +1,4 @@
+// 'tool' "the executable" "displayed string" {target}+
+tool "generate .pro" "gpro" Project Package UseCaseView ClassView ComponentView DeploymentView UseCaseDiagram SeqDiagram ColDiagram ComponentDiagram DeploymentDiagram UseCase ClassDiagram StateDiagram Class State Component Node Artifact Operation Attribute Generalisation Realize Dependency Association DirectionalAssociation Aggregation AggregationByValue DirectionalAggregation DirectionalAggregationByValue ExtraMember Initial EntryPoint Final Terminate ExitPoint DeepHistory ShallowHistory Junction Choice Fork Join Region StateAction
+tool "html (java version)" "java -cp /tmp/html/java Main" Project Package UseCaseView ClassView ComponentView DeploymentView Class Component
+tool "html (C++ version)" "ghtml" Project Package UseCaseView ClassView ComponentView DeploymentView Class

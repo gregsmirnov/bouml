@@ -1,0 +1,52 @@
+class UmlRelation
+!!!194946.cpp!!!	importAsAttribute(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  if (where->kind() == aClass) {
+    if ((where->stereotype() == "stereotype") &&
+	(token.valueOf("name").left(5) == "base_")) {
+      if (! token.closed()) {
+	QCString k = token.what();
+	const char * kstr = k;
+	
+	while (in.read(), !token.close(kstr)) {
+	  QCString s = token.what();
+	  
+	  if (s == "type") {
+	    QCString ext = token.valueOf("href");
+	    
+	    if (! ext.isEmpty())
+	      ((UmlClass *) where)->extend(ext);
+	  }
+      
+	  if (! token.closed())
+	    in.finish(s);
+	}
+      }
+    }
+    else
+      Association::get(token.valueOf("association")).import(in, token);
+  }
+  else
+    in.bypass(token);
+!!!215298.cpp!!!	init() : void
+  declareFct("ownedelement", "uml:Association", &importIt);
+  declareFct("ownedmember", "uml:Association", &importIt);
+  declareFct("packagedelement", "uml:Association", &importIt);
+
+!!!215170.cpp!!!	importIt(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  Association & assoc = Association::get(token.xmiId(), token.valueOf("name"));
+  
+  if (! token.closed()) {
+    QCString k = token.what();
+    const char * kstr = k;
+    
+    while (in.read(), !token.close(kstr)) {
+      QCString s = token.what();
+      
+      if ((s == "ownedend") && 
+	  ((token.xmiType() == "uml:Property") ||
+	   (FromEclipse && token.xmiType().isEmpty() /* .uml*/)))
+	assoc.import(in, token);
+      else if (! token.closed())
+	in.finish(s);
+    }
+  }

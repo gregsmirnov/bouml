@@ -1,0 +1,9 @@
+class UmlDeploymentView
+!!!144642.cpp!!!	sort() : void
+sortChildren();
+!!!144642.java!!!	sort() : void
+sortChildren();
+!!!146178.cpp!!!	orderWeight() : int
+return 5;
+!!!146178.java!!!	orderWeight() : int
+return 5;

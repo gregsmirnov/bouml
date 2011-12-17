@@ -1,0 +1,9 @@
+class UmlBaseDecisionActivityNode
+!!!180992.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlDecisionActivityNode
+  return (UmlDecisionActivityNode *) parent->create_(aDecisionActivityNode, s);
+!!!180992.java!!!	create(inout parent : UmlItem, inout s : str) : UmlDecisionActivityNode
+  return (UmlDecisionActivityNode) parent.create_(anItemKind.aDecisionActivityNode, s);
+!!!181120.cpp!!!	kind() : anItemKind
+  return aDecisionActivityNode;
+!!!181120.java!!!	kind() : anItemKind
+  return anItemKind.aDecisionActivityNode;

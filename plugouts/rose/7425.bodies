@@ -1,0 +1,47 @@
+class UmlExtraClassMember
+!!!128252.cpp!!!	importIdlConstant(inout parent : UmlItem, in s : string, in doc : string, inout prop : string) : void
+  UmlExtraMember * x;
+
+  if ((x = UmlExtraMember::create(parent, s)) == 0) {
+    UmlCom::trace("<br>cannot create extra member '" + s + "' in " +
+		  parent->fullName());
+    throw 0;
+  }
+
+  x->set_Stereotype("constant");
+  
+  if (!doc.isEmpty())
+    x->set_Description(doc);
+
+  QCString type;
+  QCString value;
+  QCString * v;
+  
+  if ((v = prop.find("CORBA/ImplementationType")) != 0) {
+    type = *v;
+    prop.remove("CORBA/ImplementationType");
+  }
+
+  if ((v = prop.find("CORBA/ConstValue")) != 0) {
+    if (!v->isEmpty())
+      value = "= " + *v;
+    prop.remove("CORBA/ConstValue");
+  }
+
+  QCString d = IdlSettings::constDecl();
+  int index;
+  
+  if ((index = d.find("${comment}")) != -1)
+    d.replace(index, 10, "");
+    
+  if ((index = d.find("${name}")) != -1)
+    d.replace(index, 7, s);
+    
+  if ((index = d.find("${type}")) != -1)
+    d.replace(index, 7, type);
+    
+  if ((index = d.find("${value}")) != -1)
+    d.replace(index, 8, value);
+  
+  x->setProperties(prop);
+  x->set_IdlDecl(d);

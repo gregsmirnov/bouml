@@ -1,0 +1,5 @@
+class UmlJunctionPseudoState
+!!!146818.cpp!!!	sKind() : string
+  return "junction pseudo state";
+!!!146818.java!!!	sKind() : string
+  return "junction pseudo state";

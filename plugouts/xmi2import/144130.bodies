@@ -1,0 +1,15 @@
+class UnresolvedRelation
+!!!217090.cpp!!!	add(in ctx : int, in idFrom : string, in idTo : string, in label : string, in constraint : string) : void
+  All.append(UnresolvedRelation(ctx, idFrom, idTo, label, constraint));
+!!!217218.cpp!!!	solveThem() : void
+  QValueList<UnresolvedRelation>::Iterator it;
+      
+  for (it = All.begin(); it != All.end(); ++it) {
+    QMap<QCString, UmlItem *>::Iterator from = UmlItem::All.find((*it).from);
+    
+    if (from != UmlItem::All.end())
+      (*from)->solveGeneralizationDependencyRealization((*it).context, (*it).to, (*it).name, (*it).constraint);
+    else if (!FileIn::isBypassedId((*it).from))
+      UmlCom::trace("relation : unknown source reference '" + (*it).from + "'<br>");
+  }
+  All.clear();

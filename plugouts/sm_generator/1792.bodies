@@ -1,0 +1,131 @@
+class UmlBaseClassMember
+!!!12160.cpp!!!	isClassMember() : bool
+  read_if_needed_();
+  
+  return _class_member;
+!!!12160.java!!!	isClassMember() : bool
+  read_if_needed_();
+  
+  return _class_member;
+!!!12288.cpp!!!	set_isClassMember(in y : bool) : bool
+  return set_it_(_class_member, y, setIsClassMemberCmd);
+!!!12288.java!!!	set_isClassMember(in y : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setIsClassMemberCmd, (y) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _class_member = y;
+!!!12416.cpp!!!	isVolatile() : bool
+  read_if_needed_();
+  
+  return _volatile;
+!!!12416.java!!!	isVolatile() : bool
+  read_if_needed_();
+  
+  return _volatile;
+!!!12544.cpp!!!	set_isVolatile(in y : bool) : bool
+  return set_it_(_volatile, y, setIsVolatileCmd);
+!!!12544.java!!!	set_isVolatile(in y : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setIsVolatileCmd, (y) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _volatile = y;
+!!!12672.cpp!!!	visibility() : aVisibility
+  read_if_needed_();
+  
+  return _visibility;
+!!!12672.java!!!	visibility() : aVisibility
+  read_if_needed_();
+  
+  return _visibility;
+!!!12800.cpp!!!	set_Visibility(in v : aVisibility) : bool
+  aVisibility vi;
+  
+  if ((v != DefaultVisibility) && set_it_(vi, v, setVisibilityCmd)) {
+    _visibility = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!12800.java!!!	set_Visibility(in v : aVisibility) : bool
+  if (v == aVisibility.DefaultVisibility)
+    throw new RuntimeException("Cannot be done");
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setVisibilityCmd, (byte) v.value());
+  UmlCom.check();
+
+  _visibility =  v;
+!!!12928.cpp!!!	cppVisibility() : aVisibility
+  read_if_needed_();
+  
+  return _cpp_visibility;
+!!!12928.java!!!	cppVisibility() : aVisibility
+  read_if_needed_();
+  
+  return _cpp_visibility;
+!!!13056.cpp!!!	set_CppVisibility(in v : aVisibility) : bool
+  aVisibility vi;
+  
+  if (set_it_(vi, v, setCppVisibilityCmd)) {
+    _cpp_visibility = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!13056.java!!!	set_CppVisibility(in v : aVisibility) : bool
+  if (v == aVisibility.DefaultVisibility)
+    throw new RuntimeException("Cannot be done");
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setCppVisibilityCmd, (byte) v.value());
+  UmlCom.check();
+
+  _cpp_visibility = v;
+!!!152064.cpp!!!	javaAnnotations() : string
+  read_if_needed_();
+  
+  return _java_annotation;
+!!!152064.java!!!	javaAnnotations() : string
+  read_if_needed_();
+  
+  return _java_annotation;
+!!!152192.cpp!!!	set_JavaAnnotations(in v : str) : bool
+  return set_it_(_java_annotation, v, setJavaAnnotationCmd);
+!!!152192.java!!!	set_JavaAnnotations(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setJavaAnnotationCmd, v);
+  UmlCom.check();
+  
+  _java_annotation = v;
+!!!197760.cpp!!!	constraint() : string
+  read_if_needed_();
+  return _constraint;
+!!!197760.java!!!	constraint() : string
+  read_if_needed_();
+  return _constraint;
+!!!197888.cpp!!!	set_Constraint(in v : str) : bool
+  return set_it_(_constraint, v, setConstraintCmd);
+!!!197888.java!!!	set_Constraint(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setConstraintCmd, v);
+  UmlCom.check();
+
+  _constraint = v;
+!!!13312.cpp!!!	read_uml_() : void
+  UmlBaseItem::read_uml_();
+  _class_member = UmlCom::read_bool();
+  _volatile = UmlCom::read_bool();
+  _visibility = (aVisibility) UmlCom::read_char();
+  _constraint = UmlCom::read_string();
+!!!13312.java!!!	read_uml_() : void
+  super.read_uml_();
+  _class_member = UmlCom.read_bool();
+  _volatile = UmlCom.read_bool();
+  _visibility = aVisibility.fromInt(UmlCom.read_char());
+  _constraint = UmlCom.read_string();
+!!!13440.cpp!!!	read_cpp_() : void
+  UmlBaseClassItem::read_cpp_();
+  _cpp_visibility = (aVisibility) UmlCom::read_char();
+!!!13440.java!!!	read_cpp_() : void
+  super.read_cpp_();
+  _cpp_visibility = aVisibility.fromInt(UmlCom.read_char());
+!!!152320.cpp!!!	read_java_() : void
+  UmlBaseClassItem::read_java_();
+  _java_annotation = UmlCom::read_string();
+!!!152320.java!!!	read_java_() : void
+  super.read_java_();
+  _java_annotation = UmlCom.read_string();

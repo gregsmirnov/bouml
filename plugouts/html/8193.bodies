@@ -1,0 +1,21 @@
+class UmlSequenceDiagram
+!!!130144.cpp!!!	sKind() : string
+  return "sequence diagram";
+!!!130144.java!!!	sKind() : string
+  return "sequence diagram";
+!!!128636.cpp!!!	memo_ref() : void
+  diagrams.addElement(this);
+  UmlDiagram::memo_ref();
+!!!128636.java!!!	memo_ref() : void
+  diagrams.addElement(this);
+  super.memo_ref();
+!!!129136.cpp!!!	ref_index() : void
+  if (!diagrams.isEmpty())
+    fw.write("<a href=\"sequencediagrams.html\" target = \"projectFrame\"><b> -Sequence Diagrams- </b></a>");
+!!!129136.java!!!	ref_index() : void
+  if (!diagrams.isEmpty())
+    fw.write("<a href=\"sequencediagrams.html\" target = \"projectFrame\"><b> -Sequence Diagrams- </b></a>");
+!!!129276.cpp!!!	generate_index() : void
+  UmlItem::generate_index(diagrams, "Sequence Diagram", "sequencediagrams");
+!!!129276.java!!!	generate_index() : void
+  generate_index(diagrams, "Sequence Diagram", "sequencediagrams");

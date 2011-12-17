@@ -1,0 +1,9 @@
+class UmlFinalState
+!!!148354.cpp!!!	generate(inout machine : UmlClass, inout anystate : UmlClass, inout state : UmlState, inout body : string, in indent : string) : void
+  if (parent()->kind() != aRegion)
+    body += indent + "stm._final();\n";
+  else {
+#ifndef WIN32
+#warning A FAIRE
+#endif
+  }

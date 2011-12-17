@@ -1,0 +1,86 @@
+class UmlBaseActivityPartition
+!!!246528.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlActivityPartition
+  return (UmlActivityPartition *) parent->create_(aPartition, s);
+!!!246528.java!!!	create(inout parent : UmlItem, inout s : str) : UmlActivityPartition
+  return (UmlActivityPartition) parent.create_(anItemKind.aPartition, s);
+!!!246656.cpp!!!	kind() : anItemKind
+  return aPartition;
+!!!246656.java!!!	kind() : anItemKind
+  return anItemKind.aPartition;
+!!!247040.cpp!!!	associatedDiagram() : UmlActivityDiagram
+  read_if_needed_();
+
+  return _assoc_diagram;
+!!!247040.java!!!	associatedDiagram() : UmlActivityDiagram
+  read_if_needed_();
+
+  return _assoc_diagram;
+!!!247168.cpp!!!	set_AssociatedDiagram(in d : UmlActivityDiagram) : bool
+  UmlCom::send_cmd(_identifier, setAssocDiagramCmd, (d == 0) ? (void *) 0 : ((UmlBaseItem *) d)->_identifier);
+  if (UmlCom::read_bool()) {
+    _assoc_diagram = d;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!247168.java!!!	set_AssociatedDiagram(in d : UmlActivityDiagram) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setAssocDiagramCmd, (d == null) ? (long) 0 : d.identifier_());
+  UmlCom.check();
+  _assoc_diagram = d;
+!!!247296.cpp!!!	isDimension() : bool
+  read_if_needed_();
+  return _dimension;
+!!!247296.java!!!	isDimension() : bool
+  read_if_needed_();
+  return _dimension;
+!!!247424.cpp!!!	set_isDimension(in v : bool) : bool
+  return set_it_(_dimension, v, setMultiplicityCmd);
+!!!247424.java!!!	set_isDimension(in v : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setMultiplicityCmd, (v) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _dimension = v;
+!!!247552.cpp!!!	isExternal() : bool
+  read_if_needed_();
+  return _external;
+!!!247552.java!!!	isExternal() : bool
+  read_if_needed_();
+  return _external;
+!!!247680.cpp!!!	set_isExternal(in v : bool) : bool
+  return set_it_(_external, v, setIsCppExternalCmd);
+!!!247680.java!!!	set_isExternal(in v : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setIsCppExternalCmd, (v) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+
+  _external = v;
+!!!247808.cpp!!!	represents() : UmlItem
+  read_if_needed_();
+  return _represents;
+!!!247808.java!!!	represents() : UmlItem
+  read_if_needed_();
+  return _represents;
+!!!247936.cpp!!!	set_Represents(in v : UmlItem) : bool
+  UmlCom::send_cmd(_identifier, setDerivedCmd, (v == 0) ? (void *) v : ((UmlBaseItem *) v)->_identifier);
+  if (UmlCom::read_bool()) {
+    _represents = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!247936.java!!!	set_Represents(in v : UmlItem) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setDerivedCmd, (v == null) ? (long) 0 : v.identifier_());
+  UmlCom.check();
+
+  _represents = v;
+!!!248064.cpp!!!	read_uml_() : void
+  _assoc_diagram = (UmlActivityDiagram *) UmlBaseItem::read_();
+  UmlBaseItem::read_uml_();
+  _dimension = UmlCom::read_bool();
+  _external = UmlCom::read_bool();
+  _represents = (UmlItem *) UmlBaseItem::read_();
+!!!248064.java!!!	read_uml_() : void
+  _assoc_diagram = (UmlActivityDiagram) UmlBaseItem.read_();
+  super.read_uml_();
+  _dimension = UmlCom.read_bool();
+  _external = UmlCom.read_bool();
+  _represents = (UmlItem) UmlBaseItem.read_();

@@ -1,0 +1,9 @@
+class UmlBaseRegion
+!!!136064.cpp!!!	create(inout parent : UmlState, inout s : str) : UmlRegion
+  return (UmlRegion *) parent->create_(aRegion, s);
+!!!136064.java!!!	create(inout parent : UmlState, inout s : str) : UmlRegion
+  return (UmlRegion) parent.create_(anItemKind.aRegion, s);
+!!!136192.cpp!!!	kind() : anItemKind
+  return aRegion;
+!!!136192.java!!!	kind() : anItemKind
+  return anItemKind.aRegion;

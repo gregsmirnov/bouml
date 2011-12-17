@@ -1,0 +1,5 @@
+class UmlSequenceDiagram
+!!!146818.cpp!!!	orderWeight() : int
+return 7;
+!!!146818.java!!!	orderWeight() : int
+return 7;

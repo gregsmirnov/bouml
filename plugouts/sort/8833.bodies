@@ -1,0 +1,59 @@
+class UmlItem
+!!!144130.cpp!!!	sort() : void
+UmlCom::trace("target not allowed, must be a <i>package</i>, any <i>view</i> or a <i>use case</i>");
+!!!144130.java!!!	sort() : void
+UmlCom.trace("target not allowed, must be a <i>package</i>, any <i>view</i> or a <i>use case</i>");
+!!!145282.cpp!!!	orderWeight() : int
+return 0;
+!!!145282.java!!!	orderWeight() : int
+return 0;
+!!!145154.java!!!	compareTo(inout o : Object) : int
+UmlItem e1 = (UmlItem) this;
+UmlItem e2 = (UmlItem) o;
+int w1 = e1.orderWeight();
+int w2 = e2.orderWeight();
+
+return (w1 != w2)
+  ? w1 - w2
+  : e1.name().compareTo(e2.name());
+!!!148098.cpp!!!	sortChildren() : void
+const QVector<UmlItem> & qv = children();
+
+if (!qv.isEmpty()) {
+  unsigned sz = qv.size();
+  VectorOfUmlItem v;
+  unsigned u;
+  
+  // copy
+  v.resize(sz);
+  for (u = 0; u != sz; u += 1)
+    v.insert(u, qv[u]);
+  
+  // sort in memory
+  v.sort();
+  
+  // update browser
+  UmlItem * previous = 0;
+  
+  for (u = 0; u != sz; u += 1) {
+    v[u]->moveAfter(previous);
+    previous = v[u];
+  }
+}
+!!!148098.java!!!	sortChildren() : void
+UmlItem[] v = children();
+int sz = v.length;
+    
+if (sz != 0) {
+  // sort in memory
+  java.util.Arrays.sort((Object[]) v);
+  
+  // update browser
+  int u;
+  UmlItem previous = null;
+  
+  for (u = 0; u != sz; u += 1) {
+    v[u].moveAfter(previous);
+    previous = v[u];
+  }
+}

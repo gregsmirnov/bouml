@@ -1,0 +1,3 @@
+class UmlTerminatePseudoState
+!!!151170.cpp!!!	generate(inout machine : UmlClass, inout anystate : UmlClass, inout state : UmlState, inout body : string, in indent : string) : void
+  body += indent + "stm._final();\n";

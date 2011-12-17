@@ -1,0 +1,27 @@
+class UmlBaseUseCaseDiagram
+!!!43776.cpp!!!	create(inout parent : UmlItem, in s : str) : UmlUseCaseDiagram
+  return (UmlUseCaseDiagram *) parent->create_(anUseCaseDiagram, s);
+!!!43776.java!!!	create(inout parent : UmlItem, in s : str) : UmlUseCaseDiagram
+  return (UmlUseCaseDiagram) parent.create_(anItemKind.anUseCaseDiagram, s);
+!!!43904.cpp!!!	kind() : anItemKind
+  return anUseCaseDiagram;
+!!!43904.java!!!	kind() : anItemKind
+  return anItemKind.anUseCaseDiagram;
+!!!218496.cpp!!!	definition() : UmlUseCaseDiagramDefinition
+  if (_def == 0) {
+    UmlCom::send_cmd(_identifier, sideCmd);
+    (_def = new UmlUseCaseDiagramDefinition())->read_();
+  }
+  return _def;
+!!!218496.java!!!	definition() : UmlUseCaseDiagramDefinition
+  if (_def == null) {
+    UmlCom.send_cmd(identifier_(), OnInstanceCmd.sideCmd);
+    (_def = new UmlUseCaseDiagramDefinition()).read_();
+  }
+  return _def;
+!!!218624.cpp!!!	unload(in rec : bool, in del : bool) : void
+  if (_def != 0) { delete _def; _def = 0; }
+  UmlBaseDiagram::unload(rec, del);
+!!!218624.java!!!	unload(in rec : bool, in del : bool) : void
+  _def = null;
+  super.unload(rec, del);

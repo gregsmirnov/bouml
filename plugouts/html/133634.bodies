@@ -1,0 +1,21 @@
+class UmlActivityDiagram
+!!!193410.cpp!!!	memo_ref() : void
+  diagrams.addElement(this);
+  UmlDiagram::memo_ref();
+!!!193410.java!!!	memo_ref() : void
+  diagrams.addElement(this);
+  super.memo_ref();
+!!!193282.cpp!!!	sKind() : string
+  return "activity diagram";
+!!!193282.java!!!	sKind() : string
+  return "activity diagram";
+!!!193154.cpp!!!	ref_index() : void
+  if (!diagrams.isEmpty())
+    fw.write("<a href=\"activitydiagrams.html\" target = \"projectFrame\"><b> -Activity Diagrams- </b></a>");
+!!!193154.java!!!	ref_index() : void
+  if (!diagrams.isEmpty())
+    fw.write("<a href=\"activitydiagrams.html\" target = \"projectFrame\"><b> -Activity Diagrams- </b></a>");
+!!!193026.cpp!!!	generate_index() : void
+  UmlItem::generate_index(diagrams, "Activity Diagram", "activitydiagrams");
+!!!193026.java!!!	generate_index() : void
+ generate_index(diagrams, "Activity Diagram", "activitydiagrams");

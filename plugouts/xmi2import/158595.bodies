@@ -1,0 +1,19 @@
+class UmlRaiseExceptionAction
+!!!305283.cpp!!!	init() : void
+  declareFct("node", "uml:RaiseExceptionAction", &importIt);
+  declareFct("containednode", "uml:RaiseExceptionAction", &importIt);
+!!!305155.cpp!!!	importIt(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  where = where->container(aRaiseExceptionAction, token, in);
+    
+  if (where != 0) {
+    QCString s = token.valueOf("name");
+    UmlRaiseExceptionAction * a = create(where, s);
+    
+    if (a == 0)
+      in.error("cannot create raise exception action '"
+	       + s + "' in '" + where->name() + "'");
+    
+    a->addItem(token.xmiId(), in);
+        
+    a->import_it(in, token);
+  }

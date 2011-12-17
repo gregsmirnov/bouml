@@ -1,0 +1,23 @@
+/* XPM */
+static const char*deletedusecases_xpm[]={
+"16 16 4 1",
+"# c #000000",
+"b c #ffffc0",
+"a c #ffffff",
+". c #ff0000",
+"..########aaaa..",
+"#..bbbbbbb#aa..a",
+"#b..##bbbbb#..#a",
+"#bb..#bbbbb..bb#",
+"#bb#..bbbb..bbb#",
+"#bbb#..bb..bbbb#",
+"#b####....###bb#",
+"#bbb#bb..b#b#bb#",
+"#bb#b#....###bb#",
+"#b#bb..bb..#bbb#",
+"#bbb..bbb#..##b#",
+"#bb..bbbbbb..bb#",
+"#b..bbbbbb#b..b#",
+"#..bbbbbb#bbb..#",
+"..bbbbbbbbbbbb..",
+".##############."};

@@ -1,0 +1,392 @@
+class UmlBaseArtifact
+!!!14336.cpp!!!	create(inout parent : UmlDeploymentView, in s : str) : UmlArtifact
+  return (UmlArtifact *) parent->create_(anArtifact, s);
+!!!14336.java!!!	create(inout parent : UmlDeploymentView, in s : str) : UmlArtifact
+  return (UmlArtifact) parent.create_(anItemKind.anArtifact, s);
+!!!14464.cpp!!!	kind() : anItemKind
+  return anArtifact;
+!!!14464.java!!!	kind() : anItemKind
+  return anItemKind.anArtifact;
+!!!14592.cpp!!!	associatedDiagram() : UmlDeploymentDiagram
+  read_if_needed_();
+  
+  return _assoc_diagram;
+!!!14592.java!!!	associatedDiagram() : UmlDeploymentDiagram
+  read_if_needed_();
+  
+  return _assoc_diagram;
+!!!14720.cpp!!!	set_AssociatedDiagram(inout d : UmlDeploymentDiagram) : bool
+  UmlCom::send_cmd(_identifier, setAssocDiagramCmd, (d == 0) ? (void *) 0 : ((UmlBaseItem *) d)->_identifier);
+  if (UmlCom::read_bool()) {
+    _assoc_diagram = d;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!14720.java!!!	set_AssociatedDiagram(inout d : UmlDeploymentDiagram) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setAssocDiagramCmd, (d == null) ? (long) 0 : d.identifier_());
+  UmlCom.check();
+  
+  _assoc_diagram = d;
+
+!!!14848.cpp!!!	associatedClasses() : UmlClass
+  read_if_needed_();
+  
+  return _assoc_classes;
+!!!14848.java!!!	associatedClasses() : UmlClass
+  read_if_needed_();
+  
+  return (UmlClass[]) _assoc_classes.clone();
+!!!14976.cpp!!!	addAssociatedClass(inout cl : UmlClass) : bool
+  UmlCom::send_cmd(_identifier, addAssocClassCmd,
+		   ((UmlBaseClass *) cl)->_identifier);
+  if (UmlCom::read_bool()) {
+    if (_defined) {
+      _assoc_classes.resize(_assoc_classes.size() + 1);
+      _assoc_classes.insert(_assoc_classes.size() - 1, cl);
+    }
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!14976.java!!!	addAssociatedClass(inout cl : UmlClass) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.addAssocClassCmd, cl.identifier_());
+  UmlCom.check();
+  
+  if (defined_()) {
+    // code compatible with old Java versions
+    int n = _assoc_classes.length;
+    UmlClass[] a = new UmlClass[n + 1];
+    
+    a[n] = cl;
+    
+    while (n-- != 0)
+      a[n] = _assoc_classes[n];
+    
+    _assoc_classes = a;
+  }
+!!!15104.cpp!!!	removeAssociatedClass(inout cl : UmlClass) : bool
+  UmlCom::send_cmd(_identifier, removeAssocClassCmd,
+		   ((UmlBaseClass *) cl)->_identifier);
+  if (UmlCom::read_bool()) {
+    if (_defined) {
+      unsigned index = (unsigned) _assoc_classes.findRef(cl);
+      
+      if (((int) index) == -1)
+	// theo impossible
+	return FALSE;
+      
+      unsigned last = _assoc_classes.size() - 1;
+      
+      if (index != last)
+	_assoc_classes.insert(index, _assoc_classes[last]);
+      
+      _assoc_classes.resize(last);
+    }
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!15104.java!!!	removeAssociatedClass(inout cl : UmlClass) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.removeAssocClassCmd, cl.identifier_());
+  UmlCom.check();
+  
+  if (defined_()) {
+    // code compatible with old Java versions
+    int n = _assoc_classes.length;
+    UmlClass[] a = new UmlClass[n - 1];
+    int i;
+    
+    for (i = 0; _assoc_classes[i] != cl; i += 1)
+      a[i] = _assoc_classes[i];
+    
+    while (++i != n)
+      a[i - 1] = _assoc_classes[i];
+    
+    _assoc_classes = a;
+  }
+!!!15232.cpp!!!	set_AssociatedClasses(inout l : UmlClass) : bool
+  UmlCom::send_cmd(_identifier, setAssocClassesCmd, (const QVector<UmlItem> &) l);
+  if (UmlCom::read_bool()) {
+      // tests != to bypass Qt 2.3 bug
+    if (_defined && (&_assoc_classes != &l))
+      _assoc_classes = l;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!15232.java!!!	set_AssociatedClasses(inout l : UmlClass) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setAssocClassesCmd, l);
+  UmlCom.check();
+  
+  _assoc_classes = (UmlClass[]) l.clone();
+!!!15360.cpp!!!	associatedArtifacts() : UmlArtifact
+  read_if_needed_();
+  
+  return _associated;
+!!!15360.java!!!	associatedArtifacts() : UmlArtifact
+  read_if_needed_();
+  
+  return (UmlArtifact[]) _associated.clone();
+!!!15488.cpp!!!	addAssociatedArtifact(in cp : UmlArtifact) : bool
+  UmlCom::send_cmd(_identifier, addAssocArtifactCmd, 
+		   ((UmlBaseArtifact *) cp)->_identifier);
+  if (UmlCom::read_bool()) {
+    if (_defined) {
+      _associated.resize(_associated.size() + 1);
+      _associated.insert(_associated.size() - 1, cp);
+    }
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!15488.java!!!	addAssociatedArtifact(in cp : UmlArtifact) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.addAssocArtifactCmd, cp.identifier_());
+  UmlCom.check();
+  
+  if (defined_()) {
+    // code compatible with old Java versions
+    int n = _associated.length;
+    UmlArtifact[] a = new UmlArtifact[n + 1];
+    
+    a[n] = cp;
+    
+    while (n-- != 0)
+      a[n] = _associated[n];
+    
+    _associated = a;
+  }
+!!!15616.cpp!!!	removeAssociatedArtifact(in cp : UmlArtifact) : bool
+  UmlCom::send_cmd(_identifier, removeAssocArtifactCmd, 
+		   ((UmlBaseArtifact *) cp)->_identifier);
+  if (UmlCom::read_bool()) {
+    if (_defined) {
+      unsigned index = (unsigned) _associated.findRef(cp);
+      
+      if (((int) index) == -1)
+	// theo impossible
+	return FALSE;
+      
+      unsigned last = _associated.size() - 1;
+      
+      if (index != last)
+	_associated.insert(index, _associated[last]);
+      
+      _associated.resize(last);
+    }
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!15616.java!!!	removeAssociatedArtifact(in cp : UmlArtifact) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.removeAssocArtifactCmd, cp.identifier_());
+  UmlCom.check();
+  
+  if (defined_()) {
+    // code compatible with old Java versions
+    int n = _associated.length;
+    UmlArtifact[] a = new UmlArtifact[n - 1];
+    int i;
+    
+    for (i = 0; _associated[i] != cp; i += 1)
+      a[i] = _associated[i];
+    
+    while (++i != n)
+      a[i - 1] = _associated[i];
+    
+    _associated = a;
+  }
+
+!!!15744.cpp!!!	removeAllAssociatedArtifacts() : bool
+  UmlCom::send_cmd(_identifier, removeAllAssocArtifactsCmd);
+  if (UmlCom::read_bool()) {  
+    _associated.clear();
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!15744.java!!!	removeAllAssociatedArtifacts() : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.removeAllAssocArtifactsCmd);
+  UmlCom.check();
+  
+  _associated = new UmlArtifact[0];
+!!!15872.cpp!!!	cppHeader() : string
+  read_if_needed_();
+  
+  return _cpp_h;
+!!!15872.java!!!	cppHeader() : string
+  read_if_needed_();
+  
+  return _cpp_h;
+!!!16000.cpp!!!	set_CppHeader(in s : string) : bool
+  return set_it_(_cpp_h, s, setCppHCmd);
+!!!16000.java!!!	set_CppHeader(in s : string) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setCppHCmd, s);
+  UmlCom.check();
+
+  _cpp_h = s;
+!!!16128.cpp!!!	cppSource() : string
+  read_if_needed_();
+  
+  return _cpp_src;
+!!!16128.java!!!	cppSource() : string
+  read_if_needed_();
+  
+  return _cpp_src;
+!!!16256.cpp!!!	set_CppSource(in s : string) : bool
+  return set_it_(_cpp_src, s, setCppSrcCmd);
+!!!16256.java!!!	set_CppSource(in s : string) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setCppSrcCmd, s);
+  UmlCom.check();
+
+  _cpp_src = s;
+!!!16384.cpp!!!	javaSource() : string
+  read_if_needed_();
+  
+  return _java_src;
+!!!16384.java!!!	javaSource() : string
+  read_if_needed_();
+  
+  return _java_src;
+!!!16512.cpp!!!	set_JavaSource(in s : string) : bool
+  return set_it_(_java_src, s, setJavaSrcCmd);
+!!!16512.java!!!	set_JavaSource(in s : string) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setJavaSrcCmd, s);
+  UmlCom.check();
+
+  _java_src = s;
+!!!231424.cpp!!!	phpSource() : string
+  read_if_needed_();
+  
+  return _php_src;
+!!!231424.java!!!	phpSource() : string
+  read_if_needed_();
+  
+  return _php_src;
+!!!231552.cpp!!!	set_PhpSource(in s : string) : bool
+  return set_it_(_php_src, s, setPhpSrcCmd);
+!!!231552.java!!!	set_PhpSource(in s : string) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setPhpSrcCmd, s);
+  UmlCom.check();
+
+  _php_src = s;
+!!!257024.cpp!!!	pythonSource() : string
+  read_if_needed_();
+  
+  return _python_src;
+!!!257024.java!!!	pythonSource() : string
+  read_if_needed_();
+  
+  return _python_src;
+!!!257152.cpp!!!	set_PythonSource(in s : string) : bool
+  return set_it_(_python_src, s, setPythonSrcCmd);
+!!!257152.java!!!	set_PythonSource(in s : string) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setPythonSrcCmd, s);
+  UmlCom.check();
+
+  _python_src = s;
+!!!16640.cpp!!!	idlSource() : string
+  read_if_needed_();
+  
+  return _idl_src;
+!!!16640.java!!!	idlSource() : string
+  read_if_needed_();
+  
+  return _idl_src;
+!!!16768.cpp!!!	set_IdlSource(in s : string) : bool
+  return set_it_(_idl_src, s, setIdlSrcCmd);
+!!!16768.java!!!	set_IdlSource(in s : string) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setIdlSrcCmd, s);
+  UmlCom.check();
+
+  _idl_src = s;
+!!!16896.cpp!!!	unload(in rec : bool, in del : bool) : void
+  _assoc_classes.clear();
+  _associated.clear();
+#ifdef WITHCPP
+  _cpp_h = 0;
+  _cpp_src = 0;
+#endif
+#ifdef WITHJAVA
+  _java_src = 0;
+#endif
+#ifdef WITHPHP
+  _php_src = 0;
+#endif
+#ifdef WITHPYTHON
+  _python_src = 0;
+#endif
+#ifdef WITHIDL
+  _idl_src = 0;
+#endif
+  UmlBaseItem::unload(rec, del);
+!!!16896.java!!!	unload(in rec : bool, in del : bool) : void
+  _assoc_classes = null;
+  _associated = null;
+  _cpp_h = null;
+  _cpp_src = null;
+  _java_src = null;
+  _php_src = null;
+  _python_src = null;
+  _idl_src = null;
+  super.unload(rec, del);
+!!!17024.cpp!!!	read_uml_() : void
+  _assoc_diagram = (UmlDeploymentDiagram *) UmlBaseItem::read_();
+  UmlBaseItem::read_uml_();
+  
+  unsigned n;
+  unsigned index;
+  
+  n = UmlCom::read_unsigned();
+  _assoc_classes.resize(n);
+    
+  for (index = 0; index != n; index += 1)
+    _assoc_classes.insert(index, (UmlClass *) UmlBaseItem::read_());
+  
+  n = UmlCom::read_unsigned();
+  _associated.resize(n);
+    
+  for (index = 0; index != n; index += 1)
+    _associated.insert(index, (UmlArtifact *) UmlBaseItem::read_());
+!!!17024.java!!!	read_uml_() : void
+  _assoc_diagram = (UmlDeploymentDiagram) UmlBaseItem.read_();
+  super.read_uml_();
+  
+  int n;
+  int index;
+  
+  n = UmlCom.read_unsigned();
+  _assoc_classes = new UmlClass[n];
+  
+  for (index = 0; index != n; index += 1)
+    _assoc_classes[index] = (UmlClass) UmlBaseItem.read_();
+  
+  n = UmlCom.read_unsigned();
+  _associated = new UmlArtifact[n];
+    
+  for (index = 0; index != n; index += 1)
+    _associated[index] = (UmlArtifact) UmlBaseItem.read_();
+!!!17152.cpp!!!	read_cpp_() : void
+  _cpp_h = UmlCom::read_string();
+  _cpp_src = UmlCom::read_string();
+!!!17152.java!!!	read_cpp_() : void
+  _cpp_h = UmlCom.read_string();
+  _cpp_src = UmlCom.read_string();
+!!!17280.cpp!!!	read_java_() : void
+  _java_src = UmlCom::read_string();
+!!!17280.java!!!	read_java_() : void
+  _java_src = UmlCom.read_string();
+!!!231680.cpp!!!	read_php_() : void
+  _php_src = UmlCom::read_string();
+!!!231680.java!!!	read_php_() : void
+  _php_src = UmlCom.read_string();
+!!!246400.cpp!!!	read_python_() : void
+  _python_src = UmlCom::read_string();
+!!!246400.java!!!	read_python_() : void
+  _python_src = UmlCom.read_string();
+!!!17408.cpp!!!	read_idl_() : void
+  _idl_src = UmlCom::read_string();
+!!!17408.java!!!	read_idl_() : void
+  _idl_src = UmlCom.read_string();
+!!!17536.cpp!!!	UmlBaseArtifact(in id : item_id, in n : string)
+  _assoc_diagram = 0;

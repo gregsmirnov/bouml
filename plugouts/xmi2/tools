@@ -1,0 +1,9 @@
+// 'tool' "the executable" "displayed string" {target}+
+tool "html (C++ version)" "ghtml" Class Operation Attribute Generalisation Realize Dependency Association DirectionalAssociation Aggregation AggregationByValue DirectionalAggregation DirectionalAggregationByValue ExtraMember
+tool "C++ utilities" "cpp_util" Class
+tool "html (C++ version)" "ghtml" State Region StateAction Initial EntryPoint Final Terminate ExitPoint DeepHistory ShallowHistory Junction Choice Fork Join
+tool "generate .pro" "gpro" Artifact
+tool "html (C++ version)" "ghtml" Project Package UseCaseView ClassView ComponentView DeploymentView UseCaseDiagram SeqDiagram ColDiagram ClassDiagram StateDiagram ComponentDiagram DeploymentDiagram UseCase Component Node Artifact
+tool "C++ utilities" "cpp_util" Project
+tool "generate xmi 1.2" "gxmi" Project
+tool "generate xmi 2.1" "gxmi2" Project

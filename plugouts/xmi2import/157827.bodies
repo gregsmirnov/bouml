@@ -1,0 +1,48 @@
+class UmlCreateObjectAction
+!!!304387.cpp!!!	init() : void
+  declareFct("node", "uml:CreateObjectAction", &importIt);
+  declareFct("containednode", "uml:CreateObjectAction", &importIt);
+!!!304259.cpp!!!	importIt(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  where = where->container(aCreateObjectAction, token, in);
+    
+  if (where != 0) {
+    QCString s = token.valueOf("name");
+    UmlCreateObjectAction * a = create(where, s);
+    
+    if (a == 0)
+      in.error("cannot create create object action '"
+	       + s + "' in '" + where->name() + "'");
+    
+    a->addItem(token.xmiId(), in);
+    
+    s = token.valueOf("classifier");
+        
+    if (! token.closed()) {
+      QCString k = token.what();
+      const char * kstr = k;
+      
+      while (in.read(), !token.close(kstr)) {
+	if (token.what() == "classifier") {
+	  s = token.xmiIdref();
+	  if (! token.closed())
+	    in.finish(token.what());
+	}
+	else
+	  a->import(in, token);
+      }
+    }
+    
+    if (!s.isEmpty()) {
+      QMap<QCString, UmlItem *>::Iterator it = All.find(s);
+      
+      if (it == All.end())
+	Unresolved::addRef(a, s);
+      else
+	a->set_Classifier((*it)->name());
+    }
+  }
+!!!304131.cpp!!!	solve(in idref : string) : void
+  QMap<QCString, UmlItem *>::Iterator it = All.find(idref);
+      
+  if (it != All.end())
+    set_Classifier((*it)->name());

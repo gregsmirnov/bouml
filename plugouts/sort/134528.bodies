@@ -1,0 +1,16 @@
+class FlowBehavior
+!!!157824.cpp!!!	read() : void
+  weight = UmlCom::read_string();
+  guard = UmlCom::read_string();
+  selection = UmlCom::read_string();
+  transformation = UmlCom::read_string();
+!!!157824.java!!!	read() : void
+  weight = UmlCom.read_string();
+  guard = UmlCom.read_string();
+  selection = UmlCom.read_string();
+  transformation = UmlCom.read_string();
+!!!157952.cpp!!!	unload() : void
+  weight = 0;
+  guard = 0;
+  selection = 0;
+  transformation = 0;

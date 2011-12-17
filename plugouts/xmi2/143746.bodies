@@ -1,0 +1,5 @@
+class UmlParameterSet
+!!!209410.cpp!!!	write(inout out : FileOut) : void
+  unload();
+!!!209666.cpp!!!	memo_incoming_flow() : void
+

@@ -1,0 +1,9 @@
+class UmlBaseReadVariableValueAction
+!!!174592.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlReadVariableValueAction
+  return (UmlReadVariableValueAction *) parent->create_(aReadVariableValueAction, s);
+!!!174592.java!!!	create(inout parent : UmlItem, inout s : str) : UmlReadVariableValueAction
+  return (UmlReadVariableValueAction) parent.create_(anItemKind.aReadVariableValueAction, s);
+!!!174720.cpp!!!	kind() : anItemKind
+  return aReadVariableValueAction;
+!!!174720.java!!!	kind() : anItemKind
+  return anItemKind.aReadVariableValueAction;

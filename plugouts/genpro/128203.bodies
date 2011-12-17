@@ -1,0 +1,163 @@
+class Dialog
+!!!128587.cpp!!!	Dialog(inout comp : UmlComponent, in path_exe : string, inout pro : string, inout target : string, inout tmplt : string, inout config : string, inout defines : string, inout includepath : string, inout dependpath : string, inout objectsdir : string)
+  QDir d(path_exe);
+  QVBoxLayout * vbox = new QVBoxLayout(this);
+  QGrid * grid = new QGrid(2, this);
+  QHBox * htab;
+  int index;
+  
+  vbox->addWidget(grid);
+  vbox->setMargin(5);
+  
+  new QLabel(".pro file : ", grid);
+  htab = new QHBox(grid);
+  edpro = new QLineEdit(d.absFilePath(pro), htab);
+  new QLabel(" ", htab);
+  browsepro = new SmallPushButton("browse", htab);
+  connect(browsepro, SIGNAL(clicked ()), this, SLOT(browse_pro()));
+  
+  new QLabel("target : ", grid);
+  htab = new QHBox(grid);
+  edtarget = new QLineEdit(d.absFilePath(target), htab);
+  new QLabel(" ", htab);
+  browsetarget = new SmallPushButton("browse", htab);
+  connect(browsetarget, SIGNAL(clicked ()), this, SLOT(browse_target()));
+
+  new QLabel("template : ", grid);
+  cbtemplate = new QComboBox(TRUE, grid);
+  
+  static const char * templates[] = { "app", "lib", "subdirs" };
+
+  for (index = 0; index != sizeof(templates)/sizeof(*templates); index += 1) {
+    cbtemplate->insertItem(templates[index]);
+    if (tmplt == templates[index])
+      cbtemplate->setCurrentItem(index);
+  }
+
+  new QLabel("config : ", grid);
+  htab = new QHBox(grid);
+  cbconf[0] = new QComboBox(FALSE, htab);
+  cbconf[0]->insertItem("debug");
+  cbconf[0]->insertItem("release");
+  cbconf[1] = new QComboBox(FALSE, htab);
+  cbconf[1]->insertItem("warn_on");
+  cbconf[1]->insertItem("warn_off");
+  
+  QSizePolicy sp = cbconf[0]->sizePolicy();
+    
+  sp.setHorData(QSizePolicy::Fixed);
+  cbconf[0]->setSizePolicy(sp);
+  cbconf[1]->setSizePolicy(sp);
+  
+  new QLabel(" qt ", htab);
+  
+  const char * configs[] = {
+    "", "opengl", "thread", "x11", "windows",
+    "console", "dll", "staticlib", 0
+  };
+
+  for (index = 2; index != sizeof(cbconf)/sizeof(*cbconf); index += 1) {
+    cbconf[index] = new QComboBox(TRUE, htab);
+    cbconf[index]->insertStrList(configs);
+  }
+
+  new QLabel("defines : ", grid);
+  eddefines = new QLineEdit("WITHCPP", grid);
+  
+  ///may be computed
+  new QLabel("include paths : ", grid);
+  htab = new QHBox(grid);
+  edincludepath = new QLineEdit(htab);
+  new QLabel(" ", htab);
+  computeincludepath = new SmallPushButton("compute", htab);
+  connect(computeincludepath, SIGNAL(clicked ()), this, SLOT(compute_includepath()));
+  
+  new QLabel("depend paths : ", grid);
+  eddependpath = new QLineEdit(grid);
+
+  new QLabel("objects dir : ", grid);
+  htab = new QHBox(grid);
+  edobjectsdir = new QLineEdit(htab);
+  new QLabel(" ", htab);
+  browseobjectsdir = new SmallPushButton("browse", htab);
+  connect(browseobjectsdir, SIGNAL(clicked ()), this, SLOT(browse_objectsdir()));
+  
+  new QLabel(grid);
+  new QLabel(grid);
+  
+  new QLabel(grid);
+  htab = new QHBox(grid);
+  new QLabel(htab);
+  QPushButton * ok = new QPushButton("&OK", htab);
+  new QLabel(htab);
+  QPushButton * cancel = new QPushButton("&Cancel", htab);
+  new QLabel(htab);
+  QSize bs(cancel->sizeHint());
+  
+  ok->setDefault( TRUE );
+  
+  if (ok->sizeHint().width() > bs.width())
+    bs.setWidth(ok->sizeHint().width());
+  
+  ok->setFixedSize(bs);
+  cancel->setFixedSize(bs);
+  
+  connect(ok, SIGNAL(clicked()), this, SLOT(accept()));
+  connect(cancel, SIGNAL(clicked()), this, SLOT(reject()));
+!!!128715.cpp!!!	accept() : void
+  _pro = edpro->text();
+  _target = edtarget->text();
+  _objectsdir = edobjectsdir->text();
+  _tmplt = cbtemplate->currentText();
+
+  int index;
+  
+  _config = cbconf[0]->currentText() + " " + cbconf[1]->currentText() + " qt";
+  
+  for (index = 2; index != sizeof(cbconf)/sizeof(*cbconf); index += 1) {
+    QString s = cbconf[index]->currentText();
+    
+    if (! s.isEmpty())
+      _config += " " + s;
+  }
+
+  _defines = eddefines->text();
+  _includepath = edincludepath->text();
+  _dependpath = eddependpath->text();
+  _objectsdir = edobjectsdir->text();
+  
+  QDialog::accept();
+!!!128843.cpp!!!	browse_pro() : void
+  QString f = QFileDialog::getSaveFileName(edpro->text(), "Pro file (.pro)", this,
+					   0, "specify .pro file");
+  
+  if (! f.isEmpty())
+    edpro->setText(f);
+!!!128971.cpp!!!	browse_target() : void
+  QString f = QFileDialog::getSaveFileName(edtarget->text(), "", this,
+					   0, "specify target file");
+  
+  if (! f.isEmpty())
+    edtarget->setText(f);
+!!!129099.cpp!!!	compute_includepath() : void
+  const QVector<UmlComponent> & comps = _comp->associatedComponents();
+  QFileInfo fi(edpro->text());
+  QString prodir = fi.dirPath(TRUE);
+  unsigned index;
+  QStringList l;
+  
+  for (index = 0; index != comps.count(); index += 1) {
+    QString s = comps[index]->way(prodir, TRUE);
+
+    if ((s != "./") && (l.findIndex(s) == -1))
+      l.append(s);
+  }
+
+  edincludepath->setText(l.join(" "));
+  
+!!!129227.cpp!!!	browse_objectsdir() : void
+  QString d = QFileDialog::getExistingDirectory (edobjectsdir->text(), this, 0,
+						 "select objects dir");
+  
+  if (! d.isEmpty())
+    edobjectsdir->setText(d);

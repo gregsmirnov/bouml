@@ -1,0 +1,80 @@
+class UmlBaseValueSpecificationAction
+!!!167040.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlValueSpecificationAction
+  return (UmlValueSpecificationAction *) parent->create_(aValueSpecificationAction, s);
+!!!167040.java!!!	create(inout parent : UmlItem, inout s : str) : UmlValueSpecificationAction
+  return (UmlValueSpecificationAction) parent.create_(anItemKind.aValueSpecificationAction, s);
+!!!167168.cpp!!!	kind() : anItemKind
+  return aValueSpecificationAction;
+!!!167168.java!!!	kind() : anItemKind
+  return anItemKind.aValueSpecificationAction;
+!!!167552.cpp!!!	value() : string
+  read_if_needed_();
+  return _value;
+!!!167552.java!!!	value() : string
+  read_if_needed_();
+  return _value;
+!!!167680.cpp!!!	set_Value(in v : str) : bool
+  return set_it_(_value, v, setUmlActivityCmd);
+!!!167680.java!!!	set_Value(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setUmlActivityCmd, v);
+  UmlCom.check();
+
+  _value = v;
+!!!167808.cpp!!!	cppValue() : string
+  read_if_needed_();
+  return _cpp_value;
+!!!167808.java!!!	cppValue() : string
+  read_if_needed_();
+  return _cpp_value;
+!!!167936.cpp!!!	set_CppValue(in v : str) : bool
+  return set_it_(_cpp_value, v, setCppActivityCmd);
+!!!167936.java!!!	set_CppValue(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setCppActivityCmd, v);
+  UmlCom.check();
+
+  _cpp_value = v;
+!!!168064.cpp!!!	javaValue() : string
+  read_if_needed_();
+  return _java_value;
+!!!168064.java!!!	javaValue() : string
+  read_if_needed_();
+  return _java_value;
+!!!168192.cpp!!!	set_JavaValue(in v : str) : bool
+  return set_it_(_java_value, v, setJavaActivityCmd);
+!!!168192.java!!!	set_JavaValue(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setJavaActivityCmd, v);
+  UmlCom.check();
+
+  _java_value = v;
+!!!168320.cpp!!!	unload(in rec : bool, in del : bool) : void
+  _value = 0;
+#ifdef WITHCPP
+  _cpp_value = 0;
+#endif
+#ifdef WITHJAVA
+  _java_value = 0;
+#endif
+  UmlBaseActivityAction::unload(rec, del);
+!!!168320.java!!!	unload(in rec : bool, in del : bool) : void
+  _value = null;
+  _cpp_value = null;
+  _java_value = null;
+  super.unload(rec, del);
+!!!168448.cpp!!!	read_uml_() : void
+  UmlBaseActivityAction::read_uml_();
+  _value = UmlCom::read_string();
+!!!168448.java!!!	read_uml_() : void
+  super.read_uml_();
+  _value = UmlCom.read_string();
+!!!168576.cpp!!!	read_cpp_() : void
+  UmlBaseActivityAction::read_cpp_();
+  _cpp_value = UmlCom::read_string();
+!!!168576.java!!!	read_cpp_() : void
+  super.read_cpp_();
+  _cpp_value = UmlCom.read_string();
+!!!168704.cpp!!!	read_java_() : void
+  UmlBaseActivityAction::read_java_();
+  _java_value = UmlCom::read_string();
+!!!168704.java!!!	read_java_() : void
+  super.read_java_();
+  _java_value = UmlCom.read_string();

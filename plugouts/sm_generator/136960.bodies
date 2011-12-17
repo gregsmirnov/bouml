@@ -1,0 +1,80 @@
+class UmlBaseOpaqueAction
+!!!172160.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlOpaqueAction
+  return (UmlOpaqueAction *) parent->create_(anOpaqueAction, s);
+!!!172160.java!!!	create(inout parent : UmlItem, inout s : str) : UmlOpaqueAction
+  return (UmlOpaqueAction) parent.create_(anItemKind.anOpaqueAction, s);
+!!!172288.cpp!!!	kind() : anItemKind
+  return anOpaqueAction;
+!!!172288.java!!!	kind() : anItemKind
+  return anItemKind.anOpaqueAction;
+!!!172672.cpp!!!	behavior() : string
+  read_if_needed_();
+  return _behavior;
+!!!172672.java!!!	behavior() : string
+  read_if_needed_();
+  return _behavior;
+!!!172800.cpp!!!	set_Behavior(in v : str) : bool
+  return set_it_(_behavior, v, setUmlActivityCmd);
+!!!172800.java!!!	set_Behavior(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setUmlActivityCmd, v);
+  UmlCom.check();
+
+  _behavior = v;
+!!!172928.cpp!!!	cppBehavior() : string
+  read_if_needed_();
+  return _cpp_behavior;
+!!!172928.java!!!	cppBehavior() : string
+  read_if_needed_();
+  return _cpp_behavior;
+!!!173056.cpp!!!	set_CppBehavior(in v : str) : bool
+  return set_it_(_cpp_behavior, v, setCppActivityCmd);
+!!!173056.java!!!	set_CppBehavior(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setCppActivityCmd, v);
+  UmlCom.check();
+
+  _cpp_behavior = v;
+!!!173184.cpp!!!	javaBehavior() : string
+  read_if_needed_();
+  return _java_behavior;
+!!!173184.java!!!	javaBehavior() : string
+  read_if_needed_();
+  return _java_behavior;
+!!!173312.cpp!!!	set_JavaBehavior(in v : str) : bool
+  return set_it_(_java_behavior, v, setJavaActivityCmd);
+!!!173312.java!!!	set_JavaBehavior(in v : str) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setJavaActivityCmd, v);
+  UmlCom.check();
+
+  _java_behavior = v;
+!!!173440.cpp!!!	unload(in rec : bool, in del : bool) : void
+  _behavior = 0;
+#ifdef WITHCPP
+  _cpp_behavior = 0;
+#endif
+#ifdef WITHJAVA
+  _java_behavior = 0;
+#endif
+  UmlBaseActivityAction::unload(rec, del);
+!!!173440.java!!!	unload(in rec : bool, in del : bool) : void
+  _behavior = null;
+  _cpp_behavior = null;
+  _java_behavior = null;
+  super.unload(rec, del);
+!!!173568.cpp!!!	read_uml_() : void
+  UmlBaseActivityAction::read_uml_();
+  _behavior = UmlCom::read_string();
+!!!173568.java!!!	read_uml_() : void
+  super.read_uml_();
+  _behavior = UmlCom.read_string();
+!!!173696.cpp!!!	read_cpp_() : void
+  UmlBaseActivityAction::read_cpp_();
+  _cpp_behavior = UmlCom::read_string();
+!!!173696.java!!!	read_cpp_() : void
+  super.read_cpp_();
+  _cpp_behavior = UmlCom.read_string();
+!!!173824.cpp!!!	read_java_() : void
+  UmlBaseActivityAction::read_java_();
+  _java_behavior = UmlCom::read_string();
+!!!173824.java!!!	read_java_() : void
+  super.read_java_();
+  _java_behavior = UmlCom.read_string();

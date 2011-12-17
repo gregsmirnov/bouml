@@ -1,0 +1,31 @@
+class FileWriter
+!!!129188.cpp!!!	open(in s : string) : bool
+  f = new QFile(s);
+  
+  if (! f->open(IO_WriteOnly)) {
+    delete f;
+    return FALSE;
+  }
+    
+  ts = new QTextStream(f);
+  return TRUE;
+!!!129316.cpp!!!	close() : void
+  f->flush();
+  f->close();
+  delete ts;
+  delete f;
+  f = 0;
+  ts = 0;
+!!!128420.cpp!!!	write(in s : string) : void
+  ts->writeRawBytes(s, s.length());
+!!!128548.cpp!!!	write(in s : str) : void
+  ts->writeRawBytes(s, strlen(s));
+!!!128676.cpp!!!	write(in c : char) : void
+ ts->writeRawBytes(&c, 1);
+!!!128804.cpp!!!	write(in n : unsigned) : void
+  QCString s;
+  
+  s.setNum(n);
+  
+  ts->writeRawBytes(s, s.length());
+

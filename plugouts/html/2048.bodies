@@ -1,0 +1,37 @@
+class UmlBaseActor
+!!!27136.cpp!!!	create(inout parent : UmlItem, in s : str) : UmlActor
+  return (UmlActor *) parent->create_(anActor, s);
+!!!27136.java!!!	create(inout parent : UmlItem, in s : str) : UmlActor
+  return (UmlActor) parent.create_(anItemKind.anActor, s);
+!!!27264.cpp!!!	kind() : anItemKind
+  return anActor;
+!!!27264.java!!!	kind() : anItemKind
+  return anItemKind.anActor;
+!!!27392.cpp!!!	associatedDiagram() : UmlUseCaseDiagram
+  read_if_needed_();
+  
+  return _assoc_diagram;
+!!!27392.java!!!	associatedDiagram() : UmlUseCaseDiagram
+  read_if_needed_();
+  
+  return _assoc_diagram;
+!!!27520.cpp!!!	set_AssociatedDiagram(inout d : UmlUseCaseDiagram) : bool
+  UmlCom::send_cmd(_identifier, setAssocDiagramCmd, ((UmlBaseItem *) d)->_identifier);
+  if (UmlCom::read_bool()) {
+    _assoc_diagram = d;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!27520.java!!!	set_AssociatedDiagram(inout d : UmlUseCaseDiagram) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setAssocDiagramCmd, d.identifier_());
+  UmlCom.check();
+  
+  _assoc_diagram = d;
+
+!!!27776.cpp!!!	read_uml_() : void
+  _assoc_diagram = (UmlUseCaseDiagram *) UmlBaseItem::read_();
+  UmlBaseItem::read_uml_();
+!!!27776.java!!!	read_uml_() : void
+  _assoc_diagram = (UmlUseCaseDiagram) UmlBaseItem.read_();
+  super.read_uml_();

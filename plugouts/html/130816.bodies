@@ -1,0 +1,9 @@
+class UmlBaseTerminatePseudoState
+!!!140672.cpp!!!	create(inout parent : UmlItem) : UmlTerminatePseudoState
+  return (UmlTerminatePseudoState *) parent->create_(aTerminatePseudoState, "");
+!!!140672.java!!!	create(inout parent : UmlItem) : UmlTerminatePseudoState
+  return (UmlTerminatePseudoState) parent.create_(anItemKind.aTerminatePseudoState, "");
+!!!140800.cpp!!!	kind() : anItemKind
+  return aTerminatePseudoState;
+!!!140800.java!!!	kind() : anItemKind
+  return anItemKind.aTerminatePseudoState;

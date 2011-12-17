@@ -1,0 +1,9 @@
+class UmlComponentView
+!!!144386.cpp!!!	sort() : void
+sortChildren();
+!!!144386.java!!!	sort() : void
+sortChildren();
+!!!146050.cpp!!!	orderWeight() : int
+return 4;
+!!!146050.java!!!	orderWeight() : int
+return 4;

@@ -1,0 +1,21 @@
+class UmlDeploymentDiagram
+!!!129376.cpp!!!	sKind() : string
+  return "deployment diagram";
+!!!129376.java!!!	sKind() : string
+  return "deployment diagram";
+!!!128508.cpp!!!	memo_ref() : void
+  diagrams.addElement(this);
+  UmlDiagram::memo_ref();
+!!!128508.java!!!	memo_ref() : void
+  diagrams.addElement(this);
+  super.memo_ref();
+!!!129008.cpp!!!	ref_index() : void
+  if (!diagrams.isEmpty())
+    fw.write("<a href=\"deploymentdiagrams.html\" target = \"projectFrame\"><b> -Deployment Diagrams- </b></a>");
+!!!129008.java!!!	ref_index() : void
+  if (!diagrams.isEmpty())
+    fw.write("<a href=\"deploymentdiagrams.html\" target = \"projectFrame\"><b> -Deployment Diagrams- </b></a>");
+!!!129148.cpp!!!	generate_index() : void
+  UmlItem::generate_index(diagrams, "Deployment Diagram", "deploymentdiagrams");
+!!!129148.java!!!	generate_index() : void
+  generate_index(diagrams, "Deployment Diagram", "deploymentdiagrams");

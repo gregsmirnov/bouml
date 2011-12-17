@@ -1,0 +1,80 @@
+class UcDialog
+!!!144898.java!!!	addTab(in title : str, in msg : str) : JTextArea
+    JTextArea txtarea = new JTextArea(30, 60);
+    
+    txtarea.setText(useCase.propertyValue(title));
+    
+    JPanel panel = new JPanel(new BorderLayout());
+    
+    panel.add(new JLabel("The " + msg + " of the use case '" + useCase.name() + "'",
+			 JLabel.CENTER),
+	      BorderLayout.NORTH);
+    panel.add(new JScrollPane(txtarea,
+			      JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+			      JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS),
+	      BorderLayout.SOUTH);
+	      
+    tabbedPane.addTab(title, null, panel);
+    
+    return txtarea;
+!!!145026.java!!!	UcDialog(inout frame : JFrame)
+    super(new BorderLayout());
+
+    tabbedPane = new JTabbedPane();
+    
+    summary = addTab("Summary", "summary");
+    context = addTab("Context", "operational context");
+    precond = addTab("Pre-Conditions", "pre-conditions");
+    descr = addTab("Description", "detailed description");
+    postcond = addTab("Post-Conditions", "post-conditions");
+    excpt = addTab("Exceptions", "exceptions");
+
+    add(tabbedPane, BorderLayout.NORTH);
+    
+    JPanel buttonsPanel = new JPanel();
+    
+    JButton okButton = new JButton("Ok");
+    JButton cancelButton = new JButton("Cancel");
+    
+    okButton.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+	useCase.set_PropertyValue("Summary", summary.getText());
+	useCase.set_PropertyValue("Context", context.getText());
+	useCase.set_PropertyValue("Pre-Conditions", precond.getText());
+	useCase.set_PropertyValue("Description", descr.getText());
+	useCase.set_PropertyValue("Post-Conditions", postcond.getText());
+	useCase.set_PropertyValue("Exceptions", excpt.getText());
+	jdialog.dispose();
+      }
+    });
+    
+    cancelButton.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+	jdialog.dispose();
+      }
+    });
+    
+    buttonsPanel.add(okButton);
+    buttonsPanel.add(cancelButton);
+    
+    add(buttonsPanel, BorderLayout.SOUTH);
+!!!145282.java!!!	go(inout uc : UmlUseCase) : void
+    useCase = uc;
+    
+    JFrame.setDefaultLookAndFeelDecorated(true);
+    
+    //Create and set up the window.
+    JFrame frame = new JFrame("UcDialog");
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    
+    //Create and set up the content pane.
+    UcDialog newContentPane = new UcDialog(frame);
+    newContentPane.setOpaque(true); //content panes must be opaque
+    frame.setContentPane(newContentPane);
+    frame.pack();
+
+    //to be modal
+    jdialog = new JDialog(frame, true);
+    jdialog.getContentPane().add(newContentPane);
+    jdialog.pack();
+    jdialog.show();

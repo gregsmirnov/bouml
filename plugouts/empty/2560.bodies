@@ -1,0 +1,9 @@
+class UmlBaseDeploymentDiagram
+!!!18816.cpp!!!	create(inout parent : UmlDeploymentView, in s : str) : UmlDeploymentDiagram
+  return (UmlDeploymentDiagram *) parent->create_(aDeploymentDiagram, s);
+!!!18816.java!!!	create(inout parent : UmlDeploymentView, in s : str) : UmlDeploymentDiagram
+  return (UmlDeploymentDiagram) parent.create_(anItemKind.aDeploymentDiagram, s);
+!!!18944.cpp!!!	kind() : anItemKind
+  return aDeploymentDiagram;
+!!!18944.java!!!	kind() : anItemKind
+  return anItemKind.aDeploymentDiagram;

@@ -1,0 +1,67 @@
+class UmlClassView
+!!!199298.cpp!!!	uml2cpp(in rec : bool) : void
+  if (rec) {
+    const QVector<UmlItem> ch = children();
+    unsigned n = ch.size();
+    
+    for (unsigned i = 0; i != n; i += 1)
+      ch[i]->uml2cpp(rec);
+  }
+!!!199298.java!!!	uml2cpp(in rec : bool) : void
+
+!!!197250.cpp!!!	uml2java(in rec : bool) : void
+  if (rec) {
+    const QVector<UmlItem> ch = children();
+    unsigned n = ch.size();
+    
+    for (unsigned i = 0; i != n; i += 1)
+      ch[i]->uml2java(rec);
+  }
+!!!197250.java!!!	uml2java(in rec : bool) : void
+
+!!!204418.cpp!!!	uml2idl(in rec : bool) : void
+  if (rec) {
+    const QVector<UmlItem> ch = children();
+    unsigned n = ch.size();
+    
+    for (unsigned i = 0; i != n; i += 1)
+      ch[i]->uml2idl(rec);
+  }
+!!!204418.java!!!	uml2idl(in rec : bool) : void
+
+!!!206722.cpp!!!	uml2php(in rec : bool) : void
+  if (rec) {
+    const QVector<UmlItem> ch = children();
+    unsigned n = ch.size();
+    
+    for (unsigned i = 0; i != n; i += 1)
+      ch[i]->uml2php(rec);
+  }
+!!!206722.java!!!	uml2php(in rec : bool) : void
+
+!!!129923.cpp!!!	uml2python(in rec : bool) : void
+  if (rec) {
+    const QVector<UmlItem> ch = children();
+    unsigned n = ch.size();
+    
+    for (unsigned i = 0; i != n; i += 1)
+      ch[i]->uml2python(rec);
+  }
+!!!129923.java!!!	uml2python(in rec : bool) : void
+
+!!!199426.cpp!!!	deploymentView() : UmlDeploymentView
+  UmlDeploymentView * depl = associatedDeploymentView();
+  
+  if (depl == 0) {
+    depl = UmlDeploymentView::create((UmlPackage *) parent(), name());
+    
+    if (depl == 0) {
+      UmlCom::trace("<b>cannot create deployment view '" +
+		    name() + "' in package '" + parent()->name() + "'</b><br>");
+      throw 0;
+    }
+    
+    set_AssociatedDeploymentView(depl);
+  }
+
+  return depl;

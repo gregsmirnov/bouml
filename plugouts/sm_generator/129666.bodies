@@ -1,0 +1,25 @@
+class UmlStateAction
+!!!150274.cpp!!!	generate(inout machine : UmlClass, inout anystate : UmlClass, inout state : UmlState, inout body : string, in indent : string) : void
+  body += indent + cppExpression() + '\n';
+  
+  const QVector<UmlItem> ch = children();
+  
+  if (ch.count() != 1) {
+    UmlCom::trace("Error : 'action' pseudo state must have one and only one transition<br>");
+    throw 0;
+  }
+
+  UmlTransition * tr = (UmlTransition *) ch[0];
+  
+  if (tr->target()->parent() != parent()) {
+    UmlCom::trace("Error : transition from 'action' must goes to a sub [pseudo] state of the state '"
+		  + state->name() + "'<br>");
+    throw 0;
+  }
+
+  if (!tr->cppGuard().isEmpty()) {
+    UmlCom::trace("Error : transition from 'action' must have no guard<br>");
+    throw 0;
+  }
+
+  tr->generate(machine, anystate, state, body, indent);

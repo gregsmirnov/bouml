@@ -1,0 +1,11 @@
+class UmlRegion
+!!!147074.cpp!!!	init(inout mother : UmlClass, in path : string, in pretty_path : string, inout state : UmlState) : void
+  const QVector<UmlItem> ch = children();
+  unsigned index;
+  
+  pretty_path = pretty_path + "." + name();
+  
+  for (index = 0; index != ch.count(); index += 1)
+    if (ch[index]->kind() == aState)
+      ((UmlState *) ch[index])->init(mother, path, pretty_path, 0);
+

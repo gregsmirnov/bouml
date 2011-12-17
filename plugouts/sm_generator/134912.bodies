@@ -1,0 +1,9 @@
+class UmlBaseInterruptibleActivityRegion
+!!!163712.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlInterruptibleActivityRegion
+  return (UmlInterruptibleActivityRegion *) parent->create_(anInterruptibleActivityRegion, s);
+!!!163712.java!!!	create(inout parent : UmlItem, inout s : str) : UmlInterruptibleActivityRegion
+  return (UmlInterruptibleActivityRegion) parent.create_(anItemKind.anInterruptibleActivityRegion, s);
+!!!163840.cpp!!!	kind() : anItemKind
+  return anInterruptibleActivityRegion;
+!!!163840.java!!!	kind() : anItemKind
+  return anItemKind.anInterruptibleActivityRegion;

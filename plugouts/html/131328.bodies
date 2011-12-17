@@ -1,0 +1,9 @@
+class UmlBaseDeepHistoryPseudoState
+!!!141696.cpp!!!	create(inout parent : UmlItem) : UmlDeepHistoryPseudoState
+  return (UmlDeepHistoryPseudoState *) parent->create_(aDeepHistoryPseudoState, "");
+!!!141696.java!!!	create(inout parent : UmlItem) : UmlDeepHistoryPseudoState
+  return (UmlDeepHistoryPseudoState) parent.create_(anItemKind.aDeepHistoryPseudoState, "");
+!!!141824.cpp!!!	kind() : anItemKind
+  return aDeepHistoryPseudoState;
+!!!141824.java!!!	kind() : anItemKind
+  return anItemKind.aDeepHistoryPseudoState;

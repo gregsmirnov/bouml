@@ -1,0 +1,139 @@
+class TabDialog
+!!!144386.cpp!!!	TabDialog(inout u : UmlUseCase)
+  setCaption(QCString("Properties of the use case '") + u->name() + "'");
+
+  setCancelButton();
+  
+  QString cs;
+  
+  // note : QFile fp(QDir::home().absFilePath(".boumlrc")) doesn't work
+  // if the path contains non latin1 characters, for instance cyrillic !
+  QString s = QDir::home().absFilePath(".boumlrc");
+  FILE * fp = fopen((const char *) s, "r");
+
+#ifdef WIN32
+  if (fp == 0) {
+    QString hd = getenv("USERPROFILE");
+    
+    if (! hd.isEmpty()) {
+      QDir d(hd);
+      QString s2 = d.absFilePath(".boumlrc");
+      
+      fp = fopen((const char *) s2, "r");
+    }
+  }
+#endif
+
+  if (fp == 0)
+    cs = getenv("BOUML_CHARSET");
+  else {
+    char line[512];
+    
+    while (fgets(line, sizeof(line) - 1, fp) != 0) {
+      if (!strncmp(line, "CHARSET ", 8)) {
+	int len = strlen(line);
+	
+	if (len != 0) {
+	  if (line[len - 1] == '\n')
+	    line[--len] = 0;
+	  
+	  if ((len != 0) && (line[len - 1] == '\r'))
+	    line[len - 1] = 0;
+	}
+	
+	cs = line+8;
+      }
+      else if (!strncmp(line, "DESKTOP ", 8)) {
+	int l, t, r, b;
+	
+	if (sscanf(line+8, "%d %d %d %d", &l, &t, &r, &b) == 4) {
+	  if (!((r == 0) && (t == 0) && (r == 0) && (b == 0)) &&
+	      !((r < 0) || (t < 0) || (r < 0) || (b < 0)) &&
+	      !((r <= l) || (b <= t))) {
+	    desktopCenter.setX((r + l) /2);
+	    desktopCenter.setY((t + b) / 2);
+	  }
+	}
+      }
+    }
+    
+    fclose(fp);
+  }
+  
+  Codec = 0;
+  
+  if (!cs.isEmpty() && ((Codec = QTextCodec::codecForName(cs)) == 0)) {
+    QVBox * vbox = new QVBox(this);
+    
+    vbox->setMargin(5);
+    (new QLabel("ERROR : No codec for '" + cs + "'", vbox))
+      ->setAlignment(AlignCenter);
+    
+    addTab(vbox, "Use case wizard");
+    setOkButton(QString::null);
+  }
+  else {
+    for (unsigned i = 0; i != sizeof(Tabs)/sizeof(*Tabs); i += 1) {
+      QVBox * vbox = new QVBox(this);
+      
+      vbox->setMargin(5);
+      (new QLabel(QCString(Tabs[i].lbl) + u->name() + "'",
+		  new QGroupBox(1, Horizontal, vbox)))
+	->setAlignment(AlignCenter);
+      this->*(Tabs[i]).a = new QMultiLineEdit(vbox);
+      
+      QCString v;
+      
+      if (u->propertyValue(Tabs[i].key, v))
+	(this->*(Tabs[i]).a)->setText(toUnicode(v));
+      
+      addTab(vbox, Tabs[i].key);
+    }
+  }
+!!!144642.cpp!!!	accept() : void
+  for (unsigned i = 0; i != sizeof(Tabs)/sizeof(*Tabs); i += 1)
+    uc->set_PropertyValue(Tabs[i].key, fromUnicode((this->*(Tabs[i]).a)->text()));
+  UmlCom::bye();
+  QTabDialog::accept();
+!!!144770.cpp!!!	reject() : void
+  UmlCom::bye();
+  QTabDialog::reject();
+!!!145410.cpp!!!	toUnicode(in str : str) : QString
+  if (Codec == 0)
+    return str;
+  else if ((str == 0) || (*str == 0))
+    return QString::null;
+  else
+    return Codec->toUnicode(str);
+!!!145538.cpp!!!	latinize(inout s : QString) : void
+  unsigned i = s.length();
+  
+  while (i != 0) {
+    QChar c = s.at(--i);
+    
+    if (c.latin1() == 0) {
+      if (c.unicode() == 8217)
+	// special case for the pseudo ' returned by microsoft editors
+	c = '\'';
+      else
+	c = ' ';
+      s.replace(i, 1, &c, 1);
+    }
+  }
+!!!145666.cpp!!!	fromUnicode(in s : QString) : string
+  if (Codec == 0) {
+    QString str = s;
+
+    latinize(str);
+    return QCString(str);
+  }
+  else if (s.isEmpty())
+    return "";
+  else
+    return Codec->fromUnicode(s);
+!!!152194.cpp!!!	polish() : void
+  QTabDialog::polish();
+  
+  if (! desktopCenter.isNull())
+    move(x() + desktopCenter.x() - (x() + width() / 2), 
+	 y() + desktopCenter.y() - (y() + height() / 2));

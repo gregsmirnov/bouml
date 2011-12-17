@@ -1,0 +1,9 @@
+class UmlBaseUseCaseView
+!!!44160.cpp!!!	create(inout parent : UmlItem, in s : str) : UmlUseCaseView
+  return (UmlUseCaseView *) parent->create_(anUseCaseView, s);
+!!!44160.java!!!	create(inout parent : UmlItem, in s : str) : UmlUseCaseView
+  return (UmlUseCaseView) parent.create_(anItemKind.anUseCaseView, s);
+!!!44288.cpp!!!	kind() : anItemKind
+  return anUseCaseView;
+!!!44288.java!!!	kind() : anItemKind
+  return anItemKind.anUseCaseView;

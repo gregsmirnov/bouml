@@ -1,0 +1,106 @@
+format 26
+
+classcanvas 128 class_ref 3200 // UmlBaseItem
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  color blue
+  xyz 202 11 2000
+classcanvas 256 class_ref 8833 // UmlItem
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 214 73 3001
+classcanvas 512 class_ref 133120 // UmlBaseActivity
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  color blue
+  xyz 14 125 2000
+classcanvas 768 class_ref 134272 // UmlBaseActivityRegion
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  color blue
+  xyz 171 136 2000
+classcanvas 1024 class_ref 133888 // UmlBaseFlow
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  color blue
+  xyz 451 120 2000
+classcanvas 1152 class_ref 134528 // UmlBaseExpansionRegion
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  color blue
+  xyz 42 269 2000
+classcanvas 1280 class_ref 134912 // UmlBaseInterruptibleActivityRegion
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  color blue
+  xyz 260 269 2000
+classcanvas 1408 class_ref 134018 // UmlFlow
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 464 185 2005
+classcanvas 1536 class_ref 134402 // UmlActivityRegion
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 184 201 2000
+classcanvas 1792 class_ref 132994 // UmlActivityItem
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 331 137 2005
+classcanvas 2304 class_ref 134658 // UmlExpansionRegion
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 56 326 2000
+classcanvas 2560 class_ref 135042 // UmlInterruptibleActivityRegion
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 276 326 2005
+classcanvas 2816 class_ref 133250 // UmlActivity
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 30 185 2005
+relationcanvas 384 relation_ref 16641 // <generalisation>
+  from ref 256 z 1000 to ref 128
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 640 relation_ref 137216 // <generalisation>
+  from ref 512 z 1999 to ref 256
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 896 relation_ref 139776 // <generalisation>
+  from ref 768 z 1999 to ref 256
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 1664 relation_ref 140034 // <generalisation>
+  from ref 1536 z 1999 to ref 768
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 1920 relation_ref 140162 // <generalisation>
+  from ref 1536 z 1999 to ref 1792
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 2048 relation_ref 139010 // <generalisation>
+  from ref 1408 z 1999 to ref 1024
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 2176 relation_ref 139138 // <generalisation>
+  from ref 1408 z 2004 to ref 1792
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 2432 relation_ref 140674 // <generalisation>
+  from ref 2304 z 1999 to ref 1152
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 2688 relation_ref 141186 // <generalisation>
+  from ref 2560 z 1999 to ref 1280
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 2944 relation_ref 137474 // <generalisation>
+  from ref 2816 z 1999 to ref 512
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 3072 relation_ref 138752 // <generalisation>
+  from ref 1024 z 1999 to ref 256
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 3200 relation_ref 140416 // <generalisation>
+  geometry VHV
+  from ref 1152 z 1999 to point 117 252
+  line 3968 z 1999 to point 239 252
+  line 4096 z 1999 to ref 1536
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 3328 relation_ref 140928 // <generalisation>
+  geometry VHV
+  from ref 1280 z 1999 to point 363 252
+  line 4736 z 1999 to point 239 252
+  line 4864 z 1999 to ref 1536
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end

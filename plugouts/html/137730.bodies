@@ -1,0 +1,35 @@
+class UmlCallOperationAction
+!!!198786.cpp!!!	sKind() : string
+  return "call operation activity action";
+!!!198786.java!!!	sKind() : string
+  return "call operation activity action";
+!!!202370.cpp!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  UmlActivityAction::html();
+
+  if (isSynchronous())
+    fw.write("<p>Is synchronous</p>");
+    
+  if (operation() != 0){
+    fw.write("<p>Operation : ");
+    operation()->write();
+    fw.write("</p>");
+  }
+
+  write_children(pfix, rank, level);
+
+  unload(FALSE, FALSE);
+!!!202370.java!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  super.html();
+
+  if (isSynchronous())
+    fw.write("<p>Is synchronous</p>");
+    
+  if (operation() != null){
+    fw.write("<p>Operation : ");
+    operation().write();
+    fw.write("</p>");
+  }
+
+  write_children(pfix, rank, level);
+
+  unload(false, false);

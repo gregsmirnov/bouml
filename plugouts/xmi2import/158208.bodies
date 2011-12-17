@@ -1,0 +1,9 @@
+class UmlBaseTestIdentityAction
+!!!300800.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlTestIdentityAction
+  return (UmlTestIdentityAction *) parent->create_(aTestIdentityAction, s);
+!!!300800.java!!!	create(inout parent : UmlItem, inout s : str) : UmlTestIdentityAction
+  return (UmlTestIdentityAction) parent.create_(anItemKind.aTestIdentityAction, s);
+!!!300928.cpp!!!	kind() : anItemKind
+  return aTestIdentityAction;
+!!!300928.java!!!	kind() : anItemKind
+  return anItemKind.aTestIdentityAction;

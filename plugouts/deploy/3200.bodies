@@ -1,0 +1,864 @@
+class UmlBaseItem
+!!!21376.cpp!!!	set_Name(in s : string) : bool
+  UmlCom::send_cmd(_identifier, setNameCmd, s);
+  if (UmlCom::read_bool()) {
+    _name = s;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!21376.java!!!	set_Name(in s : string) : bool
+    UmlCom.send_cmd(identifier_(), OnInstanceCmd.setNameCmd, s);
+    UmlCom.check();
+    _name = s;
+!!!21504.cpp!!!	stereotype() : string
+  read_if_needed_();
+  
+  return _stereotype;
+!!!21504.java!!!	stereotype() : string
+  read_if_needed_();
+  
+  return _stereotype;
+!!!21632.cpp!!!	set_Stereotype(in s : string) : bool
+  return set_it_(_stereotype, s, setStereotypeCmd);
+!!!21632.java!!!	set_Stereotype(in s : string) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setStereotypeCmd, s);
+  UmlCom.check();
+  
+  if (_defined) _stereotype = s;
+
+!!!216448.cpp!!!	applyStereotype() : bool
+  UmlCom::send_cmd(_identifier, applyStereotypeCmd);
+  if (UmlCom::read_bool() == 0) return FALSE;
+  unload(false, false);
+  return TRUE;
+!!!216448.java!!!	applyStereotype() : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.applyStereotypeCmd);
+  UmlCom.check();
+  unload(false, false);
+!!!21760.cpp!!!	description() : string
+  read_if_needed_();
+  
+  return _description;
+!!!21760.java!!!	description() : string
+  read_if_needed_();
+  
+  return _description;
+!!!21888.cpp!!!	set_Description(in s : string) : bool
+  return set_it_(_description, s, setDescriptionCmd);
+!!!21888.java!!!	set_Description(in s : string) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setDescriptionCmd, s);
+  UmlCom.check();
+  
+  if (_defined) _description = s;
+
+!!!22016.cpp!!!	parent() : UmlItem
+  if (_parent == 0) {
+    UmlCom::send_cmd(_identifier, parentCmd);
+    
+    _parent = UmlBaseItem::read_();
+  }
+  
+  return _parent;
+!!!22016.java!!!	parent() : UmlItem
+  if (_parent == null) {
+    UmlCom.send_cmd(identifier_(), OnInstanceCmd.parentCmd);
+    
+    _parent = UmlBaseItem.read_();
+  }
+  
+  return _parent;
+!!!22144.cpp!!!	children() : UmlItem
+  if (_children == 0)
+    read_children_();
+  
+  return *_children;
+!!!22144.java!!!	children() : UmlItem
+  if (_children == null)
+    read_children_();
+  
+  return (UmlItem[]) _children.clone();
+!!!22272.cpp!!!	childrenVisible() : bool
+  UmlCom::send_cmd(_identifier, isOpenCmd);
+  return UmlCom::read_bool();
+!!!22272.java!!!	childrenVisible() : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.isOpenCmd);
+  return UmlCom.read_bool();
+!!!22400.cpp!!!	set_childrenVisible(in y : bool) : bool
+  UmlCom::send_cmd(_identifier, setOpenCmd, (char) y);
+  return UmlCom::read_bool();
+!!!22400.java!!!	set_childrenVisible(in y : bool) : bool
+  UmlCom.send_cmd(_identifier, OnInstanceCmd.setOpenCmd, (y) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+!!!22528.cpp!!!	propertyValue(in k : string, inout v : string) : string
+  read_if_needed_();
+  
+  QCString * s = _dict[k];
+  
+  if (s == 0)
+    return FALSE;
+  
+  v = *s;
+  return TRUE;
+
+!!!22528.java!!!	propertyValue(in k : string, inout v : string) : string
+  read_if_needed_();
+  
+  if (_dict == null)
+    return null;
+  
+  return (String) _dict.get(k);
+!!!22656.cpp!!!	set_PropertyValue(in k : string, in v : string) : bool
+  read_if_needed_();
+  
+  UmlCom::send_cmd(_identifier, setCoupleValueCmd, k, v);
+  if (UmlCom::read_bool()) {
+    if (_defined) {
+      QCString * s = _dict[k];
+      
+      if (s == 0)
+	_dict.insert(k, new QCString(v));
+      else
+	*s = v;
+    }
+    
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!22656.java!!!	set_PropertyValue(in k : string, in v : string) : bool
+  read_if_needed_();
+  
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setCoupleValueCmd, k, v);
+  UmlCom.check();
+  
+  if (_dict == null)
+    _dict = new Hashtable();
+    
+  _dict.put(k, v);
+
+!!!22784.cpp!!!	properties() : string
+  read_if_needed_();
+
+  return _dict;
+!!!22784.java!!!	properties() : string
+  read_if_needed_();
+
+  return (_dict == null)
+    ? new Hashtable()
+    : (Hashtable) _dict.clone();
+!!!144384.cpp!!!	moveAfter(in x : UmlItem) : bool
+  UmlCom::send_cmd(_identifier, moveAfterCmd, (x != 0) ? ((UmlBaseItem *)x)->_identifier : 0);
+  if (UmlCom::read_bool()) {
+    ((UmlBaseItem *)parent())->reread_children_if_needed_();
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!144384.java!!!	moveAfter(in x : UmlItem) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.moveAfterCmd, 
+                  (x != null) ? x.identifier_() : 0);
+  UmlCom.check();
+  parent().reread_children_if_needed_();
+!!!22912.cpp!!!	supportFile() : string
+  UmlCom::send_cmd(_identifier, supportFileCmd); 
+  return UmlCom::read_string();
+!!!22912.java!!!	supportFile() : string
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.supportFileCmd); 
+  return UmlCom.read_string();
+!!!23040.cpp!!!	isWritable() : bool
+  UmlCom::send_cmd(_identifier, isWritableCmd); 
+  return UmlCom::read_bool();
+!!!23040.java!!!	isWritable() : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.isWritableCmd); 
+  return UmlCom.read_bool();
+!!!23168.cpp!!!	apply(in cmd : string) : int
+  UmlCom::send_cmd(_identifier, applyCmd, cmd); 
+  return (int) UmlCom::read_unsigned();
+!!!23168.java!!!	apply(in cmd : string) : int
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.applyCmd, cmd); 
+  return UmlCom.read_unsigned();
+!!!23296.cpp!!!	isMarked() : bool
+  read_if_needed_();
+
+  return _marked;
+!!!23296.java!!!	isMarked() : bool
+  read_if_needed_();
+
+  return _marked;
+!!!23424.cpp!!!	set_isMarked(in y : bool) : bool
+  return set_it_(_marked, y, setMarkedCmd);
+!!!23424.java!!!	set_isMarked(in y : bool) : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.setMarkedCmd, (y) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+  
+  _marked = y;
+!!!23552.cpp!!!	referencedBy() : UmlItem
+  UmlCom::send_cmd(_identifier, referencedByCmd);
+  
+  QVector<UmlItem> result;
+  
+  UmlCom::read_item_list(result);
+  return result;
+!!!23552.java!!!	referencedBy() : UmlItem
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.childrenCmd);
+  return UmlCom.read_item_list();
+!!!193024.cpp!!!	getIdentifier() : int
+  read_if_needed_();
+
+  return _modeler_id;
+!!!193024.java!!!	getIdentifier() : int
+  read_if_needed_();
+
+  return _modeler_id;
+!!!23680.cpp!!!	unload(in rec : bool, in del : bool) : void
+  _defined = FALSE;
+  _stereotype = 0;
+  _dict.clear();
+  _description = 0;
+
+  if (_children != 0) {
+    if (rec) {
+      for (unsigned chindex = 0; chindex != _children->size(); chindex += 1) {
+	_children->at(chindex)->unload(TRUE, del);
+	if (del)
+	  delete _children->at(chindex);
+      }
+    }
+    
+    delete _children;
+    _children = 0;
+  }
+!!!23680.java!!!	unload(in rec : bool, in del : bool) : void
+  _defined = false;
+  _stereotype = null;
+  _dict = null;
+  _description = null;
+
+  if (_children != null) {
+    if (rec)
+      for (int chindex = 0; chindex != _children.length; chindex += 1) {
+	_children[chindex].unload(true, del);
+	if (del)
+	  _all.remove(new Long(_children[chindex].identifier_()));
+    }
+
+    _children = null;
+  }
+!!!192896.cpp!!!	deleteIt() : bool
+  UmlCom::send_cmd(_identifier, deleteCmd);
+  if (UmlCom::read_bool() == 0) return FALSE;
+  parent()->unload(TRUE);
+  return TRUE;
+!!!192896.java!!!	deleteIt() : bool
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.deleteCmd);
+  UmlCom.check();
+  parent().unload(true, false);
+!!!23808.cpp!!!	isToolRunning(in id : int) : bool
+  UmlCom::send_cmd(miscGlobalCmd, toolRunningCmd, id, "");
+  return UmlCom::read_bool();
+!!!23808.java!!!	isToolRunning(in id : int) : bool
+  UmlCom.send_cmd(CmdFamily.miscGlobalCmd, MiscGlobalCmd._toolRunningCmd, id, "");
+  return UmlCom.read_bool();
+!!!23936.cpp!!!	markedItems() : UmlItem
+  UmlCom::send_cmd(miscGlobalCmd, allMarkedCmd);
+  
+  QVector<UmlItem> result;
+  
+  UmlCom::read_item_list(result);
+  return result;
+!!!23936.java!!!	markedItems() : UmlItem
+  UmlCom.send_cmd(CmdFamily.miscGlobalCmd, MiscGlobalCmd._allMarkedCmd);
+  return UmlCom.read_item_list();
+!!!24064.cpp!!!	read_if_needed_() : void
+  if (!_defined) {
+#if defined(WITHCPP) & defined(WITHJAVA) & defined(WITHPHP) & defined(WITHPYTHON) & defined(WITHIDL)
+    UmlCom::send_cmd(_identifier, getDefCmd);
+    read_uml_();
+    read_cpp_();
+    read_java_();
+    read_php_();
+    read_python_();
+    read_idl_();
+#else
+# if defined(WITHCPP) & !defined(WITHJAVA) & !defined(WITHPHP) & !defined(WITHPYTHON) & !defined(WITHIDL)
+    UmlCom::send_cmd(_identifier, getCppDefCmd);
+    read_uml_();
+    read_cpp_();
+# else
+#  if !defined(WITHCPP) & defined(WITHJAVA) & !defined(WITHPHP) & !defined(WITHPYTHON) & !defined(WITHIDL)
+    UmlCom::send_cmd(_identifier, getJavaDefCmd);
+    read_uml_();
+    read_java_();
+#  else
+#   if !defined(WITHCPP) & !defined(WITHJAVA) & defined(WITHPHP) & !defined(WITHPYTHON) & !defined(WITHIDL)
+    UmlCom::send_cmd(_identifier, getPhpDefCmd);
+    read_uml_();
+    read_php_();
+#   else
+#    if !defined(WITHCPP) & !defined(WITHJAVA) & !defined(WITHPHP) & defined(WITHPYTHON) & !defined(WITHIDL)
+    UmlCom::send_cmd(_identifier, getPythonDefCmd);
+    read_uml_();
+    read_python_();
+#    else
+#     if !defined(WITHCPP) & !defined(WITHJAVA) & !defined(WITHPHP) & !defined(WITHPYTHON) & defined(WITHIDL)
+    UmlCom::send_cmd(_identifier, getIdlDefCmd);
+    read_uml_();
+    read_idl_();
+#     else
+#      if !defined(WITHCPP) & !defined(WITHJAVA) & !defined(WITHPHP) & !defined(WITHPYTHON) & !defined(WITHIDL)
+    UmlCom::send_cmd(_identifier, getUmlDefCmd);
+    read_uml_();
+#      else
+    ... WITHCPP and WITHJAVA and WITHPHP and WITHPYTHON and WITHIDL must be both defined or undefined
+    ... or only one of them must be defined
+#      endif
+#     endif
+#    endif
+#   endif
+#  endif
+# endif
+#endif
+    
+    _defined = TRUE;
+  }
+!!!24064.java!!!	read_if_needed_() : void
+  if (!_defined) {
+    UmlCom.send_cmd(identifier_(), OnInstanceCmd.getDefCmd);
+    read_uml_();
+    read_cpp_();
+    read_java_();
+    read_php_();
+    read_python_();
+    read_idl_();
+    
+    _defined = true;
+  }
+!!!24192.cpp!!!	create_(in k : anItemKind, in s : str) : UmlItem
+  UmlCom::send_cmd(_identifier, createCmd, k, s);
+
+  UmlItem * result = UmlBaseItem::read_();
+  
+  if (result != 0) {
+    if (_children != 0) {
+      unsigned n = _children->count();
+      
+      _children->resize(n + 1);
+      _children->insert(n, result);
+    }
+    ((UmlBaseItem *) result)->_parent = (UmlItem *) this;
+  }
+  
+  return result;
+!!!24192.java!!!	create_(in k : anItemKind, in s : str) : UmlItem
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.createCmd, k, s);
+
+  UmlItem result = UmlBaseItem.read_();
+  
+  if (result != null) {
+    if (_children != null) {
+      int n = _children.length;
+      UmlItem[] ch = new UmlItem[n + 1];
+      int index;
+
+      for (index = 0; index != n; index += 1)
+	ch[index] = _children[index];
+      
+      ch[index] = result;
+      _children = ch;
+    }
+    ((UmlBaseItem) result)._parent = (UmlItem) this;
+  }
+  else
+    throw new RuntimeException("can't be created");
+  
+  return result;
+!!!24320.cpp!!!	read_uml_() : void
+  _stereotype = UmlCom::read_string();
+
+  unsigned n = UmlCom::read_unsigned();
+  
+  while (n--) {
+    QCString k = UmlCom::read_string();
+    
+    _dict.insert(k, new QCString(UmlCom::read_string()));
+  }
+  
+  _description = UmlCom::read_string();
+  
+  _marked = UmlCom::read_bool();
+  _modeler_id = (int) UmlCom::read_unsigned();
+!!!24320.java!!!	read_uml_() : void
+  _stereotype = UmlCom.read_string();
+
+  int n = UmlCom.read_unsigned();
+  
+  if (n != 0) {
+    _dict = new Hashtable(n);
+    
+    do {
+      String k = UmlCom.read_string();
+      
+      _dict.put(k, UmlCom.read_string());
+    } while (--n != 0);
+  }
+  else
+    _dict = null;
+  
+  _description = UmlCom.read_string();
+  
+  _marked = UmlCom.read_bool();
+  _modeler_id = UmlCom.read_unsigned();
+!!!24832.cpp!!!	read_children_() : void
+  UmlCom::send_cmd(_identifier, childrenCmd);
+  _children = new QVector<UmlItem>;
+  
+  UmlCom::read_item_list(*_children);
+  
+  unsigned n = _children->size();
+  
+  while (n--)
+    ((UmlBaseItem *) _children->at(n))->_parent = (UmlItem *) this;
+!!!24832.java!!!	read_children_() : void
+  UmlCom.send_cmd(identifier_(), OnInstanceCmd.childrenCmd);
+  _children = UmlCom.read_item_list();
+  
+  int n = _children.length;
+  
+  while (n-- != 0)
+    ((UmlBaseItem) _children[n])._parent = (UmlItem) this;
+!!!24960.cpp!!!	reread_children_if_needed_() : void
+  if (_children != 0) {
+    delete _children;
+    read_children_();
+  }
+!!!24960.java!!!	reread_children_if_needed_() : void
+  if (_children != null)
+    read_children_();
+!!!25088.cpp!!!	set_it_(inout r : bool, in v : bool, in cmd : OnInstanceCmd) : bool
+  UmlCom::send_cmd(_identifier, cmd, (char) v);
+  if (UmlCom::read_bool()) {
+    r = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!25088.java!!!	set_it_(inout r : bool, in v : bool, in cmd : OnInstanceCmd) : bool
+  UmlCom.send_cmd(_identifier, cmd, (char) v);
+  if (UmlCom.read_bool()) {
+    r = v;
+    return true;
+  }
+  else
+    return false;
+!!!25216.cpp!!!	set_it_(inout r : aVisibility, in v : aVisibility, in cmd : OnInstanceCmd) : bool
+  UmlCom::send_cmd(_identifier, cmd, (char) v);
+  if (UmlCom::read_bool()) {
+    r = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!25216.java!!!	set_it_(inout r : aVisibility, in v : aVisibility, in cmd : OnInstanceCmd) : bool
+  UmlCom.send_cmd(_identifier, cmd, (char) v);
+  if (UmlCom.read_bool()) {
+    r = v;
+    return true;
+  }
+  else
+    return false;
+!!!25344.cpp!!!	set_it_(inout r : aDirection, in v : aDirection, in cmd : OnInstanceCmd) : bool
+  UmlCom::send_cmd(_identifier, cmd, (char) v);
+  if (UmlCom::read_bool()) {
+    r = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!25344.java!!!	set_it_(inout r : aDirection, in v : aDirection, in cmd : OnInstanceCmd) : bool
+  UmlCom.send_cmd(_identifier, cmd, (char) v);
+  if (UmlCom.read_bool()) {
+    r = v;
+    return true;
+  }
+  else
+    return false;
+!!!25472.cpp!!!	set_it_(inout r : string, in v : str, in cmd : OnInstanceCmd) : bool
+  UmlCom::send_cmd(_identifier, cmd, v);
+  if (UmlCom::read_bool()) {
+    if (_defined) r = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!25472.java!!!	set_it_(inout r : string, in v : str, in cmd : OnInstanceCmd) : bool
+  UmlCom.send_cmd(_identifier, cmd, v);
+  if (UmlCom.read_bool()) {
+    if (_defined) r = v;
+    return true;
+  }
+  else
+    return false;
+!!!25600.cpp!!!	set_it_(inout r : UmlTypeSpec, in t : UmlTypeSpec, in cmd : OnInstanceCmd) : bool
+  UmlCom::send_cmd(_identifier, cmd, t);
+  if (UmlCom::read_bool()) {
+    if (_defined) r = t;
+    return TRUE;
+  }
+ else
+   return FALSE;
+!!!25600.java!!!	set_it_(inout r : UmlTypeSpec, in t : UmlTypeSpec, in cmd : OnInstanceCmd) : bool
+  UmlCom.send_cmd(_identifier, cmd, t);
+  if (UmlCom.read_bool()) {
+    if (_defined) r = t;
+    return true;
+  }
+ else
+   return false;
+!!!25728.cpp!!!	read_() : UmlItem
+  void * id = UmlCom::read_id();
+  
+  if (id == 0)
+    return 0;
+  
+  anItemKind kind = (anItemKind) UmlCom::read_char();
+  const char * name = UmlCom::read_string();
+  
+#ifndef WIN32
+  //cout << "UmlBaseItem::read id " << id << " kind " << kind << " name " << name << '\n';
+#endif
+  
+  UmlItem * result = _all[id];
+  
+  if (result == 0) {
+    switch (kind) {
+    case aRelation:
+      return new UmlRelation(id, name);
+    case anAttribute:
+      return new UmlAttribute(id, name);
+    case anOperation:
+      return new UmlOperation(id, name);
+    case anExtraClassMember:
+      return new UmlExtraClassMember(id, name);
+    case aClass:
+      return new UmlClass(id, name);
+    case anUseCase:
+      return new UmlUseCase(id, name);
+    case aComponent:
+      return new UmlComponent(id, name);
+    case anArtifact:
+      return new UmlArtifact(id, name);
+    case aNode:
+      return new UmlNode(id, name);
+    case aNcRelation:
+      return new UmlNcRelation(id, name);
+    case aClassDiagram:
+      return new UmlClassDiagram(id, name);
+    case anUseCaseDiagram:
+      return new UmlUseCaseDiagram(id, name);
+    case aSequenceDiagram:
+      return new UmlSequenceDiagram(id, name);
+    case aCollaborationDiagram:
+      return new UmlCollaborationDiagram(id, name);
+    case aComponentDiagram:
+      return new UmlComponentDiagram(id, name);
+    case aDeploymentDiagram:
+      return new UmlDeploymentDiagram(id, name);
+    case aClassView:
+      return new UmlClassView(id, name);
+    case anUseCaseView:
+      return new UmlUseCaseView(id, name);
+    case aComponentView:
+      return new UmlComponentView(id, name);
+    case aDeploymentView:
+      return new UmlDeploymentView(id, name);
+    case aPackage:
+      return new UmlPackage(id, name);
+    case aState:
+      return new UmlState(id, name);
+    case aTransition:
+      return new UmlTransition(id, name);
+    case aRegion:
+      return new UmlRegion(id, name);
+    case aStateDiagram:
+      return new UmlStateDiagram(id, name);
+    case aStateAction:
+      return new UmlStateAction(id);
+    case anInitialPseudoState:
+      return new UmlInitialPseudoState(id);
+    case anEntryPointPseudoState:
+      return new UmlEntryPointPseudoState(id, name);
+    case aFinalState:
+      return new UmlFinalState(id);
+    case aTerminatePseudoState:
+      return new UmlTerminatePseudoState(id);
+    case anExitPointPseudoState:
+      return new UmlExitPointPseudoState(id, name);
+    case aDeepHistoryPseudoState:
+      return new UmlDeepHistoryPseudoState(id);
+    case aShallowHistoryPseudoState:
+      return new UmlShallowHistoryPseudoState(id);
+    case aJunctionPseudoState:
+      return new UmlJunctionPseudoState(id);
+    case aChoicePseudoState:
+      return new UmlChoicePseudoState(id);
+    case aForkPseudoState:
+      return new UmlForkPseudoState(id);
+    case aJoinPseudoState:
+      return new UmlJoinPseudoState(id);
+    case anObjectDiagram:
+      return new UmlObjectDiagram(id, name);
+    case anActivityDiagram:
+      return new UmlActivityDiagram(id, name);
+        case anActivity:
+      return new UmlActivity(id, name);
+    case aFlow:
+      return new UmlFlow(id, name);
+    case anActivityParameter:
+      return new UmlActivityParameter(id, name);
+    case aParameterSet:
+      return new UmlParameterSet(id, name);
+    case anExpansionRegion:
+      return new UmlExpansionRegion(id, name);
+    case anInterruptibleActivityRegion:
+      return new UmlInterruptibleActivityRegion(id, name);
+    case anOpaqueAction:
+      return new UmlOpaqueAction(id, name);
+    case anAcceptEventAction:
+      return new UmlAcceptEventAction(id, name);
+    case aReadVariableValueAction:
+      return new UmlReadVariableValueAction(id, name);
+    case aClearVariableValueAction:
+      return new UmlClearVariableValueAction(id, name);
+    case aWriteVariableValueAction:
+      return new UmlWriteVariableValueAction(id, name);
+    case anAddVariableValueAction:
+      return new UmlAddVariableValueAction(id, name);
+    case aRemoveVariableValueAction:
+      return new UmlRemoveVariableValueAction(id, name);
+    case aCallBehaviorAction:
+      return new UmlCallBehaviorAction(id, name);
+    case aCallOperationAction:
+      return new UmlCallOperationAction(id, name);
+    case aSendObjectAction:
+      return new UmlSendObjectAction(id, name);
+    case aSendSignalAction:
+      return new UmlSendSignalAction(id, name);
+    case aBroadcastSignalAction:
+      return new UmlBroadcastSignalAction(id, name);
+    case anUnmarshallAction:
+      return new UmlUnmarshallAction(id, name);
+    case aValueSpecificationAction:
+      return new UmlValueSpecificationAction(id, name);
+    case anActivityObject:
+      return new UmlActivityObject(id, name);
+    case anExpansionNode:
+      return new UmlExpansionNode(id, name);
+    case anActivityPin:
+      return new UmlActivityPin(id, name);
+    case anInitialActivityNode:
+      return new UmlInitialActivityNode(id, name);
+    case aFlowFinalActivityNode:
+      return new UmlFlowFinalActivityNode(id, name);
+    case anActivityFinalActivityNode:
+      return new UmlActivityFinalActivityNode(id, name);
+    case aDecisionActivityNode:
+      return new UmlDecisionActivityNode(id, name);
+    case aMergeActivityNode:
+      return new UmlMergeActivityNode(id, name);
+    case aForkActivityNode:
+      return new UmlForkActivityNode(id, name);
+    case aJoinActivityNode:
+      return new UmlJoinActivityNode(id, name);
+    case aPartition:
+      //return new UmlPartition(id, name);
+    case aClassInstance:
+      return new UmlClassInstance(id, name);
+    default:
+      UmlCom::bye();
+      UmlCom::fatal_error(QCString("unknown item type ") + QCString().setNum(kind));
+    }
+  }
+  
+  return result;
+!!!25728.java!!!	read_() : UmlItem
+  long id = UmlCom.read_id();
+  
+  if (id == 0)
+    return null;
+  
+  int kind = (int) UmlCom.read_char();
+  String name = UmlCom.read_string();
+  
+  UmlItem result = (UmlItem) _all.get(new Long(id));
+  
+  if (result == null) {
+    switch (kind) {
+    case anItemKind._aRelation:
+      return new UmlRelation(id, name);
+    case anItemKind._anAttribute:
+      return new UmlAttribute(id, name);
+    case anItemKind._anOperation:
+      return new UmlOperation(id, name);
+    case anItemKind._anExtraClassMember:
+      return new UmlExtraClassMember(id, name);
+    case anItemKind._aClass:
+      return new UmlClass(id, name);
+    case anItemKind._anUseCase:
+      return new UmlUseCase(id, name);
+    case anItemKind._aComponent:
+      return new UmlComponent(id, name);
+    case anItemKind._anArtifact:
+      return new UmlArtifact(id, name);
+    case anItemKind._aNode:
+      return new UmlNode(id, name);
+    case anItemKind._aNcRelation:
+      return new UmlNcRelation(id, name);
+    case anItemKind._aClassDiagram:
+      return new UmlClassDiagram(id, name);
+    case anItemKind._anUseCaseDiagram:
+      return new UmlUseCaseDiagram(id, name);
+    case anItemKind._aSequenceDiagram:
+      return new UmlSequenceDiagram(id, name);
+    case anItemKind._aCollaborationDiagram:
+      return new UmlCollaborationDiagram(id, name);
+    case anItemKind._aComponentDiagram:
+      return new UmlComponentDiagram(id, name);
+    case anItemKind._aDeploymentDiagram:
+      return new UmlDeploymentDiagram(id, name);
+    case anItemKind._aClassView:
+      return new UmlClassView(id, name);
+    case anItemKind._anUseCaseView:
+      return new UmlUseCaseView(id, name);
+    case anItemKind._aComponentView:
+      return new UmlComponentView(id, name);
+    case anItemKind._aDeploymentView:
+      return new UmlDeploymentView(id, name);
+    case anItemKind._aPackage:
+      return new UmlPackage(id, name);
+    case anItemKind._aState:
+      return new UmlState(id, name);
+    case anItemKind._aTransition:
+      return new UmlTransition(id, name);
+    case anItemKind._aRegion:
+      return new UmlRegion(id, name);
+    case anItemKind._aStateDiagram:
+      return new UmlStateDiagram(id, name);
+    case anItemKind._aStateAction:
+      return new UmlStateAction(id);
+    case anItemKind._anInitialPseudoState:
+      return new UmlInitialPseudoState(id);
+    case anItemKind._anEntryPointPseudoState:
+      return new UmlEntryPointPseudoState(id, name);
+    case anItemKind._aFinalState:
+      return new UmlFinalState(id);
+    case anItemKind._aTerminatePseudoState:
+      return new UmlTerminatePseudoState(id);
+    case anItemKind._anExitPointPseudoState:
+      return new UmlExitPointPseudoState(id, name);
+    case anItemKind._aDeepHistoryPseudoState:
+      return new UmlDeepHistoryPseudoState(id);
+    case anItemKind._aShallowHistoryPseudoState:
+      return new UmlShallowHistoryPseudoState(id);
+    case anItemKind._aJunctionPseudoState:
+      return new UmlJunctionPseudoState(id);
+    case anItemKind._aChoicePseudoState:
+      return new UmlChoicePseudoState(id);
+    case anItemKind._aForkPseudoState:
+      return new UmlForkPseudoState(id);
+    case anItemKind._aJoinPseudoState:
+      return new UmlJoinPseudoState(id);
+    case anItemKind._anObjectDiagram:
+      return new UmlObjectDiagram(id, name);
+    case anItemKind._anActivityDiagram:
+      return new UmlActivityDiagram(id, name);
+        case anItemKind._anActivity:
+      return new UmlActivity(id, name);
+    case anItemKind._aFlow:
+      return new UmlFlow(id, name);
+    case anItemKind._anActivityParameter:
+      return new UmlActivityParameter(id, name);
+    case anItemKind._aParameterSet:
+      return new UmlParameterSet(id, name);
+    case anItemKind._anExpansionRegion:
+      return new UmlExpansionRegion(id, name);
+    case anItemKind._anInterruptibleActivityRegion:
+      return new UmlInterruptibleActivityRegion(id, name);
+    case anItemKind._anOpaqueAction:
+      return new UmlOpaqueAction(id, name);
+    case anItemKind._anAcceptEventAction:
+      return new UmlAcceptEventAction(id, name);
+    case anItemKind._aReadVariableValueAction:
+      return new UmlReadVariableValueAction(id, name);
+    case anItemKind._aClearVariableValueAction:
+      return new UmlClearVariableValueAction(id, name);
+    case anItemKind._aWriteVariableValueAction:
+      return new UmlWriteVariableValueAction(id, name);
+    case anItemKind._anAddVariableValueAction:
+      return new UmlAddVariableValueAction(id, name);
+    case anItemKind._aRemoveVariableValueAction:
+      return new UmlRemoveVariableValueAction(id, name);
+    case anItemKind._aCallBehaviorAction:
+      return new UmlCallBehaviorAction(id, name);
+    case anItemKind._aCallOperationAction:
+      return new UmlCallOperationAction(id, name);
+    case anItemKind._aSendObjectAction:
+      return new UmlSendObjectAction(id, name);
+    case anItemKind._aSendSignalAction:
+      return new UmlSendSignalAction(id, name);
+    case anItemKind._aBroadcastSignalAction:
+      return new UmlBroadcastSignalAction(id, name);
+    case anItemKind._anUnmarshallAction:
+      return new UmlUnmarshallAction(id, name);
+    case anItemKind._aValueSpecificationAction:
+      return new UmlValueSpecificationAction(id, name);
+    case anItemKind._anActivityObject:
+      return new UmlActivityObject(id, name);
+    case anItemKind._anExpansionNode:
+      return new UmlExpansionNode(id, name);
+    case anItemKind._anActivityPin:
+      return new UmlActivityPin(id, name);
+    case anItemKind._anInitialActivityNode:
+      return new UmlInitialActivityNode(id, name);
+    case anItemKind._aFlowFinalActivityNode:
+      return new UmlFlowFinalActivityNode(id, name);
+    case anItemKind._anActivityFinalActivityNode:
+      return new UmlActivityFinalActivityNode(id, name);
+    case anItemKind._aDecisionActivityNode:
+      return new UmlDecisionActivityNode(id, name);
+    case anItemKind._aMergeActivityNode:
+      return new UmlMergeActivityNode(id, name);
+    case anItemKind._aForkActivityNode:
+      return new UmlForkActivityNode(id, name);
+    case anItemKind._aJoinActivityNode:
+      return new UmlJoinActivityNode(id, name);
+    case anItemKind._aPartition:
+      //return new UmlPartition(id, name);
+    case anItemKind._aClassInstance:
+      return new UmlClassInstance(id, name);
+    default:
+      UmlCom.bye();
+      UmlCom.fatal_error(new String("unknown item type ") + String.valueOf(kind));
+    }
+  }
+
+  return result;
+!!!25856.cpp!!!	UmlBaseItem(in id : item_id, in n : string)
+  _all.insert(id, (UmlItem *) this);
+  if (_all.count()/_all.size() > 10)
+    _all.resize(_all.size() * 2 - 1);
+!!!25856.java!!!	UmlBaseItem(in id : item_id, in n : string)
+  _defined = false;
+  _identifier = id;
+  _name = n;
+  
+  _all.put(new Long(id), this);
+
+!!!25984.cpp!!!	~UmlBaseItem()
+  if (_children != 0)
+    delete _children;
+  _all.remove(_identifier);
+!!!25984.java!!!	~UmlBaseItem()
+  if (_children != 0)
+    delete _children;
+  _all.remove(_identifier);

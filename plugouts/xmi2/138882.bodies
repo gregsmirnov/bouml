@@ -1,0 +1,4 @@
+class UmlClearVariableValueAction
+!!!204930.cpp!!!	write(inout out : FileOut) : void
+  write_begin(out, "ClearVariableAction");
+  write_var_end(out);

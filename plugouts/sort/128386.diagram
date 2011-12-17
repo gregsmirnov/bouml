@@ -1,0 +1,34 @@
+format 37
+
+classcanvas 128002 class_ref 132738 // Comparable
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language java show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 174 48 2000
+  end
+classcanvas 128130 class_ref 8833 // UmlItem
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  hidden_operations
+    operation_ref 78849 // UmlItem
+    operation_ref 78977 // ~UmlItem
+  xyz 151 176 2000
+  end
+note 128386 "Java only"
+  xyzwh 162 10 1994 208 169
+classcanvas 128642 class_ref 132866 // QVector
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language c++ show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 30 343 2000
+  end
+classcanvas 128770 class_ref 132994 // VectorOfUmlItem
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language c++ show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 30 462 2000
+  end
+note 129282 "C++ only"
+  xyzwh 13 297 1994 507 237
+relationcanvas 128258 relation_ref 136322 // <realization>
+  from ref 128130 z 1999 to ref 128002
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129154 relation_ref 136706 // <generalisation>
+  from ref 128770 z 1999 to ref 128642
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end

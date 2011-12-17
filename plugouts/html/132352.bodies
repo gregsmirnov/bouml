@@ -1,0 +1,9 @@
+class UmlBaseForkPseudoState
+!!!143744.cpp!!!	create(inout parent : UmlItem) : UmlForkPseudoState
+  return (UmlForkPseudoState *) parent->create_(aForkPseudoState, "");
+!!!143744.java!!!	create(inout parent : UmlItem) : UmlForkPseudoState
+  return (UmlForkPseudoState) parent.create_(anItemKind.aForkPseudoState, "");
+!!!143872.cpp!!!	kind() : anItemKind
+  return aForkPseudoState;
+!!!143872.java!!!	kind() : anItemKind
+  return anItemKind.aForkPseudoState;

@@ -1,0 +1,190 @@
+class UmlPackage
+!!!144898.cpp!!!	xmi(in argc : int, in argv : char **) : void
+  if (parent() != 0) {
+    UmlItem::xmi(argc, argv);
+    return;
+  }
+
+  // the project
+
+  bool noarg = (argc == 0);
+  QCString path;
+  QCString genviews;
+  QCString encoding;
+  QCString taggedvalue;
+
+  if (noarg) {
+    propertyValue("gxmi path", path);
+    propertyValue("gxmi gen views", genviews);
+    propertyValue("gxmi encoding", encoding);
+    propertyValue("gxmi taggedvalue", taggedvalue);
+    _taggedvalue_mode = taggedvalue.toInt();
+    
+    Dialog dialog(path, encoding, genviews, _taggedvalue_mode, _lang);
+    
+    if (dialog.exec() != QDialog::Accepted)
+      return;
+  }
+  else if (argc >= 3) {
+    if (!strcmp(argv[0], "-uml"))
+      _lang = Uml;
+    else if (!strcmp(argv[0], "-c++"))
+      _lang = Cpp;
+    else if (!strcmp(argv[0], "-java"))
+      _lang = Java;
+    else {
+      UmlCom::trace("language is missing");
+      return;
+    }
+    path = argv[1];
+    encoding = argv[2];
+    argc -= 3;
+    argv += 3;
+    if (argc != 0) {
+      if (!strcmp(argv[0], "-view")) {
+	_gen_views = TRUE;
+	argc -= 1;
+	argv += 1;
+      }
+      else
+	_gen_views = FALSE;
+      switch (argc) {
+      case 0:
+	_taggedvalue_mode = 0;
+	break;
+      case 1:
+	if (!strcmp(argv[0], "-simpleTv"))
+	  _taggedvalue_mode = 1;
+	else if (!strcmp(argv[0], "-complexTv"))
+	  _taggedvalue_mode = 2;
+	else {
+	  UmlCom::trace("wrong 'tagged value' mode");
+	  return;
+	}
+	break;
+      default:
+	UmlCom::trace("wrong number of parameters");
+	return;
+      }
+    }
+  }
+  else {
+    UmlCom::trace("wrong number of parameters");
+    return;
+  }
+  
+
+  if (! path.isEmpty()) {
+    // note : QTextStream(FILE *) bugged under windows
+    QFile fp(path);
+    
+    if (! fp.open(IO_WriteOnly))
+      UmlCom::trace("cannot open " + path);
+    else {
+      if (noarg) {
+	set_PropertyValue("gxmi path", path);
+	set_PropertyValue("gxmi gen views", genviews);
+	set_PropertyValue("gxmi encoding", encoding);
+	taggedvalue.setNum(_taggedvalue_mode);
+	set_PropertyValue("gxmi taggedvalue", taggedvalue);
+	_gen_views = (genviews == "yes");
+      }
+	
+      {
+	FileOut out(&fp);
+	
+	// header
+
+	out << "\
+<?xml version=\"1.0\"  encoding=\"" << encoding << "\"?>\n\
+<XMI xmi.version=\"1.2\" xmlns:UML=\"org.omg.xmi.namespace.UML\">\n\
+<XMI.header>\n\
+	<XMI.documentation>\n\
+		<XMI.exporter>Bouml</XMI.exporter>\n\
+		<XMI.exporterVersion>1.4.6</XMI.exporterVersion>\n\
+	</XMI.documentation>\n\
+	<XMI.metamodel XMI.name=\"UML\" XMI.version=\"1.4\"/>\n\
+</XMI.header>\n\
+<XMI.content>\n\
+	<UML:Model name=\"" << name() << '"';
+	out.id(this);
+	out << ">\n\
+		<UML:Namespace.ownedElement>\n";
+	out.indent(+3);
+	
+	_written = TRUE;
+	
+	// write children
+	
+	const QVector<UmlItem> ch = children();
+	unsigned n = ch.size();
+  
+	for (unsigned i = 0; i != n; i += 1)
+	  ch[i]->write_if_needed(out);
+	
+	// stereotypes, data types etc ...
+#if 0
+	out.define_stereotypes();
+#endif
+	out.define_datatypes(_taggedvalue_mode);
+	
+#if 0
+	out.indent();
+	out << "<UML:TagDefinition xmi.id=\"BOUML_tag_description\" name=\"documentation\" isSpecification=\"false\" tagType=\"String\"/>\n";
+#endif
+
+	// footer
+	
+	out << "\
+		</UML:Namespace.ownedElement>\n\
+	</UML:Model>\n\
+</XMI.content>\n\
+</XMI>\n";
+      }
+      
+      UmlCom::trace("xmi generation done in <i>" + path + "</i><br>");
+      
+      fp.flush();
+      fp.close();
+    }
+  }
+!!!145154.cpp!!!	write_if_needed(inout out : FileOut) : bool
+  // always write package header because may be the target of a relation
+  parent()->write(out);
+  out.indent(); 
+  out << "<UML:Package"; 
+  out.id(this); 
+  out << " name =\"";
+  out.quote(name());
+  out << "\">\n"; 
+  out.indent(+1); 
+  write_stereotype(out); 
+  write_description_properties(out);   
+
+  const QVector<UmlItem> ch = children();
+  unsigned n = ch.size();
+  bool used = FALSE;
+  
+  for (unsigned i = 0; i != n; i += 1)
+    used |= ch[i]->write_if_needed(out);
+    
+  if (used) {
+    out.indent(-1);
+out.indent(); out << "<!-- for pack " << name() << "-->\n";
+    out.indent();
+    out << "</UML:Namespace.ownedElement>\n";
+  }
+
+  out.indent(-1); 
+  out.indent(); 
+  out << "</UML:Package>\n"; 
+
+  return TRUE;
+!!!145282.cpp!!!	write(inout out : FileOut) : void
+  if (!_written) {
+    _written = TRUE;
+    out.indent();
+    out << "<UML:Namespace.ownedElement>\n";
+    out.indent(+1);
+  }
+

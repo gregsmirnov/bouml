@@ -1,0 +1,17 @@
+class UmlSendObjectAction
+!!!199810.cpp!!!	sKind() : string
+  return "send object activity action";
+!!!199810.java!!!	sKind() : string
+  return "send object activity action";
+!!!200450.cpp!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  UmlActivityAction::html();
+
+  write_children(pfix, rank, level);
+
+  unload(FALSE, FALSE);
+!!!200450.java!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  super.html();
+
+  write_children(pfix, rank, level);
+
+  unload(false, false);

@@ -1,0 +1,9 @@
+class UmlBaseUseCaseDiagram
+!!!65920.cpp!!!	create(inout parent : UmlItem, in s : str) : UmlUseCaseDiagram
+  return (UmlUseCaseDiagram *) parent->create_(anUseCaseDiagram, s);
+!!!65920.java!!!	create(inout parent : UmlItem, in s : str) : UmlUseCaseDiagram
+  return (UmlUseCaseDiagram) parent.create_(anItemKind.anUseCaseDiagram, s);
+!!!66048.cpp!!!	kind() : anItemKind
+  return anUseCaseDiagram;
+!!!66048.java!!!	kind() : anItemKind
+  return anItemKind.anUseCaseDiagram;

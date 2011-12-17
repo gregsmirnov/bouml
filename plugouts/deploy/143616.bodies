@@ -1,0 +1,4 @@
+class SlotAttribute
+!!!193408.java!!!	SlotAttribute(inout a : UmlAttribute, inout v : string)
+  attribute = a;
+  value = v;

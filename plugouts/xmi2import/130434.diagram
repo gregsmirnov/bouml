@@ -1,0 +1,19 @@
+format 42
+
+classcanvas 128002 class_ref 149762 // ClassInstance
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 160 529 3005
+  end
+classcanvas 128514 class_ref 149890 // Slot
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 183 633 2004
+  end
+relationcanvas 128130 relation_ref 164994 // <unidirectional association>
+  from ref 128002 z 1999 stereotype "<<list>>" xyz 124 536 3000 to point 130 529
+  line 128258 z 1999 to point 130 559
+  line 128386 z 1999 to ref 128002
+  role_a_pos 136 541 3000 no_role_b
+  multiplicity_a_pos 144 568 3000 no_multiplicity_b
+line 128642 ---+
+  from ref 128514 z 1999 to ref 128002
+end

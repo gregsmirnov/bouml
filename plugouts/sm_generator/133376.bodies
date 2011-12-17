@@ -1,0 +1,9 @@
+class UmlBaseActivityDiagram
+!!!155904.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlActivityDiagram
+  return (UmlActivityDiagram *) parent->create_(anActivityDiagram, s);
+!!!155904.java!!!	create(inout parent : UmlItem, inout s : str) : UmlActivityDiagram
+  return (UmlActivityDiagram) parent.create_(anItemKind.anActivityDiagram, s);
+!!!156032.cpp!!!	kind() : anItemKind
+  return anActivityDiagram;
+!!!156032.java!!!	kind() : anItemKind
+  return anItemKind.anActivityDiagram;

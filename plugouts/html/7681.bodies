@@ -1,0 +1,17 @@
+class UmlNode
+!!!129632.cpp!!!	sKind() : string
+  return "node";
+!!!129632.java!!!	sKind() : string
+  return "node";
+!!!128469.cpp!!!	html(in pfix : string, in rank : uint) : void
+  UmlCom::message(name());
+
+  UmlItem::html("Node", (UmlDiagram *) associatedDiagram());
+
+  unload(FALSE, FALSE);
+!!!128469.java!!!	html(in pfix : string, in rank : uint) : void
+  UmlCom.message(name());
+
+  html("Node", associatedDiagram());
+
+  unload(false, false);

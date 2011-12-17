@@ -1,0 +1,9 @@
+class UmlBaseForkActivityNode
+!!!185344.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlForkActivityNode
+  return (UmlForkActivityNode *) parent->create_(aForkActivityNode, s);
+!!!185344.java!!!	create(inout parent : UmlItem, inout s : str) : UmlForkActivityNode
+  return (UmlForkActivityNode) parent.create_(anItemKind.aForkActivityNode, s);
+!!!185472.cpp!!!	kind() : anItemKind
+  return aForkActivityNode;
+!!!185472.java!!!	kind() : anItemKind
+  return anItemKind.aForkActivityNode;

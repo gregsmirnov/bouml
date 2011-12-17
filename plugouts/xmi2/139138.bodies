@@ -1,0 +1,4 @@
+class UmlReadVariableValueAction
+!!!205058.cpp!!!	write(inout out : FileOut) : void
+  write_begin(out, "ReadVariableAction");
+  write_var_end(out);

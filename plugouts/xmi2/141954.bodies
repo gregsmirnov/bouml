@@ -1,0 +1,32 @@
+class UmlJoinActivityNode
+!!!208898.cpp!!!	sKind() : str
+  return "JoinNode";
+!!!292611.cpp!!!	solve_output_flows() : void
+  // output is data if at least one input is data
+  ControlOrData k = Unset;
+  const QVector<UmlItem> ch = children();
+  unsigned n = ch.size(); // theo 1
+
+  if (n == 0)
+    return;
+
+  UmlFlow * f = (UmlFlow *) ch[0];
+
+  // look at input flows
+  QListIterator<UmlFlow> it(_incoming_flows);
+
+  while (it.current() != 0) {
+    k = it.current()->control_or_data();
+
+    if (k == Unset) {
+      ((UmlActivityNode *) it.current()->parent())->solve_output_flows();
+      k = it.current()->control_or_data();
+    }
+
+    if (k == IsData)
+      break;
+
+    ++it;
+  }
+
+  f->set_control_or_data((k == IsData) ? IsData : IsControl);

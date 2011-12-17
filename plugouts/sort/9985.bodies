@@ -1,0 +1,9 @@
+class UmlUseCaseView
+!!!144770.cpp!!!	sort() : void
+sortChildren();
+!!!144770.java!!!	sort() : void
+sortChildren();
+!!!145794.cpp!!!	orderWeight() : int
+return 2;
+!!!145794.java!!!	orderWeight() : int
+return 2;

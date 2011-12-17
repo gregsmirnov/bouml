@@ -1,0 +1,44 @@
+class UmlActivityParameter
+!!!196610.cpp!!!	sKind() : string
+  return "activity parameter";
+!!!196610.java!!!	sKind() : string
+  return "activity parameter";
+!!!197122.cpp!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  define();
+
+  fw.write("<table><tr><td><div class=\"element\">Activity action pin <b>");
+  writeq(name());
+  fw.write("</b></div></td></tr></table>\n");
+
+  QCString s = defaultValue();
+  
+  if (! s.isEmpty()) {
+    fw.write("<p>Default value :</p><ul>");
+  
+    fw.write("<pre>\n");
+    writeq(s);
+    fw.write("</pre></ul>");
+  }
+
+  UmlPinParameter::html(pfix, rank, level);
+
+  unload(FALSE, FALSE);
+!!!197122.java!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  define();
+
+  fw.write("<table><tr><td><div class=\"element\">Activity parameter <b>");
+  writeq(name());
+  fw.write("</b></div></td></tr></table>\n");
+
+  String s = defaultValue();
+  
+  if (s.length() != 0) {
+    fw.write("<p>Default value :</p><ul>");
+    fw.write("<pre>\n");
+    writeq(s);
+    fw.write("</pre></ul>");
+  }
+
+  super.html(pfix, rank, level);
+
+  unload(false, false);

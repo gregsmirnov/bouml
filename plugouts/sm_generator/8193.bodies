@@ -1,0 +1,17 @@
+class UmlArtifact
+!!!145026.cpp!!!	defaultDef() : void
+  set_Stereotype("source");
+  
+  if (CppSettings::useDefaults()) {
+    // give default definition
+    if (cppHeader().isEmpty())
+      set_CppHeader(CppSettings::headerContent());
+    if (cppSource().isEmpty())
+      set_CppSource(CppSettings::sourceContent());
+  }
+    
+  if (JavaSettings::useDefaults()) {
+    // give default definition
+    if (javaSource().isEmpty())
+      set_JavaSource(JavaSettings::sourceContent());
+  }

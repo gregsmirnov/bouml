@@ -1,0 +1,9 @@
+class UmlBaseWriteVariableValueAction
+!!!176896.cpp!!!	create(inout parent : UmlItem, inout s : str) : UmlWriteVariableValueAction
+  return (UmlWriteVariableValueAction *) parent->create_(aWriteVariableValueAction, s);
+!!!176896.java!!!	create(inout parent : UmlItem, inout s : str) : UmlWriteVariableValueAction
+  return (UmlWriteVariableValueAction) parent.create_(anItemKind.aWriteVariableValueAction, s);
+!!!177024.cpp!!!	kind() : anItemKind
+  return aWriteVariableValueAction;
+!!!177024.java!!!	kind() : anItemKind
+  return anItemKind.aWriteVariableValueAction;

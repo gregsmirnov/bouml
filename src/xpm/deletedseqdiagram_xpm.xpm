@@ -1,0 +1,22 @@
+/* XPM */
+static const char*deletedseqdiagram_xpm[]={
+"16 16 3 1",
+"# c #000000",
+"a c #ffffff",
+". c #ff0000",
+"..############..",
+"#..###aaa####..#",
+"##..a#aaa#aa..a#",
+"##a..#aaa#a..#a#",
+"####..aaa#..##a#",
+"#aa#a..#a..#aaa#",
+"#a###a....###aa#",
+"#a#a###..##a#aa#",
+"#a#a#a....#a#aa#",
+"#a#a#..#a..##aa#",
+"#a#a..aaaa..aaa#",
+"#a#..######..###",
+"#a..#aaaaaa#..a#",
+"#..aaaaaaaaaa..#",
+"..a#aaaaaaa#aa..",
+".##############."};

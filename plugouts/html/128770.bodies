@@ -1,0 +1,21 @@
+class UmlStateDiagram
+!!!147714.cpp!!!	memo_ref() : void
+  diagrams.addElement(this);
+  UmlDiagram::memo_ref();
+!!!147714.java!!!	memo_ref() : void
+  diagrams.addElement(this);
+  super.memo_ref();
+!!!147330.cpp!!!	sKind() : string
+  return "state diagram";
+!!!147330.java!!!	sKind() : string
+  return "state diagram";
+!!!147586.cpp!!!	ref_index() : void
+  if (!diagrams.isEmpty())
+    fw.write("<a href=\"statediagrams.html\" target = \"projectFrame\"><b> -State Diagrams- </b></a>");
+!!!147586.java!!!	ref_index() : void
+  if (!diagrams.isEmpty())
+    fw.write("<a href=\"statediagrams.html\" target = \"projectFrame\"><b> -State Diagrams- </b></a>");
+!!!147458.cpp!!!	generate_index() : void
+  UmlItem::generate_index(diagrams, "State Diagram", "statediagrams");
+!!!147458.java!!!	generate_index() : void
+ generate_index(diagrams, "State Diagram", "statediagrams");

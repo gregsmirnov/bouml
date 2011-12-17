@@ -1,0 +1,25 @@
+class UmlActivityPin
+!!!196354.cpp!!!	sKind() : string
+  return "activity action pin";
+!!!196354.java!!!	sKind() : string
+  return "activity action pin";
+!!!196226.cpp!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  define();
+
+  fw.write("<table><tr><td><div class=\"element\">Activity action pin <b>");
+  writeq(name());
+  fw.write("</b></div></td></tr></table>\n");
+
+  UmlPinParameter::html(pfix, rank, level);
+
+  unload(FALSE, FALSE);
+!!!196226.java!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  define();
+
+  fw.write("<table><tr><td><div class=\"element\">Activity action pin <b>");
+  writeq(name());
+  fw.write("</b></div></td></tr></table>\n");
+
+  super.html(pfix, rank, level);
+
+  unload(false, false);

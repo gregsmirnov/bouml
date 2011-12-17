@@ -1,0 +1,5 @@
+class UmlNcRelation
+!!!148354.cpp!!!	sKind() : string
+  return "non class relation";
+!!!148354.java!!!	sKind() : string
+  return "non class relation";

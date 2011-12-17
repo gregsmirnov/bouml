@@ -1,0 +1,291 @@
+class UmlSettings
+!!!25088.cpp!!!	read_() : void
+  unsigned n;
+  unsigned index;
+  
+  n = UmlCom::read_unsigned();
+  
+  _builtins = new UmlBuiltin[n];
+  if (n/2 > _map_builtins.size())
+    _map_builtins.resize(_map_builtins.size() * 2 - 1);
+  
+  for (index = 0; index != n; index += 1) {
+    _builtins[index].uml = UmlCom::read_string();
+    _map_builtins.insert(_builtins[index].uml, &_builtins[index]);
+  }
+  
+  n = UmlCom::read_unsigned();
+  
+  _relation_stereotypes = new UmlStereotype[n];
+  if (n/2 > _map_relation_stereotypes.size())
+    _map_relation_stereotypes.resize(_map_relation_stereotypes.size() * 2 - 1);
+  
+  for (index = 0; index != n; index += 1) {
+    _relation_stereotypes[index].uml = UmlCom::read_string();
+    _map_relation_stereotypes.insert(_relation_stereotypes[index].uml,
+				     &_relation_stereotypes[index]);
+  }
+  
+  n = UmlCom::read_unsigned();
+  
+  _class_stereotypes = new UmlStereotype[n];
+  if (n/2 > _map_class_stereotypes.size())
+    _map_class_stereotypes.resize(_map_class_stereotypes.size() * 2 - 1);
+  
+  for (index = 0; index != n; index += 1) {
+    _class_stereotypes[index].uml = UmlCom::read_string();
+    _map_class_stereotypes.insert(_class_stereotypes[index].uml,
+				  &_class_stereotypes[index]);
+  }
+!!!25088.java!!!	read_() : void
+  int n;
+  int index;
+  
+  n = UmlCom.read_unsigned();
+  
+  _builtins = new UmlBuiltin[n];
+  _map_builtins = new Hashtable((n == 0) ? 1 : n);
+  
+  for (index = 0; index != n; index += 1) {
+    _builtins[index] = new UmlBuiltin();
+    _builtins[index].uml = UmlCom.read_string();
+    _map_builtins.put(_builtins[index].uml, _builtins[index]);
+  }
+  
+  n = UmlCom.read_unsigned();
+  
+  _relation_stereotypes = new UmlStereotype[n];
+  _map_relation_stereotypes = new Hashtable((n == 0) ? 1 : n);
+  
+  for (index = 0; index != n; index += 1) {
+    _relation_stereotypes[index] = new UmlStereotype();
+    _relation_stereotypes[index].uml = UmlCom.read_string();
+    _map_relation_stereotypes.put(_relation_stereotypes[index].uml,
+				  _relation_stereotypes[index]);
+  }
+  
+  n = UmlCom.read_unsigned();
+  
+  _class_stereotypes = new UmlStereotype[n];
+  _map_class_stereotypes = new Hashtable((n == 0) ? 1 : n);
+  
+  for (index = 0; index != n; index += 1) {
+    _class_stereotypes[index] = new UmlStereotype();
+    _class_stereotypes[index].uml = UmlCom.read_string();
+    _map_class_stereotypes.put(_class_stereotypes[index].uml,
+			       _class_stereotypes[index]);
+  }
+!!!25216.cpp!!!	read_if_needed_() : void
+  if (!_defined) {
+    UmlCom::send_cmd(umlSettingsCmd, getUmlSettingsCmd);
+    read_();
+    _defined = TRUE;
+  }
+!!!25216.java!!!	read_if_needed_() : void
+  if (!_defined) {
+    UmlCom.send_cmd(CmdFamily.umlSettingsCmd, UmlSettingsCmd._getUmlSettingsCmd);
+    read_();
+    _defined = true;
+  }
+!!!25344.cpp!!!	multiplicity_column(in mult : string) : unsigned
+  if (mult.isEmpty() || (mult == "1"))
+    return 0;
+
+  if ((mult == "*") || (mult.find("..") != -1))
+    return 1;
+
+  return 2;
+!!!25344.java!!!	multiplicity_column(in mult : string) : unsigned
+  if ((mult == null) || (mult.length() == 0) || mult.equals("1"))
+    return 0;
+
+  if (mult.equals("*") || (mult.indexOf("..") != -1))
+    return 1;
+
+  return 2;
+!!!25472.cpp!!!	uml_type(in t : string, inout f : string) : string
+  unsigned index = _map_builtins.count();
+  
+  while (index--)
+    if ((_builtins[index]).*f == t)
+      return _builtins[index].uml;
+  
+  return 0;
+!!!25600.cpp!!!	uml_rel_stereotype(in t : string, inout f : string) : string
+  unsigned index = _map_relation_stereotypes.count();
+  
+  while (index--)
+    if ((_relation_stereotypes[index]).*f == t)
+      return _relation_stereotypes[index].uml;
+  
+  return 0;
+!!!25728.cpp!!!	uml_class_stereotype(in t : string, inout f : string) : string
+  unsigned index = _map_class_stereotypes.count();
+  
+  while (index--)
+    if ((_class_stereotypes[index]).*f == t)
+      return _class_stereotypes[index].uml;
+  
+  return 0;
+!!!25856.cpp!!!	add_type(in s : string) : UmlBuiltin
+  unsigned n = _map_builtins.count();
+  unsigned index;
+
+  UmlBuiltin * builtins = new UmlBuiltin[n + 1];
+
+  if (n/2 > _map_builtins.size())
+    _map_builtins.resize(_map_builtins.size() * 2 - 1);
+  
+  for (index = 0; index != n; index += 1)
+    builtins[index] = _builtins[index];
+    
+  builtins[index].uml = s;
+#ifdef WITHCPP
+  builtins[index].cpp = s;
+  builtins[index].cpp_in = "const ${type}";
+  builtins[index].cpp_out = "${type} &";
+  builtins[index].cpp_inout = "${type} &";
+#endif
+#ifdef WITHJAVA
+  builtins[index].java = s;
+#endif
+#ifdef WITHIDL
+  builtins[index].idl = s;
+#endif
+
+  _map_builtins.insert(s, &_builtins[index]);
+
+  delete [] _builtins;
+  _builtins = builtins;
+  
+  return &_builtins[index];
+
+!!!25856.java!!!	add_type(in s : string) : UmlBuiltin
+  int n = _builtins.length;
+  int index;
+
+  UmlBuiltin[] builtins = new UmlBuiltin[n + 1];
+
+  for (index = 0; index != n; index += 1)
+    builtins[index] = _builtins[index];
+    
+  UmlBuiltin builtin = new UmlBuiltin();
+  
+  builtins[index] = builtin;
+  builtin.uml = s;
+  builtin.cpp = s;
+  builtin.cpp_in = "const ${type}";
+  builtin.cpp_out = "${type} &";
+  builtin.cpp_inout = "${type} &";
+  builtin.java = s;
+  builtin.idl = s;
+
+  _map_builtins.put(s, builtin);
+
+  _builtins = builtins;
+  
+  return builtin;
+!!!25984.cpp!!!	add_rel_stereotype(in s : string) : UmlStereotype
+  unsigned n = _map_relation_stereotypes.count();
+  unsigned index;
+
+  UmlStereotype * relation_stereotypes = new UmlStereotype[n + 1];
+
+  if (n/2 > _map_relation_stereotypes.size())
+    _map_relation_stereotypes.resize(_map_relation_stereotypes.size() * 2 - 1);
+  
+  for (index = 0; index != n; index += 1)
+    relation_stereotypes[index] = _relation_stereotypes[index];
+    
+  relation_stereotypes[index].uml = s;
+#ifdef WITHCPP
+  relation_stereotypes[index].cpp = s;
+#endif
+#ifdef WITHJAVA
+  relation_stereotypes[index].java = s;
+#endif
+#ifdef WITGIDL
+  relation_stereotypes[index].idl = s;
+#endif
+
+  _map_relation_stereotypes.insert(s, &_relation_stereotypes[index]);
+
+  delete [] _relation_stereotypes;
+  _relation_stereotypes = relation_stereotypes;
+
+  return &_relation_stereotypes[index];
+
+!!!25984.java!!!	add_rel_stereotype(in s : string) : UmlStereotype
+  int n = _relation_stereotypes.length;
+  int index;
+
+  UmlStereotype[] relation_stereotypes = new UmlStereotype[n + 1];
+
+  for (index = 0; index != n; index += 1)
+    relation_stereotypes[index] = _relation_stereotypes[index];
+    
+  UmlStereotype st = new UmlStereotype();
+  
+  relation_stereotypes[index] = st;
+  st.uml = s;
+  st.cpp = s;
+  st.java = s;
+  st.idl = s;
+
+  _map_relation_stereotypes.put(s, st);
+
+  _relation_stereotypes = relation_stereotypes;
+
+  return st;
+!!!26112.cpp!!!	add_class_stereotype(in s : string) : UmlStereotype
+  unsigned n = _map_class_stereotypes.count();
+  unsigned index;
+
+  UmlStereotype * class_stereotypes = new UmlStereotype[n + 1];
+
+  if (n/2 > _map_class_stereotypes.size())
+    _map_class_stereotypes.resize(_map_class_stereotypes.size() * 2 - 1);
+  
+  for (index = 0; index != n; index += 1)
+    class_stereotypes[index] = _class_stereotypes[index];
+    
+  class_stereotypes[index].uml = s;
+#ifdef WITHCPP
+  class_stereotypes[index].cpp = s;
+#endif
+#ifdef WITHJAVA
+  class_stereotypes[index].java = s;
+#endif
+#ifdef WITHIDL
+  class_stereotypes[index].idl = s;
+#endif
+
+  _map_class_stereotypes.insert(s, &_class_stereotypes[index]);
+
+  delete [] _class_stereotypes;
+  _class_stereotypes = class_stereotypes;
+
+  return &_class_stereotypes[index];
+
+!!!26112.java!!!	add_class_stereotype(in s : string) : UmlStereotype
+  int n = _class_stereotypes.length;
+  int index;
+
+  UmlStereotype[] class_stereotypes = new UmlStereotype[n + 1];
+
+  for (index = 0; index != n; index += 1)
+    class_stereotypes[index] = _class_stereotypes[index];
+    
+  UmlStereotype st = new UmlStereotype();
+  
+  class_stereotypes[index] = st;
+  st.uml = s;
+  st.cpp = s;
+  st.java = s;
+  st.idl = s;
+
+  _map_class_stereotypes.put(s, st);
+
+  _class_stereotypes = class_stereotypes;
+
+  return st;

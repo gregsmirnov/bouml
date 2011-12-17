@@ -1,0 +1,18 @@
+class UmlAddVariableValueAction
+!!!202882.cpp!!!	init() : void
+  declareFct("node", "uml:AddVariableValueAction", &importIt);
+  declareFct("containednode", "uml:AddVariableValueAction", &importIt);
+!!!202754.cpp!!!	importIt(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  where = where->container(anAddVariableValueAction, token, in);
+    
+  if (where != 0) {
+    QCString s = token.valueOf("name");
+    UmlAddVariableValueAction * a = create(where, s);
+    
+    if (a == 0)
+      in.error("cannot create add variable action '"
+	       + s + "' in '" + where->name() + "'");
+    
+    a->addItem(token.xmiId(), in);
+    a->import_it(in, token);
+  }

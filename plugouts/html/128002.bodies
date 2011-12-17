@@ -1,0 +1,113 @@
+class UmlComponent
+!!!128258.cpp!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  UmlCom::message(name());
+
+  UmlItem::html("Component", (UmlDiagram *) associatedDiagram());
+  
+  if (parent()->kind() == aComponent) {
+    fw.write("<p>nested in ");
+    parent()->write();
+    fw.write("</p>\n");
+  }
+
+  const QVector<UmlClass> & provided = providedClasses();
+
+  if (provided.size() != 0) {
+    const char * sep = "<p>provided classes : ";
+    
+    for (unsigned i = 0; i != provided.size(); i += 1) {
+      fw.write(sep);
+      sep = ", ";
+      provided[i]->write();
+    }
+    fw.write("</p>\n");
+  }
+
+  const QVector<UmlClass> & required = requiredClasses();
+
+  if (required.size() != 0) {
+    const char * sep = "<p>required classes : ";
+    
+    for (unsigned i = 0; i != required.size(); i += 1) {
+      fw.write(sep);
+      sep = ", ";
+      required[i]->write();
+    }
+    fw.write("</p>\n");
+  }
+
+  const QVector<UmlClass> & realizing = realizingClasses();
+
+  if (realizing.size() != 0) {
+    const char * sep = "<p>realizing classes : ";
+    
+    for (unsigned i = 0; i != realizing.size(); i += 1) {
+      fw.write(sep);
+      sep = ", ";
+      realizing[i]->write();
+    }
+    fw.write("</p>\n");
+  }
+  
+  write_children(pfix, rank, level);
+
+  unload(FALSE, FALSE);
+!!!128258.java!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  UmlCom.message(name());
+
+  html("Component", associatedDiagram());
+
+  if (parent().kind() == anItemKind.aComponent) {
+    fw.write("<p>nested in ");
+    parent().write();
+    fw.write("</p>\n");
+  }
+
+  UmlClass[] cls;
+  
+  cls = providedClasses();
+
+  if (cls.length != 0) {
+    String sep = "<p>provided classes : ";
+    
+    for (int i = 0; i != cls.length; i += 1) {
+      fw.write(sep);
+      sep = ", ";
+      cls[i].write();
+    }
+    fw.write("</p>\n");
+  }
+
+  cls = requiredClasses();
+
+  if (cls.length != 0) {
+    String sep = "<p>required classes : ";
+    
+    for (int i = 0; i != cls.length; i += 1) {
+      fw.write(sep);
+      sep = ", ";
+      cls[i].write();
+    }
+    fw.write("</p>\n");
+  }
+
+  cls = realizingClasses();
+
+  if (cls.length != 0) {
+    String sep = "<p>realizing classes : ";
+    
+    for (int i = 0; i != cls.length; i += 1) {
+      fw.write(sep);
+      sep = ", ";
+      cls[i].write();
+    }
+    fw.write("</p>\n");
+  }
+
+  write_children(pfix, rank, level);
+    
+  unload(false, false);
+!!!128130.cpp!!!	sKind() : string
+  return "component";
+!!!128130.java!!!	sKind() : string
+  return "component";

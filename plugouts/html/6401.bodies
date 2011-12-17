@@ -1,0 +1,17 @@
+class UmlClassView
+!!!128736.cpp!!!	sKind() : string
+  return "class view";
+!!!128736.java!!!	sKind() : string
+  return "class view";
+!!!129139.cpp!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  UmlItem::html(pfix, rank, "Class View", level, "view");
+
+  unload(FALSE, FALSE);
+!!!129139.java!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  html(pfix, rank, "Class View", level, "view");
+
+  unload(false, false);
+!!!148994.cpp!!!	chapterp() : bool
+  return TRUE;
+!!!148994.java!!!	chapterp() : bool
+  return true;

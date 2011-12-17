@@ -1,0 +1,7 @@
+class UmlSequenceDiagramDefinition
+!!!138244.cpp!!!	write(inout out : FileOut, in diag : UmlItem) : void
+  UmlMessage::write_connectors(out, diag, 
+			       (const QVector<UmlMessage>&) messages());
+  UmlClassInstanceReference::write_lifelines(out, diag, instances());
+  UmlSequenceMessage::write(out, diag, messages());
+

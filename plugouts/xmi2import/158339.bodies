@@ -1,0 +1,19 @@
+class UmlTestIdentityAction
+!!!305027.cpp!!!	init() : void
+  declareFct("node", "uml:TestIdentityAction", &importIt);
+  declareFct("containednode", "uml:TestIdentityAction", &importIt);
+!!!304899.cpp!!!	importIt(inout in : FileIn, inout token : Token, inout where : UmlItem) : void
+  where = where->container(aTestIdentityAction, token, in);
+    
+  if (where != 0) {
+    QCString s = token.valueOf("name");
+    UmlTestIdentityAction * a = create(where, s);
+    
+    if (a == 0)
+      in.error("cannot create test identity action '"
+	       + s + "' in '" + where->name() + "'");
+    
+    a->addItem(token.xmiId(), in);
+        
+    a->import_it(in, token);
+  }

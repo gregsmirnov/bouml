@@ -1,0 +1,562 @@
+class PythonSettings
+!!!221952.cpp!!!	isPython_2_2() : bool
+  read_if_needed_();
+  return _2_2;
+!!!221952.java!!!	isPython_2_2() : bool
+  read_if_needed_();
+  return _2_2;
+!!!222080.cpp!!!	set_IsPython_2_2(in y : bool) : bool
+  UmlCom::send_cmd(pythonSettingsCmd, setPython22Cmd, (char) y);
+  if (UmlCom::read_bool()) {
+    _2_2 = y;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!222080.java!!!	set_IsPython_2_2(in y : bool) : bool
+  UmlCom.send_cmd(CmdFamily.pythonSettingsCmd, PythonSettingsCmd._setPython22Cmd,
+		   (y) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+  _2_2 = y;
+!!!222208.cpp!!!	indentStep() : string
+  read_if_needed_();
+  return _indent_step;
+!!!222208.java!!!	indentStep() : string
+  read_if_needed_();
+  return _indent_step;
+!!!222336.cpp!!!	set_IndentStep(in v : str) : bool
+  UmlCom::send_cmd(pythonSettingsCmd, setPythonIndentStepCmd, v);
+  if (UmlCom::read_bool()) {
+    _indent_step = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!222336.java!!!	set_IndentStep(in v : str) : bool
+  UmlCom.send_cmd(CmdFamily.pythonSettingsCmd, PythonSettingsCmd._setPythonIndentStepCmd, v);
+  UmlCom.check();
+  _indent_step = v;
+!!!222464.cpp!!!	useDefaults() : bool
+  UmlCom::send_cmd(pythonSettingsCmd, getPythonUseDefaultsCmd);
+  return UmlCom::read_bool();
+!!!222464.java!!!	useDefaults() : bool
+  UmlCom.send_cmd(CmdFamily.pythonSettingsCmd, PythonSettingsCmd._getPythonUseDefaultsCmd);
+  return UmlCom.read_bool();
+!!!222592.cpp!!!	set_UseDefaults(in y : bool) : bool
+  UmlCom::send_cmd(pythonSettingsCmd, setPythonUseDefaultsCmd, (char) y);
+  return UmlCom::read_bool();
+!!!222592.java!!!	set_UseDefaults(in y : bool) : bool
+  UmlCom.send_cmd(CmdFamily.pythonSettingsCmd, PythonSettingsCmd._setPythonUseDefaultsCmd,
+		  (y) ? (byte) 1 : (byte) 0);
+  UmlCom.check();
+!!!222720.cpp!!!	relationAttributeStereotype(in s : string) : string
+  read_if_needed_();
+  
+  UmlStereotype * b = UmlSettings::_map_relation_attribute_stereotypes.find(s);
+  
+  return (b) ? b->python : s;
+!!!222720.java!!!	relationAttributeStereotype(in s : string) : string
+  read_if_needed_();
+  
+  UmlStereotype b = (UmlStereotype) UmlSettings._map_relation_attribute_stereotypes.get(s);
+  
+  return (b != null) ? b.python : s;
+!!!222848.cpp!!!	set_RelationAttributeStereotype(in s : string, in v : string) : bool
+  read_if_needed_();
+  UmlCom::send_cmd(pythonSettingsCmd, setPythonRelationAttributeStereotypeCmd, s, v);
+  if (UmlCom::read_bool()) {
+    UmlStereotype * st = UmlSettings::_map_relation_attribute_stereotypes.find(s);
+
+    if (st == 0)
+      st = UmlSettings::add_rel_attr_stereotype(s);
+    st->python = v;
+    
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!222848.java!!!	set_RelationAttributeStereotype(in s : string, in v : string) : bool
+  read_if_needed_();
+  UmlCom.send_cmd(CmdFamily.pythonSettingsCmd, PythonSettingsCmd._setPythonRelationAttributeStereotypeCmd, s, v);
+  UmlCom.check();
+
+  UmlStereotype st = (UmlStereotype) UmlSettings._map_relation_attribute_stereotypes.get(s);
+
+  if (st == null)
+    st = UmlSettings.add_rel_attr_stereotype(s);
+  st.python = v;
+!!!222976.cpp!!!	relationAttributeUmlStereotype(in s : string) : string
+  read_if_needed_();
+  
+  return UmlSettings::uml_rel_attr_stereotype(s, &UmlStereotype::python);
+!!!222976.java!!!	relationAttributeUmlStereotype(in s : string) : string
+  read_if_needed_();
+  
+  int index = _relation_attribute_stereotypes.length;
+  
+  while (index-- != 0)
+    if (_relation_attribute_stereotypes[index].python.equals(s))
+      return _relation_attribute_stereotypes[index].uml;
+  
+  return null;
+!!!223104.cpp!!!	classStereotype(in s : string) : string
+  read_if_needed_();
+  
+  UmlStereotype * b = UmlSettings::_map_class_stereotypes.find(s);
+  
+  return (b) ? b->python : s;
+!!!223104.java!!!	classStereotype(in s : string) : string
+  read_if_needed_();
+  
+  UmlStereotype b = (UmlStereotype) UmlSettings._map_class_stereotypes.get(s);
+  
+  return (b != null) ? b.python : s;
+!!!223232.cpp!!!	set_ClassStereotype(in s : string, in v : string) : bool
+  read_if_needed_();
+  UmlCom::send_cmd(pythonSettingsCmd, setPythonClassStereotypeCmd, s, v);
+  if (UmlCom::read_bool()) {
+    UmlStereotype * st = UmlSettings::_map_class_stereotypes.find(s);
+
+    if (st == 0)
+      st = UmlSettings::add_class_stereotype(s);
+    st->python = v;
+    
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!223232.java!!!	set_ClassStereotype(in s : string, in v : string) : bool
+  read_if_needed_();
+  UmlCom.send_cmd(CmdFamily.pythonSettingsCmd, PythonSettingsCmd._setPythonClassStereotypeCmd, s, v);
+  UmlCom.check();
+
+  UmlStereotype st = (UmlStereotype) UmlSettings._map_class_stereotypes.get(s);
+
+  if (st == null)
+    st = UmlSettings.add_class_stereotype(s);
+  st.python = v;
+!!!223360.cpp!!!	classUmlStereotype(in s : string) : string
+  read_if_needed_();
+  
+  return UmlSettings::uml_class_stereotype(s, &UmlStereotype::python);
+!!!223360.java!!!	classUmlStereotype(in s : string) : string
+  read_if_needed_();
+  
+  int index = _class_stereotypes.length;
+  
+  while (index-- != 0)
+    if (_class_stereotypes[index].python.equals(s))
+      return _class_stereotypes[index].uml;
+  
+  return null;
+!!!223488.cpp!!!	get_import(in s : string) : string
+  read_if_needed_();
+  
+  QCString * r = _map_imports[s];
+  
+  return (r) ? *r : QCString(0);
+!!!223488.java!!!	get_import(in s : string) : string
+  read_if_needed_();
+  
+  return (String) _map_imports.get(s);
+
+!!!223616.cpp!!!	set_Import(in s : string, in v : string) : bool
+  read_if_needed_();
+  UmlCom::send_cmd(pythonSettingsCmd, setPythonImportCmd, s, v);
+  if (UmlCom::read_bool()) {
+    QCString * r = _map_imports.take(s);
+    
+    if (!v.isEmpty())
+      _map_imports.insert(s, new QCString(v));
+    if (r)
+      delete r;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!223616.java!!!	set_Import(in s : string, in v : string) : bool
+  read_if_needed_();
+  UmlCom.send_cmd(CmdFamily.pythonSettingsCmd, PythonSettingsCmd._setPythonImportCmd, s, v);
+  UmlCom.check();
+    
+  if ((v != null) && (v.length() != 0))
+    _map_imports.put(s, v);
+  else
+    _map_imports.remove(s);
+!!!223744.cpp!!!	rootDir() : string
+  read_if_needed_();
+  
+  return _root;
+!!!223744.java!!!	rootDir() : string
+  read_if_needed_();
+  
+  return _root;
+!!!223872.cpp!!!	set_RootDir(in v : string) : bool
+  UmlCom::send_cmd(pythonSettingsCmd, setPythonRootdirCmd, v);
+  if (UmlCom::read_bool()) {
+    _root = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!223872.java!!!	set_RootDir(in v : string) : bool
+  UmlCom.send_cmd(CmdFamily.pythonSettingsCmd, PythonSettingsCmd._setPythonRootdirCmd, v);
+  UmlCom.check();
+
+  _root = v;
+!!!224000.cpp!!!	sourceContent() : string
+  read_if_needed_();
+  
+  return _src_content;
+!!!224000.java!!!	sourceContent() : string
+  read_if_needed_();
+  
+  return _src_content;
+!!!224128.cpp!!!	set_SourceContent(in v : string) : bool
+  UmlCom::send_cmd(pythonSettingsCmd, setPythonSourceContentCmd, v);
+  if (UmlCom::read_bool()) {
+    _src_content = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!224128.java!!!	set_SourceContent(in v : string) : bool
+  UmlCom.send_cmd(CmdFamily.pythonSettingsCmd, PythonSettingsCmd._setPythonSourceContentCmd, v);
+  UmlCom.check();
+  
+  _src_content = v;
+
+!!!224256.cpp!!!	sourceExtension() : string
+  read_if_needed_();
+  
+  return _ext; 
+!!!224256.java!!!	sourceExtension() : string
+  read_if_needed_();
+  
+  return _ext; 
+!!!224384.cpp!!!	set_SourceExtension(in v : string) : bool
+  UmlCom::send_cmd(pythonSettingsCmd, setPythonSourceExtensionCmd, v);
+  if (UmlCom::read_bool()) {
+    _ext = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!224384.java!!!	set_SourceExtension(in v : string) : bool
+  UmlCom.send_cmd(CmdFamily.pythonSettingsCmd, PythonSettingsCmd._setPythonSourceExtensionCmd, v);
+  UmlCom.check();
+  
+  _ext = v;
+
+!!!224512.cpp!!!	classDecl() : string
+  read_if_needed_();
+  
+  return _class_decl;
+!!!224512.java!!!	classDecl() : string
+  read_if_needed_();
+  
+  return _class_decl;
+!!!224640.cpp!!!	set_ClassDecl(in v : string) : bool
+  UmlCom::send_cmd(pythonSettingsCmd, setPythonClassDeclCmd, v);
+  if (UmlCom::read_bool()) {
+    _class_decl = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!224640.java!!!	set_ClassDecl(in v : string) : bool
+  UmlCom.send_cmd(CmdFamily.pythonSettingsCmd, PythonSettingsCmd._setPythonClassDeclCmd, v);
+  UmlCom.check();
+  
+  _class_decl = v;
+
+!!!224768.cpp!!!	externalClassDecl() : string
+  read_if_needed_();
+  
+  return _external_class_decl;
+!!!224768.java!!!	externalClassDecl() : string
+  read_if_needed_();
+  
+  return _external_class_decl;
+!!!224896.cpp!!!	set_ExternalClassDecl(in v : string) : bool
+  UmlCom::send_cmd(pythonSettingsCmd, setPythonExternalClassDeclCmd, v);
+  if (UmlCom::read_bool()) {
+    _external_class_decl = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!224896.java!!!	set_ExternalClassDecl(in v : string) : bool
+  UmlCom.send_cmd(CmdFamily.pythonSettingsCmd, PythonSettingsCmd._setPythonExternalClassDeclCmd, v);
+  UmlCom.check();
+  
+  _external_class_decl = v;
+
+!!!225024.cpp!!!	enumDecl() : string
+  read_if_needed_();
+  
+  return _enum_decl;
+!!!225024.java!!!	enumDecl() : string
+  read_if_needed_();
+  
+  return _enum_decl;
+!!!225152.cpp!!!	set_EnumDecl(in v : string) : bool
+  UmlCom::send_cmd(pythonSettingsCmd, setPythonEnumDeclCmd, v);
+  if (UmlCom::read_bool()) {
+    _enum_decl = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!225152.java!!!	set_EnumDecl(in v : string) : bool
+  UmlCom.send_cmd(CmdFamily.pythonSettingsCmd, PythonSettingsCmd._setPythonEnumDeclCmd, v);
+  UmlCom.check();
+  
+  _enum_decl = v;
+!!!225280.cpp!!!	attributeDecl(in multiplicity : str) : string
+  read_if_needed_();
+
+  return _attr_decl[mult_column(multiplicity)];
+!!!225280.java!!!	attributeDecl(in multiplicity : str) : string
+  read_if_needed_();
+
+  return _attr_decl[mult_column(multiplicity)];
+!!!225408.cpp!!!	set_AttributeDecl(in multiplicity : str, in v : string) : bool
+  read_if_needed_();
+  UmlCom::send_cmd(pythonSettingsCmd, setPythonAttributeDeclCmd, multiplicity, v);
+  if (UmlCom::read_bool()) {
+    _attr_decl[mult_column(multiplicity)] = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!225408.java!!!	set_AttributeDecl(in multiplicity : str, in v : string) : bool
+  read_if_needed_();
+  UmlCom.send_cmd(CmdFamily.pythonSettingsCmd, PythonSettingsCmd._setPythonAttributeDeclCmd, multiplicity, v);
+  UmlCom.check();
+
+  _attr_decl[mult_column(multiplicity)] = v;
+!!!225536.cpp!!!	enumItemDecl() : string
+  read_if_needed_();
+  
+  return _enum_item_decl;
+!!!225536.java!!!	enumItemDecl() : string
+  read_if_needed_();
+  
+  return _enum_item_decl;
+!!!225664.cpp!!!	set_EnumItemDecl(in v : string) : bool
+  UmlCom::send_cmd(pythonSettingsCmd, setPythonEnumItemDeclCmd, v);
+  if (UmlCom::read_bool()) {
+    _enum_item_decl = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!225664.java!!!	set_EnumItemDecl(in v : string) : bool
+  UmlCom.send_cmd(CmdFamily.pythonSettingsCmd, PythonSettingsCmd._setPythonEnumItemDeclCmd, v);
+  UmlCom.check();
+    
+  _enum_item_decl = v;
+!!!225792.cpp!!!	relationDecl(in by_value : bool, in multiplicity : str) : string
+  read_if_needed_();
+  
+  return _rel_decl[(by_value) ? 1 : 0][mult_column(multiplicity)];
+!!!225792.java!!!	relationDecl(in by_value : bool, in multiplicity : str) : string
+  read_if_needed_();
+  
+  return _rel_decl[(by_value) ? 1 : 0][mult_column(multiplicity)];
+!!!225920.cpp!!!	set_RelationDecl(in by_value : bool, in multiplicity : str, in v : str) : bool
+  read_if_needed_();
+  UmlCom::send_cmd(pythonSettingsCmd, setPythonRelationDeclCmd, by_value, multiplicity, v);
+  if (UmlCom::read_bool()) {
+    _rel_decl[(by_value) ? 1 : 0][mult_column(multiplicity)] = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!225920.java!!!	set_RelationDecl(in by_value : bool, in multiplicity : str, in v : str) : bool
+  read_if_needed_();
+  UmlCom.send_cmd(CmdFamily.pythonSettingsCmd, PythonSettingsCmd._setPythonRelationDeclCmd, by_value, multiplicity, v);
+  UmlCom.check();
+  
+  _rel_decl[(by_value) ? 1 : 0][mult_column(multiplicity)] = v;
+
+!!!226048.cpp!!!	operationDef() : string
+  read_if_needed_();
+  
+  return _oper_def;
+!!!226048.java!!!	operationDef() : string
+  read_if_needed_();
+  
+  return _oper_def;
+!!!226176.cpp!!!	set_OperationDef(in v : string) : bool
+  UmlCom::send_cmd(pythonSettingsCmd, setPythonOperationDefCmd, v);
+  if (UmlCom::read_bool()) {
+    _oper_def = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!226176.java!!!	set_OperationDef(in v : string) : bool
+  UmlCom.send_cmd(CmdFamily.pythonSettingsCmd, PythonSettingsCmd._setPythonOperationDefCmd, v);
+  UmlCom.check();
+  
+  _oper_def = v;
+
+!!!226304.cpp!!!	getName() : string
+  read_if_needed_();
+  
+  return _get_name;
+!!!226304.java!!!	getName() : string
+  read_if_needed_();
+  
+  return _get_name;
+!!!226432.cpp!!!	set_GetName(in v : string) : bool
+  UmlCom::send_cmd(pythonSettingsCmd, setPythonGetNameCmd, v);
+  if (UmlCom::read_bool()) {
+    _get_name = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!226432.java!!!	set_GetName(in v : string) : bool
+  UmlCom.send_cmd(CmdFamily.pythonSettingsCmd, PythonSettingsCmd._setPythonGetNameCmd, v);
+  UmlCom.check();
+  
+  _get_name = v;
+
+!!!226560.cpp!!!	setName() : string
+  read_if_needed_();
+  
+  return _set_name;
+!!!226560.java!!!	setName() : string
+  read_if_needed_();
+  
+  return _set_name;
+!!!226688.cpp!!!	set_SetName(in v : string) : bool
+  UmlCom::send_cmd(pythonSettingsCmd, setPythonSetNameCmd, v);
+  if (UmlCom::read_bool()) {
+    _set_name = v;
+    return TRUE;
+  }
+  else
+    return FALSE;
+!!!226688.java!!!	set_SetName(in v : string) : bool
+  UmlCom.send_cmd(CmdFamily.pythonSettingsCmd, PythonSettingsCmd._setPythonSetNameCmd, v);
+  UmlCom.check();
+
+  _set_name = v;
+!!!226944.cpp!!!	mult_column(in mult : string) : unsigned
+  return (mult.isEmpty() || (mult == "1")) ? 0 : 1;
+!!!226944.java!!!	mult_column(in mult : string) : unsigned
+  return ((mult == "") || (mult == "1")) ? 0 : 1;
+!!!227072.cpp!!!	read_() : void
+  _2_2 = UmlCom::read_bool();
+  
+  _indent_step = UmlCom::read_string();
+  
+  _root = UmlCom::read_string();
+  
+  unsigned n;
+  unsigned index;
+  
+  n = UmlCom::read_unsigned();
+  
+  for (index = 0; index != n; index += 1)
+    UmlSettings::_relation_attribute_stereotypes[index].python = UmlCom::read_string();
+  
+  n = UmlCom::read_unsigned();
+  
+  for (index = 0; index != n; index += 1)
+    UmlSettings::_class_stereotypes[index].python = UmlCom::read_string();
+  
+  n = UmlCom::read_unsigned();
+  _map_imports.clear();
+  if (n > _map_imports.size())
+    _map_imports.resize(n);
+  
+  for (index = 0; index != n; index += 1) {
+    QCString t = UmlCom::read_string();
+    QCString i = UmlCom::read_string();
+    
+    _map_imports.insert(t, new QCString(i));
+  }
+  
+  _src_content = UmlCom::read_string();
+  _ext = UmlCom::read_string();
+
+  _class_decl = UmlCom::read_string();
+  _external_class_decl = UmlCom::read_string();
+  _enum_decl = UmlCom::read_string();
+  _attr_decl[0] = UmlCom::read_string();
+  _attr_decl[0] = UmlCom::read_string();
+  _enum_item_decl = UmlCom::read_string();
+  _rel_decl[0][0] = UmlCom::read_string();
+  _rel_decl[0][1] = UmlCom::read_string();
+  _rel_decl[1][0] = UmlCom::read_string();
+  _rel_decl[1][1] = UmlCom::read_string();
+  _oper_def = UmlCom::read_string();
+  _get_name = UmlCom::read_string();
+  _set_name = UmlCom::read_string();
+!!!227072.java!!!	read_() : void
+  _2_2 = UmlCom.read_bool();
+  
+  _indent_step = UmlCom.read_string();
+  
+  _root = UmlCom.read_string();
+  
+  int n;
+  int index;
+  
+  n = UmlCom.read_unsigned();
+  
+  for (index = 0; index != n; index += 1)
+    UmlSettings._relation_attribute_stereotypes[index].python = UmlCom.read_string();
+  
+  n = UmlCom.read_unsigned();
+  
+  for (index = 0; index != n; index += 1)
+    UmlSettings._class_stereotypes[index].python = UmlCom.read_string();
+  
+  n = UmlCom.read_unsigned();
+  _map_imports = new Hashtable((n == 0) ? 1 : n);
+  
+  for (index = 0; index != n; index += 1) {
+    String t = UmlCom.read_string();
+    String i = UmlCom.read_string();
+    
+    _map_imports.put(t, i);
+  }
+  
+  _src_content = UmlCom.read_string();
+  _ext = UmlCom.read_string();
+
+  _class_decl = UmlCom.read_string();
+  _external_class_decl = UmlCom.read_string();
+  _enum_decl = UmlCom.read_string();
+  _attr_decl = new String[2];
+  _attr_decl[0] = UmlCom.read_string();
+  _attr_decl[0] = UmlCom.read_string();
+  _enum_item_decl = UmlCom.read_string();
+  _rel_decl = new String[2][2];
+  _rel_decl[0][0] = UmlCom.read_string();
+  _rel_decl[0][1] = UmlCom.read_string();
+  _rel_decl[1][0] = UmlCom.read_string();
+  _rel_decl[1][1] = UmlCom.read_string();
+  _oper_def = UmlCom.read_string();
+  _get_name = UmlCom.read_string();
+  _set_name = UmlCom.read_string();
+!!!227200.cpp!!!	read_if_needed_() : void
+  UmlSettings::read_if_needed_();
+  if (!_defined) {
+    UmlCom::send_cmd(pythonSettingsCmd, getPythonSettingsCmd);
+    read_();
+    _defined = TRUE;
+  }
+!!!227200.java!!!	read_if_needed_() : void
+  UmlSettings.read_if_needed_();
+  if (!_defined) {
+    UmlCom.send_cmd(CmdFamily.pythonSettingsCmd, PythonSettingsCmd._getPythonSettingsCmd);
+    read_();
+    _defined = true;
+  }

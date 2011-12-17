@@ -1,0 +1,62 @@
+format 29
+
+classcanvas 128002 class_ref 8833 // UmlItem
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 219 300 2000
+classcanvas 128514 class_ref 143746 // PFunc
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 416 289 2000
+classcanvas 128770 class_ref 9217 // UmlPackage
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 13 96 2000
+classcanvas 128898 class_ref 7681 // UmlClassView
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 188 14 2000
+classcanvas 129026 class_ref 8065 // UmlComponentView
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 187 60 2000
+classcanvas 129154 class_ref 8449 // UmlDeploymentView
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 187 126 2000
+classcanvas 129282 class_ref 9985 // UmlUseCaseView
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 188 174 2000
+classcanvas 130434 class_ref 1152 // UmlTypeSpec
+  draw_all_relations no hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 27 299 2000
+relationcanvas 128130 relation_ref 154754 // <directional aggregation>
+  from ref 128002 z 1999 to point 309 232
+  line 128258 z 1999 stereotype "<<map>>" xyz 302 252 3000 to point 341 269
+  line 128386 z 1999 to ref 128002
+  role_a_pos 291 277 3000 no_role_b
+  multiplicity_a_pos 291 304 3000 no_multiplicity_b
+relationcanvas 128642 relation_ref 154882 // <directional aggregation by value>
+  from ref 128002 z 1999 stereotype "<<map>>" xyz 322 318 3000 to ref 128514
+  role_a_pos 350 298 3000 no_role_b
+  multiplicity_a_pos 400 325 3000 no_multiplicity_b
+relationcanvas 129410 relation_ref 155010 // <directional aggregation>
+  geometry VH
+  from ref 128770 z 1999 to point 53 31
+  line 130050 z 1999 to ref 128898
+  role_a_pos 115 13 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129538 relation_ref 155138 // <directional aggregation>
+  from ref 128770 z 1999 to ref 129026
+  role_a_pos 113 68 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129666 relation_ref 155266 // <directional aggregation>
+  from ref 128770 z 1999 to ref 129154
+  role_a_pos 119 115 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129794 relation_ref 155394 // <directional aggregation>
+  geometry VH
+  from ref 128770 z 1999 to point 53 191
+  line 130306 z 1999 to ref 129282
+  role_a_pos 97 173 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 131074 relation_ref 155522 // <directional aggregation by value>
+  from ref 128002 z 1999 stereotype "<<map>>" xyz 144 317 3000 to ref 130434
+  role_a_pos 131 298 3000 no_role_b
+  multiplicity_a_pos 131 325 3000 no_multiplicity_b
+preferred_whz 527 426 1
+end

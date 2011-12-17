@@ -1,0 +1,35 @@
+class UmlDestroyObjectAction
+!!!258819.cpp!!!	sKind() : string
+  return "destroy object activity action";
+!!!258819.java!!!	sKind() : string
+  return "destroy object activity action";
+!!!258691.cpp!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  UmlActivityAction::html();
+
+  if (isDestroyLinks()) {
+    if (isDestroyOwnedObjects())
+      fw.write("<p>Destroy links, destroy owned objects</p>");
+    else
+      fw.write("<p>Destroy links</p>");
+  }
+  else if (isDestroyOwnedObjects())
+    fw.write("<p>Destroy owned objects</p>");
+
+  write_children(pfix, rank, level);
+
+  unload(FALSE, FALSE);
+!!!258691.java!!!	html(in pfix : string, in rank : uint, in level : uint) : void
+  super.html();
+
+  if (isDestroyLinks()) {
+    if (isDestroyOwnedObjects())
+      fw.write("<p>Destroy links, destroy owned objects</p>");
+    else
+      fw.write("<p>Destroy links</p>");
+  }
+  else if (isDestroyOwnedObjects())
+    fw.write("<p>Destroy owned objects</p>");
+
+  write_children(pfix, rank, level);
+
+  unload(false, false);
